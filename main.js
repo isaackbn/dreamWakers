@@ -23,6 +23,69 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/alerts/alerts.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/alerts/alerts.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  &nbsp; Alerts not loaded, composite requires active service  :)\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/alerts/alerts.component.scss":
+/*!**********************************************!*\
+  !*** ./src/app/alerts/alerts.component.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/alerts/alerts.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/alerts/alerts.component.ts ***!
+  \********************************************/
+/*! exports provided: AlertsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertsComponent", function() { return AlertsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AlertsComponent = /** @class */ (function () {
+    function AlertsComponent() {
+    }
+    AlertsComponent.prototype.ngOnInit = function () {
+    };
+    AlertsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-alerts',
+            template: __webpack_require__(/*! ./alerts.component.html */ "./src/app/alerts/alerts.component.html"),
+            styles: [__webpack_require__(/*! ./alerts.component.scss */ "./src/app/alerts/alerts.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AlertsComponent);
+    return AlertsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -38,12 +101,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
 /* harmony import */ var _details_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./details/details.component */ "./src/app/details/details.component.ts");
 /* harmony import */ var _public_public_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./public/public.component */ "./src/app/public/public.component.ts");
+/* harmony import */ var _alerts_alerts_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./alerts/alerts.component */ "./src/app/alerts/alerts.component.ts");
+/* harmony import */ var _auth_auth_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/auth.component */ "./src/app/auth/auth.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -61,6 +128,14 @@ var routes = [
     {
         path: 'public',
         component: _public_public_component__WEBPACK_IMPORTED_MODULE_4__["PublicComponent"]
+    },
+    {
+        path: 'alerts',
+        component: _alerts_alerts_component__WEBPACK_IMPORTED_MODULE_5__["AlertsComponent"]
+    },
+    {
+        path: 'auth',
+        component: _auth_auth_component__WEBPACK_IMPORTED_MODULE_6__["AuthComponent"]
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -158,12 +233,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _background_background_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./background/background.component */ "./src/app/background/background.component.ts");
+/* harmony import */ var _alerts_alerts_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./alerts/alerts.component */ "./src/app/alerts/alerts.component.ts");
+/* harmony import */ var _auth_auth_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./auth/auth.component */ "./src/app/auth/auth.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -186,7 +265,9 @@ var AppModule = /** @class */ (function () {
                 _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"],
                 _details_details_component__WEBPACK_IMPORTED_MODULE_6__["DetailsComponent"],
                 _public_public_component__WEBPACK_IMPORTED_MODULE_7__["PublicComponent"],
-                _background_background_component__WEBPACK_IMPORTED_MODULE_10__["BackgroundComponent"]
+                _background_background_component__WEBPACK_IMPORTED_MODULE_10__["BackgroundComponent"],
+                _alerts_alerts_component__WEBPACK_IMPORTED_MODULE_11__["AlertsComponent"],
+                _auth_auth_component__WEBPACK_IMPORTED_MODULE_12__["AuthComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -199,6 +280,69 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/auth.component.html":
+/*!******************************************!*\
+  !*** ./src/app/auth/auth.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n\n<p>&nbsp; Users will be asked to log in with their Linkedin accounts</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/auth/auth.component.scss":
+/*!******************************************!*\
+  !*** ./src/app/auth/auth.component.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/auth/auth.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/auth/auth.component.ts ***!
+  \****************************************/
+/*! exports provided: AuthComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthComponent", function() { return AuthComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AuthComponent = /** @class */ (function () {
+    function AuthComponent() {
+    }
+    AuthComponent.prototype.ngOnInit = function () {
+    };
+    AuthComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-auth',
+            template: __webpack_require__(/*! ./auth.component.html */ "./src/app/auth/auth.component.html"),
+            styles: [__webpack_require__(/*! ./auth.component.scss */ "./src/app/auth/auth.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AuthComponent);
+    return AuthComponent;
 }());
 
 
@@ -402,7 +546,7 @@ var DetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<h4>Connections</h4>\n\n"
+module.exports = "\n<h4>&nbsp; Connections</h4> <p>&nbsp; Calls are supported via Google API, implementing compatibility</p>\n\n<video id=\"video\" autoplay=\"autoplay\" preload=\"auto\" ng-click=\"pauseOrPlay()\">\n        <source src=\"https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4\" type=\"video/mp4\" />\n </video>\n\n"
 
 /***/ }),
 
@@ -413,7 +557,7 @@ module.exports = "\n<h4>Connections</h4>\n\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#video {\n  width: 100%; }\n"
 
 /***/ }),
 
@@ -468,7 +612,7 @@ var PublicComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Links</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Alerts</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/about'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
+module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Calls</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Alerts</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/auth'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
 
 /***/ }),
 
@@ -540,7 +684,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n      <app-background></app-background>\n\n<h4>Home</h4>\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>"
+module.exports = "\n      <app-background></app-background>\n\n<h4>&nbsp; Home</h4> <p>&nbsp; Users reside in cleandb and are loaded via Heroku/dreamwakers</p>\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>"
 
 /***/ }),
 
