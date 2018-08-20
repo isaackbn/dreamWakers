@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  &nbsp; Alerts not loaded, composite requires active service  :)\n</p>\n"
+module.exports = "<p>\n  &nbsp; Plan allows you to manage meetings and modify profile parameters.\n</p>\n"
 
 /***/ }),
 
@@ -293,7 +293,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<p>&nbsp; Users will be asked to log in with their Linkedin accounts</p>\n"
+module.exports = "\n\n<p>&nbsp; You will be asked to log in or sign up with your Linkedin accounts</p>\n"
 
 /***/ }),
 
@@ -473,7 +473,7 @@ var DataService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<h1> {{user$.firstname}} {{user$.lastname}}</h1>\n\n<ul>\n  <li> <strong>First detail: </strong> {{user$.firstname}} {{user$.lastname}}</li>\n  <li> <strong>Second info: </strong> {{user$.lastname}}</li>\n  <li> <strong>More on user: </strong> {{user$.firstname}} </li>\n</ul>"
+module.exports = "\n<p>&nbsp; More info on <span style=\"font-weight: bold\">{{user$.firstname}} {{user$.lastname}}</span></p>\n\n<ul>\n  <li> <strong>First detail: </strong> {{user$.firstname}} {{user$.lastname}}</li>\n  <li> <strong>Second info: </strong> {{user$.lastname}}</li>\n  <li> <strong>More on user: </strong> {{user$.firstname}} </li>\n</ul>\n\n<p>&nbsp; etc..</p>"
 
 /***/ }),
 
@@ -546,7 +546,7 @@ var DetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<h4>&nbsp; Connections</h4> <p>&nbsp; Calls are supported via Google API, implementing compatibility</p>\n\n<video id=\"video\" autoplay=\"autoplay\" preload=\"auto\" ng-click=\"pauseOrPlay()\">\n        <source src=\"https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4\" type=\"video/mp4\" />\n </video>\n\n"
+module.exports = "\n<h4>&nbsp; Connections</h4> <p>&nbsp; Calls are supported via Google. (Implementing the necessary backbone)  </p>\n\n<video id=\"video\" autoplay=\"autoplay\" preload=\"auto\" ng-click=\"pauseOrPlay()\">\n        <source src=\"https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4\" type=\"video/mp4\" />\n </video>\n\n"
 
 /***/ }),
 
@@ -612,7 +612,7 @@ var PublicComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Calls</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Alerts</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/auth'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
+module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Call</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Plan</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/auth'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
 
 /***/ }),
 
@@ -684,7 +684,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n      <app-background></app-background>\n\n<h4>&nbsp; Home</h4> <p>&nbsp; Users reside in cleandb and are loaded via Heroku/dreamwakers</p>\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>"
+module.exports = "\n      <app-background></app-background>\n\n<h4>&nbsp; Home</h4> <p>&nbsp; Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n  user and attaches relevant info. <br>\n  &nbsp; Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n     </p>\n\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>\n"
 
 /***/ }),
 
