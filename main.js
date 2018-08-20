@@ -684,7 +684,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n      <app-background></app-background>\n\n<h4>&nbsp; Home</h4> <p>&nbsp; Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n  user and attaches relevant info. <br>\n  &nbsp; Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n     </p>\n\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>\n"
+module.exports = "\n      <app-background></app-background>\n\n<h4>&nbsp; Home</h4> <p>&nbsp; Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n  user and attaches relevant info. <br>\n  &nbsp; Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n     </p>\n\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>\n<br><br>\n<p>&nbsp; (Note: this is not what the page will look like) </p>"
 
 /***/ }),
 
