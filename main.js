@@ -161,7 +161,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"navigation\">\n\n  <app-sidebar></app-sidebar>\n</div>\n\n  <div id=\"content container2\">\n      <router-outlet></router-outlet>\n  </div>\n\n\n"
+module.exports = "<div id=\"navigation\">\n\n  <app-sidebar></app-sidebar>\n</div>\n\n  <div id=\"container\">\n      <router-outlet></router-outlet>\n  </div>\n\n\n"
 
 /***/ }),
 
@@ -546,7 +546,7 @@ var DetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<h4>&nbsp; Connections</h4> <p>&nbsp; Calls are supported via Google. (Implementing the necessary backbone)  </p>\n\n<video id=\"video\" autoplay=\"autoplay\" preload=\"auto\" ng-click=\"pauseOrPlay()\">\n        <source src=\"https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4\" type=\"video/mp4\" />\n </video>\n\n"
+module.exports = "\n<h4>&nbsp; Connections</h4> <p>&nbsp; Calls are supported via Google. (Implementing the necessary backbone)  </p>\n\n<video id=\"video\" preload=\"auto\" autoplay=\"true\">\n        <source src={{url}} type=\"video/mp4\" />\n </video>\n\n"
 
 /***/ }),
 
@@ -587,6 +587,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var PublicComponent = /** @class */ (function () {
     function PublicComponent(data) {
         this.data = data;
+        this.url = "https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4";
     }
     PublicComponent.prototype.ngOnInit = function () {
     };
@@ -684,7 +685,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n      <app-background></app-background>\n\n<h4>&nbsp; Home</h4> <p>&nbsp; Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n  user and attaches relevant info. <br>\n  &nbsp; Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n     </p>\n\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>\n<br><br>\n<p>&nbsp; (Note: this is not what the page will look like) </p>"
+module.exports = "\n  <app-background></app-background>\n  \n<div class=\"p-note\">\n  <h4> info</h4> \n  <p> Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n    user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n  </p>\n</div>\n\n<ul [@listStagger]=\"users$\" id=\"user-container\">\n  <li *ngFor=\"let user of users$\" id=\"user-block\" (click)=\"showDetails(user.id)\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <hr>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>\n<br><br>\n<p>&nbsp; (Note: this page is in construction) </p>"
 
 /***/ }),
 
@@ -711,7 +712,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsersComponent", function() { return UsersComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
-/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -724,13 +726,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UsersComponent = /** @class */ (function () {
-    function UsersComponent(data) {
+    function UsersComponent(data, router) {
         this.data = data;
+        this.router = router;
     }
     UsersComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.data.getUsers().subscribe(function (data) { return _this.users$ = data; });
+    };
+    UsersComponent.prototype.showDetails = function (id) {
+        this.router.navigate(['details/' + id]);
     };
     UsersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -738,18 +745,18 @@ var UsersComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./users.component.html */ "./src/app/users/users.component.html"),
             styles: [__webpack_require__(/*! ./users.component.scss */ "./src/app/users/users.component.scss")],
             animations: [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('listStagger', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('* <=> *', [
-                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["query"])(':enter', [
-                            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 0, transform: 'translateY(-15px)' }),
-                            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["stagger"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('500ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 1, transform: 'translateY(0px)' })))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["trigger"])('listStagger', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["transition"])('* <=> *', [
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["query"])(':enter', [
+                            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["style"])({ opacity: 0, transform: 'translateY(-15px)' }),
+                            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["stagger"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["animate"])('500ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["style"])({ opacity: 1, transform: 'translateY(0px)' })))
                         ], { optional: true }),
-                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["query"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('50ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ opacity: 0, })), { optional: true })
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["query"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["animate"])('50ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["style"])({ opacity: 0, })), { optional: true })
                     ])
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], UsersComponent);
     return UsersComponent;
 }());
