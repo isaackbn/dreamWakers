@@ -23,7 +23,7 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 12px 12px;
     text-decoration: none;
 }
 
@@ -35,30 +35,64 @@ li a:hover:not(.active) {
 
 }
 
-#container2 {
-   display: grid;
-   grid-template-rows: auto;
-   width: 100%;
+.p-note{
+    font-size: 0.8em;
+    border-left: 6px solid rgb(146, 3, 3);
+    background-color: lightgrey;
+    width:100%;
+    padding: 5px;
+}
+#container{
+    //background-color: rgb(111, 146, 175);
+}
+#user-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    //background-color: #2196F3;
+    padding: 10px 10px;
+    width: 38%;
+    list-style-type: none;
+}
+#user-block:hover{
+    cursor: pointer;
+}
+#user-block{
+    background: rgb(218, 216, 216);
+    border-radius: 2px;
+    padding: 10px 0;
+    width:150px;
+    height: 400 px;
+    text-align: center;
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid rgb(190, 188, 188);
+        margin: 1em 0;
+        padding: 0;
+    }
+    a {
+        font-size: 1em;
+        text-decoration: none;
+        color:rgb(55, 57, 58);
+        
+    }
+    ul {
+        margin-top: 10px;
+        list-style-type: none;
+        text-align: left;
+        font-size: 0.8em;
+        li {
+            a {
+                font-weight: 300;
+            }
+        }
+    }
+}
+       #user-item{
 
-   #content {
-       padding: 30px 50px;
 
-       ul {
-           list-style-type: none;
-           margin:0;padding:0;
-       
-           li {
-               background: #fff;
-               border-radius: 8px;
-               padding: 20px;
-               margin-bottom: 8px;
-       
-               a {
-                   font-size: 1.5em;
-                   text-decoration: none;
-                   font-weight: bold;
-                   color:#00A8FF;
-               }
        
                ul {
                    margin-top: 20px;
@@ -72,10 +106,51 @@ li a:hover:not(.active) {
                        }
                    }
                }
-           }
-       }
-   }
+           
+       
+   
 }
 
 
 
+#oldcontainer {
+    display: grid;
+    grid-template-rows: auto;
+    width: 100%;
+ 
+    
+        padding: 30px 50px;
+ 
+        ul {
+            list-style-type: none;
+            margin:0;padding:0;
+        
+            li {
+                background: #fff;
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 8px;
+        
+                a {
+                    font-size: 1.5em;
+                    text-decoration: none;
+                    font-weight: bold;
+                    color:#00A8FF;
+                }
+        
+                ul {
+                    margin-top: 20px;
+                    
+                    li {
+                        padding:0;
+        
+                        a {
+                            font-size: 1em;
+                            font-weight: 300;
+                        }
+                    }
+                }
+            }
+        }
+    
+ }

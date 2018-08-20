@@ -1,14 +1,17 @@
 
-      <app-background></app-background>
+  <app-background></app-background>
+  
+<div class="p-note">
+  <h4> info</h4> 
+  <p> Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available
+    user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.
+  </p>
+</div>
 
-<h4>&nbsp; Home</h4> <p>&nbsp; Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available
-  user and attaches relevant info. <br>
-  &nbsp; Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.
-     </p>
-
-<ul [@listStagger]="users$">
-  <li *ngFor="let user of users$">
+<ul [@listStagger]="users$" id="user-container">
+  <li *ngFor="let user of users$" id="user-block" (click)="showDetails(user.id)">
     <a routerLink="details/{{user.id}}"> {{user.firstname}}</a>
+    <hr>
     <ul>
       <li>{{user.lastname}}</li>
       <li><a href="http://{{user.firstname}}"></a>{{user.firstname}}</li>
@@ -16,4 +19,4 @@
   </li>
 </ul>
 <br><br>
-<p>&nbsp; (Note: this is not what the page will look like) </p>
+<p>&nbsp; (Note: this page is in construction) </p>

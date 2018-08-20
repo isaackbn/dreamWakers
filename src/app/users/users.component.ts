@@ -1,6 +1,7 @@
 import { Component, OnInit, Optional } from '@angular/core';
 import { DataService} from '../data.service'
 import { Observable} from 'rxjs'
+import { Router } from '@angular/router'
 import {trigger, style, transition, animate, keyframes, query, stagger} from '@angular/animations'
 
 
@@ -27,12 +28,16 @@ export class UsersComponent implements OnInit {
 
   users$: Object
 
-  constructor( private data: DataService) {}
+  constructor( private data: DataService, public router:Router) {}
 
   ngOnInit() {
     this.data.getUsers().subscribe(
       data => this.users$ = data
     )
+  }
+
+  showDetails(id){
+    this.router.navigate(['details/'+id])
   }
 
 }
