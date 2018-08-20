@@ -86,7 +86,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"container\">\n  \n  <app-sidebar></app-sidebar>\n\n  <div id=\"content\">\n    <router-outlet></router-outlet>\n  </div>\n\n</div>\n"
+module.exports = "<div id=\"navigation\">\n\n  <app-sidebar></app-sidebar>\n</div>\n\n  <div id=\"content container2\">\n      <router-outlet></router-outlet>\n  </div>\n\n\n"
 
 /***/ }),
 
@@ -157,12 +157,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_public_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./public/public.component */ "./src/app/public/public.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _background_background_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./background/background.component */ "./src/app/background/background.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -183,7 +185,8 @@ var AppModule = /** @class */ (function () {
                 _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_4__["SidebarComponent"],
                 _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"],
                 _details_details_component__WEBPACK_IMPORTED_MODULE_6__["DetailsComponent"],
-                _public_public_component__WEBPACK_IMPORTED_MODULE_7__["PublicComponent"]
+                _public_public_component__WEBPACK_IMPORTED_MODULE_7__["PublicComponent"],
+                _background_background_component__WEBPACK_IMPORTED_MODULE_10__["BackgroundComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -196,6 +199,74 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/background/background.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/background/background.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n\n\n    <video autoplay muted loop class=\"center-media\">\n        <source src=\"\" type=\"video/mp4\">\n        Your browser does not support HTML5 video.\n      </video>"
+
+/***/ }),
+
+/***/ "./src/app/background/background.component.scss":
+/*!******************************************************!*\
+  !*** ./src/app/background/background.component.scss ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center-media {\n  opacity: 1;\n  max-width: 30%;\n  display: block;\n  margin: 0 auto;\n  position: absolute;\n  right: 0; }\n"
+
+/***/ }),
+
+/***/ "./src/app/background/background.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/background/background.component.ts ***!
+  \****************************************************/
+/*! exports provided: BackgroundComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BackgroundComponent", function() { return BackgroundComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var BackgroundComponent = /** @class */ (function () {
+    function BackgroundComponent() {
+        this.url = "https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4";
+        this.pauseOrPlay = function (ele) {
+            var video = ele.srcElement;
+            video[0].pause(); // video.play()
+        };
+    }
+    BackgroundComponent.prototype.ngOnInit = function () {
+    };
+    BackgroundComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-background',
+            template: __webpack_require__(/*! ./background.component.html */ "./src/app/background/background.component.html"),
+            styles: [__webpack_require__(/*! ./background.component.scss */ "./src/app/background/background.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], BackgroundComponent);
+    return BackgroundComponent;
 }());
 
 
@@ -331,7 +402,7 @@ var DetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<h1>Posts</h1>\n\n"
+module.exports = "\n<h4>Connections</h4>\n\n"
 
 /***/ }),
 
@@ -397,7 +468,7 @@ var PublicComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav>\n  <ul>\n\n\n    <li>\n      <a routerLink=\"\" [class.activated] = \"currentUrl == '/'\">\n          <i class=\"material-icons\">all_inclusive</i>\n      </a>\n    </li>\n\n    <li>\n        <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\">\n            <i class=\"material-icons\">notifications</i>\n        </a>\n      </li>\n\n  </ul>\n</nav>"
+module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Links</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Alerts</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/about'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
 
 /***/ }),
 
@@ -408,7 +479,7 @@ module.exports = "\n<nav>\n  <ul>\n\n\n    <li>\n      <a routerLink=\"\" [class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "nav {\n  background: #2D2E2E;\n  height: 100%; }\n  nav ul {\n    list-style-type: none;\n    padding: 0;\n    margin: 0; }\n  nav ul li a {\n      color: #fff;\n      padding: 20px;\n      display: block; }\n  nav ul li .activated {\n      background-color: #00a8ff; }\n"
+module.exports = "nav {\n  background: #2D2E2E;\n  height: 100%; }\n  nav ul {\n    list-style-type: none;\n    padding: 0;\n    margin: 0; }\n  nav ul li a {\n      color: #fff;\n      padding: 20px;\n      display: block; }\n  nav ul li .activated {\n      background-color: #38a3a5; }\n  .topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n  .topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n"
 
 /***/ }),
 
@@ -469,7 +540,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<h1>Users</h1>\n\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>"
+module.exports = "\n      <app-background></app-background>\n\n<h4>Home</h4>\n<ul [@listStagger]=\"users$\">\n  <li *ngFor=\"let user of users$\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>"
 
 /***/ }),
 
