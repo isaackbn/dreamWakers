@@ -1,7 +1,11 @@
 
       <app-background></app-background>
 
-<h4>&nbsp; Home</h4> <p>&nbsp; Users reside in cleandb and are loaded via Heroku/dreamwakers</p>
+<h4>&nbsp; Home</h4> <p>&nbsp; Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available
+  user and attaches relevant info. <br>
+  &nbsp; Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.
+     </p>
+
 <ul [@listStagger]="users$">
   <li *ngFor="let user of users$">
     <a routerLink="details/{{user.id}}"> {{user.firstname}}</a>
