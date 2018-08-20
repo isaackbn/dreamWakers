@@ -1,19 +1,21 @@
 
+
 <nav>
-  <ul>
 
+  <ul class="topnav">
 
-    <li>
-      <a routerLink="" [class.activated] = "currentUrl == '/'">
-          <i class="material-icons">all_inclusive</i>
-      </a>
+    <li><a routerLink="" [class.activated] = "currentUrl == '/'"> Home </a></li>
+
+    <li>  <a routerLink="public" [class.activated] = "currentUrl == '/public'"> Links</a> </li>
+    <li>  <a routerLink="alerts" [class.activated] = "currentUrl == '/alerts'"> Alerts</a> </li>
+      
+    <li class="topnav-centered"> 
+      <a href="https://www.dreamwakers.org/" [class.activated] = "currentUrl != nil"> Dreamwakers </a>
     </li>
 
-    <li>
-        <a routerLink="public" [class.activated] = "currentUrl == '/public'">
-            <i class="material-icons">notifications</i>
-        </a>
-      </li>
+      <li style="float: right" >
+          <a routerLink="/auth" [class.activated] = "currentUrl == '/about'">Log in</a>
+        </li>
 
   </ul>
 </nav>

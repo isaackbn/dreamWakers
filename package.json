@@ -1,5 +1,5 @@
 {
-  "name": "dwakers",
+  "name": "dreamwakers",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy":"ng build --prod --base-href https://isaackbn.github.io/dwakers/ && angular-cli-ghpages --branch gh-pages"
+    "deploy": "ng build --prod --base-href https://isaackbn.github.io/dreamwakers/ && angular-cli-ghpages --branch gh-pages"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "angular-video-background": "^1.0.3",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"

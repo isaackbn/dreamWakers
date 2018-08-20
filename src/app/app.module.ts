@@ -9,7 +9,9 @@ import { DetailsComponent } from './details/details.component';
 import { PublicComponent } from './public/public.component';
 
 import { HttpClientModule } from "@angular/common/http";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BackgroundComponent } from './background/background.component'
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
     SidebarComponent,
     UsersComponent,
     DetailsComponent,
-    PublicComponent
+    PublicComponent,
+    BackgroundComponent
   ],
   imports: [
     BrowserModule,
