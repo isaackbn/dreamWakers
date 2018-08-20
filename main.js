@@ -613,7 +613,7 @@ var PublicComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Call</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Plan</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/auth'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
+module.exports = "\n\n<nav>\n\n  <ul class=\"topnav\">\n\n    <li><a routerLink=\"\" [class.activated] = \"currentUrl == '/'\"> Home </a></li>\n\n    <li>  <a routerLink=\"public\" [class.activated] = \"currentUrl == '/public'\"> Flashchats</a> </li>\n    <li>  <a routerLink=\"alerts\" [class.activated] = \"currentUrl == '/alerts'\"> Plan</a> </li>\n      \n    <li class=\"topnav-centered\"> \n      <a href=\"https://www.dreamwakers.org/\" [class.activated] = \"currentUrl != nil\"> Dreamwakers </a>\n    </li>\n\n      <li style=\"float: right\" >\n          <a routerLink=\"/auth\" [class.activated] = \"currentUrl == '/auth'\">Log in</a>\n        </li>\n\n  </ul>\n</nav>"
 
 /***/ }),
 
@@ -685,7 +685,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <app-background></app-background>\n  \n<div class=\"p-note\">\n  <h4> info</h4> \n  <p> Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n    user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n  </p>\n</div>\n\n<ul [@listStagger]=\"users$\" id=\"user-container\">\n  <li *ngFor=\"let user of users$\" id=\"user-block\" (click)=\"showDetails(user.id)\">\n    <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n    <hr>\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n    </ul>\n  </li>\n</ul>\n<br><br>\n<p>&nbsp; (Note: this page is in construction) </p>"
+module.exports = "\n  <app-background></app-background>\n  \n<div class=\"p-note\">\n  <h4> info</h4> \n  <p> Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n    user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n    (This info box is how you can talk to all users).\n  </p>\n</div>\n\n<div class=\"wrap\">\n    <div class=\"search\">\n       <input type=\"text\" class=\"searchTerm\" placeholder=\"search\">\n       <button type=\"submit\" class=\"searchButton\">\n          <i class=\"material-icons\">search</i>\n\n      </button>\n    </div>\n \n\n  <ul [@listStagger]=\"users$\" id=\"user-container\"> \n    <li *ngFor=\"let user of users$\" id=\"user-block\" (click)=\"showDetails(user.id)\">\n      <a routerLink=\"details/{{user.id}}\"> {{user.firstname}}</a>\n      <hr>\n      <ul>\n        <li>{{user.lastname}}</li>\n        <li><a href=\"http://{{user.firstname}}\"></a>{{user.firstname}}</li>\n      </ul>\n    </li>\n\n    <li id=\"user-block\">\n        <a routerLink=\"\"> More</a>\n        <hr>\n        <ul>\n          <li>See others</li>\n          <li><a href=\"#\"></a>-</li>\n        </ul>\n      </li>\n  </ul>\n\n</div>\n\n<br><br>\n<p>&nbsp; (Note: this page is in construction) </p>"
 
 /***/ }),
 
@@ -696,7 +696,7 @@ module.exports = "\n  <app-background></app-background>\n  \n<div class=\"p-note
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".search {\n  width: 100%;\n  position: relative; }\n\n.searchTerm {\n  float: left;\n  width: 100%;\n  border: 2px solid #00B4CC;\n  padding: 5px;\n  height: 20px;\n  border-radius: 0.1px;\n  margin-left: 9px;\n  outline: none;\n  color: #cccccc;\n  font-size: 18px;\n  font-weight: lighter; }\n\n.searchTerm:focus {\n  color: #444444;\n  font-size: 18px;\n  font-weight: lighter; }\n\n.searchButton {\n  position: absolute;\n  right: -50px;\n  width: 40px;\n  height: 34px;\n  border: 0.03px solid #00B4CC;\n  background: #00B4CC;\n  text-align: center;\n  color: #fff;\n  border-radius: 2px;\n  cursor: pointer;\n  font-size: 30px; }\n\n.searchButton:focus {\n  outline: none; }\n\n/*Resize the wrap to see the search bar change!*/\n\n.wrap {\n  width: 33.65%;\n  left: 0%;\n  -webkit-transform: translate(0, 3%);\n          transform: translate(0, 3%); }\n"
 
 /***/ }),
 
