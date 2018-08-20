@@ -39,8 +39,8 @@ li a:hover:not(.active) {
     font-size: 0.8em;
     border-left: 6px solid rgb(146, 3, 3);
     background-color: lightgrey;
-    width:100%;
-    padding: 5px;
+    width:98.77%;
+    padding: 5px 5px 5px 5px;
 }
 #container{
     //background-color: rgb(111, 146, 175);
@@ -56,6 +56,7 @@ li a:hover:not(.active) {
 }
 #user-block:hover{
     cursor: pointer;
+    background: rgb(202, 200, 200);
 }
 #user-block{
     background: rgb(218, 216, 216);
