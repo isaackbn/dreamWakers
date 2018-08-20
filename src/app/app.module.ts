@@ -10,7 +10,9 @@ import { PublicComponent } from './public/public.component';
 
 import { HttpClientModule } from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { BackgroundComponent } from './background/background.component'
+import { BackgroundComponent } from './background/background.component';
+import { AlertsComponent } from './alerts/alerts.component';
+import { AuthComponent } from './auth/auth.component'
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { BackgroundComponent } from './background/background.component'
     UsersComponent,
     DetailsComponent,
     PublicComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    AlertsComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

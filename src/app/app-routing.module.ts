@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent} from './users/users.component'
 import { DetailsComponent} from './details/details.component'
 import { PublicComponent} from './public/public.component'
+import { AlertsComponent} from './alerts/alerts.component'
+import { AuthComponent } from './auth/auth.component'
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path:'public',
     component: PublicComponent
+  },
+  {
+    path:'alerts',
+    component: AlertsComponent
+  },
+  {
+    path:'auth',
+    component: AuthComponent
   }
 
 ];

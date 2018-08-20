@@ -1,7 +1,7 @@
 
       <app-background></app-background>
 
-<h4>Home</h4>
+<h4>&nbsp; Home</h4> <p>&nbsp; Users reside in cleandb and are loaded via Heroku/dreamwakers</p>
 <ul [@listStagger]="users$">
   <li *ngFor="let user of users$">
     <a routerLink="details/{{user.id}}"> {{user.firstname}}</a>
