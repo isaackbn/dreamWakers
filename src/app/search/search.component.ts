@@ -29,6 +29,7 @@ import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 export class SearchComponent implements OnInit, AfterViewInit {
 
   users$: Object
+  suggestedCount:Number = 7
   @ViewChild('moreUsersId') moreUsersId: ElementRef;
 
   constructor(private data: DataService, public router:Router) { }
