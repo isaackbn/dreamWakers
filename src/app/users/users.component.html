@@ -1,45 +1,7 @@
 
-  <app-background></app-background>
   
-<div class="p-note">
-  <h4> info</h4> 
-  <p> Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available
-    user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.
-    (This info box is how you can talk to all users).
-  </p>
-</div>
+<div class="p-note"> <h4> info</h4> <p> {{message}}</p> </div>
 
-<div class="wrap">
-    <div class="search">
-       <input type="text" class="searchTerm" placeholder="search">
-       <button type="submit" class="searchButton">
-          <i class="material-icons">search</i>
+<app-search class="left"></app-search>
 
-      </button>
-    </div>
- 
-
-  <ul [@listStagger]="users$" id="user-container"> 
-    <li *ngFor="let user of users$" id="user-block" (click)="showDetails(user.id)">
-      <a routerLink="details/{{user.id}}"> {{user.firstname}}</a>
-      <hr>
-      <ul>
-        <li>{{user.lastname}}</li>
-        <li><a href="http://{{user.firstname}}"></a>{{user.firstname}}</li>
-      </ul>
-    </li>
-
-    <li id="user-block">
-        <a routerLink=""> More</a>
-        <hr>
-        <ul>
-          <li>See others</li>
-          <li><a href="#"></a>-</li>
-        </ul>
-      </li>
-  </ul>
-
-</div>
-
-<br><br>
-<p>&nbsp; (Note: this page is in construction) </p>
+<app-panel class="right"></app-panel>

@@ -12,7 +12,9 @@ import { HttpClientModule } from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { BackgroundComponent } from './background/background.component';
 import { AlertsComponent } from './alerts/alerts.component';
-import { AuthComponent } from './auth/auth.component'
+import { AuthComponent } from './auth/auth.component';
+import { PanelComponent } from './panel/panel.component';
+import { SearchComponent } from './search/search.component'
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { AuthComponent } from './auth/auth.component'
     PublicComponent,
     BackgroundComponent,
     AlertsComponent,
-    AuthComponent
+    AuthComponent,
+    PanelComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
