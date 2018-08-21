@@ -682,7 +682,7 @@ var PublicComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\">\n    <div class=\"search\">\n       <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker\">\n       <button type=\"submit\" class=\"searchButton\">\n          <i class=\"material-icons\">search</i>\n\n      </button>\n    </div>\n    <p id=\"suggested\">Suggested</p>\n    <hr id=\"separator\">\n\n  <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n    <li *ngFor=\"let user of users$\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n      <a routerLink=\"details/{{user.id}}\"> {{user.firstname}} {{user.lastname}}</a>\n      <hr>\n      <div class=\"profession\">{{user.profession}}</div>\n      <div class=\"detail\">{{user.company}}</div>\n      <div class=\"detail\">{{user.location}}</div>\n    </li>\n\n    <li tabIndex=\"-1\" id=\"moreUsers\" #moreUsersId class=\"user-block fade-in\">\n        <a routerLink=\"\"> More</a>\n        <hr>\n        <div class=\"profession\">Profession</div>\n        <div class=\"detail\">company</div>\n        <div class=\"detail\">location</div>\n    </li>\n  </ul>\n</div>\n  \n<div class=\"vl\"></div>\n\n\n"
+module.exports = "\n<div id=\"container\">\n    <div class=\"search\">\n       <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker\">\n       <button type=\"submit\" class=\"searchButton\">\n          <i class=\"material-icons\">search</i>\n\n      </button>\n    </div>\n    <p id=\"suggested\">Suggested (7)</p>\n    <hr id=\"separator\">\n\n  <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n    <li *ngFor=\"let user of users$\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n      <a routerLink=\"details/{{user.id}}\"> {{user.firstname}} {{user.lastname}}</a>\n      <hr>\n      <div class=\"profession\">{{user.profession}}</div>\n      <div class=\"detail\">{{user.company}}</div>\n      <div class=\"detail\">{{user.location}}</div>\n    </li>\n\n    <li tabIndex=\"-1\" id=\"moreUsers\" #moreUsersId class=\"user-block fade-in\">\n        <a routerLink=\"\"> More</a>\n        <hr>\n        <div class=\"profession\">Profession</div>\n        <div class=\"detail\">company</div>\n        <div class=\"detail\">location</div>\n    </li>\n  </ul>\n</div>\n  \n<div class=\"vl\"></div>\n\n\n"
 
 /***/ }),
 
@@ -729,6 +729,7 @@ var SearchComponent = /** @class */ (function () {
     function SearchComponent(data, router) {
         this.data = data;
         this.router = router;
+        this.suggestedCount = 7;
     }
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
