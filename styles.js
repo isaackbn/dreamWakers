@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n  margin: 0;\n  background: #F2F2F2;\n  font-family: 'Montserrat', sans-serif;\n  height: 100vh; }\n.p-note {\n  font-size: 0.8em;\n  border-left: 6px solid #920303;\n  background-color: lightgrey;\n  width: 98.77%;\n  padding: 5px 5px 5px 5px; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n  margin: 0;\n  background: #F2F2F2;\n  font-family: 'Montserrat', sans-serif;\n  height: 100vh; }\n.alert {\n  font-size: 0.8em;\n  border: 1px solid #a5a5a5;\n  border-left: 6px solid #920303;\n  background-color: lightgrey;\n  width: 98.77%;\n  padding: 5px 5px 15px 10px; }\n"
 
 /***/ }),
 

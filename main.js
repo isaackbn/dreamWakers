@@ -23,6 +23,49 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/alert.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/alert.service.ts ***!
+  \**********************************/
+/*! exports provided: AlertService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertService", function() { return AlertService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AlertService = /** @class */ (function () {
+    function AlertService(http) {
+        this.http = http;
+    }
+    AlertService.prototype.mainAlert = function () {
+        return this.http.get('https://dreamwakers.herokuapp.com/alerts/main');
+    };
+    AlertService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], AlertService);
+    return AlertService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/alerts/alerts.component.html":
 /*!**********************************************!*\
   !*** ./src/app/alerts/alerts.component.html ***!
@@ -273,7 +316,7 @@ var AppModule = /** @class */ (function () {
                 _alerts_alerts_component__WEBPACK_IMPORTED_MODULE_11__["AlertsComponent"],
                 _auth_auth_component__WEBPACK_IMPORTED_MODULE_12__["AuthComponent"],
                 _panel_panel_component__WEBPACK_IMPORTED_MODULE_13__["PanelComponent"],
-                _search_search_component__WEBPACK_IMPORTED_MODULE_14__["SearchComponent"]
+                _search_search_component__WEBPACK_IMPORTED_MODULE_14__["SearchComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -552,7 +595,7 @@ var DetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n<div class=\"container\">\n  Navigation section\n</div>"
+module.exports = "\n\n\n<div class=\"container\">\n  Navigation section\n</div>"
 
 /***/ }),
 
@@ -590,6 +633,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var PanelComponent = /** @class */ (function () {
     function PanelComponent() {
+        this.title = "test";
+        this.message = "msg";
     }
     PanelComponent.prototype.ngOnInit = function () {
     };
@@ -682,7 +727,7 @@ var PublicComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\">\n    <div class=\"search\">\n       <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker\">\n       <button type=\"submit\" class=\"searchButton\">\n          <i class=\"material-icons\">search</i>\n\n      </button>\n    </div>\n    <p id=\"suggested\">Suggested (7)</p>\n    <hr id=\"separator\">\n\n  <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n    <li *ngFor=\"let user of users$\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n      <a routerLink=\"details/{{user.id}}\"> {{user.firstname}} {{user.lastname}}</a>\n      <hr>\n      <div class=\"profession\">{{user.profession}}</div>\n      <div class=\"detail\">{{user.company}}</div>\n      <div class=\"detail\">{{user.location}}</div>\n    </li>\n\n    <li tabIndex=\"-1\" id=\"moreUsers\" #moreUsersId class=\"user-block fade-in\">\n        <a routerLink=\"\"> More</a>\n        <hr>\n        <div class=\"profession\">Profession</div>\n        <div class=\"detail\">company</div>\n        <div class=\"detail\">location</div>\n    </li>\n  </ul>\n</div>\n  \n<div class=\"vl\"></div>\n\n\n"
+module.exports = "\n<div id=\"container\">\n    <div class=\"search\">\n       <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker\">\n       <button type=\"submit\" class=\"searchButton\">\n          <i class=\"material-icons\">search</i>\n\n      </button>\n    </div>\n    <p id=\"suggested\">Suggested ({{suggestedCount}})</p>\n    <hr id=\"separator\">\n\n  <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n    <li *ngFor=\"let user of users$\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n      <a routerLink=\"details/{{user.id}}\"> {{user.firstname}} {{user.lastname}}</a>\n      <hr>\n      <div class=\"profession\">{{user.profession}}</div>\n      <div class=\"detail\">{{user.company}}</div>\n      <div class=\"detail\">{{user.location}}</div>\n    </li>\n\n    <li tabIndex=\"-1\" id=\"moreUsers\" #moreUsersId class=\"user-block fade-in\">\n        <a routerLink=\"\"> More</a>\n        <hr>\n        <div class=\"profession\">Profession</div>\n        <div class=\"detail\">company</div>\n        <div class=\"detail\">location</div>\n    </li>\n  </ul>\n</div>\n  \n<div class=\"vl\"></div>\n\n\n"
 
 /***/ }),
 
@@ -789,7 +834,7 @@ module.exports = "\n\n<nav id=\"navigation\">\n\n  <ul class=\"topnav\">\n\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: #333; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  color: white;\n  text-align: center;\n  padding: 12px 12px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  background-color: #111; }\n\nnav {\n  background: #2D2E2E;\n  height: 100%; }\n\nnav ul {\n    list-style-type: none;\n    padding: 0;\n    margin: 0; }\n\nnav ul li a {\n      color: #fff;\n      padding: 20px;\n      display: block; }\n\nnav ul li .activated {\n      background-color: #38a3a5; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n"
+module.exports = "#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n"
 
 /***/ }),
 
@@ -850,7 +895,7 @@ var SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  \n<div class=\"p-note\"> <h4> info</h4> <p> {{message}}</p> </div>\n\n<app-search class=\"left\"></app-search>\n\n<app-panel class=\"right\"></app-panel>"
+module.exports = "\n  \n\n<div class=\"alert\" *ngIf=\"!alert.empty()\"> \n  <a href=\"#\" class=\"close\" (click)=\"alert.close()\"></a>\n  <h4>{{alert.title}}</h4> {{alert.body}}\n</div>\n<app-search class=\"left\"></app-search>\n\n<app-panel class=\"right\"></app-panel>"
 
 /***/ }),
 
@@ -861,7 +906,7 @@ module.exports = "\n  \n<div class=\"p-note\"> <h4> info</h4> <p> {{message}}</p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".left {\n  float: left;\n  width: 33.5%;\n  -webkit-transform: translate(0, 3%);\n          transform: translate(0, 3%); }\n\n.right {\n  float: right;\n  margin-right: 650px;\n  -webkit-transform: translate(0, 3%);\n          transform: translate(0, 3%); }\n"
+module.exports = ".left {\n  float: left;\n  width: 33.5%;\n  -webkit-transform: translate(0, 3%);\n          transform: translate(0, 3%); }\n\n.right {\n  float: right;\n  margin-right: 650px;\n  -webkit-transform: translate(0, 3%);\n          transform: translate(0, 3%);\n  background-color: bisque; }\n\n.close {\n  position: absolute;\n  right: 23px;\n  top: 64px;\n  width: 25px;\n  height: 25px;\n  opacity: 0.3; }\n\n.close:hover {\n  opacity: 1; }\n\n.close:before, .close:after {\n  position: absolute;\n  left: 15px;\n  content: ' ';\n  height: 20px;\n  width: 2px;\n  background-color: #333; }\n\n.close:before {\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg); }\n\n.close:after {\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg); }\n"
 
 /***/ }),
 
@@ -878,6 +923,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _alert_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../alert.service */ "./src/app/alert.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -890,15 +936,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UsersComponent = /** @class */ (function () {
-    function UsersComponent(data, router) {
+    function UsersComponent(data, router, alertRes) {
+        var _this = this;
         this.data = data;
         this.router = router;
-        this.message = "Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available\n  user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.\n  (This info box is how you can talk to all users).";
+        this.alertRes = alertRes;
+        this.alertDisabled = false;
+        this.alert = {
+            title: "",
+            body: "",
+            empty: function () { if (_this.alert.title == "" && _this.alert.body == "" || _this.alertDisabled == true)
+                return true; },
+            close: function () { _this.alertDisabled = true; }
+        };
     }
     UsersComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.data.getUsers().subscribe(function (data) { return _this.users$ = data; });
+        this.alertRes.mainAlert().subscribe(function (alert) {
+            _this.alert.title = alert[0].title;
+            _this.alert.body = alert[0].body;
+        });
     };
     UsersComponent.prototype.showDetails = function (id) {
         this.router.navigate(['details/' + id]);
@@ -909,7 +969,7 @@ var UsersComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./users.component.html */ "./src/app/users/users.component.html"),
             styles: [__webpack_require__(/*! ./users.component.scss */ "./src/app/users/users.component.scss")],
         }),
-        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"]])
     ], UsersComponent);
     return UsersComponent;
 }());
