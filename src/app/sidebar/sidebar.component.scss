@@ -1,4 +1,5 @@
 #navigation{
+
     ul {
         list-style-type: none;
         margin: 0;
@@ -12,7 +13,7 @@
     }
 
     li {
-        float: left;
+        float: left
     }
 
     li a {
@@ -21,7 +22,7 @@
         padding: 15px 12px;
         text-decoration: none;
         border-radius: 2px;
-
+        text-decoration: none;
     }
 
     li a:hover:not(.active) {
@@ -32,6 +33,9 @@
         border-bottom: 2px solid #38a3a5;
         color: #38a3a5;
     }
+    .not-activated {
+        color:inherit
+    }
 
 }
 
@@ -41,6 +45,7 @@
     position: relative;
     overflow: hidden;
     background-color: #333;
+
   }
 
 .topnav-centered a {

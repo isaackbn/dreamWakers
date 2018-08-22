@@ -6,16 +6,21 @@
 
     <li><a routerLink="" [class.activated] = "currentUrl == '/'"> Home </a></li>
 
-    <li>  <a routerLink="public" [class.activated] = "currentUrl == '/public'"> Flashchats</a> </li>
-    <li>  <a routerLink="alerts" [class.activated] = "currentUrl == '/alerts'"> Plan</a> </li>
+    <li>  <a routerLink="public" 
+              [class.activated] = "currentUrl == '/public'"
+              [class.not-activated] = "currentUrl != '/public'"> Flashchats</a> </li>
+    
+    <li>  <a routerLink="alerts" 
+              [class.activated] = "currentUrl == '/alerts'"
+              [class.not-activated] = "currentUrl != '/alerts'"> Plan</a> </li>
       
-    <li class="topnav-centered"> 
-      <a href="https://www.dreamwakers.org/" [class.activated] = "currentUrl != nil"> Dreamwakers </a>
-    </li>
+    <li class="topnav-centered"> <a href="https://www.dreamwakers.org/" 
+              [class.activated] = "currentUrl != nil"> Dreamwakers </a></li>
 
-      <li style="float: right" >
-          <a routerLink="/auth" [class.activated] = "currentUrl == '/auth'">Log in</a>
-        </li>
+    <li style="float: right" > <a routerLink="/auth" 
+              [class.activated] = "currentUrl == '/auth'"
+              [class.not-activated] = "currentUrl != '/auth'">Log in</a> </li>
 
   </ul>
+  
 </nav>
