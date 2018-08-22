@@ -1,7 +1,10 @@
 
   
-<div class="p-note"> <h4> info</h4> <p> {{message}}</p> </div>
 
+<div class="alert" *ngIf="!alert.empty()"> 
+  <a href="#" class="close" (click)="alert.close()"></a>
+  <h4>{{alert.title}}</h4> {{alert.body}}
+</div>
 <app-search class="left"></app-search>
 
 <app-panel class="right"></app-panel>

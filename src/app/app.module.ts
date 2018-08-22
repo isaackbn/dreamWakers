@@ -14,7 +14,7 @@ import { BackgroundComponent } from './background/background.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { AuthComponent } from './auth/auth.component';
 import { PanelComponent } from './panel/panel.component';
-import { SearchComponent } from './search/search.component'
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { SearchComponent } from './search/search.component'
     AlertsComponent,
     AuthComponent,
     PanelComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

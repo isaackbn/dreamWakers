@@ -4,7 +4,11 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: rgb(255, 255, 255);
+        border-radius: 2px;
+        border-top: 1px solid rgb(241, 241, 241);
+        border-bottom: 1px solid rgb(202, 202, 202);
+
     }
 
     li {
@@ -13,41 +17,24 @@
 
     li a {
         display: block;
-        color: white;
         text-align: center;
-        padding: 12px 12px;
+        padding: 15px 12px;
         text-decoration: none;
+        border-radius: 2px;
+
     }
 
     li a:hover:not(.active) {
-        background-color: #111;
+        color: #40b7b9
     }
+
+    .activated {
+        border-bottom: 2px solid #38a3a5;
+        color: #38a3a5;
+    }
+
 }
 
-nav {
-    background: #2D2E2E;
-    height: 100%;
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-
-            a {
-                color: #fff;
-                padding: 20px;
-                display: block;
-            }
-
-            .activated {
-                background-color:#38a3a5
-            }
-        }
-    }
-    
-}
 
 
 .topnav {

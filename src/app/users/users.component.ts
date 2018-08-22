@@ -2,7 +2,7 @@ import { Component, OnInit, Optional } from '@angular/core';
 import { DataService} from '../data.service'
 import { Observable} from 'rxjs'
 import { Router } from '@angular/router'
-import {trigger, style, transition, animate, keyframes, query, stagger} from '@angular/animations'
+import { AlertService } from '../alert.service'
 
 
 @Component({
@@ -13,15 +13,26 @@ import {trigger, style, transition, animate, keyframes, query, stagger} from '@a
 export class UsersComponent implements OnInit {
 
   users$: Object
-  message:String = `Users are *dynamically* added - can't type them in (unless you want to?). Every signup (with linkedin) creates a new available
-  user and attaches relevant info. Users will be filtered for easy display - e.g. by location or name. The set of data printed bellow was loaded from the database - try selecting one.
-  (This info box is how you can talk to all users).`
 
-  constructor( private data: DataService, public router:Router) {}
+  alertDisabled:boolean = false
+  alert = {
+    title : "",
+    body : "",
+    empty: () => {if (this.alert.title=="" && this.alert.body == "" || this.alertDisabled==true)return true},
+    close: () => {this.alertDisabled = true}
+  }
+
+  constructor( private data: DataService, public router:Router, public alertRes:AlertService) {}
 
   ngOnInit() {
     this.data.getUsers().subscribe(
       data => this.users$ = data
+    )
+    this.alertRes.mainAlert().subscribe(
+      alert => {
+        this.alert.title = alert[0].title
+        this.alert.body = alert[0].body
+      }
     )
   }
 
