@@ -4,7 +4,9 @@
 
   <ul class="topnav">
 
-    <li><a routerLink="" [class.activated] = "currentUrl == '/'"> Home </a></li>
+    <li><a routerLink="" 
+              [class.activated] = "currentUrl == '/'"
+              [class.not-activated] = "currentUrl != '/'"> Home </a></li>
 
     <li>  <a routerLink="public" 
               [class.activated] = "currentUrl == '/public'"
@@ -22,5 +24,5 @@
               [class.not-activated] = "currentUrl != '/auth'">Log in</a> </li>
 
   </ul>
-  
+
 </nav>
