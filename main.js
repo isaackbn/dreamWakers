@@ -310,7 +310,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  auth-redirect works!\n</p>\n"
+module.exports = "\n<p style=\"margin-left: 20px;\"> <br> auth.02 request incomplete </p>\n"
 
 /***/ }),
 
