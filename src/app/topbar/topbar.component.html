@@ -1,0 +1,34 @@
+
+
+<nav id="navigation">
+
+    <ul class="topnav">
+
+  
+      <li class="topnav-centered"> <a href="https://www.dreamwakers.org/" 
+                [class.activated] = "currentUrl != nil"> Dreamwakers </a></li>
+  
+      <li><a routerLink="home" 
+                [class.activated] = "currentUrl == '/home'"
+                [class.not-activated] = "currentUrl != '/home'"> Home </a></li>
+  
+      <li>  <a routerLink="flashchats" 
+                [class.activated] = "currentUrl == '/flashchats'"
+                [class.not-activated] = "currentUrl != '/flashchats'"> Flashchats</a> </li>
+      
+      <li>  <a routerLink="plan" 
+                [class.activated] = "currentUrl == '/plan'"
+                [class.not-activated] = "currentUrl != '/plan'"> Plan</a> </li>
+        
+
+       <li style="float: right" *ngIf="signedIn()"> <a (click)="signOut()" id="sign-out" 
+                [class.activated] = "currentUrl == '/'"
+                [class.not-activated] = "currentUrl != '/'">Sign out</a> </li>
+  
+  
+    </ul>
+  
+  </nav>
+
+
+  

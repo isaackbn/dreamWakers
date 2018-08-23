@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LinkedinLoginService } from '../linkedin-login.service'
+import { Observable} from 'rxjs'
+
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private linkedin:LinkedinLoginService) { }
 
   ngOnInit() {
+  }
+
+  login(){
+    this.linkedin.getAutorizationCode().subscribe( data => this.redirect(data))
+  }
+
+  redirect(data){
+    console.log(data);
+    
   }
 
 }

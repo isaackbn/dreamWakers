@@ -1,42 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { UsersComponent } from './users/users.component';
-import { DetailsComponent } from './details/details.component';
-import { PublicComponent } from './public/public.component';
-
 import { HttpClientModule } from "@angular/common/http";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { BackgroundComponent } from './background/background.component';
-import { AlertsComponent } from './alerts/alerts.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+import { TopbarComponent } from './topbar/topbar.component';
+import { DetailsComponent } from './details/details.component';
+import { PlanComponent } from './plan/plan.component';
+import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
-import { PanelComponent } from './panel/panel.component';
-import { SearchComponent } from './search/search.component';
+import { HomePanelComponent } from './home-panel/home-panel.component';
+import { FormsLoginComponent } from './forms-login/forms-login.component';
+import { HomeSuggestsComponent } from './home-suggests/home-suggests.component';
+import { FlashchatsComponent } from './flashchats/flashchats.component';
+
+
+import { AuthService } from './auth.service'
+
+import { AuthGuard } from './auth.guard';
+import { HomeSearchComponent } from './home-search/home-search.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    UsersComponent,
     DetailsComponent,
-    PublicComponent,
-    BackgroundComponent,
-    AlertsComponent,
     AuthComponent,
-    PanelComponent,
-    SearchComponent,
+    PlanComponent,
+    HomeComponent,
+    TopbarComponent,
+    HomePanelComponent,
+    FormsLoginComponent,
+    HomeSuggestsComponent,
+    FlashchatsComponent,
+    HomeSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
