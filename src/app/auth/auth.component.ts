@@ -10,18 +10,25 @@ import { Observable} from 'rxjs'
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private linkedin:LinkedinLoginService) { }
+  redirectUri
+  state
+  scope
+  clientId
+  loginLink
+
+
+  constructor(private linkedinLoginService:LinkedinLoginService) { 
+    this.redirectUri = linkedinLoginService.redirectUri
+    this.state = linkedinLoginService.state
+    this.scope = linkedinLoginService.scope
+    this.clientId = linkedinLoginService.clientId
+    this.loginLink = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+this.clientId+"&redirect_uri="+this.redirectUri+"&state="+this.state+"&scope="+this.scope
+  }
+
+
 
   ngOnInit() {
   }
 
-  login(){
-    this.linkedin.getAutorizationCode().subscribe( data => this.redirect(data))
-  }
-
-  redirect(data){
-    console.log(data);
-    
-  }
 
 }
