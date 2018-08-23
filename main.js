@@ -84,12 +84,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plan_plan_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./plan/plan.component */ "./src/app/plan/plan.component.ts");
 /* harmony import */ var _auth_auth_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/auth.component */ "./src/app/auth/auth.component.ts");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _auth_redirect_auth_redirect_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth-redirect/auth-redirect.component */ "./src/app/auth-redirect/auth-redirect.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -107,6 +109,10 @@ var routes = [
     {
         path: 'auth',
         component: _auth_auth_component__WEBPACK_IMPORTED_MODULE_6__["AuthComponent"]
+    },
+    {
+        path: 'auth/redirect',
+        component: _auth_redirect_auth_redirect_component__WEBPACK_IMPORTED_MODULE_8__["AuthRedirectComponent"]
     },
     {
         path: 'home',
@@ -232,12 +238,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
 /* harmony import */ var _home_search_home_search_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./home-search/home-search.component */ "./src/app/home-search/home-search.component.ts");
+/* harmony import */ var _auth_redirect_auth_redirect_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth-redirect/auth-redirect.component */ "./src/app/auth-redirect/auth-redirect.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -274,6 +282,7 @@ var AppModule = /** @class */ (function () {
                 _home_suggests_home_suggests_component__WEBPACK_IMPORTED_MODULE_14__["HomeSuggestsComponent"],
                 _flashchats_flashchats_component__WEBPACK_IMPORTED_MODULE_15__["FlashchatsComponent"],
                 _home_search_home_search_component__WEBPACK_IMPORTED_MODULE_18__["HomeSearchComponent"],
+                _auth_redirect_auth_redirect_component__WEBPACK_IMPORTED_MODULE_19__["AuthRedirectComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -288,6 +297,96 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-redirect/auth-redirect.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/auth-redirect/auth-redirect.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  auth-redirect works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/auth-redirect/auth-redirect.component.scss":
+/*!************************************************************!*\
+  !*** ./src/app/auth-redirect/auth-redirect.component.scss ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/auth-redirect/auth-redirect.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/auth-redirect/auth-redirect.component.ts ***!
+  \**********************************************************/
+/*! exports provided: AuthRedirectComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthRedirectComponent", function() { return AuthRedirectComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _linkedin_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../linkedin-login.service */ "./src/app/linkedin-login.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AuthRedirectComponent = /** @class */ (function () {
+    function AuthRedirectComponent(route, router, linkedinLoginService) {
+        this.route = route;
+        this.router = router;
+        this.linkedinLoginService = linkedinLoginService;
+        if (router.routerState.snapshot.root.queryParams.code != null) {
+            this.linkedinCode = router.routerState.snapshot.root.queryParams.code;
+            this.fetchedCode = true;
+        }
+        else {
+            this.linkedinError = router.routerState.snapshot.root.queryParams.console.error;
+            this.linkedinErrorDescription = router.routerState.snapshot.root.queryParams.error_description;
+            this.fetchedCode = false;
+        }
+        this.linkedinReceivedState = router.routerState.snapshot.root.queryParams.state;
+    }
+    AuthRedirectComponent.prototype.ngOnInit = function () {
+        console.log(this.linkedinCode);
+        if (this.linkedinLoginService.state == this.linkedinReceivedState) {
+            if (this.fetchedCode) {
+                this.linkedinLoginService.fetchAccessToken(this.linkedinCode);
+            }
+            else {
+                //show this.linkedinErrorDescription
+            }
+        }
+    };
+    AuthRedirectComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-auth-redirect',
+            template: __webpack_require__(/*! ./auth-redirect.component.html */ "./src/app/auth-redirect/auth-redirect.component.html"),
+            styles: [__webpack_require__(/*! ./auth-redirect.component.scss */ "./src/app/auth-redirect/auth-redirect.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _linkedin_login_service__WEBPACK_IMPORTED_MODULE_2__["LinkedinLoginService"]])
+    ], AuthRedirectComponent);
+    return AuthRedirectComponent;
 }());
 
 
@@ -400,7 +499,7 @@ var AuthService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<p>&nbsp; You will be asked to log in or sign up with your Linkedin accounts</p>\n\n<a (click)=\"login()\">linkedin</a>\n\n<app-forms-login></app-forms-login>"
+module.exports = "\n\n<p>&nbsp; You will be asked to log in or sign up with your Linkedin accounts</p>\n\n<a href={{loginLink}}>linkedin</a>\n\n\n<app-forms-login></app-forms-login>"
 
 /***/ }),
 
@@ -439,17 +538,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var AuthComponent = /** @class */ (function () {
-    function AuthComponent(linkedin) {
-        this.linkedin = linkedin;
+    function AuthComponent(linkedinLoginService) {
+        this.linkedinLoginService = linkedinLoginService;
+        this.redirectUri = linkedinLoginService.redirectUri;
+        this.state = linkedinLoginService.state;
+        this.scope = linkedinLoginService.scope;
+        this.clientId = linkedinLoginService.clientId;
+        this.loginLink = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" + this.clientId + "&redirect_uri=" + this.redirectUri + "&state=" + this.state + "&scope=" + this.scope;
     }
     AuthComponent.prototype.ngOnInit = function () {
-    };
-    AuthComponent.prototype.login = function () {
-        var _this = this;
-        this.linkedin.getAutorizationCode().subscribe(function (data) { return _this.redirect(data); });
-    };
-    AuthComponent.prototype.redirect = function (data) {
-        console.log(data);
     };
     AuthComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1071,12 +1168,42 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var LinkedinLoginService = /** @class */ (function () {
     function LinkedinLoginService(http) {
         this.http = http;
+        this.website = "isaackbn%2Egithub%2Eio%2Fdreamwakers"; //site for: "isaackbn.github.io/dreamwakers"
+        this.LOCAL = "http%3A%2F%2Flocalhost%3A%34%32%30%30%2Fauth%2Fredirect";
+        this.ONLINE = "https%3A%2F%2F" + this.website + "%2Fauth%2Fredirect";
+        this.redirectUri = this.ONLINE; //for deployment, change to: this.ONLINE
+        this.state = "DCEeFWg45A53sdfKef424";
+        this.scope = "r_basicprofile";
+        this.clientId = "77bhchu07m7fuk";
+        this.clientSecret = "r3cyzu4ucuerwMD9";
     }
-    LinkedinLoginService.prototype.getAutorizationCode = function () {
-        return this.http.get('https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77bhchu07m7fuk&redirect_uri=https%3A%2F%2Fwww.isaackbn.github.io/dreamwakers%2Fauth%2Flinkedin&state=987654321&scope=r_basicprofile');
+    LinkedinLoginService.prototype.login = function () { this.fetchAutorizationCode(); }; //redirects to auth-redirect -> this.fethAccessToken(code)
+    LinkedinLoginService.prototype.fetchAutorizationCode = function () {
+        this.http.get("https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" + this.clientId + "&redirect_uri=" + this.redirectUri + "&state=" + this.state + "&scope=" + this.scope);
+    };
+    LinkedinLoginService.prototype.fetchAccessToken = function (code) {
+        // let body = new URLSearchParams();
+        // body.set('grant_type', 'authorization_code');
+        // body.set('code', code);
+        // body.set('redirect_uri', this.redirectUri);
+        // body.set('client_id', this.clientId);
+        // body.set('client_secret', this.clientSecret);
+        var _this = this;
+        var body = "grant_type=authorization_code&code=" + code + "&redirect_uri=" + this.redirectUri + "&client_id=" + this.clientId + "&client_secret=" + this.clientSecret;
+        console.log(body);
+        var options = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded')
+        };
+        this.http
+            .post('https://www.linkedin.com/oauth/v2/accessToken', body, options)
+            .subscribe(function (data) {
+            console.log(data);
+            _this.accessToken = data[0].access_token;
+        });
     };
     LinkedinLoginService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
