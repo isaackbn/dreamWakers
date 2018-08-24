@@ -1,37 +1,66 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { encode } from 'punycode';
 
+
+/* 
+  #to serve from 
+      localhost, set 
+            "online" to "false"
+            "local_port" to your local port value, e.g: "4200"
+      website, set
+            "online" to "true"
+            "website" to your linkedin-saved web host value, e.g: "mywebsite.com"
+  
+  #set "path_for_auth" to your linkedin redirect path, e.g: "/auth/redirected"
+
+  note: in your linkedin settings, the "website" and "path_for_auth" values are merged in the "Authorized Redirect URLs"
+  e.g: "https://mywebsite.com/auth/redirected"
+*/
 
 @Injectable({
   providedIn: 'root'
 })
 export class LinkedinLoginService {
+  authorization_code; redirectUri;
 
-  website = "isaackbn%2Egithub%2Eio%2Fdreamwakers"//site for: "isaackbn.github.io/dreamwakers"
-  local_port = ""//port for: "4200"
 
-  ONLINE = "https%3A%2F%2F"+this.website+"%2Fauth%2Fredirect"
-  LOCAL = "http%3A%2F%2Flocalhost%3A%34%32%30%30%2Fauth%2Fredirect"
 
-  code;
-  redirectUri = this.LOCAL //for deployment, change to: this.ONLINE
-  state="DCEeFWg45A53sdfKef424"
+  //SET TO APPROPRIATE VALUES
+
+  online = true
+  
+  //the front-end distributor handles the request for the linkedin authorization code
+  website = "https://isaackbn/github.io/dreamwakers"// ignore if online = false
+  local_port: string = "4200"// ignore if online = true
+  path_for_auth = "/auth/redirected"
+  
+
+  state = "DCEeFWg45A53sdfKef424"
   scope = "r_basicprofile"
   clientId = "77bhchu07m7fuk"
 
-  constructor(private http:HttpClient) { }
+  //the back-end handles the request for access token and returns user data
+  web_server = "https://dreamwakers.herokuapp.com"
+  path_to_complete_and_transfer_authRequest = "/linkedin/auth"
 
-  
-  fetchUserData(){ //called from auth-redirect
+
+
+
+
+  /* DO NOT MODIFY */
+
+  constructor(private http:HttpClient) {
+    this.website = encodeURIComponent(this.website)
+    this.local_port = encodeURIComponent(this.local_port)
+    this.path_for_auth = encodeURIComponent(this.path_for_auth) 
     
-    let body = new URLSearchParams();
-    body.set('grant_type', 'authorization_code');
-    body.set('code', this.code);
-    body.set('redirect_uri', this.redirectUri);
-    body.set('client_id', this.clientId);
-  
-    return this.http.get('https://dreamwakers.herokuapp.com/linkedin/auth/'+this.code+"/"+this.redirectUri+"/"+this.clientId)
+    if (this.online){this.redirectUri = this.website+this.path_for_auth}
+    else this.redirectUri = encodeURIComponent("http://localhost:")+this.local_port+this.path_for_auth
 
+  }
+  fetchUserData(){ //called from auth-redirected
+    return this.http.get(this.web_server+this.path_to_complete_and_transfer_authRequest+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
   }
 
 }

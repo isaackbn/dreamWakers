@@ -19,7 +19,7 @@ const routes: Routes = [
     component: AuthComponent
   },
   {
-    path:'auth/redirect',
+    path:'auth/redirected',
     component: AuthRedirectedComponent
   },
   {

@@ -35,7 +35,7 @@ export class AuthRedirectedComponent implements OnInit {
   ngOnInit() {
     if (this.linkedinLoginService.state == this.linkedinReceivedState){
       if (this.fetchedCode){
-        this.linkedinLoginService.code = this.linkedinCode
+        this.linkedinLoginService.authorization_code = this.linkedinCode
         this.linkedinLoginService.fetchUserData().subscribe(data=>{this.userData=data;
 
         console.log(this.userData)
