@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthRedirectComponent } from './auth-redirect.component';
+import { AuthRedirectedComponent } from './auth-redirected.component';
 
-describe('AuthRedirectComponent', () => {
-  let component: AuthRedirectComponent;
-  let fixture: ComponentFixture<AuthRedirectComponent>;
+describe('AuthRedirectedComponent', () => {
+  let component: AuthRedirectedComponent;
+  let fixture: ComponentFixture<AuthRedirectedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthRedirectComponent ]
+      declarations: [ AuthRedirectedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthRedirectComponent);
+    fixture = TestBed.createComponent(AuthRedirectedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

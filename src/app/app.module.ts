@@ -22,7 +22,7 @@ import { AuthService } from './auth.service'
 
 import { AuthGuard } from './auth.guard';
 import { HomeSearchComponent } from './home-search/home-search.component';
-import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component';
+import { AuthRedirectedComponent } from './auth-redirected/auth-redirected.component';
 
 
 
@@ -39,7 +39,7 @@ import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component';
     HomeSuggestsComponent,
     FlashchatsComponent,
     HomeSearchComponent,
-    AuthRedirectComponent,
+    AuthRedirectedComponent,
   ],
   imports: [
     BrowserModule,

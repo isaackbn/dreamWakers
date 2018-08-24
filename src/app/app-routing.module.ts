@@ -6,7 +6,7 @@ import { FlashchatsComponent} from './flashchats/flashchats.component'
 import { PlanComponent} from './plan/plan.component'
 import { AuthComponent } from './auth/auth.component'
 import { AuthGuard } from './auth.guard'
-import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component'
+import { AuthRedirectedComponent } from './auth-redirected/auth-redirected.component'
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path:'auth/redirect',
-    component: AuthRedirectComponent
+    component: AuthRedirectedComponent
   },
   {
     path:'home',
