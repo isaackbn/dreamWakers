@@ -1194,9 +1194,9 @@ var LinkedinLoginService = /** @class */ (function () {
     function LinkedinLoginService(http) {
         this.http = http;
         /* SET TO APPROPRIATE VALUES */
-        this.online = true;
+        this.online = false;
         //the front-end distributor handles the request for the linkedin authorization code
-        this.website = "https://isaackbn.github%2Eio/dreamwakers"; // ignore if online = false, replace "." with "%2E"
+        this.website = "https://isaackbn.github.io/dreamwakers"; // ignore if online = false, 
         this.local_port = "4200"; // ignore if online = true
         this.path_for_auth = "/auth/redirected";
         this.state = "DCEeFWg45A53sdfKef424";
@@ -1205,7 +1205,8 @@ var LinkedinLoginService = /** @class */ (function () {
         //the back-end handles the request for access token and returns user data
         this.web_server = "https://dreamwakers.herokuapp.com";
         this.path_to_complete_and_transfer_authRequest = "/linkedin/auth";
-        this.website = encodeURIComponent(this.website);
+        this.website = encodeURIComponent(this.website).replace(/\./g, "%2E");
+        console.log(this.website);
         this.local_port = encodeURIComponent(this.local_port);
         this.path_for_auth = encodeURIComponent(this.path_for_auth);
         if (this.online) {
