@@ -1205,7 +1205,7 @@ var LinkedinLoginService = /** @class */ (function () {
         //the back-end handles the request for access token and returns user data
         this.web_server = "https://dreamwakers.herokuapp.com";
         this.path_to_complete_and_transfer_authRequest = "/linkedin/auth";
-        this.website = encodeURIComponent(this.website).replace(/\./g, "%2E");
+        this.website = encodeURIComponent(this.website).replace(".", "%2E");
         console.log(this.website);
         this.local_port = encodeURIComponent(this.local_port);
         this.path_for_auth = encodeURIComponent(this.path_for_auth);
