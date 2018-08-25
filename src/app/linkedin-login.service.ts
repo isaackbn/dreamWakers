@@ -26,12 +26,12 @@ export class LinkedinLoginService {
 
 
 
-  //SET TO APPROPRIATE VALUES
+  /* SET TO APPROPRIATE VALUES */
 
   online = true
   
   //the front-end distributor handles the request for the linkedin authorization code
-  website = "https://isaackbn/github.io/dreamwakers"// ignore if online = false
+  website = "https://isaackbn.github%2Eio/dreamwakers"// ignore if online = false, replace "." with "%2E"
   local_port: string = "4200"// ignore if online = true
   path_for_auth = "/auth/redirected"
   
