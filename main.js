@@ -1193,10 +1193,10 @@ var LinkedinLoginService = /** @class */ (function () {
     /* DO NOT MODIFY */
     function LinkedinLoginService(http) {
         this.http = http;
-        //SET TO APPROPRIATE VALUES
+        /* SET TO APPROPRIATE VALUES */
         this.online = true;
         //the front-end distributor handles the request for the linkedin authorization code
-        this.website = "https://isaackbn/github.io/dreamwakers"; // ignore if online = false
+        this.website = "https://isaackbn.github%2Eio/dreamwakers"; // ignore if online = false, replace "." with "%2E"
         this.local_port = "4200"; // ignore if online = true
         this.path_for_auth = "/auth/redirected";
         this.state = "DCEeFWg45A53sdfKef424";
