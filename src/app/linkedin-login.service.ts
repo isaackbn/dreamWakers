@@ -29,7 +29,7 @@ export class LinkedinLoginService {
 
   /* SET TO APPROPRIATE VALUES */
 
-  online = false
+  online = true
   
   //the front-end distributor handles the request for the linkedin authorization code
   website = "https://isaackbn.github.io/dreamwakers"// ignore if online = false, 
