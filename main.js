@@ -1194,7 +1194,7 @@ var LinkedinLoginService = /** @class */ (function () {
     function LinkedinLoginService(http) {
         this.http = http;
         /* SET TO APPROPRIATE VALUES */
-        this.online = false;
+        this.online = true;
         //the front-end distributor handles the request for the linkedin authorization code
         this.website = "https://isaackbn.github.io/dreamwakers"; // ignore if online = false, 
         this.local_port = "4200"; // ignore if online = true
