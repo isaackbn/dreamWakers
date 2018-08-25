@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { encode } from 'punycode';
+import { encodeUriFragment } from '../../node_modules/@angular/router/src/url_tree';
 
 
 /* 
@@ -28,10 +29,10 @@ export class LinkedinLoginService {
 
   /* SET TO APPROPRIATE VALUES */
 
-  online = true
+  online = false
   
   //the front-end distributor handles the request for the linkedin authorization code
-  website = "https://isaackbn.github%2Eio/dreamwakers"// ignore if online = false, replace "." with "%2E"
+  website = "https://isaackbn.github.io/dreamwakers"// ignore if online = false, 
   local_port: string = "4200"// ignore if online = true
   path_for_auth = "/auth/redirected"
   
@@ -51,7 +52,9 @@ export class LinkedinLoginService {
   /* DO NOT MODIFY */
 
   constructor(private http:HttpClient) {
-    this.website = encodeURIComponent(this.website)
+    this.website = encodeURIComponent(this.website).replace(/\./g,"%2E")
+    console.log(this.website);
+    
     this.local_port = encodeURIComponent(this.local_port)
     this.path_for_auth = encodeURIComponent(this.path_for_auth) 
     
