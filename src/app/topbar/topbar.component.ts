@@ -28,7 +28,7 @@ export class TopbarComponent implements OnInit {
   }
 
   signedIn(){
-    return this.auth.getUserIn()
+    return this.auth.isUserIn()
   }
 
   signOut(){

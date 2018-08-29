@@ -43,7 +43,8 @@ export class LinkedinLoginService {
 
   //the back-end handles the request for access token and returns user data
   web_server = "https://dreamwakers.herokuapp.com"
-  path_to_complete_and_transfer_authRequest = "/linkedin/auth"
+  path_to_fetch_and_use_access_token = "/auth/init"
+  path_to_authenticate_user = "/auth/user"
 
 
 
@@ -52,9 +53,7 @@ export class LinkedinLoginService {
   /* DO NOT MODIFY */
 
   constructor(private http:HttpClient) {
-    this.website = encodeURIComponent(this.website).replace(".","%2E")
-    console.log(this.website);
-    
+    this.website = encodeURIComponent(this.website).replace(".","%2E")    
     this.local_port = encodeURIComponent(this.local_port)
     this.path_for_auth = encodeURIComponent(this.path_for_auth) 
     
@@ -62,8 +61,35 @@ export class LinkedinLoginService {
     else this.redirectUri = encodeURIComponent("http://localhost:")+this.local_port+this.path_for_auth
 
   }
+
   fetchUserData(){ //called from auth-redirected
-    return this.http.get(this.web_server+this.path_to_complete_and_transfer_authRequest+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
+    return this.http.get(this.web_server+this.path_to_fetch_and_use_access_token+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
   }
+
+  authUser(userData){
+
+    userData = JSON.parse(userData.toString())
+    this.http.post(this.web_server+this.path_to_authenticate_user,
+    {"linkedin_id":userData["id"],
+    'firstName': userData["firstName"], 
+    "lastName": userData["lastName"],
+    "industry": userData["industry"],
+    "headline": userData["headline"],
+    "locationCountry": userData["location"]["country"]["code"],
+    "locationName": userData["location"]["name"],
+    "pictureUrl": userData["pictureUrls"]["values"][0],
+    "position": userData["positions"]["values"][0]["company"]["name"],
+    "positionType": userData["positions"]["values"][0]["company"]["type"],
+    "positionIndustry": userData["positions"]["values"][0]["company"]["industry"],
+    "publicProfileUrl": userData["publicProfileUrl"],
+    },
+    // { withCredentials: true }
+    ).subscribe( data => {
+      console.log(data);  
+    });
+
+  }
+
+
 
 }

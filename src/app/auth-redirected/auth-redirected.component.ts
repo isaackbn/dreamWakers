@@ -36,12 +36,19 @@ export class AuthRedirectedComponent implements OnInit {
     if (this.linkedinLoginService.state == this.linkedinReceivedState){
       if (this.fetchedCode){
         this.linkedinLoginService.authorization_code = this.linkedinCode
-        this.linkedinLoginService.fetchUserData().subscribe(data=>{this.userData=data;
-
-        console.log(this.userData)
-
+        this.linkedinLoginService.fetchUserData().subscribe( res => {
+          
+          let userData = JSON.parse(res.toString())
+          if (userData["firstName"] != null ){
+            this.linkedinLoginService.authUser(res) // register&login new user || login existing
+          }else{
+            //error with access token
+            console.log("error - token exchange rejected",res);
+            console.log(userData)
+          }
         })
       }else{//error with code acquisition
+        console.log("error - access code not retrieved");
         //show this.linkedinErrorDescription
       }
     }
