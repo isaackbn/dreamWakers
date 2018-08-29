@@ -372,12 +372,20 @@ var AuthRedirectedComponent = /** @class */ (function () {
         if (this.linkedinLoginService.state == this.linkedinReceivedState) {
             if (this.fetchedCode) {
                 this.linkedinLoginService.authorization_code = this.linkedinCode;
-                this.linkedinLoginService.fetchUserData().subscribe(function (data) {
-                    _this.userData = data;
-                    console.log(_this.userData);
+                this.linkedinLoginService.fetchUserData().subscribe(function (res) {
+                    var userData = JSON.parse(res.toString());
+                    if (userData["firstName"] != null) {
+                        _this.linkedinLoginService.authUser(res); // register&login new user || login existing
+                    }
+                    else {
+                        //error with access token
+                        console.log("error - token exchange rejected", res);
+                        console.log(userData);
+                    }
                 });
             }
             else {
+                console.log("error - access code not retrieved");
                 //show this.linkedinErrorDescription
             }
         }
@@ -428,7 +436,7 @@ var AuthGuard = /** @class */ (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (next, state) {
-        if (this.auth.getUserIn()) {
+        if (this.auth.isUserIn()) {
             return true;
         }
         else {
@@ -460,6 +468,7 @@ var AuthGuard = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -470,24 +479,32 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AuthService = /** @class */ (function () {
-    function AuthService() {
-        this.isUserIn = false;
+    function AuthService(http) {
+        this.http = http;
+        this.UserIn = false; //(localStorage.getItem("isUserIn") === "true")
     }
     AuthService.prototype.setUserIn = function () {
-        this.isUserIn = true;
+        //localStorage.setItem("isUserIn", "true")
+        this.UserIn = true;
     };
-    AuthService.prototype.getUserIn = function () {
-        return this.isUserIn;
+    AuthService.prototype.isUserIn = function () {
+        //if (this.isUserIn) return true;
+        //this.http.get <any>('https://dreamwakers.herokuapp.com/auth/isLoggedIn').pipe(map(res => {
+        //console.log(res);
+        return false;
+        //}))
     };
     AuthService.prototype.signOut = function () {
-        this.isUserIn = false;
+        //localStorage.removeItem("isUserIn")
+        this.UserIn = false;
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], AuthService);
     return AuthService;
 }());
@@ -595,9 +612,6 @@ var DataService = /** @class */ (function () {
         this.http = http;
     }
     DataService.prototype.getUsers = function () {
-        var body = new URLSearchParams();
-        body.set('first_name', 'authorization_code');
-        body.set('last_name', "test");
         return this.http.get('https://dreamwakers.herokuapp.com/users');
     };
     DataService.prototype.getUser = function (userId) {
@@ -1204,9 +1218,9 @@ var LinkedinLoginService = /** @class */ (function () {
         this.clientId = "77bhchu07m7fuk";
         //the back-end handles the request for access token and returns user data
         this.web_server = "https://dreamwakers.herokuapp.com";
-        this.path_to_complete_and_transfer_authRequest = "/linkedin/auth";
+        this.path_to_fetch_and_use_access_token = "/auth/init";
+        this.path_to_authenticate_user = "/auth/user";
         this.website = encodeURIComponent(this.website).replace(".", "%2E");
-        console.log(this.website);
         this.local_port = encodeURIComponent(this.local_port);
         this.path_for_auth = encodeURIComponent(this.path_for_auth);
         if (this.online) {
@@ -1216,7 +1230,25 @@ var LinkedinLoginService = /** @class */ (function () {
             this.redirectUri = encodeURIComponent("http://localhost:") + this.local_port + this.path_for_auth;
     }
     LinkedinLoginService.prototype.fetchUserData = function () {
-        return this.http.get(this.web_server + this.path_to_complete_and_transfer_authRequest + "/" + this.authorization_code + "/" + this.redirectUri + "/" + this.clientId);
+        return this.http.get(this.web_server + this.path_to_fetch_and_use_access_token + "/" + this.authorization_code + "/" + this.redirectUri + "/" + this.clientId);
+    };
+    LinkedinLoginService.prototype.authUser = function (userData) {
+        userData = JSON.parse(userData.toString());
+        this.http.post(this.web_server + this.path_to_authenticate_user, { "linkedin_id": userData["id"],
+            'firstName': userData["firstName"],
+            "lastName": userData["lastName"],
+            "industry": userData["industry"],
+            "headline": userData["headline"],
+            "locationCountry": userData["location"]["country"]["code"],
+            "locationName": userData["location"]["name"],
+            "pictureUrl": userData["pictureUrls"]["values"][0],
+            "position": userData["positions"]["values"][0]["company"]["name"],
+            "positionType": userData["positions"]["values"][0]["company"]["type"],
+            "positionIndustry": userData["positions"]["values"][0]["company"]["industry"],
+            "publicProfileUrl": userData["publicProfileUrl"],
+        }).subscribe(function (data) {
+            console.log(data);
+        });
     };
     LinkedinLoginService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1301,7 +1333,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">\n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n       <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" id=\"sign-out\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n  \n  \n    </ul>\n  \n  </nav>\n\n\n  "
+module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n       <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" id=\"sign-out\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n  \n  \n    </ul>\n  \n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1355,7 +1387,7 @@ var TopbarComponent = /** @class */ (function () {
     TopbarComponent.prototype.ngOnInit = function () {
     };
     TopbarComponent.prototype.signedIn = function () {
-        return this.auth.getUserIn();
+        return this.auth.isUserIn();
     };
     TopbarComponent.prototype.signOut = function () {
         this.auth.signOut();
