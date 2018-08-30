@@ -520,7 +520,6 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.verifyIfUserIn = function () {
         this.http.get(this.linkedinLogin.web_server + "/auth/session/isactive/" + localStorage.getItem("sessionId")).subscribe(function (res) {
-            console.log("SESSION: " + res.session);
             if (res.session == "false") {
                 localStorage.setItem("oneCheck", "true");
             }
@@ -531,7 +530,6 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.signOut = function () {
         localStorage.setItem("userIn", "false");
         localStorage.setItem("oneCheck", "false");
-        console.log("siging out!");
         this.http.get(this.linkedinLogin.web_server + "/auth/session/destroy/" + localStorage.getItem("sessionId")).subscribe(function (res) {
             console.log(res);
         });
@@ -1261,6 +1259,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _alert_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../alert.service */ "./src/app/alert.service.ts");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _topbar_topbar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../topbar/topbar.component */ "./src/app/topbar/topbar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1275,13 +1274,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(data, router, alertRes, auth) {
+    function HomeComponent(data, router, alertRes, auth, topBar) {
         var _this = this;
         this.data = data;
         this.router = router;
         this.alertRes = alertRes;
         this.auth = auth;
+        this.topBar = topBar;
         this.alertDisabled = false;
         this.alert = {
             title: "",
@@ -1298,18 +1299,21 @@ var HomeComponent = /** @class */ (function () {
             _this.alert.title = alert[0].title;
             _this.alert.body = alert[0].body;
         });
+        this.topBar.ngOnInit();
     };
     HomeComponent.prototype.showDetails = function (id) {
         this.router.navigate(['details/' + id]);
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            providers: [_topbar_topbar_component__WEBPACK_IMPORTED_MODULE_5__["TopbarComponent"]],
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.scss */ "./src/app/home/home.component.scss")]
         }),
         __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
-            _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+            _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
+            _topbar_topbar_component__WEBPACK_IMPORTED_MODULE_5__["TopbarComponent"]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -1458,7 +1462,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n       <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" id=\"sign-out\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n  \n  \n    </ul>\n  \n  </nav>\n\n\n  "
+module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n       <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" id=\"sign-out\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n        <li style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">{{fullName}}</a> </li>\n  \n  \n    </ul>\n  \n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1486,6 +1490,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1498,11 +1503,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var TopbarComponent = /** @class */ (function () {
-    function TopbarComponent(router, auth) {
+    function TopbarComponent(router, auth, data) {
         var _this = this;
         this.router = router;
         this.auth = auth;
+        this.data = data;
         router.events.subscribe(function (e) {
             if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
                 _this.currentUrl = e.url;
@@ -1510,6 +1517,7 @@ var TopbarComponent = /** @class */ (function () {
         });
     }
     TopbarComponent.prototype.ngOnInit = function () {
+        //this.fullName = this.data.profileData.firstName+" "+this.data.profileData.lastName
     };
     TopbarComponent.prototype.signedIn = function () {
         return this.auth.isUserIn();
@@ -1524,7 +1532,9 @@ var TopbarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./topbar.component.html */ "./src/app/topbar/topbar.component.html"),
             styles: [__webpack_require__(/*! ./topbar.component.scss */ "./src/app/topbar/topbar.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
+            _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]])
     ], TopbarComponent);
     return TopbarComponent;
 }());
