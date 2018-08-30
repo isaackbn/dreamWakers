@@ -24,6 +24,9 @@
        <li style="float: right" *ngIf="signedIn()"> <a (click)="signOut()" id="sign-out" 
                 [class.activated] = "currentUrl == '/'"
                 [class.not-activated] = "currentUrl != '/'">Sign out</a> </li>
+        <li style="float: right" *ngIf="signedIn()"> <a id="fullName" 
+                [class.activated] = "currentUrl == '/'"
+                [class.not-activated] = "currentUrl != '/'">{{fullName}}</a> </li>
   
   
     </ul>

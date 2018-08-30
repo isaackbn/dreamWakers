@@ -40,9 +40,6 @@ export class DataService {
     localStorage.setItem("sessionId", data.sessionId)
     localStorage.setItem("oneCheck", "false")
     console.log(this.profileData);
-
-
-    
   }
 
 

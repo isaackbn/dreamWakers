@@ -39,7 +39,7 @@ export class AuthService {
 
   verifyIfUserIn(){
     this.http.get<any>(this.linkedinLogin.web_server+"/auth/session/isactive/"+localStorage.getItem("sessionId")).subscribe(res => {
-      console.log("SESSION: "+res.session)
+
       if (res.session == "false"){
         localStorage.setItem("oneCheck", "true")
       }
@@ -50,7 +50,6 @@ export class AuthService {
   signOut(){
     localStorage.setItem("userIn", "false")
     localStorage.setItem("oneCheck", "false")
-    console.log("siging out!");
     
     this.http.get(this.linkedinLogin.web_server+"/auth/session/destroy/"+localStorage.getItem("sessionId")).subscribe(res => {
       console.log(res);

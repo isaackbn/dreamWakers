@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd} from '@angular/router'
 import { AuthService } from '../auth.service'
+import { DataService } from '../data.service'
 
 
 
@@ -12,8 +13,11 @@ import { AuthService } from '../auth.service'
 export class TopbarComponent implements OnInit {
 
   currentUrl: String
+  fullName;
 
-  constructor( private router:Router, private auth:AuthService) {
+  constructor(private router:Router, 
+              private auth:AuthService,
+              private data:DataService) {
     router.events.subscribe( (e: NavigationEnd) => {
       if (e instanceof NavigationEnd) {
       this.currentUrl = e.url;
@@ -25,6 +29,7 @@ export class TopbarComponent implements OnInit {
    }
 
   ngOnInit() {
+    //this.fullName = this.data.profileData.firstName+" "+this.data.profileData.lastName
   }
 
   signedIn(){
