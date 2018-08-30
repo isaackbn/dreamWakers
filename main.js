@@ -504,7 +504,7 @@ var AuthService = /** @class */ (function () {
         this.data = data;
         this.envir = envir;
         this.linkedinLogin = linkedinLogin;
-        this.sessionId = null;
+        this.sessionId = 0;
         localStorage.setItem("userIn", "false");
     }
     AuthService.prototype.isUserIn = function () {
@@ -807,7 +807,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var EnvironmentService = /** @class */ (function () {
     function EnvironmentService() {
         /* SET TO APPROPRIATE VALUES */
-        this.online = true;
+        this.online = false;
         this.serverOnline = true;
         //the front-end distributor
         this.website = "https://isaackbn.github.io/dreamwakers";
@@ -1375,7 +1375,7 @@ var LinkedinLoginService = /** @class */ (function () {
         return "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" + this.clientId + "&redirect_uri=" + this.redirectUri + "&state=" + this.state + "&scope=" + this.scope;
     };
     LinkedinLoginService.prototype.fetchUserData = function () {
-        return this.http.get(this.web_server + this.path_for_auth_request + "/" + this.authorization_code + "/" + this.redirectUri + "/" + this.clientId + "/" + "null");
+        return this.http.get(this.web_server + this.path_for_auth_request + "/" + this.authorization_code + "/" + this.redirectUri + "/" + this.clientId);
     };
     LinkedinLoginService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
