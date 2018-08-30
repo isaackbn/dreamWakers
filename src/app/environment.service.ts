@@ -28,7 +28,7 @@ export class EnvironmentService {
 
   /* SET TO APPROPRIATE VALUES */
 
-  online = true
+  online = false
   serverOnline = true
   
 

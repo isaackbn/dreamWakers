@@ -51,7 +51,8 @@ export class LinkedinLoginService {
     this.website = envir.getFrontEndWebsite("encode")
     this.web_server = envir.getServer("noEncode")
 
-    this.path_for_auth = encodeURIComponent(this.path_for_auth) 
+    this.path_for_auth = encodeURIComponent(this.path_for_auth)
+
     this.redirectUri = this.website+this.path_for_auth
 
   }
@@ -63,7 +64,7 @@ export class LinkedinLoginService {
 
 
   fetchUserData(){ //called from auth-redirected
-    return this.http.get(this.web_server+this.path_for_auth_request+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId+"/"+"null")
+    return this.http.get(this.web_server+this.path_for_auth_request+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
   }
 
 

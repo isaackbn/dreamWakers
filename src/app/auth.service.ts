@@ -14,7 +14,7 @@ import { LinkedinLoginService} from './linkedin-login.service'
 export class AuthService {
 
   private session
-  private sessionId = null
+  private sessionId = 0
 
   constructor(private http:HttpClient, 
               private data:DataService, 
