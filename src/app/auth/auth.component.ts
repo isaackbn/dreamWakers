@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkedinLoginService } from '../linkedin-login.service'
 import { Observable} from 'rxjs'
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router'
+
+
 
 
 @Component({
@@ -17,17 +21,21 @@ export class AuthComponent implements OnInit {
   loginLink
 
 
-  constructor(private linkedinLoginService:LinkedinLoginService) { 
-    this.redirectUri = linkedinLoginService.redirectUri
-    this.state = linkedinLoginService.state
-    this.scope = linkedinLoginService.scope
-    this.clientId = linkedinLoginService.clientId
-    this.loginLink = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+this.clientId+"&redirect_uri="+this.redirectUri+"&state="+this.state+"&scope="+this.scope
+  constructor(private linkedinLoginService:LinkedinLoginService,
+              private authService:AuthService,
+              private router:Router) { 
+    this.loginLink = this.linkedinLoginService.getCode_link()
+    
+
+
   }
 
 
 
   ngOnInit() {
+
+
+
   }
 
 

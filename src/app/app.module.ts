@@ -23,6 +23,7 @@ import { AuthService } from './auth.service'
 import { AuthGuard } from './auth.guard';
 import { HomeSearchComponent } from './home-search/home-search.component';
 import { AuthRedirectedComponent } from './auth-redirected/auth-redirected.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -49,7 +50,7 @@ import { AuthRedirectedComponent } from './auth-redirected/auth-redirected.compo
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

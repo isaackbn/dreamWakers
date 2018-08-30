@@ -3,6 +3,7 @@ import { Observable} from 'rxjs'
 import {ActivatedRoute} from '@angular/router'
 import { Router } from '@angular/router'
 import { LinkedinLoginService} from '../linkedin-login.service'
+import { DataService} from '../data.service'
 
 @Component({
   selector: 'app-auth-redirected',
@@ -19,7 +20,10 @@ export class AuthRedirectedComponent implements OnInit {
 
   userData;
 
-  constructor(private route:ActivatedRoute, private router:Router, private linkedinLoginService:LinkedinLoginService) {
+  constructor(private route:ActivatedRoute, private router:Router,
+              private linkedinLoginService:LinkedinLoginService,
+              private dataService:DataService) {
+
     if(router.routerState.snapshot.root.queryParams.code != null){
       this.linkedinCode = router.routerState.snapshot.root.queryParams.code
       this.fetchedCode = true
@@ -37,14 +41,15 @@ export class AuthRedirectedComponent implements OnInit {
       if (this.fetchedCode){
         this.linkedinLoginService.authorization_code = this.linkedinCode
         this.linkedinLoginService.fetchUserData().subscribe( res => {
-          
-          let userData = JSON.parse(res.toString())
-          if (userData["firstName"] != null ){
-            this.linkedinLoginService.authUser(res) // register&login new user || login existing
+          if (res[0].auth == "success"){
+            this.dataService.saveUserData(res[0])
+            localStorage.setItem("userIn","true")
+            this.router.navigate(['/home'])
+            console.log((localStorage.getItem("userIn")))
           }else{
-            //error with access token
-            console.log("error - token exchange rejected",res);
-            console.log(userData)
+            console.log("res is: "+res[0])
+            console.log(res[0].auth);
+            this.router.navigate(['/auth'])
           }
         })
       }else{//error with code acquisition

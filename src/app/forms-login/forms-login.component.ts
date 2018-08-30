@@ -20,10 +20,9 @@ export class FormsLoginComponent implements OnInit {
     var username = form.value.username
     var password = form.value.password
     
-    if(username=="" && password==""){
-      this.auth.setUserIn()
-      this.router.navigate(["/home"])
-    }
+    // if(username=="" && password==""){
+    //   this.router.navigate(["/home"])
+    // }
 
   }
 
