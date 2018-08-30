@@ -807,7 +807,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var EnvironmentService = /** @class */ (function () {
     function EnvironmentService() {
         /* SET TO APPROPRIATE VALUES */
-        this.online = false;
+        this.online = true;
         this.serverOnline = true;
         //the front-end distributor
         this.website = "https://isaackbn.github.io/dreamwakers";
