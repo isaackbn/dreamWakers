@@ -807,8 +807,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var EnvironmentService = /** @class */ (function () {
     function EnvironmentService() {
         /* SET TO APPROPRIATE VALUES */
-        this.online = true;
-        this.serverOnline = true;
+        this.online = false;
+        this.serverOnline = false;
         //the front-end distributor
         this.website = "https://isaackbn.github.io/dreamwakers";
         this.local_port = "4200";
@@ -819,11 +819,12 @@ var EnvironmentService = /** @class */ (function () {
     EnvironmentService.prototype.getFrontEndWebsite = function (str) {
         if (this.online) {
             if (str == "encode")
-                return encodeURIComponent(this.website).replace(".", "%2E");
+                return encodeURIComponent(this.website).replace(/\./g, '%2E');
             else
                 return this.website;
         }
         else {
+            console.log(encodeURIComponent(this.website).replace(/\./g, '%2E'));
             if (str == "encode")
                 return encodeURIComponent("http://localhost:") + encodeURIComponent(this.local_port);
             else
