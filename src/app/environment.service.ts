@@ -28,8 +28,8 @@ export class EnvironmentService {
 
   /* SET TO APPROPRIATE VALUES */
 
-  online = true
-  serverOnline = true
+  online = false
+  serverOnline = false
   
 
   //the front-end distributor
@@ -47,10 +47,12 @@ export class EnvironmentService {
 
   getFrontEndWebsite(str){
     if (this.online){
-      if (str == "encode") return encodeURIComponent(this.website).replace(".","%2E")
+      if (str == "encode") return encodeURIComponent(this.website).replace(/\./g, '%2E')
       else return this.website
     }
     else {
+      console.log(encodeURIComponent(this.website).replace(/\./g, '%2E'));
+      
       if (str == "encode") return encodeURIComponent("http://localhost:")+encodeURIComponent(this.local_port)
       else return "http://localhost:"+this.local_port
     }
