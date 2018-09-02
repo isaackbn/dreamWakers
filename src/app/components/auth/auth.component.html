@@ -1,0 +1,32 @@
+
+
+
+
+
+
+<!-- <button (click)="ngxSmartModalService.getModal('myModal').open()">Open myModal</button> -->
+
+
+
+
+
+<!-- <video autoplay muted loop id="video">
+    <source src="{{url}}" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video> -->
+
+<div  [innerHTML]="videoTag"></div>
+
+
+
+ <ngx-smart-modal #myModal  [customClass]="'large-modal'" identifier="myModal" [closable]="false" [dismissable]="false" [autostart]="true">
+
+    <pre>&nbsp;</pre>
+    
+    <span class= "buttons">
+        <a class="button" href={{loginLink}}>Sign in with Linkedin</a>
+    </span>
+
+    <div class="footer">For security reasons, we require that all users use their Linkedin accounts</div>
+
+  </ngx-smart-modal>

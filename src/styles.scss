@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+$color-overlay: rgba(0, 0, 0, .7);
+//$dialog-position-top: 20%;
+//$transition-duration: 500ms;
+//$transition-timing-function: ease-in-out;
+@import "~ngx-smart-modal/ngx-smart-modal";
+@import "app/app.component";
+@import "app/components/auth/auth.component";
+
 body {
     margin: 0;
     background: #F2F2F2;

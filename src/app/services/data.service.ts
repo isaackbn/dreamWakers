@@ -16,7 +16,7 @@ import { Router } from '@angular/router'
 })
 export class DataService {
 
-  profileData = {session:null}
+  profileData
 
   constructor(  private http:HttpClient,
                 private envir:EnvironmentService,
@@ -38,8 +38,28 @@ export class DataService {
   saveUserData(data){
     this.profileData = data    
     localStorage.setItem("sessionId", data.sessionId)
+    localStorage.setItem("firstName", data.firstName)
+
     localStorage.setItem("oneCheck", "false")
     console.log(this.profileData);
+  }
+
+  //called from home
+  updateProfileType(type){
+    localStorage.setItem("profileType", "set")
+    return this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sessionId"))
+  }
+
+  //called from home to verify if type modal should be opened
+  setProfileHasType(){    
+    if (this.profileData.type != null) localStorage.setItem("profileType", "set")
+  }
+
+  //called at login and logout
+  clearStorage(){
+    localStorage.removeItem("profileType")//clean for potential =>false
+    localStorage.removeItem("firstName")
+    localStorage.removeItem("sessionId")
   }
 
 

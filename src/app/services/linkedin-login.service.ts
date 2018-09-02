@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { encode } from 'punycode';
-import { encodeUriFragment } from '../../node_modules/@angular/router/src/url_tree';
+import { encodeUriFragment } from '@angular/router/src/url_tree';
 import { EnvironmentService } from './environment.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Observable} from 'rxjs'
@@ -64,6 +64,7 @@ export class LinkedinLoginService {
 
 
   fetchUserData(){ //called from auth-redirected
+    localStorage.removeItem("profileType")//clean for potential =>false
     return this.http.get(this.web_server+this.path_for_auth_request+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService} from '../data.service'
+import { DataService} from '../../services/data.service'
 import { Observable} from 'rxjs'
 import { Router } from '@angular/router'
 import {trigger, style, transition, animate, keyframes, query, stagger} from '@angular/animations'

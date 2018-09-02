@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { encode } from 'punycode';
-import { encodeUriFragment } from '../../node_modules/@angular/router/src/url_tree';
+import { encodeUriFragment } from '@angular/router/src/url_tree';
 
 
 /* 
@@ -50,9 +50,7 @@ export class EnvironmentService {
       if (str == "encode") return encodeURIComponent(this.website).replace(/\./g, '%2E')
       else return this.website
     }
-    else {
-      console.log(encodeURIComponent(this.website).replace(/\./g, '%2E'));
-      
+    else {      
       if (str == "encode") return encodeURIComponent("http://localhost:")+encodeURIComponent(this.local_port)
       else return "http://localhost:"+this.local_port
     }

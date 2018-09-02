@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs'
 import {ActivatedRoute} from '@angular/router'
 import { Router } from '@angular/router'
-import { LinkedinLoginService} from '../linkedin-login.service'
-import { DataService} from '../data.service'
+import { LinkedinLoginService} from '../../services/linkedin-login.service'
+import { DataService} from  '../../services/data.service'
 
 @Component({
   selector: 'app-auth-redirected',
@@ -44,13 +44,15 @@ export class AuthRedirectedComponent implements OnInit {
           if (res[0].auth == "success"){
             this.dataService.saveUserData(res[0])
             localStorage.setItem("userIn","true")
+            this.dataService.setProfileHasType() //make sure that type modal (in home) is not loaded
             this.router.navigate(['/home'])
-            console.log((localStorage.getItem("userIn")))
           }else{
             console.log("res is: "+res[0])
             console.log(res[0].auth);
             this.router.navigate(['/auth'])
           }
+        }, err => {
+          if(err.satus == 0) console.log("server down");
         })
       }else{//error with code acquisition
         console.log("error - access code not retrieved");

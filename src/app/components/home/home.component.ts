@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService} from '../data.service'
+import { DataService} from '../../services/data.service'
 import { Observable} from 'rxjs'
 import { Router } from '@angular/router'
-import { AlertService } from '../alert.service'
-import { AuthService } from '../auth.service'
+import { AlertService } from '../../services/alert.service'
+import { AuthService } from '../../services/auth.service'
 import { TopbarComponent} from '../topbar/topbar.component'
+import { NgxSmartModalService } from 'ngx-smart-modal';
+
 
 @Component({
   providers:[TopbarComponent],
@@ -15,6 +17,8 @@ import { TopbarComponent} from '../topbar/topbar.component'
 export class HomeComponent implements OnInit {
 
   users$: Object
+  launchModal = true;
+  firstName;
 
   alertDisabled:boolean = false
   alert = {
@@ -26,8 +30,11 @@ export class HomeComponent implements OnInit {
 
   constructor( private data: DataService, public router:Router, public alertRes:AlertService,
                 private auth:AuthService,
-                private topBar:TopbarComponent) {}
-
+                private topBar:TopbarComponent,
+                public ngxSmartModalService: NgxSmartModalService) {
+    if(localStorage.getItem("profileType") != "set") this.launchModal = true; 
+  }
+  
   ngOnInit() {
     this.data.getUsers().subscribe(
       data => this.users$ = data
@@ -41,9 +48,22 @@ export class HomeComponent implements OnInit {
     this.topBar.ngOnInit()
   }
 
+  initModal(){
+    this.firstName = localStorage.getItem("firstName")
+    if(localStorage.getItem("profileType") != "set") this.ngxSmartModalService.getModal("profileType").open()
+    this.launchModal = false
+  }
+
+  updateProfileType(type){
+    this.ngxSmartModalService.getModal("profileType").close()    
+    this.data.updateProfileType(type).subscribe(res => {
+      console.log(res);
+    })
+  }
+
+
   showDetails(id){
     this.router.navigate(['details/'+id])
   }
-
 
 }

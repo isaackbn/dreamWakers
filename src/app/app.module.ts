@@ -4,26 +4,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 import { AppComponent } from './app.component';
 
-import { TopbarComponent } from './topbar/topbar.component';
-import { DetailsComponent } from './details/details.component';
-import { PlanComponent } from './plan/plan.component';
-import { HomeComponent } from './home/home.component';
-import { AuthComponent } from './auth/auth.component';
-import { HomePanelComponent } from './home-panel/home-panel.component';
-import { FormsLoginComponent } from './forms-login/forms-login.component';
-import { HomeSuggestsComponent } from './home-suggests/home-suggests.component';
-import { FlashchatsComponent } from './flashchats/flashchats.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { DetailsComponent } from './components/details/details.component';
+import { PlanComponent } from './components/plan/plan.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { HomePanelComponent } from './components/home-panel/home-panel.component';
+import { HomeSuggestsComponent } from './components/home-suggests/home-suggests.component';
+import { FlashchatsComponent } from './components/flashchats/flashchats.component';
+import { HomeSearchComponent } from './components/home-search/home-search.component';
+import { AuthRedirectedComponent } from './components/auth-redirected/auth-redirected.component';
 
 
-import { AuthService } from './auth.service'
-
-import { AuthGuard } from './auth.guard';
-import { HomeSearchComponent } from './home-search/home-search.component';
-import { AuthRedirectedComponent } from './auth-redirected/auth-redirected.component';
+import { AuthService } from './services/auth.service'
 import { CookieService } from 'ngx-cookie-service';
+
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedGuard } from './guards/logged.guard';
+
+
 
 
 
@@ -36,7 +39,6 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     TopbarComponent,
     HomePanelComponent,
-    FormsLoginComponent,
     HomeSuggestsComponent,
     FlashchatsComponent,
     HomeSearchComponent,
@@ -48,9 +50,10 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSmartModalModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, CookieService],
+  providers: [AuthService, AuthGuard, LoggedGuard ,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

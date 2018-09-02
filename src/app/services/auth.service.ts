@@ -20,10 +20,7 @@ export class AuthService {
               private data:DataService, 
               private envir:EnvironmentService ,
               private linkedinLogin:LinkedinLoginService
-            ) {
-              localStorage.setItem("userIn", "false")
-
-  }
+            ) {}
 
 
   isUserIn(){
@@ -39,11 +36,12 @@ export class AuthService {
 
   verifyIfUserIn(){
     this.http.get<any>(this.linkedinLogin.web_server+"/auth/session/isactive/"+localStorage.getItem("sessionId")).subscribe(res => {
-
-      if (res.session == "false"){
-        localStorage.setItem("oneCheck", "true")
-      }
+      if (res.session == "false") localStorage.setItem("oneCheck", "true")
       else localStorage.setItem("userIn", "true")
+    }, err => {
+      console.log("Could not verify session: "+err);
+      localStorage.setItem("oneCheck", "true")
+      return false
     })
   }
 
@@ -53,9 +51,11 @@ export class AuthService {
     
     this.http.get(this.linkedinLogin.web_server+"/auth/session/destroy/"+localStorage.getItem("sessionId")).subscribe(res => {
       console.log(res);
-      
+
+      this.data.clearStorage()
+    }, err => {
+      console.log("error: could not sign out: "+err);
     })
-    localStorage.removeItem("sessionId")
 
   }
 

@@ -1,12 +1,13 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent} from './home/home.component'
-import { DetailsComponent} from './details/details.component'
-import { FlashchatsComponent} from './flashchats/flashchats.component'
-import { PlanComponent} from './plan/plan.component'
-import { AuthComponent } from './auth/auth.component'
-import { AuthGuard } from './auth.guard'
-import { AuthRedirectedComponent } from './auth-redirected/auth-redirected.component'
+import { HomeComponent} from './components/home/home.component'
+import { DetailsComponent} from './components/details/details.component'
+import { FlashchatsComponent} from './components/flashchats/flashchats.component'
+import { PlanComponent} from './components/plan/plan.component'
+import { AuthComponent } from './components/auth/auth.component'
+import { AuthGuard } from './guards/auth.guard'
+import { AuthRedirectedComponent } from './components/auth-redirected/auth-redirected.component'
+import { LoggedGuard } from './guards/logged.guard'
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path:'auth',
+    canActivate:[LoggedGuard],
     component: AuthComponent
   },
   {
