@@ -903,12 +903,12 @@ var HomeComponent = /** @class */ (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.data.tryPersist();
         this.data.getUsers().subscribe(function (data) { return _this.users$ = data; });
         this.alertRes.mainAlert().subscribe(function (alert) {
             _this.alert.title = alert[0].title;
             _this.alert.body = alert[0].body;
         });
-        this.topBar.ngOnInit();
     };
     HomeComponent.prototype.initModal = function () {
         this.firstName = localStorage.getItem("firstName");
@@ -1014,7 +1014,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n       <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" id=\"sign-out\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n        <li style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">{{fullName}}</a> </li>\n  \n  \n    </ul>\n  \n  </nav>\n\n\n  "
+module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n      \n      <li style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\"  class=\"item\"\n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">{{fullName}}</a> </li>\n  \n  \n    </ul>\n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1025,7 +1025,7 @@ module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#sign-out:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n"
+module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n"
 
 /***/ }),
 
@@ -1062,20 +1062,27 @@ var TopbarComponent = /** @class */ (function () {
         this.router = router;
         this.auth = auth;
         this.data = data;
+        this.fullName = "";
         router.events.subscribe(function (e) {
-            if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
+            if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"])
                 _this.currentUrl = e.url;
-            }
         });
     }
     TopbarComponent.prototype.ngOnInit = function () {
-        //this.fullName = this.data.profileData.firstName+" "+this.data.profileData.lastName
+        var _this = this;
+        this.userDataService = this.data.getUserDataEmitter().subscribe(function (userData) {
+            _this.fullName = userData.firstName;
+        });
+    };
+    TopbarComponent.prototype.update = function () {
+        this.fullName = this.data.profileData.firstName;
     };
     TopbarComponent.prototype.signedIn = function () {
         return this.auth.isUserIn();
     };
     TopbarComponent.prototype.signOut = function () {
         this.auth.signOut();
+        this.userDataService.unsubscribe();
         this.router.navigate(['/auth']);
     };
     TopbarComponent = __decorate([
@@ -1366,6 +1373,7 @@ var DataService = /** @class */ (function () {
         this.envir = envir;
         this.cookies = cookies;
         this.router = router;
+        this.newUserData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     DataService.prototype.getUsers = function () {
         return this.http.get(this.envir.getServer("noEncode") + '/users');
@@ -1378,6 +1386,7 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.saveUserData = function (data) {
         this.profileData = data;
+        this.newUserData.emit(data);
         localStorage.setItem("sessionId", data.sessionId);
         localStorage.setItem("firstName", data.firstName);
         localStorage.setItem("oneCheck", "false");
@@ -1398,6 +1407,17 @@ var DataService = /** @class */ (function () {
         localStorage.removeItem("profileType"); //clean for potential =>false
         localStorage.removeItem("firstName");
         localStorage.removeItem("sessionId");
+    };
+    DataService.prototype.getUserDataEmitter = function () {
+        return this.newUserData;
+    };
+    DataService.prototype.refreshUserData = function (sessionId) {
+        return this.http.get(this.envir.getServer("noEncode") + '/auth/persists/profile/' + sessionId);
+    };
+    DataService.prototype.tryPersist = function () {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.saveUserData(this.refreshUserData(sessionId));
     };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1455,8 +1475,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var EnvironmentService = /** @class */ (function () {
     function EnvironmentService() {
         /* SET TO APPROPRIATE VALUES */
-        this.online = true;
-        this.serverOnline = true;
+        this.online = false;
+        this.serverOnline = false;
         //the front-end distributor
         this.website = "https://isaackbn.github.io/dreamwakers";
         this.local_port = "4200";
