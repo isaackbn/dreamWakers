@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { EnvironmentService } from './environment.service'
 import { CookieService } from 'ngx-cookie-service';
@@ -16,7 +16,9 @@ import { Router } from '@angular/router'
 })
 export class DataService {
 
-  profileData
+  profileData;
+  newUserData: EventEmitter<object> = new EventEmitter();
+
 
   constructor(  private http:HttpClient,
                 private envir:EnvironmentService,
@@ -36,7 +38,8 @@ export class DataService {
   }
 
   saveUserData(data){
-    this.profileData = data    
+    this.profileData = data 
+    this.newUserData.emit(data);
     localStorage.setItem("sessionId", data.sessionId)
     localStorage.setItem("firstName", data.firstName)
 
@@ -60,6 +63,23 @@ export class DataService {
     localStorage.removeItem("profileType")//clean for potential =>false
     localStorage.removeItem("firstName")
     localStorage.removeItem("sessionId")
+  }
+
+
+
+
+  getUserDataEmitter() {
+    return this.newUserData;
+  }
+
+
+
+  private refreshUserData(sessionId){
+    return this.http.get(this.envir.getServer("noEncode")+'/auth/persists/profile/'+sessionId)
+  }
+  tryPersist(){
+    var sessionId = localStorage.getItem("sessionId")
+    if ( sessionId != null) this.saveUserData(this.refreshUserData(sessionId) )
   }
 
 

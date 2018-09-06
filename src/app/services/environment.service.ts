@@ -28,8 +28,8 @@ export class EnvironmentService {
 
   /* SET TO APPROPRIATE VALUES */
 
-  online = true
-  serverOnline = true
+  online = false
+  serverOnline = false
   
 
   //the front-end distributor

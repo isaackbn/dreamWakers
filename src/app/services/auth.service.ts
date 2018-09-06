@@ -51,12 +51,14 @@ export class AuthService {
     
     this.http.get(this.linkedinLogin.web_server+"/auth/session/destroy/"+localStorage.getItem("sessionId")).subscribe(res => {
       console.log(res);
-
       this.data.clearStorage()
     }, err => {
       console.log("error: could not sign out: "+err);
     })
 
   }
+
+
+
 
 }

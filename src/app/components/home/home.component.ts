@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.data.tryPersist()
     this.data.getUsers().subscribe(
       data => this.users$ = data
     )
@@ -45,7 +46,6 @@ export class HomeComponent implements OnInit {
         this.alert.body = alert[0].body
       }
     )
-    this.topBar.ngOnInit()
   }
 
   initModal(){

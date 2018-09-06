@@ -13,23 +13,27 @@ import { DataService } from '../../services/data.service'
 export class TopbarComponent implements OnInit {
 
   currentUrl: String
-  fullName;
+  fullName = ""
+  userDataService:any;
 
   constructor(private router:Router, 
               private auth:AuthService,
               private data:DataService) {
-    router.events.subscribe( (e: NavigationEnd) => {
-      if (e instanceof NavigationEnd) {
-      this.currentUrl = e.url;
-      }
-    })
-
     
-
+      router.events.subscribe( (e: NavigationEnd) => {
+        if (e instanceof NavigationEnd) this.currentUrl = e.url;
+      })
    }
 
   ngOnInit() {
-    //this.fullName = this.data.profileData.firstName+" "+this.data.profileData.lastName
+    this.userDataService = this.data.getUserDataEmitter().subscribe( userData => {
+      this.fullName = userData.firstName
+    })
+  }
+
+
+  update(){
+    this.fullName = this.data.profileData.firstName
   }
 
   signedIn(){
@@ -38,6 +42,7 @@ export class TopbarComponent implements OnInit {
 
   signOut(){
     this.auth.signOut()
+    this.userDataService.unsubscribe();
     this.router.navigate(['/auth']);
   }
 }
