@@ -881,15 +881,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(data, router, alertRes, auth, topBar, ngxSmartModalService) {
+    function HomeComponent(data, router, alertRes, auth, ngxSmartModalService) {
         var _this = this;
         this.data = data;
         this.router = router;
         this.alertRes = alertRes;
         this.auth = auth;
-        this.topBar = topBar;
         this.ngxSmartModalService = ngxSmartModalService;
         this.launchModal = true;
+        //alert management
         this.alertDisabled = false;
         this.alert = {
             title: "",
@@ -901,10 +901,13 @@ var HomeComponent = /** @class */ (function () {
         if (localStorage.getItem("profileType") != "set")
             this.launchModal = true;
     }
+    //init management
     HomeComponent.prototype.ngOnInit = function () {
+        this.data.tryPersist(this.init2);
+    };
+    HomeComponent.prototype.init2 = function () {
         var _this = this;
-        this.data.tryPersist();
-        this.data.getUsers().subscribe(function (data) { return _this.users$ = data; });
+        this.data.getUsers().subscribe(function (data) { return _this.users = data; });
         this.alertRes.mainAlert().subscribe(function (alert) {
             _this.alert.title = alert[0].title;
             _this.alert.body = alert[0].body;
@@ -916,6 +919,7 @@ var HomeComponent = /** @class */ (function () {
             this.ngxSmartModalService.getModal("profileType").open();
         this.launchModal = false;
     };
+    //other setup
     HomeComponent.prototype.updateProfileType = function (type) {
         this.ngxSmartModalService.getModal("profileType").close();
         this.data.updateProfileType(type).subscribe(function (res) {
@@ -934,7 +938,6 @@ var HomeComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
             _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
-            _topbar_topbar_component__WEBPACK_IMPORTED_MODULE_5__["TopbarComponent"],
             ngx_smart_modal__WEBPACK_IMPORTED_MODULE_6__["NgxSmartModalService"]])
     ], HomeComponent);
     return HomeComponent;
@@ -1014,7 +1017,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n      \n      <li style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\"  class=\"item\"\n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">{{fullName}}</a> </li>\n  \n  \n    </ul>\n  </nav>\n\n\n  "
+module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\">\n        <li style=\"float: right; margin-right: 2%;\" *ngIf=\"signedIn()\"> <a id=\"fullName\"\n                  [class.activated] = \"currentUrl == '/'\"\n                  [class.not-activated] = \"currentUrl != '/'\">{{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" >\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1025,7 +1028,7 @@ module.exports = "\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n"
+module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.profile-img {\n  float: right;\n  margin-top: 0.25%;\n  margin-bottom: 0.15%;\n  border-radius: 10%;\n  width: 1.5%; }\n"
 
 /***/ }),
 
@@ -1062,7 +1065,8 @@ var TopbarComponent = /** @class */ (function () {
         this.router = router;
         this.auth = auth;
         this.data = data;
-        this.fullName = "";
+        this.firstName = "";
+        this.profilePicSrc = "";
         router.events.subscribe(function (e) {
             if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"])
                 _this.currentUrl = e.url;
@@ -1071,11 +1075,19 @@ var TopbarComponent = /** @class */ (function () {
     TopbarComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.userDataService = this.data.getUserDataEmitter().subscribe(function (userData) {
-            _this.fullName = userData.firstName;
+            _this.firstName = userData.firstName;
+            _this.profilePicSrc = userData.pictureUrl;
+            if (typeof _this.profilePicSrc == "undefined")
+                _this.profilePicSrc = "assets/img/blank.png"; //after logging out
+            if (typeof userData.order != "undefined" && userData.order == "sign out")
+                _this.signOut();
         });
     };
-    TopbarComponent.prototype.update = function () {
-        this.fullName = this.data.profileData.firstName;
+    TopbarComponent.prototype.hasData = function () {
+        if (this.firstName != "")
+            return true;
+        else
+            return false;
     };
     TopbarComponent.prototype.signedIn = function () {
         return this.auth.isUserIn();
@@ -1321,6 +1333,7 @@ var AuthService = /** @class */ (function () {
         }, function (err) {
             console.log("error: could not sign out: " + err);
         });
+        this.data.saveUserData({ error: "logged out" });
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1375,20 +1388,18 @@ var DataService = /** @class */ (function () {
         this.router = router;
         this.newUserData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
-    DataService.prototype.getUsers = function () {
-        return this.http.get(this.envir.getServer("noEncode") + '/users');
-    };
-    DataService.prototype.getUser = function (userId) {
-        return this.http.get(this.envir.getServer("noEncode") + '/users/item/' + userId);
-    };
-    DataService.prototype.postUser = function () {
-        return this.http.get(this.envir.getServer("noEncode") + '/posts');
-    };
     DataService.prototype.saveUserData = function (data) {
+        if (typeof data.error != "undefined") {
+            console.log("data refresh msg: " + data.error);
+            this.profileData = data;
+            this.newUserData.emit(data);
+            if (data.error == "Auth failed")
+                this.newUserData.emit({ order: "sign out" }); //topbar is listening
+            return;
+        }
         this.profileData = data;
         this.newUserData.emit(data);
         localStorage.setItem("sessionId", data.sessionId);
-        localStorage.setItem("firstName", data.firstName);
         localStorage.setItem("oneCheck", "false");
         console.log(this.profileData);
     };
@@ -1402,22 +1413,39 @@ var DataService = /** @class */ (function () {
         if (this.profileData.type != null)
             localStorage.setItem("profileType", "set");
     };
+    DataService.prototype.getUserDataEmitter = function () {
+        return this.newUserData;
+    };
+    //refresh profile data if session active, called from home,
+    DataService.prototype.tryPersist = function (callback) {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.refreshProfileData(sessionId, callback);
+    };
+    //tryPersist helper function
+    DataService.prototype.refreshProfileData = function (sessionId, callback) {
+        var _this = this;
+        this.http.get(this.envir.getServer("noEncode") + '/data/persists/' + sessionId).subscribe(function (res) {
+            var data = res;
+            _this.saveUserData(data);
+            callback;
+        });
+    };
+    //API get functions
+    DataService.prototype.getUsers = function () {
+        return this.http.get(this.envir.getServer("noEncode") + '/users');
+    };
+    DataService.prototype.getUser = function (userId) {
+        return this.http.get(this.envir.getServer("noEncode") + '/users/item/' + userId);
+    };
+    DataService.prototype.postUser = function () {
+        return this.http.get(this.envir.getServer("noEncode") + '/posts');
+    };
     //called at login and logout
     DataService.prototype.clearStorage = function () {
         localStorage.removeItem("profileType"); //clean for potential =>false
         localStorage.removeItem("firstName");
         localStorage.removeItem("sessionId");
-    };
-    DataService.prototype.getUserDataEmitter = function () {
-        return this.newUserData;
-    };
-    DataService.prototype.refreshUserData = function (sessionId) {
-        return this.http.get(this.envir.getServer("noEncode") + '/auth/persists/profile/' + sessionId);
-    };
-    DataService.prototype.tryPersist = function () {
-        var sessionId = localStorage.getItem("sessionId");
-        if (sessionId != null)
-            this.saveUserData(this.refreshUserData(sessionId));
     };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
