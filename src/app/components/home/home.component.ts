@@ -16,10 +16,11 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class HomeComponent implements OnInit {
 
-  users$: Object
+  users: Object
   launchModal = true;
   firstName;
 
+  //alert management
   alertDisabled:boolean = false
   alert = {
     title : "",
@@ -30,15 +31,18 @@ export class HomeComponent implements OnInit {
 
   constructor( private data: DataService, public router:Router, public alertRes:AlertService,
                 private auth:AuthService,
-                private topBar:TopbarComponent,
                 public ngxSmartModalService: NgxSmartModalService) {
     if(localStorage.getItem("profileType") != "set") this.launchModal = true; 
   }
   
+
+  //init management
   ngOnInit() {
-    this.data.tryPersist()
+    this.data.tryPersist(this.init2)
+  }
+  init2(){
     this.data.getUsers().subscribe(
-      data => this.users$ = data
+      data => this.users = data
     )
     this.alertRes.mainAlert().subscribe(
       alert => {
@@ -54,6 +58,8 @@ export class HomeComponent implements OnInit {
     this.launchModal = false
   }
 
+
+  //other setup
   updateProfileType(type){
     this.ngxSmartModalService.getModal("profileType").close()    
     this.data.updateProfileType(type).subscribe(res => {

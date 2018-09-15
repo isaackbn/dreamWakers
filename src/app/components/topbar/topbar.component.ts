@@ -13,8 +13,9 @@ import { DataService } from '../../services/data.service'
 export class TopbarComponent implements OnInit {
 
   currentUrl: String
-  fullName = ""
+  firstName = ""
   userDataService:any;
+  profilePicSrc =""
 
   constructor(private router:Router, 
               private auth:AuthService,
@@ -27,13 +28,17 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit() {
     this.userDataService = this.data.getUserDataEmitter().subscribe( userData => {
-      this.fullName = userData.firstName
+      this.firstName = userData.firstName
+      this.profilePicSrc = userData.pictureUrl
+      if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
+      if (typeof userData.order != "undefined" && userData.order == "sign out") this.signOut() 
     })
   }
 
 
-  update(){
-    this.fullName = this.data.profileData.firstName
+  hasData(){    
+    if (this.firstName != "") return true
+    else return false
   }
 
   signedIn(){

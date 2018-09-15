@@ -56,6 +56,8 @@ export class AuthService {
       console.log("error: could not sign out: "+err);
     })
 
+    this.data.saveUserData({error:"logged out"})
+
   }
 
 

@@ -1,5 +1,6 @@
 
 
+
 <nav id="navigation">
 
     <ul class="topnav">  
@@ -21,15 +22,19 @@
                 [class.not-activated] = "currentUrl != '/plan'"> Plan</a> </li>
         
 
-      <li style="float: right" *ngIf="signedIn()"> <a (click)="signOut()" class="item" 
+      <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> <a (click)="signOut()" class="item" 
                 [class.activated] = "currentUrl == '/'"
                 [class.not-activated] = "currentUrl != '/'">Sign out</a> </li>
       
-      <li style="float: right" *ngIf="signedIn()"> <a id="fullName"  class="item"
-                [class.activated] = "currentUrl == '/'"
-                [class.not-activated] = "currentUrl != '/'">{{fullName}}</a> </li>
-  
-  
+      <span class="item" *ngIf="hasData()">
+        <li style="float: right; margin-right: 2%;" *ngIf="signedIn()"> <a id="fullName"
+                  [class.activated] = "currentUrl == '/'"
+                  [class.not-activated] = "currentUrl != '/'">{{firstName}}</a> </li>
+    
+        <img class="profile-img" src={{profilePicSrc}} alt="img" >
+      </span>
+
+
     </ul>
   </nav>
 
