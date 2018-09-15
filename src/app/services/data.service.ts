@@ -16,8 +16,10 @@ import { Router } from '@angular/router'
 })
 export class DataService {
 
-  profileData;
-  newUserData: EventEmitter<object> = new EventEmitter();
+  profile: EventEmitter<object> = new EventEmitter(); //subscriptions: topbar, home, auth-redirect
+  users : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
+  user : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
+
 
 
   constructor(  private http:HttpClient,
@@ -26,79 +28,130 @@ export class DataService {
                 private router:Router) {}
 
 
-  saveUserData(data){    
-    if(typeof data.error != "undefined"){
-      console.log("data refresh msg: "+data.error)
-      this.profileData = data 
-      this.newUserData.emit(data);
-      if(data.error == "Auth failed") this.newUserData.emit({order:"sign out"}) //topbar is listening
-      return
-    }
-    this.profileData = data 
-    this.newUserData.emit(data);
-    localStorage.setItem("sessionId", data.sessionId)
-    localStorage.setItem("oneCheck", "false")
-    console.log(this.profileData);
-  }
-
-  //called from home
-  updateProfileType(type){
-    localStorage.setItem("profileType", "set")
-    return this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sessionId"))
-  }
-
-  //called from home to verify if type modal should be opened
-  setProfileHasType(){    
-    if (this.profileData.type != null) localStorage.setItem("profileType", "set")
-  }
 
 
 
+  /* PROFILE */
 
-
-
-  getUserDataEmitter() {
-    return this.newUserData;
-  }
-
-
-
-  //refresh profile data if session active, called from home,
+  //refresh profile data if session active, called from topbar
   tryPersist(callback){
     var sessionId = localStorage.getItem("sessionId")
     if ( sessionId != null) this.refreshProfileData(sessionId, callback)
   }
   //tryPersist helper function
   private refreshProfileData(sessionId, callback){    
-    this.http.get(this.envir.getServer("noEncode")+'/data/persists/'+sessionId).subscribe(res => {
+    this.http.get(this.envir.getServer("noEncode")+'/data/profile/'+sessionId).subscribe(res => {
       var data:any = res
-      this.saveUserData(data)
+      this.emitProfileData(data)
       callback
     })
   }
-
-
-
-
-
-
-  //API get functions
-  getUsers(){
-    return this.http.get(this.envir.getServer("noEncode")+'/users')
+  //called here, authService, auth-redirected
+  emitProfileData(data){    
+    if(typeof data.error != "undefined"){ //received error trying to get profile data
+      console.log("profile data msg: "+data.error)
+      this.profile.emit(data);
+      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+      return
+    }
+    this.profile.emit(data);
+    localStorage.setItem("sessionId", data.sessionId)
+    localStorage.setItem("oneCheck", "false")
+    console.log(data);
+  }
+  //called from home
+  updateProfileType(type){ 
+      return this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sessionId"))
   }
 
-  getUser(userId){
-    return this.http.get(this.envir.getServer("noEncode")+'/users/item/'+userId)
+
+
+
+
+
+
+  /* USERS */
+
+  //get users from db if session active, called in home
+  getUsers(callback){
+    var sessionId = localStorage.getItem("sessionId")
+    if ( sessionId != null) this.reqUsers(sessionId, callback)
   }
+  //get users helper function
+  reqUsers(sessionId, callback){
+    // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
+    this.http.get(this.envir.getServer("noEncode")+'/data/users/'+sessionId).subscribe(res => {
+      var data:any = res
+      this.emitUsersData(data)
+      callback
+    })
+  }
+  //called here
+  emitUsersData(data){    
+    if(typeof data.error != "undefined"){ //received error trying to get profile data
+      console.log("users data msg: "+data.error)
+      this.users.emit(data);
+      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+      return
+    }
+    console.log(data[0]);
+    this.users.emit(data);
+  }
+
+
+
+
+
+
+
+/* USER */
+  //get user from db if session active, called in details
+  getUser(id, callback){
+    var sessionId = localStorage.getItem("sessionId")
+    if ( sessionId != null) this.reqUser(sessionId, id, callback)
+  }
+  //get user helper function
+  reqUser(sessionId, id, callback){
+    // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
+    this.http.get(this.envir.getServer("noEncode")+'/data/user/'+sessionId+'/'+id).subscribe(res => {
+      var data:any = res
+      this.emitUserData(data)
+      callback
+    })
+  }
+  //called here
+  emitUserData(data){    
+    if(typeof data.error != "undefined"){ //received error trying to get profile data
+      console.log("user data msg: "+data.error)
+      this.user.emit(data);
+      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+      return
+    }
+    console.log(data);
+    this.user.emit(data);
+  }
+
+
+
+
+
+
+
+
+
+
 
   postUser(){
     return this.http.get(this.envir.getServer("noEncode")+'/posts')
   }
 
-  //called at login and logout
-  clearStorage(){
-    localStorage.removeItem("profileType")//clean for potential =>false
-    localStorage.removeItem("firstName")
-    localStorage.removeItem("sessionId")
-  }
+
+
+
+
+
+  /* SETTINGS */
+
+  //called at login and logout, from authService
+  clearStorage(){ localStorage.removeItem("sessionId") }
 }

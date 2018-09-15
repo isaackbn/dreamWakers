@@ -6,20 +6,23 @@
       <hr id="separator">
 
     <ul class="user-container"> <!--[@listStagger]="users$"-->
-      <li *ngFor="let user of users$" class="user-block" (click)="showDetails(user.id)">
-        <a routerLink="details/{{user.id}}"> {{user.firstname}} {{user.lastname}}</a>
+      <li *ngFor="let user of users" class="user-block" (click)="showDetails(user.id)">
+        <a routerLink="details/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
         <hr>
-        <div class="profession">{{user.profession}}</div>
-        <div class="detail">{{user.company}}</div>
+        <img class="profile-img" src={{user.pictureUrl}} alt="img" >
+        <hr>
+        <div class="profession">{{user.industry}}</div>
+        <div class="detail">{{user.headline}}</div>
         <div class="detail">{{user.location}}</div>
       </li>
 
       <li tabIndex="-1" id="moreUsers" #moreUsersId class="user-block fade-in">
-          <a routerLink=""> More</a>
+          <a routerLink=""> More Profiles</a>
+          <hr>
+          <img class="profile-img" [src]="'assets/photo/female.jpg'" alt="img" >
           <hr>
           <div class="profession">Profession</div>
-          <div class="detail">company</div>
-          <div class="detail">location</div>
+          <div class="detail">Headline</div>
       </li>
     </ul>
   </span>

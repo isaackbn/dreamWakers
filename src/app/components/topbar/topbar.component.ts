@@ -27,12 +27,15 @@ export class TopbarComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.userDataService = this.data.getUserDataEmitter().subscribe( userData => {
-      this.firstName = userData.firstName
-      this.profilePicSrc = userData.pictureUrl
+    this.userDataService = this.data.profile.subscribe( profileData => {
+      this.firstName = profileData.firstName
+      this.profilePicSrc = profileData.pictureUrl
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
-      if (typeof userData.order != "undefined" && userData.order == "sign out") this.signOut() 
+      if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut() //listening to data service
+      if (profileData.action == "signedUp") this.reload() // refresh page to get signup modal
+      else console.log(profileData.action);
     })
+    this.data.tryPersist(null) //for now, emits profile data
   }
 
 
@@ -50,4 +53,7 @@ export class TopbarComponent implements OnInit {
     this.userDataService.unsubscribe();
     this.router.navigate(['/auth']);
   }
+
+  reload(){ location.reload()}
+
 }

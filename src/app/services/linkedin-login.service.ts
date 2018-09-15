@@ -5,6 +5,7 @@ import { encodeUriFragment } from '@angular/router/src/url_tree';
 import { EnvironmentService } from './environment.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Observable} from 'rxjs'
+import { DataService } from './data.service'
 
 
 
@@ -47,7 +48,8 @@ export class LinkedinLoginService {
 
   constructor(private http:HttpClient, 
               private envir:EnvironmentService, 
-              private cookies:CookieService) {
+              private cookies:CookieService,
+              private dataService:DataService) {
     this.website = envir.getFrontEndWebsite("encode")
     this.web_server = envir.getServer("noEncode")
 
@@ -63,8 +65,8 @@ export class LinkedinLoginService {
   }
 
 
-  fetchUserData(){ //called from auth-redirected
-    localStorage.removeItem("profileType")//clean for potential =>false
+  fetchProfileData(){ //called from auth-redirected
+    this.dataService.clearStorage()
     return this.http.get(this.web_server+this.path_for_auth_request+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
   }
 

@@ -16,8 +16,8 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class HomeComponent implements OnInit {
 
-  users: Object
-  launchModal = true;
+  profileData;
+  launchModal = false;
   firstName;
 
   //alert management
@@ -29,47 +29,45 @@ export class HomeComponent implements OnInit {
     close: () => {this.alertDisabled = true}
   }
 
-  constructor( private data: DataService, public router:Router, public alertRes:AlertService,
-                private auth:AuthService,
+  constructor( private data: DataService, public router:Router, public alertService:AlertService,
                 public ngxSmartModalService: NgxSmartModalService) {
-    if(localStorage.getItem("profileType") != "set") this.launchModal = true; 
   }
   
 
   //init management
   ngOnInit() {
-    this.data.tryPersist(this.init2)
-  }
-  init2(){
-    this.data.getUsers().subscribe(
-      data => this.users = data
-    )
-    this.alertRes.mainAlert().subscribe(
+    this.profileData = this.data.profile.subscribe( profileData => { // init subscriber for profile data emitter
+      this.firstName = profileData.firstName
+      if (profileData.type == null) this.launchModal = true
+    }) 
+
+    this.alertService.mainAlert().subscribe(
       alert => {
         this.alert.title = alert[0].title
         this.alert.body = alert[0].body
       }
     )
-  }
 
-  initModal(){
-    this.firstName = localStorage.getItem("firstName")
-    if(localStorage.getItem("profileType") != "set") this.ngxSmartModalService.getModal("profileType").open()
-    this.launchModal = false
   }
 
 
-  //other setup
+  //called from html if launchModal == true
+  initModal(){this.launchModal = false; this.ngxSmartModalService.getModal("profileType").open()}
+  //if profile type selected, close modal and update db
   updateProfileType(type){
     this.ngxSmartModalService.getModal("profileType").close()    
-    this.data.updateProfileType(type).subscribe(res => {
-      console.log(res);
-    })
+    this.data.updateProfileType(type).subscribe()
   }
 
 
   showDetails(id){
     this.router.navigate(['details/'+id])
+  }
+
+
+
+  ngOnDestroy(){
+    this.profileData.unsubscribe();
   }
 
 }

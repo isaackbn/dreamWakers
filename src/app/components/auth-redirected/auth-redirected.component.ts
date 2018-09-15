@@ -40,11 +40,10 @@ export class AuthRedirectedComponent implements OnInit {
     if (this.linkedinLoginService.state == this.linkedinReceivedState){
       if (this.fetchedCode){
         this.linkedinLoginService.authorization_code = this.linkedinCode
-        this.linkedinLoginService.fetchUserData().subscribe( res => {
+        this.linkedinLoginService.fetchProfileData().subscribe( res => {
           if (res[0].auth == "success"){
-            this.dataService.saveUserData(res[0])
+            this.dataService.emitProfileData(res[0])
             localStorage.setItem("userIn","true")
-            this.dataService.setProfileHasType() //make sure that type modal (in home) is not loaded
             this.router.navigate(['/home'])
           }else{
             console.log("res is: "+res[0])

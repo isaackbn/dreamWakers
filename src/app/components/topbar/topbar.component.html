@@ -27,7 +27,7 @@
                 [class.not-activated] = "currentUrl != '/'">Sign out</a> </li>
       
       <span class="item" *ngIf="hasData()">
-        <li style="float: right; margin-right: 2%;" *ngIf="signedIn()"> <a id="fullName"
+        <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName"
                   [class.activated] = "currentUrl == '/'"
                   [class.not-activated] = "currentUrl != '/'">{{firstName}}</a> </li>
     

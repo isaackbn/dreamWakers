@@ -1,10 +1,28 @@
 
-<p>&nbsp; More info on <span style="font-weight: bold">{{user$.firstname}} {{user$.lastname}}</span></p>
 
-<ul>
-  <li> <strong>First detail: </strong> {{user$.firstname}} {{user$.lastname}}</li>
-  <li> <strong>Second info: </strong> {{user$.lastname}}</li>
-  <li> <strong>More on user: </strong> {{user$.firstname}} </li>
-</ul>
 
-<p>&nbsp; etc..</p>
+
+
+<span *ngIf='hasData()' class="user-container">
+  <span class="user-block">
+
+    <span style=" color:rgb(127, 128, 129); font-size:1.6e;"> {{user.firstName}} {{user.lastName}} </span>
+    <hr>
+    <img class="profile-img" src={{user.pictureUrl}} alt="img" >
+    <hr>
+
+    <div style="margin-left: 50px">
+      <span style="color:rgb(133, 137, 138);text-decoration: underline;"> Industry:</span> 
+      <span class="profession" > &nbsp;{{user.industry}}</span> 
+    </div>
+
+    <div class="detail" style="margin-left: 50px;">- {{user.headline}}, currently at <span class="profession" style="font-size: 1.3em;color: rgb(89, 105, 148)"> {{user.position}} </span></div>
+
+    <div style="margin-left: 50px;margin-top:20px;"> 
+      <span style="margin-left: 0px;color:rgb(133, 137, 138); text-decoration: underline;" > Summary:</span> 
+      <span style="font-size: 0.85em;"> &nbsp;{{user.summary}} </span>
+    </div>
+
+  </span>
+
+</span>

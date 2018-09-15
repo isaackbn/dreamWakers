@@ -26,16 +26,20 @@ import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 })
 export class HomeSuggestsComponent implements OnInit, AfterViewInit {
 
-  users$: Object
-  suggestedCount:Number = 7
+  users
+  suggestedCount:Number = 0
   @ViewChild('moreUsersId') moreUsersId: ElementRef;
 
   constructor(private data: DataService, public router:Router) { }
 
   ngOnInit() {
-    this.data.getUsers().subscribe(
-      data => this.users$ = data
-    )
+    this.data.users.subscribe( usersData => {
+      console.log(usersData);
+      
+      this.suggestedCount = usersData.length
+      this.users = usersData
+    })
+    this.data.getUsers(null)
   }
   ngAfterViewInit() {
     this.moreUsersId.nativeElement.focus();
