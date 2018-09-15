@@ -339,11 +339,10 @@ var AuthRedirectedComponent = /** @class */ (function () {
         if (this.linkedinLoginService.state == this.linkedinReceivedState) {
             if (this.fetchedCode) {
                 this.linkedinLoginService.authorization_code = this.linkedinCode;
-                this.linkedinLoginService.fetchUserData().subscribe(function (res) {
+                this.linkedinLoginService.fetchProfileData().subscribe(function (res) {
                     if (res[0].auth == "success") {
-                        _this.dataService.saveUserData(res[0]);
+                        _this.dataService.emitProfileData(res[0]);
                         localStorage.setItem("userIn", "true");
-                        _this.dataService.setProfileHasType(); //make sure that type modal (in home) is not loaded
                         _this.router.navigate(['/home']);
                     }
                     else {
@@ -386,7 +385,7 @@ var AuthRedirectedComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n\n\n<!-- <button (click)=\"ngxSmartModalService.getModal('myModal').open()\">Open myModal</button> -->\n\n\n\n\n\n<!-- <video autoplay muted loop id=\"video\">\n    <source src=\"{{url}}\" type=\"video/mp4\">\n    Your browser does not support HTML5 video.\n</video> -->\n\n<div  [innerHTML]=\"videoTag\"></div>\n\n\n\n <ngx-smart-modal #myModal  [customClass]=\"'large-modal'\" identifier=\"myModal\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"true\">\n\n    <pre>&nbsp;</pre>\n    \n    <span class= \"buttons\">\n        <a class=\"button\" href={{loginLink}}>Sign in with Linkedin</a>\n    </span>\n\n    <div class=\"footer\">For security reasons, we require that all users use their Linkedin accounts</div>\n\n  </ngx-smart-modal>\n"
+module.exports = "\n\n\n\n\n\n<!-- <button (click)=\"ngxSmartModalService.getModal('myModal').open()\">Open myModal</button> -->\n\n\n\n\n\n<!-- <video autoplay muted loop id=\"video\">\n    <source src=\"{{url}}\" type=\"video/mp4\">\n    Your browser does not support HTML5 video.\n</video> -->\n\n<div  [innerHTML]=\"videoTag\"></div>\n\n\n\n <ngx-smart-modal #myModal  [customClass]=\"'large-modal'\" identifier=\"myModal\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"true\">\n\n    <pre>&nbsp;</pre>\n    \n    <span class= \"buttons\">\n        <a class=\"button\" href={{loginLink}}>Sign in with Linkedin</a>\n    </span>\n\n    <div class=\"footer\">For security reasons, we require that all users use their Linkedin accounts.</div>\n\n  </ngx-smart-modal>\n"
 
 /***/ }),
 
@@ -470,7 +469,7 @@ var AuthComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<p>&nbsp; More info on <span style=\"font-weight: bold\">{{user$.firstname}} {{user$.lastname}}</span></p>\n\n<ul>\n  <li> <strong>First detail: </strong> {{user$.firstname}} {{user$.lastname}}</li>\n  <li> <strong>Second info: </strong> {{user$.lastname}}</li>\n  <li> <strong>More on user: </strong> {{user$.firstname}} </li>\n</ul>\n\n<p>&nbsp; etc..</p>"
+module.exports = "\n\n\n\n\n<span *ngIf='hasData()' class=\"user-container\">\n  <span class=\"user-block\">\n\n    <span style=\" color:rgb(127, 128, 129); font-size:1.6e;\"> {{user.firstName}} {{user.lastName}} </span>\n    <hr>\n    <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n    <hr>\n\n    <div style=\"margin-left: 50px\">\n      <span style=\"color:rgb(133, 137, 138);text-decoration: underline;\"> Industry:</span> \n      <span class=\"profession\" > &nbsp;{{user.industry}}</span> \n    </div>\n\n    <div class=\"detail\" style=\"margin-left: 50px;\">- {{user.headline}}, currently at <span class=\"profession\" style=\"font-size: 1.3em;color: rgb(89, 105, 148)\"> {{user.position}} </span></div>\n\n    <div style=\"margin-left: 50px;margin-top:20px;\"> \n      <span style=\"margin-left: 0px;color:rgb(133, 137, 138); text-decoration: underline;\" > Summary:</span> \n      <span style=\"font-size: 0.85em;\"> &nbsp;{{user.summary}} </span>\n    </div>\n\n  </span>\n\n</span>"
 
 /***/ }),
 
@@ -481,7 +480,7 @@ module.exports = "\n<p>&nbsp; More info on <span style=\"font-weight: bold\">{{u
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#container {\n  width: 100%; }\n\n.profession {\n  color: #069db1;\n  font-size: .95em; }\n\n.detail {\n  font-size: 0.8em; }\n\n.profession:hover {\n  cursor: pointer; }\n\n.detail:hover {\n  cursor: pointer; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 20px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto;\n      grid-template-columns: auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 100%;\n  list-style-type: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 730px;\n  min-height: 700px;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  text-align: center;\n  border: 1px solid #bfcfcf;\n  border-top: 3px solid #a6bebe;\n  background: white; }\n\n.user-block hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 320px;\n  height: 320px;\n  border: 2px solid #b6c7c7; }\n\n.profile-img:hover {\n  cursor: pointer; }\n"
 
 /***/ }),
 
@@ -515,11 +514,15 @@ var DetailsComponent = /** @class */ (function () {
         var _this = this;
         this.data = data;
         this.route = route;
-        this.route.params.subscribe(function (params) { return _this.user$ = params.id; });
+        this.route.params.subscribe(function (params) { return _this.userId = params.id; });
     }
     DetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.data.getUser(this.user$).subscribe(function (data) { return _this.user$ = data[0]; });
+        this.data.user.subscribe(function (userData) { return _this.user = userData; });
+        this.data.getUser(this.userId, null);
+    };
+    DetailsComponent.prototype.hasData = function () {
+        return (typeof this.user != 'undefined');
     };
     DetailsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -736,7 +739,7 @@ var HomeSearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\">\n      <p id=\"suggested\">Suggested ({{suggestedCount}})</p>\n      <hr id=\"separator\">\n\n    <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n      <li *ngFor=\"let user of users$\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a routerLink=\"details/{{user.id}}\"> {{user.firstname}} {{user.lastname}}</a>\n        <hr>\n        <div class=\"profession\">{{user.profession}}</div>\n        <div class=\"detail\">{{user.company}}</div>\n        <div class=\"detail\">{{user.location}}</div>\n      </li>\n\n      <li tabIndex=\"-1\" id=\"moreUsers\" #moreUsersId class=\"user-block fade-in\">\n          <a routerLink=\"\"> More</a>\n          <hr>\n          <div class=\"profession\">Profession</div>\n          <div class=\"detail\">company</div>\n          <div class=\"detail\">location</div>\n      </li>\n    </ul>\n  </span>\n\n</div>\n  \n\n\n\n\n"
+module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\">\n      <p id=\"suggested\">Suggested ({{suggestedCount}})</p>\n      <hr id=\"separator\">\n\n    <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n      <li *ngFor=\"let user of users\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a routerLink=\"details/{{user.id}}\"> {{user.firstName}} {{user.lastName}}</a>\n        <hr>\n        <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <hr>\n        <div class=\"profession\">{{user.industry}}</div>\n        <div class=\"detail\">{{user.headline}}</div>\n        <div class=\"detail\">{{user.location}}</div>\n      </li>\n\n      <li tabIndex=\"-1\" id=\"moreUsers\" #moreUsersId class=\"user-block fade-in\">\n          <a routerLink=\"\"> More Profiles</a>\n          <hr>\n          <img class=\"profile-img\" [src]=\"'assets/photo/female.jpg'\" alt=\"img\" >\n          <hr>\n          <div class=\"profession\">Profession</div>\n          <div class=\"detail\">Headline</div>\n      </li>\n    </ul>\n  </span>\n\n</div>\n  \n\n\n\n\n"
 
 /***/ }),
 
@@ -747,7 +750,7 @@ module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\">\n      <p i
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  width: 430px; }\n\n#left {\n  float: left;\n  border-right: 1px solid #a1a1a194; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n"
+module.exports = "#container {\n  width: 430px; }\n\n#left {\n  float: left;\n  border-right: 1px solid #a1a1a194; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 120px;\n  height: 120px; }\n"
 
 /***/ }),
 
@@ -783,11 +786,16 @@ var HomeSuggestsComponent = /** @class */ (function () {
     function HomeSuggestsComponent(data, router) {
         this.data = data;
         this.router = router;
-        this.suggestedCount = 7;
+        this.suggestedCount = 0;
     }
     HomeSuggestsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.data.getUsers().subscribe(function (data) { return _this.users$ = data; });
+        this.data.users.subscribe(function (usersData) {
+            console.log(usersData);
+            _this.suggestedCount = usersData.length;
+            _this.users = usersData;
+        });
+        this.data.getUsers(null);
     };
     HomeSuggestsComponent.prototype.ngAfterViewInit = function () {
         this.moreUsersId.nativeElement.focus();
@@ -861,9 +869,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/alert.service */ "./src/app/services/alert.service.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _topbar_topbar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../topbar/topbar.component */ "./src/app/components/topbar/topbar.component.ts");
-/* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm5/ngx-smart-modal.js");
+/* harmony import */ var _topbar_topbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../topbar/topbar.component */ "./src/app/components/topbar/topbar.component.ts");
+/* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm5/ngx-smart-modal.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -879,16 +886,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(data, router, alertRes, auth, ngxSmartModalService) {
+    function HomeComponent(data, router, alertService, ngxSmartModalService) {
         var _this = this;
         this.data = data;
         this.router = router;
-        this.alertRes = alertRes;
-        this.auth = auth;
+        this.alertService = alertService;
         this.ngxSmartModalService = ngxSmartModalService;
-        this.launchModal = true;
+        this.launchModal = false;
         //alert management
         this.alertDisabled = false;
         this.alert = {
@@ -898,47 +903,42 @@ var HomeComponent = /** @class */ (function () {
                 return true; },
             close: function () { _this.alertDisabled = true; }
         };
-        if (localStorage.getItem("profileType") != "set")
-            this.launchModal = true;
     }
     //init management
     HomeComponent.prototype.ngOnInit = function () {
-        this.data.tryPersist(this.init2);
-    };
-    HomeComponent.prototype.init2 = function () {
         var _this = this;
-        this.data.getUsers().subscribe(function (data) { return _this.users = data; });
-        this.alertRes.mainAlert().subscribe(function (alert) {
+        this.profileData = this.data.profile.subscribe(function (profileData) {
+            _this.firstName = profileData.firstName;
+            if (profileData.type == null)
+                _this.launchModal = true;
+        });
+        this.alertService.mainAlert().subscribe(function (alert) {
             _this.alert.title = alert[0].title;
             _this.alert.body = alert[0].body;
         });
     };
-    HomeComponent.prototype.initModal = function () {
-        this.firstName = localStorage.getItem("firstName");
-        if (localStorage.getItem("profileType") != "set")
-            this.ngxSmartModalService.getModal("profileType").open();
-        this.launchModal = false;
-    };
-    //other setup
+    //called from html if launchModal == true
+    HomeComponent.prototype.initModal = function () { this.launchModal = false; this.ngxSmartModalService.getModal("profileType").open(); };
+    //if profile type selected, close modal and update db
     HomeComponent.prototype.updateProfileType = function (type) {
         this.ngxSmartModalService.getModal("profileType").close();
-        this.data.updateProfileType(type).subscribe(function (res) {
-            console.log(res);
-        });
+        this.data.updateProfileType(type).subscribe();
     };
     HomeComponent.prototype.showDetails = function (id) {
         this.router.navigate(['details/' + id]);
     };
+    HomeComponent.prototype.ngOnDestroy = function () {
+        this.profileData.unsubscribe();
+    };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            providers: [_topbar_topbar_component__WEBPACK_IMPORTED_MODULE_5__["TopbarComponent"]],
+            providers: [_topbar_topbar_component__WEBPACK_IMPORTED_MODULE_4__["TopbarComponent"]],
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/components/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.scss */ "./src/app/components/home/home.component.scss")]
         }),
         __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
-            _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
-            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_6__["NgxSmartModalService"]])
+            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -1017,7 +1017,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\">\n        <li style=\"float: right; margin-right: 2%;\" *ngIf=\"signedIn()\"> <a id=\"fullName\"\n                  [class.activated] = \"currentUrl == '/'\"\n                  [class.not-activated] = \"currentUrl != '/'\">{{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" >\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
+module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\">\n        <li id=\"username\" style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\"\n                  [class.activated] = \"currentUrl == '/'\"\n                  [class.not-activated] = \"currentUrl != '/'\">{{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" >\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1028,7 +1028,7 @@ module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.profile-img {\n  float: right;\n  margin-top: 0.25%;\n  margin-bottom: 0.15%;\n  border-radius: 10%;\n  width: 1.5%; }\n"
+module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  float: right;\n  border-radius: 10%;\n  margin-top: 5px;\n  width: 30px;\n  height: 40px; }\n\n#username {\n  margin-right: 3px; }\n"
 
 /***/ }),
 
@@ -1074,14 +1074,19 @@ var TopbarComponent = /** @class */ (function () {
     }
     TopbarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userDataService = this.data.getUserDataEmitter().subscribe(function (userData) {
-            _this.firstName = userData.firstName;
-            _this.profilePicSrc = userData.pictureUrl;
+        this.userDataService = this.data.profile.subscribe(function (profileData) {
+            _this.firstName = profileData.firstName;
+            _this.profilePicSrc = profileData.pictureUrl;
             if (typeof _this.profilePicSrc == "undefined")
                 _this.profilePicSrc = "assets/img/blank.png"; //after logging out
-            if (typeof userData.order != "undefined" && userData.order == "sign out")
-                _this.signOut();
+            if (typeof profileData.order != "undefined" && profileData.order == "sign out")
+                _this.signOut(); //listening to data service
+            if (profileData.action == "signedUp")
+                _this.reload(); // refresh page to get signup modal
+            else
+                console.log(profileData.action);
         });
+        this.data.tryPersist(null); //for now, emits profile data
     };
     TopbarComponent.prototype.hasData = function () {
         if (this.firstName != "")
@@ -1097,6 +1102,7 @@ var TopbarComponent = /** @class */ (function () {
         this.userDataService.unsubscribe();
         this.router.navigate(['/auth']);
     };
+    TopbarComponent.prototype.reload = function () { location.reload(); };
     TopbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-topbar',
@@ -1333,7 +1339,7 @@ var AuthService = /** @class */ (function () {
         }, function (err) {
             console.log("error: could not sign out: " + err);
         });
-        this.data.saveUserData({ error: "logged out" });
+        this.data.emitProfileData({ error: "logged out" }); //removed saved profile data
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1386,37 +1392,12 @@ var DataService = /** @class */ (function () {
         this.envir = envir;
         this.cookies = cookies;
         this.router = router;
-        this.newUserData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.profile = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: topbar, home, auth-redirect
+        this.users = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
+        this.user = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
     }
-    DataService.prototype.saveUserData = function (data) {
-        if (typeof data.error != "undefined") {
-            console.log("data refresh msg: " + data.error);
-            this.profileData = data;
-            this.newUserData.emit(data);
-            if (data.error == "Auth failed")
-                this.newUserData.emit({ order: "sign out" }); //topbar is listening
-            return;
-        }
-        this.profileData = data;
-        this.newUserData.emit(data);
-        localStorage.setItem("sessionId", data.sessionId);
-        localStorage.setItem("oneCheck", "false");
-        console.log(this.profileData);
-    };
-    //called from home
-    DataService.prototype.updateProfileType = function (type) {
-        localStorage.setItem("profileType", "set");
-        return this.http.get(this.envir.getServer("noEncode") + '/auth/updateProfileType/' + type + "/" + localStorage.getItem("sessionId"));
-    };
-    //called from home to verify if type modal should be opened
-    DataService.prototype.setProfileHasType = function () {
-        if (this.profileData.type != null)
-            localStorage.setItem("profileType", "set");
-    };
-    DataService.prototype.getUserDataEmitter = function () {
-        return this.newUserData;
-    };
-    //refresh profile data if session active, called from home,
+    /* PROFILE */
+    //refresh profile data if session active, called from topbar
     DataService.prototype.tryPersist = function (callback) {
         var sessionId = localStorage.getItem("sessionId");
         if (sessionId != null)
@@ -1425,28 +1406,94 @@ var DataService = /** @class */ (function () {
     //tryPersist helper function
     DataService.prototype.refreshProfileData = function (sessionId, callback) {
         var _this = this;
-        this.http.get(this.envir.getServer("noEncode") + '/data/persists/' + sessionId).subscribe(function (res) {
+        this.http.get(this.envir.getServer("noEncode") + '/data/profile/' + sessionId).subscribe(function (res) {
             var data = res;
-            _this.saveUserData(data);
+            _this.emitProfileData(data);
             callback;
         });
     };
-    //API get functions
-    DataService.prototype.getUsers = function () {
-        return this.http.get(this.envir.getServer("noEncode") + '/users');
+    //called here, authService, auth-redirected
+    DataService.prototype.emitProfileData = function (data) {
+        if (typeof data.error != "undefined") {
+            console.log("profile data msg: " + data.error);
+            this.profile.emit(data);
+            if (data.error == "Auth failed")
+                this.profile.emit({ order: "sign out" }); //topbar subscribes to this
+            return;
+        }
+        this.profile.emit(data);
+        localStorage.setItem("sessionId", data.sessionId);
+        localStorage.setItem("oneCheck", "false");
+        console.log(data);
     };
-    DataService.prototype.getUser = function (userId) {
-        return this.http.get(this.envir.getServer("noEncode") + '/users/item/' + userId);
+    //called from home
+    DataService.prototype.updateProfileType = function (type) {
+        return this.http.get(this.envir.getServer("noEncode") + '/auth/updateProfileType/' + type + "/" + localStorage.getItem("sessionId"));
+    };
+    /* USERS */
+    //get users from db if session active, called in home
+    DataService.prototype.getUsers = function (callback) {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.reqUsers(sessionId, callback);
+    };
+    //get users helper function
+    DataService.prototype.reqUsers = function (sessionId, callback) {
+        var _this = this;
+        // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
+        this.http.get(this.envir.getServer("noEncode") + '/data/users/' + sessionId).subscribe(function (res) {
+            var data = res;
+            _this.emitUsersData(data);
+            callback;
+        });
+    };
+    //called here
+    DataService.prototype.emitUsersData = function (data) {
+        if (typeof data.error != "undefined") {
+            console.log("users data msg: " + data.error);
+            this.users.emit(data);
+            if (data.error == "Auth failed")
+                this.profile.emit({ order: "sign out" }); //topbar subscribes to this
+            return;
+        }
+        console.log(data[0]);
+        this.users.emit(data);
+    };
+    /* USER */
+    //get user from db if session active, called in details
+    DataService.prototype.getUser = function (id, callback) {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.reqUser(sessionId, id, callback);
+    };
+    //get user helper function
+    DataService.prototype.reqUser = function (sessionId, id, callback) {
+        var _this = this;
+        // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
+        this.http.get(this.envir.getServer("noEncode") + '/data/user/' + sessionId + '/' + id).subscribe(function (res) {
+            var data = res;
+            _this.emitUserData(data);
+            callback;
+        });
+    };
+    //called here
+    DataService.prototype.emitUserData = function (data) {
+        if (typeof data.error != "undefined") {
+            console.log("user data msg: " + data.error);
+            this.user.emit(data);
+            if (data.error == "Auth failed")
+                this.profile.emit({ order: "sign out" }); //topbar subscribes to this
+            return;
+        }
+        console.log(data);
+        this.user.emit(data);
     };
     DataService.prototype.postUser = function () {
         return this.http.get(this.envir.getServer("noEncode") + '/posts');
     };
-    //called at login and logout
-    DataService.prototype.clearStorage = function () {
-        localStorage.removeItem("profileType"); //clean for potential =>false
-        localStorage.removeItem("firstName");
-        localStorage.removeItem("sessionId");
-    };
+    /* SETTINGS */
+    //called at login and logout, from authService
+    DataService.prototype.clearStorage = function () { localStorage.removeItem("sessionId"); };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1567,6 +1614,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _environment_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./environment.service */ "./src/app/services/environment.service.ts");
 /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data.service */ "./src/app/services/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1580,6 +1628,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 /*
   #set "path_for_auth" to your linkedin redirect path, e.g: "/auth/redirected"
 
@@ -1587,10 +1636,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
   e.g: "https://mywebsite.com/auth/redirected"
 */
 var LinkedinLoginService = /** @class */ (function () {
-    function LinkedinLoginService(http, envir, cookies) {
+    function LinkedinLoginService(http, envir, cookies, dataService) {
         this.http = http;
         this.envir = envir;
         this.cookies = cookies;
+        this.dataService = dataService;
         /* SET TO APPROPRIATE VALUES */
         this.path_for_auth_request = "/auth/init";
         this.state = "DCEeFWg45A53sdfKef424";
@@ -1605,8 +1655,8 @@ var LinkedinLoginService = /** @class */ (function () {
     LinkedinLoginService.prototype.getCode_link = function () {
         return "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" + this.clientId + "&redirect_uri=" + this.redirectUri + "&state=" + this.state + "&scope=" + this.scope;
     };
-    LinkedinLoginService.prototype.fetchUserData = function () {
-        localStorage.removeItem("profileType"); //clean for potential =>false
+    LinkedinLoginService.prototype.fetchProfileData = function () {
+        this.dataService.clearStorage();
         return this.http.get(this.web_server + this.path_for_auth_request + "/" + this.authorization_code + "/" + this.redirectUri + "/" + this.clientId);
     };
     LinkedinLoginService = __decorate([
@@ -1615,7 +1665,8 @@ var LinkedinLoginService = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
             _environment_service__WEBPACK_IMPORTED_MODULE_2__["EnvironmentService"],
-            ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"]])
+            ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"],
+            _data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"]])
     ], LinkedinLoginService);
     return LinkedinLoginService;
 }());
