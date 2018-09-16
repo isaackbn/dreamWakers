@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd} from '@angular/router'
 import { AuthService } from '../../services/auth.service'
 import { DataService } from '../../services/data.service'
+import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
 
 
 
@@ -10,12 +12,14 @@ import { DataService } from '../../services/data.service'
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss']
 })
-export class TopbarComponent implements OnInit {
+export class TopbarComponent implements OnInit, AfterViewInit {
 
   currentUrl: String
   firstName = ""
   userDataService:any;
   profilePicSrc =""
+
+  @ViewChild('searchBarId') searchBarId: ElementRef;
 
   constructor(private router:Router, 
               private auth:AuthService,
@@ -24,6 +28,7 @@ export class TopbarComponent implements OnInit {
       router.events.subscribe( (e: NavigationEnd) => {
         if (e instanceof NavigationEnd) this.currentUrl = e.url;
       })
+      
    }
 
   ngOnInit() {
@@ -54,5 +59,23 @@ export class TopbarComponent implements OnInit {
   }
 
   reload(){ location.reload()}
+
+  ngAfterViewInit() {
+    this.searchBarId.nativeElement.focus();
+ }
+
+
+  newSearch(word){
+    if(this.currentUrl != "home" && word != "")this.router.navigate(['home/search/'+word])
+    if (word != "") this.data.getSpeakers(word,null)
+    else this.data.getSpeakers("*null*",null)
+  }
+
+  showProfile(){
+    this.router.navigate(['details/'+localStorage.getItem("sessionId")])
+  }
+
+  
+  
 
 }

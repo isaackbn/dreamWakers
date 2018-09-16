@@ -6,6 +6,8 @@ import { AlertService } from '../../services/alert.service'
 import { AuthService } from '../../services/auth.service'
 import { TopbarComponent} from '../topbar/topbar.component'
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import {ActivatedRoute} from '@angular/router'
+
 
 
 @Component({
@@ -30,7 +32,10 @@ export class HomeComponent implements OnInit {
 
 
   constructor( private data: DataService, public router:Router, public alertService:AlertService,
-                public ngxSmartModalService: NgxSmartModalService) {
+                public ngxSmartModalService: NgxSmartModalService, public route:ActivatedRoute) {
+    
+    this.route.params.subscribe(params => this.searchSpeaker(params.word))    
+
   }
   
 
@@ -78,6 +83,10 @@ export class HomeComponent implements OnInit {
   ngOnDestroy(){
     this.profileData.unsubscribe();
     this.alertsData.unsubscribe();
+  }
+
+  searchSpeaker(word){
+    this.data.getSpeakers(word, null)
   }
 
 }

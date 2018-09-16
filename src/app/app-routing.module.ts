@@ -30,6 +30,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path:'home/search/:word',
+    canActivate:[AuthGuard],
+    component: HomeComponent
+  },
+  {
     path:'details/:id',
     canActivate:[AuthGuard],
     component: DetailsComponent

@@ -6,30 +6,37 @@
     <ul class="topnav">  
 
   
-      <li class="topnav-centered"> <a href="https://www.dreamwakers.org/" 
+      <!-- <li class="topnav-centered"> <a href="https://www.dreamwakers.org/" 
                 [class.activated] = "currentUrl != nil"> Dreamwakers </a></li>
-  
-      <li><a routerLink="home" 
-                [class.activated] = "currentUrl == '/home'"
-                [class.not-activated] = "currentUrl != '/home'"> Home </a></li>
-  
-      <li>  <a routerLink="flashchats" 
-                [class.activated] = "currentUrl == '/flashchats'"
-                [class.not-activated] = "currentUrl != '/flashchats'"> Flashchats</a> </li>
+   -->
       
-      <li>  <a routerLink="plan" 
-                [class.activated] = "currentUrl == '/plan'"
-                [class.not-activated] = "currentUrl != '/plan'"> Plan</a> </li>
+      <li><a routerLink="home">
+                <img class="icon" [src]="'assets/img/logo.jpg'" alt="img" >
+          </a></li>
+
+      <li>  <a routerLink="flashchats"
+                [class.activated] = "currentUrl == '/flashchats'"
+                [class.not-activated] = "currentUrl != '/flashchats'">
+                <i id="flashchats" class="	fa fa-group " style="font-size:33px"></i>
+            </a> </li>
+      
+      <!-- <li>  <a routerLink="plan">
+                <i class="	fa fa-envelope" style="color: white ;font-size:34px"></i>
+            </a> </li> -->
+
+      <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)'>
         
 
-      <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> <a (click)="signOut()" class="item">
-                Sign out</a> </li>
+      <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> 
+        <a (click)="signOut()" class="item">
+            <i id="logout" class="fa fa-sign-out" style="font-size:25px;margin-top:3px;"></i>
+          </a></li>
       
-      <span class="item" *ngIf="hasData()">
+      <span class="item" *ngIf="hasData()" (click)="showProfile()">
         <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
                 {{firstName}}</a> </li>
     
-        <img class="profile-img" src={{profilePicSrc}} alt="img" >
+        <img class="profile-img" src={{profilePicSrc}} alt="img" (click)="showProfile()">
       </span>
 
 

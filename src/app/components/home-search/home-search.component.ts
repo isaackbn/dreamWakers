@@ -17,16 +17,12 @@ export class HomeSearchComponent implements OnInit {
   constructor(private data: DataService, public router:Router) { }
 
   ngOnInit() {
-    this.observer = this.data.speakers.subscribe(speakersData => {
+    this.observer = this.data.speakers.subscribe(speakersData => {      
       if(JSON.stringify(this.speakers) != JSON.stringify(speakersData)) this.speakers = speakersData           
     })
 
   }
 
-  newSearch(word){
-    if (word != "") this.data.getSpeakers(word,null)
-    else this.speakers = [] 
-  }
 
 
   showDetails(userId){
