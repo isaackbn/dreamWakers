@@ -9,10 +9,11 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #3A66A7;
+        //background-color: #3A66A7;
+        background-color: rgb(49, 129, 143);
         border-radius: 2px;
-        border-top: 1px solid rgb(241, 241, 241);
-        border-bottom: 1px solid rgb(202, 202, 202);
+        border-top: 1px solid rgb(122, 122, 122);
+        border-bottom: 1px solid rgb(83, 83, 83);
         min-height: 40px
     }
 
@@ -40,7 +41,8 @@
         color:white;
     }
     .not-activated {
-        color: rgb(27, 48, 78);
+        //color: rgb(27, 48, 78);
+        color:rgb(27, 68, 75)
     }
 
 }
@@ -70,7 +72,7 @@
     margin-top: 5px;
     width:25px;
     height: 35px;
-    border: 1px solid rgba(155, 155, 155, 0.322);
+    border: 1px solid rgba(185, 185, 185, 0.322);
 }
 .icon{
     border-radius: 2px;
@@ -92,12 +94,12 @@
 
 .searchTerm {
     margin-left:30px;
-    width: 460px;
+    width: 253px;
     border: 1px solid rgb(51, 51, 51);
     padding: 2px 7px;
-    height: 23px;
+    height: 26px;
     border-radius: 3px;
-    margin-top: 8px;
+    margin-top: 5px;
     outline: none;
     color: rgb(19, 19, 19);
     font-size: 14px;
@@ -105,7 +107,8 @@
   }
 
   #logout{
-    color: rgb(27, 48, 78);
+    //color: rgb(27, 48, 78);
+    color:rgb(27, 68, 75)
 }
   #logout:hover{
       color: white;
