@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService} from '../../services/data.service'
+import { Router } from '@angular/router'
+
+
 
 @Component({
   selector: 'app-home-search',
@@ -7,9 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeSearchComponent implements OnInit {
 
-  constructor() { }
+  speakers;
+  observer;
+
+  constructor(private data: DataService, public router:Router) { }
 
   ngOnInit() {
+    this.observer = this.data.speakers.subscribe(speakersData => {
+      if(JSON.stringify(this.speakers) != JSON.stringify(speakersData)) this.speakers = speakersData           
+    })
+
   }
 
+  newSearch(word){
+    if (word != "") this.data.getSpeakers(word,null)
+    else this.speakers = [] 
+  }
+
+
+  showDetails(userId){
+    this.router.navigate(['details/'+userId])
+  }
+
+
+
+  ngOnDestroy(){
+    this.observer.unsubscribe()
+  }
 }

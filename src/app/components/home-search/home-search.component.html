@@ -1,20 +1,26 @@
 
   <div id="container">
     
-    <div class="">
-      <input type="text" class="searchTerm" placeholder="search speaker">
-      <button type="submit" class="searchButton">
+    <div>
+      <input type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)'>
+      <!-- <button type="submit" class="searchButton">
         <i class="material-icons">search</i>
-      </button>
+      </button> -->
     </div>
 
 
-    <div id="search-results">
-      this is the display area for the search results
-    </div>
 
-    <span id="right">
-        <div class="vl"></div>
-      </span>
 
-  </div>
+  <span id="left">
+      <ul class="user-container"> <!--[@listStagger]="users$"-->
+        <li *ngFor="let speaker of speakers" class="user-block" (click)="showDetails(speaker.id)">
+          <a routerLink="details/{{speaker.id}}"> {{speaker.firstName}} {{speaker.lastName}}</a>
+          <hr>
+          <img class="profile-img" src={{speaker.pictureUrl}} alt="img" >
+          <hr>
+          <div class="profession">{{speaker.industry}}</div>
+          <div class="detail">{{speaker.headline}}</div>
+          <div class="detail">{{speaker.location}}</div>
+        </li>
+      </ul>
+  </span>

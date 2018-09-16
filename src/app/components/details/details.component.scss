@@ -126,7 +126,7 @@
 
   .profile-img{
     object-fit: cover;
-    border-radius: 2%;
+    border-radius: 3px;
     margin-top: 3px;
     width:320px;
     height: 320px;
@@ -135,4 +135,22 @@
 }
 .profile-img:hover{
     cursor: pointer;
+}
+
+.button {
+    background-color: #9c9c9c; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 2px 0px;
+    border-radius: 2px;
+    width: 150px;
+    cursor: pointer;
+    top: 40px;
+    margin-left: 20px;
 }

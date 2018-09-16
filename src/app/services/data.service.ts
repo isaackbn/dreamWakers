@@ -19,6 +19,8 @@ export class DataService {
   profile: EventEmitter<object> = new EventEmitter(); //subscriptions: topbar, home, auth-redirect
   users : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   user : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
+  speakers : EventEmitter<object> = new EventEmitter(); //subscriptions: home-search
+
 
 
 
@@ -57,7 +59,6 @@ export class DataService {
     this.profile.emit(data);
     localStorage.setItem("sessionId", data.sessionId)
     localStorage.setItem("oneCheck", "false")
-    console.log(data);
   }
   //called from home
   updateProfileType(type){ 
@@ -79,7 +80,6 @@ export class DataService {
   }
   //get users helper function
   reqUsers(sessionId, callback){
-    // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
     this.http.get(this.envir.getServer("noEncode")+'/data/users/'+sessionId).subscribe(res => {
       var data:any = res
       this.emitUsersData(data)
@@ -88,13 +88,12 @@ export class DataService {
   }
   //called here
   emitUsersData(data){    
-    if(typeof data.error != "undefined"){ //received error trying to get profile data
+    if(typeof data.error != "undefined"){ //received error trying to get users data
       console.log("users data msg: "+data.error)
       this.users.emit(data);
       if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
       return
     }
-    console.log(data[0]);
     this.users.emit(data);
   }
 
@@ -105,6 +104,7 @@ export class DataService {
 
 
 /* USER */
+
   //get user from db if session active, called in details
   getUser(id, callback){
     var sessionId = localStorage.getItem("sessionId")
@@ -112,7 +112,6 @@ export class DataService {
   }
   //get user helper function
   reqUser(sessionId, id, callback){
-    // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
     this.http.get(this.envir.getServer("noEncode")+'/data/user/'+sessionId+'/'+id).subscribe(res => {
       var data:any = res
       this.emitUserData(data)
@@ -121,7 +120,7 @@ export class DataService {
   }
   //called here
   emitUserData(data){    
-    if(typeof data.error != "undefined"){ //received error trying to get profile data
+    if(typeof data.error != "undefined"){ //received error trying to get user data
       console.log("user data msg: "+data.error)
       this.user.emit(data);
       if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
@@ -136,14 +135,36 @@ export class DataService {
 
 
 
+  /* SPEAKERS */
 
-
-
-
-
-  postUser(){
-    return this.http.get(this.envir.getServer("noEncode")+'/posts')
+  //get speakers from db if session active, called in details
+  getSpeakers(word, callback){
+    var sessionId = localStorage.getItem("sessionId")
+    if ( sessionId != null) this.reqSpeakers(sessionId, word, callback)
   }
+  //get speakers helper function
+  reqSpeakers(sessionId, word, callback){    
+    this.http.get(this.envir.getServer("noEncode")+'/data/speakers/'+sessionId+'/'+word).subscribe(res => {
+      var data:any = res
+      this.emitSpeakersData(data)
+      callback
+    })
+  }
+  //called here
+  emitSpeakersData(data){    
+    if(typeof data.error != "undefined"){ //received error trying to get speakers data
+      console.log("speaker data msg: "+data.error)
+      this.speakers.emit(data);
+      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+      return
+    }
+    this.speakers.emit(data);
+  }
+
+
+
+
+
 
 
 

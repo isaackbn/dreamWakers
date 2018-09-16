@@ -22,14 +22,12 @@
                 [class.not-activated] = "currentUrl != '/plan'"> Plan</a> </li>
         
 
-      <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> <a (click)="signOut()" class="item" 
-                [class.activated] = "currentUrl == '/'"
-                [class.not-activated] = "currentUrl != '/'">Sign out</a> </li>
+      <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> <a (click)="signOut()" class="item">
+                Sign out</a> </li>
       
       <span class="item" *ngIf="hasData()">
-        <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName"
-                  [class.activated] = "currentUrl == '/'"
-                  [class.not-activated] = "currentUrl != '/'">{{firstName}}</a> </li>
+        <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
+                {{firstName}}</a> </li>
     
         <img class="profile-img" src={{profilePicSrc}} alt="img" >
       </span>

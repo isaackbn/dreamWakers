@@ -33,9 +33,7 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
   constructor(private data: DataService, public router:Router) { }
 
   ngOnInit() {
-    this.data.users.subscribe( usersData => {
-      console.log(usersData);
-      
+    this.data.users.subscribe( usersData => {      
       this.suggestedCount = usersData.length
       this.users = usersData
     })
@@ -44,8 +42,8 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.moreUsersId.nativeElement.focus();
  }
-  showDetails(id){
-    this.router.navigate(['details/'+id])
+  showDetails(userId){
+    this.router.navigate(['details/'+userId])
   }
 
 }

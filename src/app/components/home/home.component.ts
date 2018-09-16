@@ -17,36 +17,40 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 export class HomeComponent implements OnInit {
 
   profileData;
-  launchModal = false;
   firstName;
+  launchModal = false;
 
-  //alert management
   alertDisabled:boolean = false
+  alertsData;
   alert = {
     title : "",
     body : "",
-    empty: () => {if (this.alert.title=="" && this.alert.body == "" || this.alertDisabled==true)return true},
-    close: () => {this.alertDisabled = true}
+    empty: true
   }
+
 
   constructor( private data: DataService, public router:Router, public alertService:AlertService,
                 public ngxSmartModalService: NgxSmartModalService) {
   }
   
 
-  //init management
+
   ngOnInit() {
+    
     this.profileData = this.data.profile.subscribe( profileData => { // init subscriber for profile data emitter
       this.firstName = profileData.firstName
       if (profileData.type == null) this.launchModal = true
     }) 
 
-    this.alertService.mainAlert().subscribe(
-      alert => {
-        this.alert.title = alert[0].title
-        this.alert.body = alert[0].body
+    this.alertsData = this.alertService.alerts.subscribe( alertsData => {
+      if (alertsData.tag == "main"){
+        if (alertsData.status != "empty") this.alert.empty = false        
+        this.alert.title = alertsData.title
+        this.alert.body = alertsData.body
       }
-    )
+
+    })
+    this.alertService.getAlert("main", null)
 
   }
 
@@ -65,9 +69,15 @@ export class HomeComponent implements OnInit {
   }
 
 
+  closeMainAlert(){
+    this.alert.empty = true;
+    this.alertService.sawAlert("main", null)
+  }
+
 
   ngOnDestroy(){
     this.profileData.unsubscribe();
+    this.alertsData.unsubscribe();
   }
 
 }

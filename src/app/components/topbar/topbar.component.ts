@@ -33,7 +33,6 @@ export class TopbarComponent implements OnInit {
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut() //listening to data service
       if (profileData.action == "signedUp") this.reload() // refresh page to get signup modal
-      else console.log(profileData.action);
     })
     this.data.tryPersist(null) //for now, emits profile data
   }

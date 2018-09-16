@@ -1,7 +1,7 @@
 
 
-<div class="alert" *ngIf="!alert.empty()"> 
-  <a class="close" (click)="alert.close()"></a>
+<div class="alert" *ngIf="!alert.empty"> 
+  <a class="close" (click)="closeMainAlert()"></a>
   <h4>{{alert.title}}</h4> {{alert.body}}
 </div>
 
