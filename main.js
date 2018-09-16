@@ -469,7 +469,7 @@ var AuthComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n\n<span *ngIf='hasData()' class=\"user-container\">\n  <span class=\"user-block\">\n\n    <span style=\" color:rgb(127, 128, 129); font-size:1.6e;\"> {{user.firstName}} {{user.lastName}} </span>\n    <hr>\n    <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n    <hr>\n\n    <div style=\"margin-left: 50px\">\n      <span style=\"color:rgb(133, 137, 138);text-decoration: underline;\"> Industry:</span> \n      <span class=\"profession\" > &nbsp;{{user.industry}}</span> \n    </div>\n\n    <div class=\"detail\" style=\"margin-left: 50px;\">- {{user.headline}}, currently at <span class=\"profession\" style=\"font-size: 1.3em;color: rgb(89, 105, 148)\"> {{user.position}} </span></div>\n\n    <div style=\"margin-left: 50px;margin-top:20px;\"> \n      <span style=\"margin-left: 0px;color:rgb(133, 137, 138); text-decoration: underline;\" > Summary:</span> \n      <span style=\"font-size: 0.85em;\"> &nbsp;{{user.summary}} </span>\n    </div>\n\n  </span>\n\n</span>"
+module.exports = "\n\n\n\n\n<span *ngIf='hasData()' class=\"user-container\">\n  <span class=\"user-block\">\n\n    <span style=\" color:rgb(127, 128, 129); font-size:1.6e;\"> {{user.firstName}} {{user.lastName}} </span>\n    <hr>\n    <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n    <hr>\n\n    <div style=\"margin-left: 50px\">\n      <span style=\"color:rgb(133, 137, 138);text-decoration: underline;\"> Industry:</span> \n      <span class=\"profession\" > &nbsp;{{user.industry}}</span> \n    </div>\n\n    <div class=\"detail\" style=\"margin-left: 50px;\">- {{user.headline}}</div>\n\n    <div style=\"margin-left: 50px;margin-top:20px;\"> \n      <span style=\"margin-left: 0px;color:rgb(133, 137, 138); text-decoration: underline;\" > Summary:</span> \n      <span style=\"font-size: 0.85em;\"> &nbsp;{{user.summary}} </span>\n    </div>\n    <button class=\"button\" style=\"margin-top: 30px;\">connect <i class=\"fa fa-user-o \" style=\"margin-left:6px; font-size:16px\"></i></button>\n    \n  </span>\n\n\n</span>"
 
 /***/ }),
 
@@ -480,7 +480,7 @@ module.exports = "\n\n\n\n\n<span *ngIf='hasData()' class=\"user-container\">\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  width: 100%; }\n\n.profession {\n  color: #069db1;\n  font-size: .95em; }\n\n.detail {\n  font-size: 0.8em; }\n\n.profession:hover {\n  cursor: pointer; }\n\n.detail:hover {\n  cursor: pointer; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 20px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto;\n      grid-template-columns: auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 100%;\n  list-style-type: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 730px;\n  min-height: 700px;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  text-align: center;\n  border: 1px solid #bfcfcf;\n  border-top: 3px solid #a6bebe;\n  background: white; }\n\n.user-block hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 320px;\n  height: 320px;\n  border: 2px solid #b6c7c7; }\n\n.profile-img:hover {\n  cursor: pointer; }\n"
+module.exports = "#container {\n  width: 100%; }\n\n.profession {\n  color: #069db1;\n  font-size: .95em; }\n\n.detail {\n  font-size: 0.8em; }\n\n.profession:hover {\n  cursor: pointer; }\n\n.detail:hover {\n  cursor: pointer; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 20px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto;\n      grid-template-columns: auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 100%;\n  list-style-type: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 730px;\n  min-height: 700px;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  text-align: center;\n  border: 1px solid #bfcfcf;\n  border-top: 3px solid #a6bebe;\n  background: white; }\n\n.user-block hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 3px;\n  margin-top: 3px;\n  width: 320px;\n  height: 320px;\n  border: 2px solid #b6c7c7; }\n\n.profile-img:hover {\n  cursor: pointer; }\n\n.button {\n  background-color: #9c9c9c;\n  /* Green */\n  border: none;\n  color: white;\n  padding: 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 14px;\n  font-weight: lighter;\n  margin: 2px 0px;\n  border-radius: 2px;\n  width: 150px;\n  cursor: pointer;\n  top: 40px;\n  margin-left: 20px; }\n"
 
 /***/ }),
 
@@ -613,7 +613,7 @@ var FlashchatsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n<div class=\"container\">\n    Panel section\n  </div>"
+module.exports = "\n\n\n<div class=\"container\">\n    .\n  </div>"
 
 /***/ }),
 
@@ -676,7 +676,7 @@ var HomePanelComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div id=\"container\">\n    \n    <div class=\"\">\n      <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker\">\n      <button type=\"submit\" class=\"searchButton\">\n        <i class=\"material-icons\">search</i>\n      </button>\n    </div>\n\n\n    <div id=\"search-results\">\n      this is the display area for the search results\n    </div>\n\n    <span id=\"right\">\n        <div class=\"vl\"></div>\n      </span>\n\n  </div>\n"
+module.exports = "\n  <div id=\"container\">\n    \n    <div>\n      <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker ...\" (input)='newSearch($event.target.value)'>\n      <!-- <button type=\"submit\" class=\"searchButton\">\n        <i class=\"material-icons\">search</i>\n      </button> -->\n    </div>\n\n\n\n\n  <span id=\"left\">\n      <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n        <li *ngFor=\"let speaker of speakers\" class=\"user-block\" (click)=\"showDetails(speaker.id)\">\n          <a routerLink=\"details/{{speaker.id}}\"> {{speaker.firstName}} {{speaker.lastName}}</a>\n          <hr>\n          <img class=\"profile-img\" src={{speaker.pictureUrl}} alt=\"img\" >\n          <hr>\n          <div class=\"profession\">{{speaker.industry}}</div>\n          <div class=\"detail\">{{speaker.headline}}</div>\n          <div class=\"detail\">{{speaker.location}}</div>\n        </li>\n      </ul>\n  </span>"
 
 /***/ }),
 
@@ -687,7 +687,7 @@ module.exports = "\n  <div id=\"container\">\n    \n    <div class=\"\">\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  width: 430px;\n  float: left; }\n\n#search-results {\n  margin-left: 15px;\n  margin-top: 15px;\n  width: 411px;\n  border-right: 1px solid #a1a1a194; }\n\n.searchTerm {\n  float: left;\n  width: 355px;\n  border: 2px solid #00B4CC;\n  padding: 5px;\n  height: 20px;\n  border-radius: 0.1px;\n  margin-left: 9px;\n  margin-top: 15px;\n  outline: none;\n  color: #cccccc;\n  font-size: 16px;\n  font-weight: lighter; }\n\n.searchTerm:focus {\n  color: #444444;\n  font-size: 16px;\n  font-weight: lighter; }\n\n.searchButton {\n  margin-top: 15px;\n  margin-left: -1px;\n  width: 40px;\n  height: 34px;\n  border: 0.03px solid #00B4CC;\n  background: #00B4CC;\n  text-align: center;\n  color: #fff;\n  border-radius: 2px;\n  cursor: pointer;\n  font-size: 30px; }\n\n.searchButton:focus {\n  outline: none; }\n"
+module.exports = "#container {\n  width: 430px;\n  float: left; }\n\n#search-results {\n  margin-left: 15px;\n  margin-top: 15px;\n  width: 411px; }\n\n.searchTerm {\n  float: left;\n  width: 395px;\n  border: 1px solid #dddddd;\n  padding: 5px;\n  height: 20px;\n  border-radius: 2px;\n  margin-left: 9px;\n  margin-top: 15px;\n  outline: none;\n  color: #dddddd;\n  font-size: 16px;\n  font-weight: lighter; }\n\n.searchTerm:focus {\n  color: black;\n  font-size: 16px;\n  font-weight: lighter; }\n\n.searchButton {\n  margin-top: 15px;\n  margin-left: -3px;\n  width: 40px;\n  height: 34px;\n  border: 0.01px solid #252525;\n  background: #e0dfdf;\n  text-align: center;\n  color: #707070;\n  border-radius: 1px;\n  cursor: pointer;\n  font-size: 30px; }\n\n.searchButton:focus {\n  outline: none;\n  color: black; }\n\n::-webkit-input-placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n:-ms-input-placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n::-ms-input-placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n::placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n:-ms-input-placeholder {\n  /* Internet Explorer 10-11 */\n  color: #929090; }\n\n::-ms-input-placeholder {\n  /* Microsoft Edge */\n  color: #929090; }\n\n#container {\n  width: 430px; }\n\n#left {\n  float: left; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 120px;\n  height: 120px; }\n"
 
 /***/ }),
 
@@ -702,6 +702,8 @@ module.exports = "#container {\n  width: 430px;\n  float: left; }\n\n#search-res
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeSearchComponent", function() { return HomeSearchComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -712,10 +714,31 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var HomeSearchComponent = /** @class */ (function () {
-    function HomeSearchComponent() {
+    function HomeSearchComponent(data, router) {
+        this.data = data;
+        this.router = router;
     }
     HomeSearchComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.observer = this.data.speakers.subscribe(function (speakersData) {
+            if (JSON.stringify(_this.speakers) != JSON.stringify(speakersData))
+                _this.speakers = speakersData;
+        });
+    };
+    HomeSearchComponent.prototype.newSearch = function (word) {
+        if (word != "")
+            this.data.getSpeakers(word, null);
+        else
+            this.speakers = [];
+    };
+    HomeSearchComponent.prototype.showDetails = function (userId) {
+        this.router.navigate(['details/' + userId]);
+    };
+    HomeSearchComponent.prototype.ngOnDestroy = function () {
+        this.observer.unsubscribe();
     };
     HomeSearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -723,7 +746,7 @@ var HomeSearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home-search.component.html */ "./src/app/components/home-search/home-search.component.html"),
             styles: [__webpack_require__(/*! ./home-search.component.scss */ "./src/app/components/home-search/home-search.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], HomeSearchComponent);
     return HomeSearchComponent;
 }());
@@ -750,7 +773,7 @@ module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\">\n      <p i
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  width: 430px; }\n\n#left {\n  float: left;\n  border-right: 1px solid #a1a1a194; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 120px;\n  height: 120px; }\n"
+module.exports = "#container {\n  width: 430px; }\n\n#left {\n  float: left; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 120px;\n  height: 120px; }\n"
 
 /***/ }),
 
@@ -791,7 +814,6 @@ var HomeSuggestsComponent = /** @class */ (function () {
     HomeSuggestsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.data.users.subscribe(function (usersData) {
-            console.log(usersData);
             _this.suggestedCount = usersData.length;
             _this.users = usersData;
         });
@@ -800,8 +822,8 @@ var HomeSuggestsComponent = /** @class */ (function () {
     HomeSuggestsComponent.prototype.ngAfterViewInit = function () {
         this.moreUsersId.nativeElement.focus();
     };
-    HomeSuggestsComponent.prototype.showDetails = function (id) {
-        this.router.navigate(['details/' + id]);
+    HomeSuggestsComponent.prototype.showDetails = function (userId) {
+        this.router.navigate(['details/' + userId]);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('moreUsersId'),
@@ -840,7 +862,7 @@ var HomeSuggestsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"alert\" *ngIf=\"!alert.empty()\"> \n  <a class=\"close\" (click)=\"alert.close()\"></a>\n  <h4>{{alert.title}}</h4> {{alert.body}}\n</div>\n\n<div>\n  <app-home-search ></app-home-search>\n  <app-home-suggests></app-home-suggests>\n</div>\n\n<app-home-panel></app-home-panel>\n\n\n\n\n<ngx-smart-modal #profileType  [customClass]=\"'large-modal'\" identifier=\"profileType\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"false\">\n  <pre>Welcome {{firstName}}, how would you describe yourself ?</pre>\n    <button class=\"button\" (click)=\"updateProfileType('speaker')\">I am a Speaker</button>\n    <button class=\"button\" (click)=\"updateProfileType('teacher')\">I am a Teacher</button>\n  <div class=\"footer\"> This information helps us match you with the right accounts</div>\n</ngx-smart-modal>\n\n<span *ngIf=\"launchModal == true\">{{initModal()}}</span>"
+module.exports = "\n\n<div class=\"alert\" *ngIf=\"!alert.empty\"> \n  <a class=\"close\" (click)=\"closeMainAlert()\"></a>\n  <h4>{{alert.title}}</h4> {{alert.body}}\n</div>\n\n<div>\n  <app-home-search ></app-home-search>\n  <app-home-suggests></app-home-suggests>\n</div>\n\n<app-home-panel></app-home-panel>\n\n\n\n\n<ngx-smart-modal #profileType  [customClass]=\"'large-modal'\" identifier=\"profileType\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"false\">\n  <pre>Welcome {{firstName}}, how would you describe yourself ?</pre>\n    <button class=\"button\" (click)=\"updateProfileType('speaker')\">I am a Speaker</button>\n    <button class=\"button\" (click)=\"updateProfileType('teacher')\">I am a Teacher</button>\n  <div class=\"footer\"> This information helps us match you with the right accounts</div>\n</ngx-smart-modal>\n\n<span *ngIf=\"launchModal == true\">{{initModal()}}</span>"
 
 /***/ }),
 
@@ -888,23 +910,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(data, router, alertService, ngxSmartModalService) {
-        var _this = this;
         this.data = data;
         this.router = router;
         this.alertService = alertService;
         this.ngxSmartModalService = ngxSmartModalService;
         this.launchModal = false;
-        //alert management
         this.alertDisabled = false;
         this.alert = {
             title: "",
             body: "",
-            empty: function () { if (_this.alert.title == "" && _this.alert.body == "" || _this.alertDisabled == true)
-                return true; },
-            close: function () { _this.alertDisabled = true; }
+            empty: true
         };
     }
-    //init management
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.profileData = this.data.profile.subscribe(function (profileData) {
@@ -912,10 +929,15 @@ var HomeComponent = /** @class */ (function () {
             if (profileData.type == null)
                 _this.launchModal = true;
         });
-        this.alertService.mainAlert().subscribe(function (alert) {
-            _this.alert.title = alert[0].title;
-            _this.alert.body = alert[0].body;
+        this.alertsData = this.alertService.alerts.subscribe(function (alertsData) {
+            if (alertsData.tag == "main") {
+                if (alertsData.status != "empty")
+                    _this.alert.empty = false;
+                _this.alert.title = alertsData.title;
+                _this.alert.body = alertsData.body;
+            }
         });
+        this.alertService.getAlert("main", null);
     };
     //called from html if launchModal == true
     HomeComponent.prototype.initModal = function () { this.launchModal = false; this.ngxSmartModalService.getModal("profileType").open(); };
@@ -927,8 +949,13 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent.prototype.showDetails = function (id) {
         this.router.navigate(['details/' + id]);
     };
+    HomeComponent.prototype.closeMainAlert = function () {
+        this.alert.empty = true;
+        this.alertService.sawAlert("main", null);
+    };
     HomeComponent.prototype.ngOnDestroy = function () {
         this.profileData.unsubscribe();
+        this.alertsData.unsubscribe();
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1017,7 +1044,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\" \n                [class.activated] = \"currentUrl == '/'\"\n                [class.not-activated] = \"currentUrl != '/'\">Sign out</a> </li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\">\n        <li id=\"username\" style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\"\n                  [class.activated] = \"currentUrl == '/'\"\n                  [class.not-activated] = \"currentUrl != '/'\">{{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" >\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
+module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\">\n                Sign out</a> </li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\">\n        <li id=\"username\" style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\">\n                {{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" >\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1083,8 +1110,6 @@ var TopbarComponent = /** @class */ (function () {
                 _this.signOut(); //listening to data service
             if (profileData.action == "signedUp")
                 _this.reload(); // refresh page to get signup modal
-            else
-                console.log(profileData.action);
         });
         this.data.tryPersist(null); //for now, emits profile data
     };
@@ -1252,9 +1277,62 @@ var AlertService = /** @class */ (function () {
     function AlertService(http, envir) {
         this.http = http;
         this.envir = envir;
+        this.alerts = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: topbar, home, auth-redirect
     }
     AlertService.prototype.mainAlert = function () {
         return this.http.get(this.envir.getServer("noEncode") + '/alerts/id/main');
+    };
+    //REQUEST ALERT
+    //called from home,..
+    AlertService.prototype.getAlert = function (tag, callback) {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.requestAlert(sessionId, tag, callback);
+    };
+    //send get alert request
+    AlertService.prototype.requestAlert = function (sessionId, tag, callback) {
+        var _this = this;
+        this.http.get(this.envir.getServer("noEncode") + '/alerts/get/' + sessionId + "/" + tag).subscribe(function (res) {
+            var alertObj = res;
+            _this.emitAlert(alertObj);
+            callback;
+        });
+    };
+    //called here
+    AlertService.prototype.emitAlert = function (alertObj) {
+        if (typeof alertObj.error != "undefined") {
+            console.log("alertObj msg: " + alertObj.error);
+            this.alerts.emit(alertObj);
+            //if(alertObj.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+            return;
+        }
+        this.alerts.emit(alertObj);
+    };
+    //SAW ALERT
+    //called from home,..
+    AlertService.prototype.sawAlert = function (tag, callback) {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.sawAlertMsg(sessionId, tag, callback);
+    };
+    //send sawAlert info
+    AlertService.prototype.sawAlertMsg = function (sessionId, tag, callback) {
+        var _this = this;
+        this.http.get(this.envir.getServer("noEncode") + '/alerts/remove/' + sessionId + "/" + tag).subscribe(function (res) {
+            var sawAlert_resObj = res;
+            _this.emitSawAlertResponse(sawAlert_resObj);
+            callback;
+        });
+    };
+    //called here
+    AlertService.prototype.emitSawAlertResponse = function (sawAlert_resObj) {
+        if (typeof sawAlert_resObj.error != "undefined") {
+            console.log("sawAlert_resObj msg: " + sawAlert_resObj.error);
+            this.alerts.emit(sawAlert_resObj);
+            //if(alertObj.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+            return;
+        }
+        this.alerts.emit(sawAlert_resObj);
     };
     AlertService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1395,6 +1473,7 @@ var DataService = /** @class */ (function () {
         this.profile = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: topbar, home, auth-redirect
         this.users = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
         this.user = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
+        this.speakers = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-search
     }
     /* PROFILE */
     //refresh profile data if session active, called from topbar
@@ -1424,7 +1503,6 @@ var DataService = /** @class */ (function () {
         this.profile.emit(data);
         localStorage.setItem("sessionId", data.sessionId);
         localStorage.setItem("oneCheck", "false");
-        console.log(data);
     };
     //called from home
     DataService.prototype.updateProfileType = function (type) {
@@ -1440,7 +1518,6 @@ var DataService = /** @class */ (function () {
     //get users helper function
     DataService.prototype.reqUsers = function (sessionId, callback) {
         var _this = this;
-        // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
         this.http.get(this.envir.getServer("noEncode") + '/data/users/' + sessionId).subscribe(function (res) {
             var data = res;
             _this.emitUsersData(data);
@@ -1456,7 +1533,6 @@ var DataService = /** @class */ (function () {
                 this.profile.emit({ order: "sign out" }); //topbar subscribes to this
             return;
         }
-        console.log(data[0]);
         this.users.emit(data);
     };
     /* USER */
@@ -1469,7 +1545,6 @@ var DataService = /** @class */ (function () {
     //get user helper function
     DataService.prototype.reqUser = function (sessionId, id, callback) {
         var _this = this;
-        // this.http.get(this.envir.getServer("noEncode")+'/users').subscribe
         this.http.get(this.envir.getServer("noEncode") + '/data/user/' + sessionId + '/' + id).subscribe(function (res) {
             var data = res;
             _this.emitUserData(data);
@@ -1488,8 +1563,32 @@ var DataService = /** @class */ (function () {
         console.log(data);
         this.user.emit(data);
     };
-    DataService.prototype.postUser = function () {
-        return this.http.get(this.envir.getServer("noEncode") + '/posts');
+    /* SPEAKERS */
+    //get speakers from db if session active, called in details
+    DataService.prototype.getSpeakers = function (word, callback) {
+        var sessionId = localStorage.getItem("sessionId");
+        if (sessionId != null)
+            this.reqSpeakers(sessionId, word, callback);
+    };
+    //get speakers helper function
+    DataService.prototype.reqSpeakers = function (sessionId, word, callback) {
+        var _this = this;
+        this.http.get(this.envir.getServer("noEncode") + '/data/speakers/' + sessionId + '/' + word).subscribe(function (res) {
+            var data = res;
+            _this.emitSpeakersData(data);
+            callback;
+        });
+    };
+    //called here
+    DataService.prototype.emitSpeakersData = function (data) {
+        if (typeof data.error != "undefined") {
+            console.log("speaker data msg: " + data.error);
+            this.speakers.emit(data);
+            if (data.error == "Auth failed")
+                this.profile.emit({ order: "sign out" }); //topbar subscribes to this
+            return;
+        }
+        this.speakers.emit(data);
     };
     /* SETTINGS */
     //called at login and logout, from authService
