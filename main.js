@@ -80,6 +80,11 @@ var routes = [
         component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"]
     },
     {
+        path: 'home/search/:word',
+        canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]],
+        component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"]
+    },
+    {
         path: 'details/:id',
         canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]],
         component: _components_details_details_component__WEBPACK_IMPORTED_MODULE_3__["DetailsComponent"]
@@ -676,7 +681,7 @@ var HomePanelComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div id=\"container\">\n    \n    <div>\n      <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker ...\" (input)='newSearch($event.target.value)'>\n      <!-- <button type=\"submit\" class=\"searchButton\">\n        <i class=\"material-icons\">search</i>\n      </button> -->\n    </div>\n\n\n\n\n  <span id=\"left\">\n      <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n        <li *ngFor=\"let speaker of speakers\" class=\"user-block\" (click)=\"showDetails(speaker.id)\">\n          <a routerLink=\"details/{{speaker.id}}\"> {{speaker.firstName}} {{speaker.lastName}}</a>\n          <hr>\n          <img class=\"profile-img\" src={{speaker.pictureUrl}} alt=\"img\" >\n          <hr>\n          <div class=\"profession\">{{speaker.industry}}</div>\n          <div class=\"detail\">{{speaker.headline}}</div>\n          <div class=\"detail\">{{speaker.location}}</div>\n        </li>\n      </ul>\n  </span>"
+module.exports = "\n  <div id=\"container\">\n    \n    <!-- <div>\n      <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker ...\" (input)='newSearch($event.target.value)'>\n      <button type=\"submit\" class=\"searchButton\">\n        <i class=\"material-icons\">search</i>\n      </button>\n    </div> -->\n\n\n\n\n  <span id=\"left\">\n      <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n        <li *ngFor=\"let speaker of speakers\" class=\"user-block\" (click)=\"showDetails(speaker.id)\">\n          <a routerLink=\"details/{{speaker.id}}\"> {{speaker.firstName}} {{speaker.lastName}}</a>\n          <hr>\n          <img class=\"profile-img\" src={{speaker.pictureUrl}} alt=\"img\" >\n          <hr>\n          <div class=\"profession\">{{speaker.industry}}</div>\n          <div class=\"detail\">{{speaker.headline}}</div>\n          <div class=\"detail\">{{speaker.location}}</div>\n        </li>\n      </ul>\n  </span>"
 
 /***/ }),
 
@@ -728,12 +733,6 @@ var HomeSearchComponent = /** @class */ (function () {
                 _this.speakers = speakersData;
         });
     };
-    HomeSearchComponent.prototype.newSearch = function (word) {
-        if (word != "")
-            this.data.getSpeakers(word, null);
-        else
-            this.speakers = [];
-    };
     HomeSearchComponent.prototype.showDetails = function (userId) {
         this.router.navigate(['details/' + userId]);
     };
@@ -773,7 +772,7 @@ module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\">\n      <p i
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  width: 430px; }\n\n#left {\n  float: left; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 120px;\n  height: 120px; }\n"
+module.exports = "#container {\n  width: 430px; }\n\n#left {\n  float: left; }\n\n#suggested {\n  color: #696969;\n  margin-left: 15px;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .85em; }\n\n.detail {\n  font-size: 0.65em; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  margin-top: 10px;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  border-top: 3px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  border-top: 3px solid #8d8d8d94;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);\n  background: white;\n  border-radius: 3px;\n  padding: 10px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6;\n    margin: 1em 0;\n    padding: 0; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 10px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 2%;\n  margin-top: 3px;\n  width: 120px;\n  height: 120px; }\n"
 
 /***/ }),
 
@@ -820,7 +819,7 @@ var HomeSuggestsComponent = /** @class */ (function () {
         this.data.getUsers(null);
     };
     HomeSuggestsComponent.prototype.ngAfterViewInit = function () {
-        this.moreUsersId.nativeElement.focus();
+        // this.moreUsersId.nativeElement.focus();
     };
     HomeSuggestsComponent.prototype.showDetails = function (userId) {
         this.router.navigate(['details/' + userId]);
@@ -908,12 +907,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(data, router, alertService, ngxSmartModalService) {
+    function HomeComponent(data, router, alertService, ngxSmartModalService, route) {
+        var _this = this;
         this.data = data;
         this.router = router;
         this.alertService = alertService;
         this.ngxSmartModalService = ngxSmartModalService;
+        this.route = route;
         this.launchModal = false;
         this.alertDisabled = false;
         this.alert = {
@@ -921,6 +923,7 @@ var HomeComponent = /** @class */ (function () {
             body: "",
             empty: true
         };
+        this.route.params.subscribe(function (params) { return _this.searchSpeaker(params.word); });
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -957,6 +960,9 @@ var HomeComponent = /** @class */ (function () {
         this.profileData.unsubscribe();
         this.alertsData.unsubscribe();
     };
+    HomeComponent.prototype.searchSpeaker = function (word) {
+        this.data.getSpeakers(word, null);
+    };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             providers: [_topbar_topbar_component__WEBPACK_IMPORTED_MODULE_4__["TopbarComponent"]],
@@ -965,7 +971,7 @@ var HomeComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./home.component.scss */ "./src/app/components/home/home.component.scss")]
         }),
         __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
-            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"]])
+            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -1044,7 +1050,7 @@ var PlanComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n  \n      <li><a routerLink=\"home\" \n                [class.activated] = \"currentUrl == '/home'\"\n                [class.not-activated] = \"currentUrl != '/home'\"> Home </a></li>\n  \n      <li>  <a routerLink=\"flashchats\" \n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\"> Flashchats</a> </li>\n      \n      <li>  <a routerLink=\"plan\" \n                [class.activated] = \"currentUrl == '/plan'\"\n                [class.not-activated] = \"currentUrl != '/plan'\"> Plan</a> </li>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> <a (click)=\"signOut()\" class=\"item\">\n                Sign out</a> </li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\">\n        <li id=\"username\" style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\">\n                {{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" >\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
+module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n  \n      <!-- <li class=\"topnav-centered\"> <a href=\"https://www.dreamwakers.org/\" \n                [class.activated] = \"currentUrl != nil\"> Dreamwakers </a></li>\n   -->\n      \n      <li><a routerLink=\"home\">\n                <img class=\"icon\" [src]=\"'assets/img/logo.jpg'\" alt=\"img\" >\n          </a></li>\n\n      <li>  <a routerLink=\"flashchats\"\n                [class.activated] = \"currentUrl == '/flashchats'\"\n                [class.not-activated] = \"currentUrl != '/flashchats'\">\n                <i id=\"flashchats\" class=\"\tfa fa-group \" style=\"font-size:33px\"></i>\n            </a> </li>\n      \n      <!-- <li>  <a routerLink=\"plan\">\n                <i class=\"\tfa fa-envelope\" style=\"color: white ;font-size:34px\"></i>\n            </a> </li> -->\n\n      <input id=\"searchBarId\" #searchBarId type=\"text\" class=\"searchTerm\" placeholder=\"search speaker ...\" (input)='newSearch($event.target.value)'>\n        \n\n      <li style=\"float: right; margin-right: 3%;\" *ngIf=\"signedIn()\"> \n        <a (click)=\"signOut()\" class=\"item\">\n            <i id=\"logout\" class=\"fa fa-sign-out\" style=\"font-size:25px;margin-top:3px;\"></i>\n          </a></li>\n      \n      <span class=\"item\" *ngIf=\"hasData()\" (click)=\"showProfile()\">\n        <li id=\"username\" style=\"float: right\" *ngIf=\"signedIn()\"> <a id=\"fullName\">\n                {{firstName}}</a> </li>\n    \n        <img class=\"profile-img\" src={{profilePicSrc}} alt=\"img\" (click)=\"showProfile()\">\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1055,7 +1061,7 @@ module.exports = "\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: white;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 15px 12px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation li a:hover:not(.active) {\n  color: #40b7b9; }\n\n#navigation .activated {\n  border-bottom: 2px solid #38a3a5;\n  color: #38a3a5; }\n\n#navigation .not-activated {\n  color: inherit; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  float: right;\n  border-radius: 10%;\n  margin-top: 5px;\n  width: 30px;\n  height: 40px; }\n\n#username {\n  margin-right: 3px; }\n"
+module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  background-color: #3A66A7;\n  border-radius: 2px;\n  border-top: 1px solid #f1f1f1;\n  border-bottom: 1px solid #cacaca;\n  min-height: 40px; }\n\n#navigation li {\n  float: left; }\n\n#navigation li a {\n  display: block;\n  text-align: center;\n  padding: 0px 12px;\n  margin-top: 7px;\n  text-decoration: none;\n  border-radius: 2px;\n  text-decoration: none; }\n\n#navigation .activated {\n  color: white; }\n\n#navigation .not-activated {\n  color: #1b304e; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  float: right;\n  border-radius: 10%;\n  margin-top: 5px;\n  width: 25px;\n  height: 35px;\n  border: 1px solid rgba(155, 155, 155, 0.322); }\n\n.icon {\n  border-radius: 2px;\n  width: 33px; }\n\n#username {\n  margin-right: 3px;\n  margin-top: 5px;\n  font-family: 'Trebuchet MS', sans-serif;\n  color: white; }\n\n#username:hover {\n  text-decoration: underline; }\n\n.searchTerm {\n  margin-left: 30px;\n  width: 460px;\n  border: 1px solid #333333;\n  padding: 2px 7px;\n  height: 23px;\n  border-radius: 3px;\n  margin-top: 8px;\n  outline: none;\n  color: #131313;\n  font-size: 14px;\n  font-weight: lighter; }\n\n#logout {\n  color: #1b304e; }\n\n#logout:hover {\n  color: white; }\n\n#flashchats:hover {\n  color: white; }\n"
 
 /***/ }),
 
@@ -1082,6 +1088,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1128,6 +1135,24 @@ var TopbarComponent = /** @class */ (function () {
         this.router.navigate(['/auth']);
     };
     TopbarComponent.prototype.reload = function () { location.reload(); };
+    TopbarComponent.prototype.ngAfterViewInit = function () {
+        this.searchBarId.nativeElement.focus();
+    };
+    TopbarComponent.prototype.newSearch = function (word) {
+        if (this.currentUrl != "home" && word != "")
+            this.router.navigate(['home/search/' + word]);
+        if (word != "")
+            this.data.getSpeakers(word, null);
+        else
+            this.data.getSpeakers("*null*", null);
+    };
+    TopbarComponent.prototype.showProfile = function () {
+        this.router.navigate(['details/' + localStorage.getItem("sessionId")]);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('searchBarId'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], TopbarComponent.prototype, "searchBarId", void 0);
     TopbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-topbar',
