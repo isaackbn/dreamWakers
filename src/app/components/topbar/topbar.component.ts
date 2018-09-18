@@ -16,6 +16,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
 
   currentUrl: String
   firstName = ""
+  lastName = ""
   userDataService:any;
   profilePicSrc =""
 
@@ -34,6 +35,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.userDataService = this.data.profile.subscribe( profileData => {
       this.firstName = profileData.firstName
+      this.lastName = profileData.lastName.charAt(0)
       this.profilePicSrc = profileData.pictureUrl
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut() //listening to data service

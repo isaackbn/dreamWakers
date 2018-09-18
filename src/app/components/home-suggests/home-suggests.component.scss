@@ -19,10 +19,15 @@
 }
 .profession {
     color: rgb(6, 157, 177);
-    font-size: .85em;
+    font-size: .80em;
+    font-family: 'Lucida Grande';
+    font-weight: lighter;
 }
 .detail {
     font-size: 0.65em;
+    font-family: 'Lucida Grande';
+    color:rgb(82, 82, 82);
+    font-weight: lighter;
 
 }
 #separator{
@@ -32,48 +37,49 @@
 }
 
 
+
 //USERS DISPLAY
 
 .user-container {
-    margin-top: 10px;
+    //margin-top: 10px;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 5px;
     padding: 0 10px;
     width: 90%;
     list-style-type: none;
-}
-.user-block:hover{
+  }
+  .user-block:hover{
     cursor: pointer;
     border: 1px solid #38a3a5;
-    border-top: 3px solid #38a3a5;
+    //border-top: 3px solid #38a3a5;
     background: rgb(255, 255, 255);
     hr{
         border-top: 1px solid #a1a1a194;
     }
-}
-.user-block:focus{
+  }
+  .user-block:focus{
     border: 1px solid #38a3a5;
     outline: none;
-}
-.user-block{
+  }
+  .user-block{
     transition: all 0.12s linear;
     border: 1px solid rgb(211, 211, 211);
-    border-top: 3px solid #8d8d8d94;
+    //border-top: 3px solid #8d8d8d94;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);
     background: rgb(255, 255, 255);
     border-radius: 3px;
-    padding: 10px 0;
+    padding: 5px 0;
     width:130px;
     height: 400 px;
     text-align: center;
     hr {
-        display: block;
+        // display: block;
         height: 1px;
         border: 0;
         border-top: 1px solid rgb(230, 230, 230);
-        margin: 1em 0;
-        padding: 0;
+        // margin: 1em 0;
+        // padding: 0;
     }
     a {
         font-size: .8em;
@@ -82,13 +88,13 @@
         text-align: left;
     }
     div {
-        margin-top: 10px;
+        margin-top: 5px;
         //list-style-type: none;
         margin-left: 3px;
         text-align: left;
     }
-}
-
+  }
+  
   
   
   //ANIMATIONS
@@ -101,7 +107,7 @@
            -o-animation: fadein 1s; /* Opera < 12.1 */
               animation: fadein 1s;
   }
-
+  
   
   @keyframes fadein {
       from { opacity: 0; }
@@ -131,15 +137,20 @@
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-
-
-
-
+  
+  
+  
+  
   .profile-img{
     object-fit: cover;
-    border-radius: 2%;
-    margin-top: 3px;
+    border-radius: 0.3px;
+    //margin-top: 3px;
     width:120px;
     height: 120px;
-    
-}
+  }
+  
+  #username{
+    font-family: 'Lucida Grande';
+    color:rgb(82, 82, 82);
+    font-weight: lighter;
+  }

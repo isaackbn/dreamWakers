@@ -34,7 +34,7 @@
       
       <span class="item" *ngIf="hasData()" (click)="showProfile()">
         <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
-                {{firstName}}</a> </li>
+                {{firstName}} {{lastName}}</a> </li>
     
         <img class="profile-img" src={{profilePicSrc}} alt="img" (click)="showProfile()">
       </span>

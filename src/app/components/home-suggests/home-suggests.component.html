@@ -2,12 +2,12 @@
 <div id="container">
   
   <span id="left">
-      <p id="suggested">Suggested ({{suggestedCount}})</p>
-      <hr id="separator">
+      <!-- <hr id="separator"> -->
+      <p id="suggested" class="profession">{{suggestedCount}} suggestions</p>
 
     <ul class="user-container"> <!--[@listStagger]="users$"-->
       <li *ngFor="let user of users" class="user-block" (click)="showDetails(user.id)">
-        <a routerLink="details/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
+        <a id="username" routerLink="details/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
         <hr>
         <img class="profile-img" src={{user.pictureUrl}} alt="img" >
         <hr>
@@ -17,7 +17,7 @@
       </li>
 
       <li tabIndex="-1" id="moreUsers" #moreUsersId class="user-block fade-in">
-          <a routerLink=""> More Profiles</a>
+          <a id="username" routerLink=""> More Profiles</a>
           <hr>
           <img class="profile-img" [src]="'assets/photo/female.jpg'" alt="img" >
           <hr>
