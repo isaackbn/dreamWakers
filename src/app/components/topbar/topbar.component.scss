@@ -117,7 +117,29 @@
     color:rgb(126, 126, 126);
   }
 
-
-#flashchats:hover{
+.flashchats:hover{
     color:rgb(126, 126, 126);
+}
+
+
+
+
+#notification-icon{
+    background-color: rgb(211, 79, 61);
+    position: absolute;
+    width:14px;
+    height: 14px;
+    border-radius: 50%;
+    text-align: center;
+    font-family:  'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+    font-size: 13px;
+    margin-top:30px;
+    margin-left: -20px;
+    z-index: 100;
+    color:white;
+}
+
+#notification-flashchat:hover{
+    background-color: rgb(240, 91, 72);
 }

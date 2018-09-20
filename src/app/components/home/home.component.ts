@@ -32,7 +32,8 @@ export class HomeComponent implements OnInit {
 
 
   constructor( private data: DataService, public router:Router, public alertService:AlertService,
-                public ngxSmartModalService: NgxSmartModalService, public route:ActivatedRoute) {
+                public ngxSmartModalService: NgxSmartModalService, public route:ActivatedRoute,
+              public auth:AuthService) {
     
     this.route.params.subscribe(params => this.searchSpeaker(params.word))    
 
@@ -88,5 +89,7 @@ export class HomeComponent implements OnInit {
   searchSpeaker(word){
     this.data.getSpeakers(word, null)
   }
+
+
 
 }

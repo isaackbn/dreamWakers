@@ -41,13 +41,14 @@ export class AuthRedirectedComponent implements OnInit {
       if (this.fetchedCode){
         this.linkedinLoginService.authorization_code = this.linkedinCode
         this.linkedinLoginService.fetchProfileData().subscribe( res => {
-          if (res[0].auth == "success"){
-            this.dataService.emitProfileData(res[0])
+          var resp:any = res;
+          if (resp.auth == "success"){
+            this.dataService.emitProfileData(resp)
             localStorage.setItem("userIn","true")
             this.router.navigate(['/home'])
           }else{
-            console.log("res is: "+res[0])
-            console.log(res[0].auth);
+            console.log("res is: "+resp)
+            console.log(resp.auth);
             this.router.navigate(['/auth'])
           }
         }, err => {

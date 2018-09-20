@@ -13,18 +13,19 @@
       <li><a routerLink="home">
                 <img class="icon" [src]="'assets/img/logo.jpg'" alt="img" >
           </a></li>
-
-      <li>  <a routerLink="flashchats"
-                [class.activated] = "currentUrl == '/flashchats'"
-                [class.not-activated] = "currentUrl != '/flashchats'">
-                <i id="flashchats" class="	fa fa-group " style="font-size:33px"></i>
-            </a> </li>
-      
+      <span id="notification-flashchat" *ngIf="seeTabElements == true">
+        <li>  <a routerLink="flashchats"
+                  [class.activated] = "currentUrl == '/flashchats'"
+                  [class.not-activated] = "currentUrl != '/flashchats'">
+                  <i class="flashchats	fa fa-group " style="font-size:33px"></i>
+              </a> </li>
+        <span id="notification-icon">1</span>
+      </span>
       <!-- <li>  <a routerLink="plan">
                 <i class="	fa fa-envelope" style="color: white ;font-size:34px"></i>
             </a> </li> -->
 
-      <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)'>
+      <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)' *ngIf="seeTabElements == true">
         
 
       <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> 

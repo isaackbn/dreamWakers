@@ -28,6 +28,7 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
 
   users
   suggestedCount:Number = 0
+  showLoadIcon = false
   @ViewChild('moreUsersId') moreUsersId: ElementRef;
 
   constructor(private data: DataService, public router:Router) { }
@@ -37,7 +38,7 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
       this.suggestedCount = usersData.length
       this.users = usersData
     })
-    this.data.getUsers(null)
+    this.data.getUsers( (bool)=> this.showLoadIcon = bool )
   }
   ngAfterViewInit() {
     // this.moreUsersId.nativeElement.focus();

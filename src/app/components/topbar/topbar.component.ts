@@ -19,6 +19,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   lastName = ""
   userDataService:any;
   profilePicSrc =""
+  seeTabElements = false
 
   @ViewChild('searchBarId') searchBarId: ElementRef;
 
@@ -37,6 +38,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
       this.firstName = profileData.firstName
       this.lastName = profileData.lastName.charAt(0)
       this.profilePicSrc = profileData.pictureUrl
+      this.updateTabElements()
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut() //listening to data service
       if (profileData.action == "signedUp") this.reload() // refresh page to get signup modal
@@ -44,8 +46,12 @@ export class TopbarComponent implements OnInit, AfterViewInit {
     this.data.tryPersist(null) //for now, emits profile data
   }
 
+  updateTabElements(){
+    if (this.hasData) this.seeTabElements = true
+    else this.seeTabElements = false
+  }
 
-  hasData(){    
+  hasData(){
     if (this.firstName != "") return true
     else return false
   }
@@ -55,7 +61,9 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   }
 
   signOut(){
+    this.profilePicSrc ="assets/img/blank.png"
     this.auth.signOut()
+    this.seeTabElements = false
     this.userDataService.unsubscribe();
     this.router.navigate(['/auth']);
   }
