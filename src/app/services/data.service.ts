@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http'
 import { EnvironmentService } from './environment.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router'
+import { AuthService } from './auth.service'
 
 
 
@@ -27,7 +28,8 @@ export class DataService {
   constructor(  private http:HttpClient,
                 private envir:EnvironmentService,
                 private cookies:CookieService,
-                private router:Router) {}
+                private router:Router,
+                private auth:AuthService) {}
 
 
 
@@ -36,26 +38,28 @@ export class DataService {
   /* PROFILE */
 
   //refresh profile data if session active, called from topbar
-  tryPersist(callback){
+  tryPersist(){
     var sessionId = localStorage.getItem("sessionId")
-    if ( sessionId != null) this.refreshProfileData(sessionId, callback)
+    if ( sessionId != null) this.refreshProfileData(sessionId)
   }
   //tryPersist helper function
-  private refreshProfileData(sessionId, callback){    
+  private refreshProfileData(sessionId){
     this.http.get(this.envir.getServer("noEncode")+'/data/profile/'+sessionId).subscribe(res => {
       var data:any = res
       this.emitProfileData(data)
-      callback
-    })
+    }, err => {
+      console.log("could not fetch profile data: "+err.error); 
+      this.signOut()
+    } )
   }
   //called here, authService, auth-redirected
   emitProfileData(data){    
     if(typeof data.error != "undefined"){ //received error trying to get profile data
       console.log("profile data msg: "+data.error)
-      this.profile.emit(data);
-      this.profile.emit({order:"sign out"}) //topbar subscribes to this
+      if(data.error == "Auth failed") this.signOut()
       return
     }
+    
     this.profile.emit(data);
     localStorage.setItem("sessionId", data.sessionId)
     localStorage.setItem("oneCheck", "false")
@@ -85,14 +89,16 @@ export class DataService {
       var data:any = res
       callback_loadToggle(false)
       this.emitUsersData(data)
+    }, err => {
+      console.log("could not fetch users data: "+err); 
+      this.signOut()
     })
   }
   //called here
   emitUsersData(data){    
     if(typeof data.error != "undefined"){ //received error trying to get users data
       console.log("users data msg: "+data.error)
-      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
-      this.users.emit(data);
+      if(data.error == "Auth failed") this.signOut()
       return
     }
     this.users.emit(data);
@@ -117,17 +123,18 @@ export class DataService {
       var data:any = res
       this.emitUserData(data)
       callback
+    }, err => {
+      console.log("could not fetch user data: "+err); 
+      this.signOut()
     })
   }
   //called here
   emitUserData(data){    
     if(typeof data.error != "undefined"){ //received error trying to get user data
       console.log("user data msg: "+data.error)
-      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
-      this.user.emit(data);
+      if(data.error == "Auth failed") this.signOut()   
       return
     }
-    console.log(data);
     this.user.emit(data);
   }
 
@@ -149,6 +156,9 @@ export class DataService {
       var data:any = res
       this.emitSpeakersData(data)
       callback
+    }, err => {
+      console.log("could not fetch speakers data: "+err); 
+      this.signOut()
     })
   }
   //called here
@@ -156,7 +166,7 @@ export class DataService {
     if(typeof data.error != "undefined"){ //received error trying to get speakers data
       console.log("speaker data msg: "+data.error)
       this.speakers.emit(data);
-      if(data.error == "Auth failed") this.profile.emit({order:"sign out"}) //topbar subscribes to this
+      if(data.error == "Auth failed") this.signOut()
       return
     }
     this.speakers.emit(data);
@@ -166,14 +176,13 @@ export class DataService {
 
 
 
+signOut(){
+  this.auth.signOut()
+}
 
 
 
 
 
 
-  /* SETTINGS */
-
-  //called at login and logout, from authService
-  clearStorage(){ localStorage.removeItem("sessionId") }
 }

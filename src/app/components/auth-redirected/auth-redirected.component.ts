@@ -18,6 +18,8 @@ export class AuthRedirectedComponent implements OnInit {
   linkedinReceivedState;
   fetchedCode;
 
+  pageText = "If you are not redirected automatically, Please Sign out from the linkedin website and try again."
+
   userData;
 
   constructor(private route:ActivatedRoute, private router:Router,
@@ -52,7 +54,15 @@ export class AuthRedirectedComponent implements OnInit {
             this.router.navigate(['/auth'])
           }
         }, err => {
-          if(err.satus == 0) console.log("server down");
+          if(err.status == 0){
+            this.pageText = "Oops..  this service is not available. Contact us for more information."
+            setTimeout(() => {
+              setTimeout(() => {
+                this.router.navigate(['/auth'])
+              }, 4000);
+              this.pageText = "We are working on the issue, please try again later."
+            }, 4000);
+          }
         })
       }else{//error with code acquisition
         console.log("error - access code not retrieved");

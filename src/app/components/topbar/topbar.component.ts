@@ -20,6 +20,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   userDataService:any;
   profilePicSrc =""
   seeTabElements = false
+  notificationNumber;
 
   @ViewChild('searchBarId') searchBarId: ElementRef;
 
@@ -34,19 +35,24 @@ export class TopbarComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
+    
+    //if (localStorage.getItem("sessionId") == null){localStorage.clear();this.signOut()}
+
     this.userDataService = this.data.profile.subscribe( profileData => {
       this.firstName = profileData.firstName
       this.lastName = profileData.lastName.charAt(0)
       this.profilePicSrc = profileData.pictureUrl
+      this.notificationNumber = profileData.notificationNumber
       this.updateTabElements()
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
-      if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut() //listening to data service
+      if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut()
       if (profileData.action == "signedUp") this.reload() // refresh page to get signup modal
     })
-    this.data.tryPersist(null) //for now, emits profile data
+    this.data.tryPersist() //for now, emits profile data
   }
 
-  updateTabElements(){
+
+  updateTabElements(){    
     if (this.hasData) this.seeTabElements = true
     else this.seeTabElements = false
   }
@@ -61,17 +67,20 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   }
 
   signOut(){
+    this.firstName = ""
     this.profilePicSrc ="assets/img/blank.png"
-    this.auth.signOut()
     this.seeTabElements = false
-    this.userDataService.unsubscribe();
+    if(!this.userDataService == null){
+      this.userDataService.unsubscribe();   
+    }
     this.router.navigate(['/auth']);
+    this.data.signOut()
   }
 
   reload(){ location.reload()}
 
   ngAfterViewInit() {
-    this.searchBarId.nativeElement.focus();
+    if(this.seeTabElements) {this.searchBarId.nativeElement.focus()}
  }
 
 
@@ -82,6 +91,8 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   }
 
   showProfile(){
+    if(this.currentUrl != "detail") console.log("detail");
+    
     this.router.navigate(['details/'+localStorage.getItem("sessionId")])
   }
 

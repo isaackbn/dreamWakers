@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService} from '../../services/data.service'
 import { Observable} from 'rxjs'
 import {ActivatedRoute} from '@angular/router'
+import { Router, NavigationEnd} from '@angular/router'
+
 
 
 @Component({
@@ -14,7 +16,7 @@ export class DetailsComponent implements OnInit {
   userId;
   user;
 
-  constructor(private data:DataService, private route:ActivatedRoute) { 
+  constructor(private data:DataService, private route:ActivatedRoute, private router:Router) { 
     this.route.params.subscribe(params => this.userId = params.id)    
   }
 

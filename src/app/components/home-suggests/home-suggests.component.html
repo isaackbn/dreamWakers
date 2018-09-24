@@ -1,7 +1,7 @@
 
 <div id="container">
   
-  <span id="left">
+  <span id="left" *ngIf="showLoadIcon == false">
       <!-- <hr id="separator"> -->
       <p id="suggested" class="profession">{{suggestedCount}} suggestions</p>
 
@@ -11,19 +11,19 @@
         <hr>
         <img class="profile-img" src={{user.pictureUrl}} alt="img" >
         <hr>
-        <div class="profession">{{user.industry}}</div>
-        <div class="detail">{{user.headline}}</div>
-        <div class="detail">{{user.location}}</div>
+        <div class="profession"> {{user.industry}} </div>
+        <div class="detail"> {{user.headline}} </div>
+        <div class="detail"> {{user.location}} </div>
       </li>
 
-      <li tabIndex="-1" id="moreUsers" #moreUsersId class="user-block fade-in">
+      <!-- <li tabIndex="-1" id="moreUsers" style="height: 120px;width: 100px" #moreUsersId class="user-block fade-in">
           <a id="username" routerLink=""> More Profiles</a>
           <hr>
-          <img class="profile-img" [src]="'assets/photo/female.jpg'" alt="img" >
+          <i class="fa fa-angle-double-right" style=""></i>
           <hr>
           <div class="profession">Profession</div>
           <div class="detail">Headline</div>
-      </li>
+      </li> -->
     </ul>
   </span>
 

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { map } from 'rxjs/operators'
-import { DataService} from './data.service'
 import { Observable} from 'rxjs'
 import { EnvironmentService } from './environment.service'
 import { LinkedinLoginService} from './linkedin-login.service'
+import { Router, NavigationEnd} from '@angular/router'
+
 
 
 
@@ -13,19 +14,24 @@ import { LinkedinLoginService} from './linkedin-login.service'
 })
 export class AuthService {
 
+  order: EventEmitter<object> = new EventEmitter(); //subscriptions: topbar
+
   private session
   private sessionId = 0
 
   constructor(private http:HttpClient, 
-              private data:DataService, 
               private envir:EnvironmentService ,
-              private linkedinLogin:LinkedinLoginService
+              private linkedinLogin:LinkedinLoginService,
+              private router:Router
             ) {}
 
 
   isUserIn(){
-    
-    if (localStorage.getItem("userIn") == "true") return true;
+    if(localStorage.getItem("sessionId") == "" || localStorage.getItem("sessionId") == null) {
+      this.signOut()
+      return false
+    }
+    else if (localStorage.getItem("userIn") == "true") return true;
     else{
       if (localStorage.getItem("oneCheck") == "true"){
           return false
@@ -48,16 +54,19 @@ export class AuthService {
   signOut(){
     localStorage.setItem("userIn", "false")
     localStorage.setItem("oneCheck", "false")
+
+    if(localStorage.getItem("sessionId") == "" || localStorage.getItem("sessionId") == null){
+      localStorage.removeItem("sessionId")
+      return
+    }
     
     this.http.get(this.linkedinLogin.web_server+"/auth/session/destroy/"+localStorage.getItem("sessionId")).subscribe(res => {
-      console.log(res);
-      this.data.clearStorage()
+      var status:any = res
+      if (status.session = "destroyed") localStorage.removeItem("sessionId")
     }, err => {
       console.log("error: could not sign out: "+err);
     })
-
-    this.data.emitProfileData({error:"logged out"}) //removed saved profile data
-
+    this.router.navigate(['/auth']);
   }
 
 
