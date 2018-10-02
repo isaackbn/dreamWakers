@@ -64,6 +64,7 @@ export class DataService {
     
     localStorage.setItem("sid", data.sessionId)
     //localStorage.setItem("userIn", "true")
+    if (data.hasPicture == "false") data.pictureUrl = this.envir.getServer("noEncode")+data.pictureUrl
     this.profile.emit(data);
     if (route == "route/home" ) this.router.navigate(['/home'])
 
@@ -104,6 +105,11 @@ export class DataService {
       if(data.error == "Auth failed") this.signOut()
       return
     }
+    
+    data.forEach( user => {
+      if (user.hasPicture == "false") user.pictureUrl = this.envir.getServer("noEncode")+user.pictureUrl
+    })
+     
     this.users.emit(data);
   }
 
@@ -138,6 +144,7 @@ export class DataService {
       if(data.error == "Auth failed") this.signOut()   
       return
     }
+    if (data.hasPicture == "false") data.pictureUrl = this.envir.getServer("noEncode")+data.pictureUrl
     this.user.emit(data);
   }
 
@@ -172,6 +179,9 @@ export class DataService {
       if(data.error == "Auth failed") this.signOut()
       return
     }
+    data.forEach( user => {
+      if (user.hasPicture == "false") user.pictureUrl = this.envir.getServer("noEncode")+user.pictureUrl
+    })
     this.speakers.emit(data);
   }
 
