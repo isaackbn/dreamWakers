@@ -11,14 +11,14 @@
     <img class="profile-img" src={{user.pictureUrl}} alt="img" >
     <hr>
 
-    <div style="margin-left: 50px">
+    <div style="margin-left: 50px" *ngIf="user.industry != ''">
       <span style="color:rgb(133, 137, 138);text-decoration: underline;"> Industry:</span> 
       <span class="profession" > &nbsp;{{user.industry}}</span> 
     </div>
 
-    <div class="detail" style="margin-left: 50px;"> {{user.headline}}</div>
+    <div class="detail" style="text-align: center;text-decoration: underline;"> {{user.headline}}</div>
 
-    <div style="margin-left: 50px;margin-top:20px;"> 
+    <div style="margin-left: 50px;margin-top:20px;" *ngIf="user.summary != ''"> 
       <span style="margin-left: 0px;color:rgb(133, 137, 138); text-decoration: underline;" > Summary:</span> 
       <span style="font-size: 0.85em;"> &nbsp;{{user.summary}} </span>
     </div>

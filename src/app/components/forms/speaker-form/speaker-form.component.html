@@ -1,0 +1,91 @@
+
+
+<div id="container">
+    <form>
+      <div class="block">
+        <p>
+          <span class="title">Race</span>
+          <br>
+          <input class="w3-radio" type="checkbox" name="race" value="black">
+          <label>Black or African American</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="race" value="white">
+          <label>White</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="race" value="asian">
+          <label>Asian</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="race" value="notSpecified">
+          <label>Not Specified</label>
+        </p>
+        <hr>
+        <p>
+          <span class="title">Gender</span>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="male"> <!--other types include "radio"-->
+          <label>Male</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="female">
+          <label>Female</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="other">
+          <label>Other</label>
+        </p>
+        <hr>
+        <p>
+          <span class="title">Age Range</span>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="male">
+          <label>18-24</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="female">
+          <label>25-34</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="other" checked>
+          <label>35-49</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="other">
+          <label>50-64</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="gender" value="other">
+          <label>65 and older</label>
+        </p>
+        <!-- <p class="form-group">
+          <label for="name">Age </label>
+          <br>
+          <input type="text" class="form-control" id="name" required>
+        </p> -->
+      </div>
+
+      <br><hr>
+      <div class="block">
+
+        <p class="form-group">
+          <label for="college" class="title">College</label>
+          <br>
+          <select class="form-control" id="colleges" required>
+            <option *ngFor="let college of colleges" [value]="college">{{college}}</option>
+          </select>
+        </p>
+
+        <p class="form-group">
+          <label for="industry" class="title">Industry</label>
+          <br>
+          <select class="form-control" id="industries" required>
+          <option *ngFor="let industry of industries" [value]="industry">{{industry}}</option>
+          </select>
+        </p>
+
+
+        <p>
+          <input class="w3-radio" type="checkbox" name="immigrant" value="black">
+          <label>First generation immigrant</label>
+        </p>
+
+    </div>
+
+
+      <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+
+    </form>
+</div>

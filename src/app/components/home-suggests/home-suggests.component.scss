@@ -2,20 +2,28 @@
 
 #container{
     width:430px;
+    margin-top: 10px;
+    margin-left: 5px;
+    position:fixed;
+
 }
 
 #left{
+    background-color: white;
+    border: 1px solid rgb(211, 211, 211);
     float:left;
+    min-height: 650px;
+
     //border-right: 1px solid #a1a1a194
 }
 
-#suggested{
+#title{
     //text-align: center;
     color: #696969;
     margin-left: 15px;
-    margin-top:15px;
+    //margin-top:15px;
     font-weight:lighter ; 
-    font-size: .9em;
+    font-size: .85em;
 }
 .profession {
     color: rgb(6, 157, 177);
@@ -66,7 +74,7 @@
     transition: all 0.12s linear;
     border: 1px solid rgb(211, 211, 211);
     //border-top: 3px solid #8d8d8d94;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.045);
     background: rgb(255, 255, 255);
     border-radius: 3px;
     padding: 5px 0;
@@ -189,3 +197,44 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+
+
+  #more{
+    margin-left: 15px;
+  }
+
+  #more-block{
+    margin-left: 30px;
+    list-style-type: none;
+    font-size: .8em;
+    color:rgb(55, 57, 58);
+    text-align: left;
+    text-decoration: none;
+    padding: 13px;
+    a:link, a:visited{
+        list-style-type: none;
+        text-decoration: none;
+    }
+  }
+
+  #more-item{
+    font-family: 'Lucida Grande';
+    color:rgb(82, 82, 82);
+    font-weight: lighter;
+    margin-left: 10px;
+  }
+  #more-item:hover{
+    color: #38a3a5;
+  }
+
+  .more-img{
+    position: absolute;
+    margin-top: -6px;
+    margin-left: -30px;
+    object-fit: cover;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    border: 1px solid rgb(102, 102, 102);
+}

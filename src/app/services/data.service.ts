@@ -12,6 +12,7 @@ import { AuthService } from './auth.service'
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,36 +40,38 @@ export class DataService {
 
   //refresh profile data if session active, called from topbar
   tryPersist(){
-    var sessionId = localStorage.getItem("sessionId")
+    var sessionId = localStorage.getItem("sid")
     if ( sessionId != null) this.refreshProfileData(sessionId)
   }
   //tryPersist helper function
   private refreshProfileData(sessionId){
     this.http.get(this.envir.getServer("noEncode")+'/data/profile/'+sessionId).subscribe(res => {
       var data:any = res
-      this.emitProfileData(data)
+      this.emitProfileData(data, null)
     }, err => {
       console.log("could not fetch profile data: "+err.error); 
       this.signOut()
     } )
   }
   //called here, authService, auth-redirected
-  emitProfileData(data){    
+  emitProfileData(data, route){    
     if(typeof data.error != "undefined"){ //received error trying to get profile data
       console.log("profile data msg: "+data.error)
       if(data.error == "Auth failed") this.signOut()
+      if (route == "route/home" ) this.router.navigate(['/home'])
       return
     }
     
+    localStorage.setItem("sid", data.sessionId)
+    //localStorage.setItem("userIn", "true")
     this.profile.emit(data);
-    localStorage.setItem("sessionId", data.sessionId)
-    localStorage.setItem("oneCheck", "false")
+    if (route == "route/home" ) this.router.navigate(['/home'])
+
   }
   //called from home
   updateProfileType(type){ 
-      return this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sessionId"))
+      return this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sid"))
   }
-
 
 
 
@@ -80,7 +83,7 @@ export class DataService {
   //get users from db if session active, called in home
   getUsers(callback_loadToggle){
     callback_loadToggle(true)
-    var sessionId = localStorage.getItem("sessionId")
+    var sessionId = localStorage.getItem("sid")
     if ( sessionId != null) this.reqUsers(sessionId, callback_loadToggle)
   }
   //get users helper function
@@ -114,7 +117,7 @@ export class DataService {
 
   //get user from db if session active, called in details
   getUser(id, callback){
-    var sessionId = localStorage.getItem("sessionId")
+    var sessionId = localStorage.getItem("sid")
     if ( sessionId != null) this.reqUser(sessionId, id, callback)
   }
   //get user helper function
@@ -147,11 +150,11 @@ export class DataService {
 
   //get speakers from db if session active, called in details
   getSpeakers(word, callback){
-    var sessionId = localStorage.getItem("sessionId")
-    if ( sessionId != null) this.reqSpeakers(sessionId, word, callback)
+    var sessionId = localStorage.getItem("sid")
+    if ( sessionId != null && word != null) this.reqSpeakers(sessionId, word, callback)
   }
   //get speakers helper function
-  reqSpeakers(sessionId, word, callback){    
+  reqSpeakers(sessionId, word, callback){ 
     this.http.get(this.envir.getServer("noEncode")+'/data/speakers/'+sessionId+'/'+word).subscribe(res => {
       var data:any = res
       this.emitSpeakersData(data)

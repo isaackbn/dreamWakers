@@ -25,6 +25,8 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { LoggedGuard } from './guards/logged.guard';
+import { SpeakerFormComponent } from './components/forms/speaker-form/speaker-form.component';
+import { HomeCalendarComponent } from './components/home-calendar/home-calendar.component';
 
 
 
@@ -43,6 +45,8 @@ import { LoggedGuard } from './guards/logged.guard';
     FlashchatsComponent,
     HomeSearchComponent,
     AuthRedirectedComponent,
+    SpeakerFormComponent,
+    HomeCalendarComponent,
   ],
   imports: [
     BrowserModule,

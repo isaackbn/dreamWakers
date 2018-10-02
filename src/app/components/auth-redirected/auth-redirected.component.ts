@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router'
 import { Router } from '@angular/router'
 import { LinkedinLoginService} from '../../services/linkedin-login.service'
 import { DataService} from  '../../services/data.service'
+import { AuthService } from '../../services/auth.service'
+
 
 @Component({
   selector: 'app-auth-redirected',
@@ -24,7 +26,7 @@ export class AuthRedirectedComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private router:Router,
               private linkedinLoginService:LinkedinLoginService,
-              private dataService:DataService) {
+              private data:DataService, private auth:AuthService) {
 
     if(router.routerState.snapshot.root.queryParams.code != null){
       this.linkedinCode = router.routerState.snapshot.root.queryParams.code
@@ -43,32 +45,32 @@ export class AuthRedirectedComponent implements OnInit {
       if (this.fetchedCode){
         this.linkedinLoginService.authorization_code = this.linkedinCode
         this.linkedinLoginService.fetchProfileData().subscribe( res => {
-          var resp:any = res;
-          if (resp.auth == "success"){
-            this.dataService.emitProfileData(resp)
-            localStorage.setItem("userIn","true")
-            this.router.navigate(['/home'])
-          }else{
-            console.log("res is: "+resp)
-            console.log(resp.auth);
-            this.router.navigate(['/auth'])
-          }
-        }, err => {
-          if(err.status == 0){
-            this.pageText = "Oops..  this service is not available. Contact us for more information."
-            setTimeout(() => {
-              setTimeout(() => {
-                this.router.navigate(['/auth'])
-              }, 4000);
-              this.pageText = "We are working on the issue, please try again later."
-            }, 4000);
-          }
-        })
+          var resp:any = res;          
+          if (resp.auth == "success") this.data.emitProfileData(resp, "route/home")
+          else if (resp.err == "userIn") this.router.navigate(['/home'])
+          else if (resp.err == "sExpired") {this.router.navigate(['/auth']); console.log("please sign in again")}
+          else this.router.navigate(['/auth']) //other errors
+          
+        }, 
+        err => { if(err.status == 0) this.oopsMessage() })
       }else{//error with code acquisition
         console.log("error - access code not retrieved");
         //show this.linkedinErrorDescription
       }
     }
+
   }  
+
+  oopsMessage(){
+    this.pageText = "Oops..  this service is not available. Contact us for more information."
+    setTimeout(() => {
+      setTimeout(() => {
+        this.router.navigate(['/auth'])
+      }, 4000);
+      this.pageText = "We are working on the issue, please try again later."
+    }, 4000);
+  }
+
+
 
 }

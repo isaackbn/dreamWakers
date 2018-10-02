@@ -25,7 +25,7 @@ export class AlertService {
 
   //called from home,..
   getAlert(tag, callback){
-    var sessionId = localStorage.getItem("sessionId")
+    var sessionId = localStorage.getItem("sid")
     if ( sessionId != null) this.requestAlert(sessionId, tag, callback)
   }
   //send get alert request
@@ -55,7 +55,7 @@ export class AlertService {
 
   //called from home,..
   sawAlert(tag, callback){
-    var sessionId = localStorage.getItem("sessionId")
+    var sessionId = localStorage.getItem("sid")
     if ( sessionId != null) this.sawAlertMsg(sessionId, tag, callback)
   }
   //send sawAlert info

@@ -19,7 +19,7 @@
                   [class.not-activated] = "currentUrl != '/flashchats'">
                   <i class="flashchats	fa fa-group " style="font-size:33px"></i>
               </a> </li>
-        <span id="notification-icon" *ngIf="notificationNumber > 0">{{notificationNumber}}</span>
+        <span id="notification-icon" *ngIf="notifications > 0">{{notifications}}</span>
       </span>
       <!-- <li>  <a routerLink="plan">
                 <i class="	fa fa-envelope" style="color: white ;font-size:34px"></i>
@@ -35,7 +35,7 @@
       
       <span class="item" *ngIf="hasData()" (click)="showProfile()">
         <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
-                {{firstName}} {{lastName}}</a> </li>
+                {{firstName}} {{lastName}} </a> </li>
     
         <img class="profile-img" src={{profilePicSrc}} alt="img" (click)="showProfile()">
       </span>

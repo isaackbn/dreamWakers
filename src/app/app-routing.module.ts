@@ -8,6 +8,7 @@ import { AuthComponent } from './components/auth/auth.component'
 import { AuthGuard } from './guards/auth.guard'
 import { AuthRedirectedComponent } from './components/auth-redirected/auth-redirected.component'
 import { LoggedGuard } from './guards/logged.guard'
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,13 @@ const routes: Routes = [
     path:'plan',
     canActivate:[AuthGuard],
     component: PlanComponent
-  },
+  }
+  // },  
+  // {
+  //   path:'auth',
+  //   canActivate:[AuthGuard],
+  //   component: TopbarComponent
+  // },
  
 
 ];

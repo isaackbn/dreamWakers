@@ -64,8 +64,7 @@ export class LinkedinLoginService {
 
 
   fetchProfileData(){ //called from auth-redirected
-    localStorage.removeItem("sessionId")
-    return this.http.get(this.web_server+this.path_for_auth_request+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId)
+    return this.http.get(this.web_server+this.path_for_auth_request+"/"+this.authorization_code+"/"+this.redirectUri+"/"+this.clientId+"/"+localStorage.getItem("sid"))
   }
 
 

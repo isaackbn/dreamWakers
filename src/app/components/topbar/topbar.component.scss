@@ -3,7 +3,10 @@
 }
 
 #navigation{
-
+    position: fixed;
+    width: 100%;
+    top:0px;
+    z-index: 50;
     ul {
         list-style-type: none;
         margin: 0;
@@ -97,7 +100,7 @@
 
 .searchTerm {
     margin-left:30px;
-    width: 253px;
+    width: 275px;
     border: 1px solid rgb(160, 160, 160);
     padding: 2px 7px;
     height: 26px;

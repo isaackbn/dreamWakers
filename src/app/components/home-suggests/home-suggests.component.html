@@ -3,9 +3,9 @@
   
   <span id="left" *ngIf="showLoadIcon == false">
       <!-- <hr id="separator"> -->
-      <p id="suggested" class="profession">{{suggestedCount}} suggestions</p>
+      <p id="title" class="profession"> Suggestions</p> <!--{{suggestedCount}}-->
 
-    <ul class="user-container"> <!--[@listStagger]="users$"-->
+    <ul class="user-container"> <!--[@listStagger]="users"-->
       <li *ngFor="let user of users" class="user-block" (click)="showDetails(user.id)">
         <a id="username" routerLink="details/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
         <hr>
@@ -25,12 +25,18 @@
           <div class="detail">Headline</div>
       </li> -->
     </ul>
+
+    <p id="more" class="profession">More ({{suggestedCount}})</p>
+      <li *ngFor="let user of users" id="more-block" (click)="showDetails(user.id)">
+        <img class="more-img" src={{user.pictureUrl}} alt="img" >
+        <a id="more-item" routerLink="details/{{user.id}}"> 
+          {{user.firstName}} {{user.lastName}} <span *ngIf='user.position != ""'>.</span> {{user.position}} </a>
+      </li>
   </span>
 
   <div class="loader" *ngIf="showLoadIcon == true"></div>
 
   <!-- <i id="loadIcon" class="fa fa-spinner fa-spin" *ngIf="showLoadIcon == true"></i> -->
-
 
 
 </div>

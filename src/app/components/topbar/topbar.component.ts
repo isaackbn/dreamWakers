@@ -20,7 +20,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   userDataService:any;
   profilePicSrc =""
   seeTabElements = false
-  notificationNumber;
+  notifications;
 
   @ViewChild('searchBarId') searchBarId: ElementRef;
 
@@ -42,7 +42,8 @@ export class TopbarComponent implements OnInit, AfterViewInit {
       this.firstName = profileData.firstName
       this.lastName = profileData.lastName.charAt(0)
       this.profilePicSrc = profileData.pictureUrl
-      this.notificationNumber = profileData.notificationNumber
+      this.notifications = profileData.notifications
+      
       this.updateTabElements()
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut()
@@ -52,7 +53,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   }
 
 
-  updateTabElements(){    
+  updateTabElements(){   
     if (this.hasData) this.seeTabElements = true
     else this.seeTabElements = false
   }
@@ -80,7 +81,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   reload(){ location.reload()}
 
   ngAfterViewInit() {
-    if(this.seeTabElements) {this.searchBarId.nativeElement.focus()}
+    if(this.seeTabElements) this.searchBarId.nativeElement.focus()    
  }
 
 
@@ -90,10 +91,8 @@ export class TopbarComponent implements OnInit, AfterViewInit {
     else this.data.getSpeakers("*null*",null)
   }
 
-  showProfile(){
-    if(this.currentUrl != "detail") console.log("detail");
-    
-    this.router.navigate(['details/'+localStorage.getItem("sessionId")])
+  showProfile(){    
+    this.router.navigate(['details/'+localStorage.getItem("sid")])
   }
 
   
