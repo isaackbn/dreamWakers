@@ -1731,6 +1731,8 @@ var DataService = /** @class */ (function () {
         }
         localStorage.setItem("sid", data.sessionId);
         //localStorage.setItem("userIn", "true")
+        if (data.hasPicture == "false")
+            data.pictureUrl = this.envir.getServer("noEncode") + data.pictureUrl;
         this.profile.emit(data);
         if (route == "route/home")
             this.router.navigate(['/home']);
@@ -1761,12 +1763,17 @@ var DataService = /** @class */ (function () {
     };
     //called here
     DataService.prototype.emitUsersData = function (data) {
+        var _this = this;
         if (typeof data.error != "undefined") {
             console.log("users data msg: " + data.error);
             if (data.error == "Auth failed")
                 this.signOut();
             return;
         }
+        data.forEach(function (user) {
+            if (user.hasPicture == "false")
+                user.pictureUrl = _this.envir.getServer("noEncode") + user.pictureUrl;
+        });
         this.users.emit(data);
     };
     /* USER */
@@ -1796,6 +1803,8 @@ var DataService = /** @class */ (function () {
                 this.signOut();
             return;
         }
+        if (data.hasPicture == "false")
+            data.pictureUrl = this.envir.getServer("noEncode") + data.pictureUrl;
         this.user.emit(data);
     };
     /* SPEAKERS */
@@ -1819,6 +1828,7 @@ var DataService = /** @class */ (function () {
     };
     //called here
     DataService.prototype.emitSpeakersData = function (data) {
+        var _this = this;
         if (typeof data.error != "undefined") {
             console.log("speaker data msg: " + data.error);
             this.speakers.emit(data);
@@ -1826,6 +1836,10 @@ var DataService = /** @class */ (function () {
                 this.signOut();
             return;
         }
+        data.forEach(function (user) {
+            if (user.hasPicture == "false")
+                user.pictureUrl = _this.envir.getServer("noEncode") + user.pictureUrl;
+        });
         this.speakers.emit(data);
     };
     DataService.prototype.signOut = function () {
