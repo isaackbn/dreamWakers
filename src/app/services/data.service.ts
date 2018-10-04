@@ -107,10 +107,18 @@ export class DataService {
     }
     
     data.forEach( user => {
+      console.log();
+      
       if (user.hasPicture == "false") user.pictureUrl = this.envir.getServer("noEncode")+user.pictureUrl
     })
      
     this.users.emit(data);
+  }
+  resetPicUrl(userId){
+    console.log("etetehsvbreahivbairj");
+    this.http.get(this.envir.getServer("noEncode")+'/auth/resetPicUrl/'+userId).subscribe(res => {
+      this.getUsers(()=>{})
+    })
   }
 
 

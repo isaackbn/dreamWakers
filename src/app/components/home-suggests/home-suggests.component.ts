@@ -47,4 +47,8 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
     this.router.navigate(['profile/'+userId])
   }
 
+  resetPicUrl(userId){    
+    this.data.resetPicUrl(userId)
+  }
+
 }

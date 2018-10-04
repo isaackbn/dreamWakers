@@ -19,7 +19,7 @@
 
     <p id="more" class="profession">See ({{suggestedCount}})</p>
       <li *ngFor="let user of users" id="more-block" (click)="showProfiles(user.id)">
-        <img class="more-img" src={{user.pictureUrl}} alt="img" >
+        <img class="more-img" src={{user.pictureUrl}} alt="img" (error) = "resetPicUrl(user.id)">
         <a id="more-item" routerLink="profile/{{user.id}}"> 
           {{user.firstName}} {{user.lastName}} <span *ngIf='user.position != ""'>.</span> {{user.position}} </a>
       </li>
