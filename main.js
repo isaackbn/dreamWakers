@@ -834,7 +834,7 @@ var HomeSearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\" *ngIf=\"showLoadIcon == false\">\n      <!-- <hr id=\"separator\"> -->\n      <!-- <p id=\"title\" class=\"profession\"> Suggestions</p>  -->\n\n    <!-- <ul class=\"user-container\">\n      <li *ngFor=\"let user of users\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a id=\"username\" routerLink=\"details/{{user.id}}\"> {{user.firstName}} {{user.lastName}}</a>\n        <hr>\n        <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <hr>\n        <div class=\"profession\"> {{user.industry}} </div>\n        <div class=\"detail\"> {{user.headline}} </div>\n        <div class=\"detail\"> {{user.location}} </div>\n      </li>\n    </ul> -->\n\n    <p id=\"more\" class=\"profession\">See ({{suggestedCount}})</p>\n      <li *ngFor=\"let user of users\" id=\"more-block\" (click)=\"showProfiles(user.id)\">\n        <img class=\"more-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <a id=\"more-item\" routerLink=\"profile/{{user.id}}\"> \n          {{user.firstName}} {{user.lastName}} <span *ngIf='user.position != \"\"'>.</span> {{user.position}} </a>\n      </li>\n  </span>\n\n  <div class=\"loader\" *ngIf=\"showLoadIcon == true\"></div>\n\n  <!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\" *ngIf=\"showLoadIcon == true\"></i> -->\n\n\n</div>\n  \n\n\n\n\n"
+module.exports = "\n<div id=\"container\">\n  \n  <span id=\"left\" *ngIf=\"showLoadIcon == false\">\n      <!-- <hr id=\"separator\"> -->\n      <!-- <p id=\"title\" class=\"profession\"> Suggestions</p>  -->\n\n    <!-- <ul class=\"user-container\">\n      <li *ngFor=\"let user of users\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a id=\"username\" routerLink=\"details/{{user.id}}\"> {{user.firstName}} {{user.lastName}}</a>\n        <hr>\n        <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <hr>\n        <div class=\"profession\"> {{user.industry}} </div>\n        <div class=\"detail\"> {{user.headline}} </div>\n        <div class=\"detail\"> {{user.location}} </div>\n      </li>\n    </ul> -->\n\n    <p id=\"more\" class=\"profession\">See ({{suggestedCount}})</p>\n      <li *ngFor=\"let user of users\" id=\"more-block\" (click)=\"showProfiles(user.id)\">\n        <img class=\"more-img\" src={{user.pictureUrl}} alt=\"img\" (error) = \"resetPicUrl(user.id)\">\n        <a id=\"more-item\" routerLink=\"profile/{{user.id}}\"> \n          {{user.firstName}} {{user.lastName}} <span *ngIf='user.position != \"\"'>.</span> {{user.position}} </a>\n      </li>\n  </span>\n\n  <div class=\"loader\" *ngIf=\"showLoadIcon == true\"></div>\n\n  <!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\" *ngIf=\"showLoadIcon == true\"></i> -->\n\n\n</div>\n  \n\n\n\n\n"
 
 /***/ }),
 
@@ -897,6 +897,9 @@ var HomeSuggestsComponent = /** @class */ (function () {
     };
     HomeSuggestsComponent.prototype.showProfiles = function (userId) {
         this.router.navigate(['profile/' + userId]);
+    };
+    HomeSuggestsComponent.prototype.resetPicUrl = function (userId) {
+        this.data.resetPicUrl(userId);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('moreUsersId'),
@@ -1865,10 +1868,18 @@ var DataService = /** @class */ (function () {
             return;
         }
         data.forEach(function (user) {
+            console.log();
             if (user.hasPicture == "false")
                 user.pictureUrl = _this.envir.getServer("noEncode") + user.pictureUrl;
         });
         this.users.emit(data);
+    };
+    DataService.prototype.resetPicUrl = function (userId) {
+        var _this = this;
+        console.log("etetehsvbreahivbairj");
+        this.http.get(this.envir.getServer("noEncode") + '/auth/resetPicUrl/' + userId).subscribe(function (res) {
+            _this.getUsers(function () { });
+        });
     };
     /* USER */
     //get user from db if session active, called in details
