@@ -25,8 +25,8 @@ export class HomeSearchComponent implements OnInit {
 
 
 
-  showDetails(userId){
-    this.router.navigate(['details/'+userId])
+  showProfiles(userId){
+    this.router.navigate(['profile/'+userId])
   }
 
 

@@ -49,7 +49,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut()
       if (profileData.action == "signedUp") this.reload() // refresh page to get signup modal
     })
-    this.data.tryPersist() //for now, emits profile data
+    this.data.getProfile() //for now, emits profile data
   }
 
 
@@ -92,7 +92,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   }
 
   showProfile(){    
-    this.router.navigate(['details/'+localStorage.getItem("sid")])
+    this.router.navigate(['profile/'+localStorage.getItem("sid")])
   }
 
   

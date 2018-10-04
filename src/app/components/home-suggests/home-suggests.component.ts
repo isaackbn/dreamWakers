@@ -43,8 +43,8 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // this.moreUsersId.nativeElement.focus();
  }
-  showDetails(userId){
-    this.router.navigate(['details/'+userId])
+  showProfiles(userId){
+    this.router.navigate(['profile/'+userId])
   }
 
 }

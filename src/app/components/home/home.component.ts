@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
 
 
   showDetails(id){
-    this.router.navigate(['details/'+id])
+    this.router.navigate(['profile/'+id])
   }
 
 

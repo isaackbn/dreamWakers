@@ -13,14 +13,14 @@
       <li><a routerLink="home">
                 <img class="icon" [src]="'assets/img/logo.jpg'" alt="img" >
           </a></li>
-      <span id="notification-flashchat" *ngIf="seeTabElements == true">
+      <!-- <span id="notification-flashchat" *ngIf="seeTabElements == true">
         <li>  <a routerLink="flashchats"
                   [class.activated] = "currentUrl == '/flashchats'"
                   [class.not-activated] = "currentUrl != '/flashchats'">
                   <i class="flashchats	fa fa-group " style="font-size:33px"></i>
               </a> </li>
         <span id="notification-icon" *ngIf="notifications > 0">{{notifications}}</span>
-      </span>
+      </span> -->
       <!-- <li>  <a routerLink="plan">
                 <i class="	fa fa-envelope" style="color: white ;font-size:34px"></i>
             </a> </li> -->
@@ -28,14 +28,14 @@
       <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)' *ngIf="seeTabElements == true">
         
 
-      <li style="float: right; margin-right: 3%;" *ngIf="signedIn()"> 
+      <li style="float: right; margin-right: 3%; margin-top: 6px" *ngIf="signedIn()"> 
         <a (click)="signOut()" class="item">
-            <i id="logout" class="fa fa-sign-out" style="font-size:25px;margin-top:3px;"></i>
-          </a></li>
+          <span id="exit">Exit</span></a>
+      </li>
       
       <span class="item" *ngIf="hasData()" (click)="showProfile()">
-        <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
-                {{firstName}} {{lastName}} </a> </li>
+        <!-- <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
+                {{firstName}} {{lastName}} </a> </li> -->
     
         <img class="profile-img" src={{profilePicSrc}} alt="img" (click)="showProfile()">
       </span>

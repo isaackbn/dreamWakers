@@ -7,11 +7,11 @@ import { Router, NavigationEnd} from '@angular/router'
 
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class DetailsComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   userId;
   user;

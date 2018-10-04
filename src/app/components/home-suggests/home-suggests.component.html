@@ -3,9 +3,9 @@
   
   <span id="left" *ngIf="showLoadIcon == false">
       <!-- <hr id="separator"> -->
-      <p id="title" class="profession"> Suggestions</p> <!--{{suggestedCount}}-->
+      <!-- <p id="title" class="profession"> Suggestions</p>  -->
 
-    <ul class="user-container"> <!--[@listStagger]="users"-->
+    <!-- <ul class="user-container">
       <li *ngFor="let user of users" class="user-block" (click)="showDetails(user.id)">
         <a id="username" routerLink="details/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
         <hr>
@@ -15,21 +15,12 @@
         <div class="detail"> {{user.headline}} </div>
         <div class="detail"> {{user.location}} </div>
       </li>
+    </ul> -->
 
-      <!-- <li tabIndex="-1" id="moreUsers" style="height: 120px;width: 100px" #moreUsersId class="user-block fade-in">
-          <a id="username" routerLink=""> More Profiles</a>
-          <hr>
-          <i class="fa fa-angle-double-right" style=""></i>
-          <hr>
-          <div class="profession">Profession</div>
-          <div class="detail">Headline</div>
-      </li> -->
-    </ul>
-
-    <p id="more" class="profession">More ({{suggestedCount}})</p>
-      <li *ngFor="let user of users" id="more-block" (click)="showDetails(user.id)">
+    <p id="more" class="profession">See ({{suggestedCount}})</p>
+      <li *ngFor="let user of users" id="more-block" (click)="showProfiles(user.id)">
         <img class="more-img" src={{user.pictureUrl}} alt="img" >
-        <a id="more-item" routerLink="details/{{user.id}}"> 
+        <a id="more-item" routerLink="profile/{{user.id}}"> 
           {{user.firstName}} {{user.lastName}} <span *ngIf='user.position != ""'>.</span> {{user.position}} </a>
       </li>
   </span>

@@ -9,7 +9,7 @@ export class SpeakerFormComponent implements OnInit {
 
   submitted = false;
   colleges = ["","Bowdoin", "Colby"]
-  industries = ["","Computer Software", "Education"]
+  industries = ["","Computer Software", "Education", "E-Learning"]
 
 
   onSubmit() { this.submitted = true; }

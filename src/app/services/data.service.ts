@@ -39,7 +39,7 @@ export class DataService {
   /* PROFILE */
 
   //refresh profile data if session active, called from topbar
-  tryPersist(){
+  getProfile(){
     var sessionId = localStorage.getItem("sid")
     if ( sessionId != null) this.refreshProfileData(sessionId)
   }

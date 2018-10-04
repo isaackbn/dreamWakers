@@ -13,8 +13,8 @@
 
   <span id="left">
       <ul class="user-container"> <!--[@listStagger]="users$"-->
-        <li *ngFor="let speaker of speakers" class="user-block" (click)="showDetails(speaker.id)">
-          <a id="username" routerLink="details/{{speaker.id}}"> {{speaker.firstName}} {{speaker.lastName}}</a>
+        <li *ngFor="let speaker of speakers" class="user-block" (click)="showProfiles(speaker.id)">
+          <a id="username" routerLink="profile/{{speaker.id}}"> {{speaker.firstName}} {{speaker.lastName}}</a>
           <hr>
           <img class="profile-img" src={{speaker.pictureUrl}} alt="img" >
           <hr>

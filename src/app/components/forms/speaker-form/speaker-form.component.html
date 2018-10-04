@@ -6,18 +6,24 @@
         <p>
           <span class="title">Race</span>
           <br>
-          <input class="w3-radio" type="checkbox" name="race" value="black">
-          <label>Black or African American</label>
-          <br>
-          <input class="w3-radio" type="checkbox" name="race" value="white">
-          <label>White</label>
+          <input class="w3-radio" type="checkbox" name="race" value="american">
+          <label>Native American</label>
           <br>
           <input class="w3-radio" type="checkbox" name="race" value="asian">
           <label>Asian</label>
           <br>
+          <input class="w3-radio" type="checkbox" name="race" value="black">
+          <label>Black or African American</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="race" value="pacific">
+          <label>Pacific Islander</label>
+          <br>
+          <input class="w3-radio" type="checkbox" name="race" value="white">
+          <label>White</label>
+          <br>
           <input class="w3-radio" type="checkbox" name="race" value="notSpecified">
           <label>Not Specified</label>
-        </p>
+      </p>
         <hr>
         <p>
           <span class="title">Gender</span>
@@ -63,7 +69,7 @@
         <p class="form-group">
           <label for="college" class="title">College</label>
           <br>
-          <select class="form-control" id="colleges" required>
+          <select class="form-control" id="colleges" class="drop-down" required>
             <option *ngFor="let college of colleges" [value]="college">{{college}}</option>
           </select>
         </p>
@@ -71,8 +77,8 @@
         <p class="form-group">
           <label for="industry" class="title">Industry</label>
           <br>
-          <select class="form-control" id="industries" required>
-          <option *ngFor="let industry of industries" [value]="industry">{{industry}}</option>
+          <select class="form-control" id="industries" class="drop-down"  required>
+            <option *ngFor="let industry of industries" [value]="industry" >{{industry}}</option>
           </select>
         </p>
 

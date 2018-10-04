@@ -1,9 +1,8 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent} from './components/home/home.component'
-import { DetailsComponent} from './components/details/details.component'
+import { ProfileComponent} from './components/profile/profile.component'
 import { FlashchatsComponent} from './components/flashchats/flashchats.component'
-import { PlanComponent} from './components/plan/plan.component'
 import { AuthComponent } from './components/auth/auth.component'
 import { AuthGuard } from './guards/auth.guard'
 import { AuthRedirectedComponent } from './components/auth-redirected/auth-redirected.component'
@@ -36,19 +35,14 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path:'details/:id',
+    path:'profile/:id',
     canActivate:[AuthGuard],
-    component: DetailsComponent
+    component: ProfileComponent
   },
   {
     path:'flashchats',
     canActivate:[AuthGuard],
     component: FlashchatsComponent
-  },
-  {
-    path:'plan',
-    canActivate:[AuthGuard],
-    component: PlanComponent
   }
   // },  
   // {
