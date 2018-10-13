@@ -4,18 +4,19 @@
 
 
 .container{
-    position: fixed;
+    //z-index: 10;
+    //position: fixed;
     left:0;
-    margin-left: 815px;
-    margin-top: 10px;
+    margin-left: 427px;
+    margin-top: 0px;
     background-color: white;
     color: rgb(31, 31, 31);
-    border: 1px solid rgb(211, 211, 211);
+    border-left: 1px solid rgb(231, 230, 230);
     border-radius: 2px;
     padding: 10px;
-    min-height: 630px;
+    min-height: 480px;
     //border: 1px solid #b9cece;
-    width: 197px;
+    width: 212px;
 
 }
 

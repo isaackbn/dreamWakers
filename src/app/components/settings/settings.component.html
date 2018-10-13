@@ -2,75 +2,19 @@
 
 <div class="container">
 
-  <div id="title">Profile</div>
-  <br>
 
-  <input id="fName" [style.width.%]="fName_width" type="text" ng-model="inputText" class="modifiable" style="margin-top:14px;"
-        value="{{fName}}" (click)="fNameClick($event)">
-  <input id="lName" [style.width.%]="lName_width" type="text" ng-model="inputText" class="modifiable" 
-        value="{{lName}}" (click)="lNameClick($event)">
-
-  <input id="age" [style.width.%]="age_width" type="text" ng-model="inputText" class="modifiable nwline" 
-        value="{{age}}{{ageStr}}"
-        (keyup.enter)="ageChange($event)" (blur)="ageChange($event)" (click)="ageClick($event)">
+  <p class="nwline multiple" >
+    <input class="w3-radio" type="radio" name="profileType" value="speaker" [checked]="setProfileType('speaker')"
+          (click)="toggleProfileType('speaker')">
+    <label>Speaker</label> &nbsp;
+    <input class="w3-radio" type="radio" name="profileType" value="teacher" [checked]="setProfileType('teacher')" 
+          (click)="toggleProfileType('teacher')">
+    <label>Educator</label> &nbsp;
+  </p>
   
   <br>
-  <p class="modifiable nwline" >
-      <input class="w3-radio" type="radio" name="gender" value="male" [checked]="setGender('male')"> <!--other types include "radio"-->
-      <label>Male</label> &nbsp;
-      <input class="w3-radio" type="radio" name="gender" value="female" [checked]="setGender('female')">
-      <label>Female</label> &nbsp;
-      <input class="w3-radio" type="radio" name="gender" value="other" [checked]="setGender('other')">
-      <label>Other</label>
-    </p>
 
-  <br>
-  <p class="modifiable-reduced nwline" >
-      <input class="w3-radio" type="checkbox" name="race" value="american" [checked]="setRace('american')">
-      <label>Native American</label>
-      <br>
-      <input class="w3-radio" type="checkbox" name="race" value="asian" [checked]="setRace('asian')">
-      <label>Asian</label>
-      <br>
-      <input class="w3-radio" type="checkbox" name="race" value="black" [checked]="setRace('black')">
-      <label>Black or African American</label>
-      <br>
-      <input class="w3-radio" type="checkbox" name="race" value="pacific" [checked]="setRace('pacific')">
-      <label>Pacific Islander</label>
-      <br>
-      <input class="w3-radio" type="checkbox" name="race" value="white" [checked]="setRace('white')">
-      <label>White</label>
-      <br>
-      <input class="w3-radio" type="checkbox" name="race" value="notSpecified" [checked]="setRace('notSpecified')">
-      <label>Not Specified</label>
-  </p>
-
-
-
-  <p class="modifiable-reduced nwline">
-      <input class="w3-radio" type="checkbox" name="immigrant" value="black">
-      <label>First generation immigrant</label>
-  </p>
-
-
-  <br>
-  <input id="education" [style.width.%]="education_width" type="text" ng-model="inputText" class="modifiable nwline" 
-    value="{{educationStr}}{{education}}"
-    (keyup.enter)="educationChange($event)" (blur)="educationChange($event)" (click)="educationClick($event)">
-
-  <input id="age" [style.width.%]="industry_width" type="text" ng-model="inputText" class="modifiable nwline" 
-    value="{{industryStr}}{{industry}}"
-    (keyup.enter)="industryChange($event)" (blur)="industryChange($event)" (click)="industryClick($event)">
-
-
-
-  <br>
-  <p class="modifiable nwline" >
-    <input class="w3-radio" type="radio" name="service" value="speaker" [checked]="setService('speaker')"> <!--other types include "radio"-->
-    <label>Speaker</label> &nbsp;
-    <input class="w3-radio" type="radio" name="service" value="teacher" [checked]="setService('teacher')">
-    <label>Teacher</label> &nbsp;
-  </p>
-
+  <app-settings-speaker-inputs *ngIf="profileType == 'speaker'"></app-settings-speaker-inputs>
+  <app-settings-teacher-inputs *ngIf="profileType == 'teacher'"></app-settings-teacher-inputs>
 
 </div>

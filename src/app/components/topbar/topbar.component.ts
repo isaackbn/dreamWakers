@@ -14,6 +14,7 @@ import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit, AfterViewInit {
 
+  formRatio
   currentUrl: String
   firstName = ""
   lastName = ""
@@ -48,6 +49,9 @@ export class TopbarComponent implements OnInit, AfterViewInit {
       if (typeof this.profilePicSrc == "undefined") this.profilePicSrc = "assets/img/blank.png" //after logging out
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut()
       if (profileData.action == "signedUp") this.reload() // refresh page to get signup modal
+    })
+    this.data.formRatio.subscribe(data => {
+      this.formRatio = data
     })
     this.data.getProfile() //for now, emits profile data
   }

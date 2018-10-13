@@ -27,6 +27,8 @@ import { LoggedGuard } from './guards/logged.guard';
 import { SpeakerFormComponent } from './components/forms/speaker-form/speaker-form.component';
 import { HomeMainComponent } from './components/home-main/home-main.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsSpeakerInputsComponent } from './components/forms/settings-speaker-inputs/settings-speaker-inputs.component';
+import { SettingsTeacherInputsComponent } from './components/forms/settings-teacher-inputs/settings-teacher-inputs.component';
 
 
 
@@ -47,6 +49,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     SpeakerFormComponent,
     HomeMainComponent,
     SettingsComponent,
+    SettingsSpeakerInputsComponent,
+    SettingsTeacherInputsComponent,
   ],
   imports: [
     BrowserModule,

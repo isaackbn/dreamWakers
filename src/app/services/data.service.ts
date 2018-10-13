@@ -22,7 +22,7 @@ export class DataService {
   users : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   user : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   speakers : EventEmitter<object> = new EventEmitter(); //subscriptions: home-search
-
+  formRatio: EventEmitter<object> = new EventEmitter(); //subscriptions: top-bar
 
 
 
@@ -195,6 +195,10 @@ export class DataService {
 
 
 
+
+  emitFormRatio(data){
+    this.formRatio.emit(data)
+  }
 
 
 signOut(){

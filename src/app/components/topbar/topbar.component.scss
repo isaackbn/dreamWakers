@@ -1,3 +1,5 @@
+
+
 .item:hover{
     cursor: pointer;
 }
@@ -157,4 +159,32 @@
 
 #notification-flashchat:hover{
     background-color: rgb(240, 91, 72);
+}
+
+
+#progress {
+    background-color:rgb(201, 201, 201);
+    float:right; 
+    width: 166px;
+    margin-right:5px;
+    margin-top:20px;
+  }
+  
+#bar {
+    width: 0%;
+    height: 2px;
+    background-color: #38a3a5;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-right: 0px solid  rgb(233, 231, 231);
+
+}
+
+#form-ratio{
+    float: right;
+    margin-top: 13px;
+    font-size: .85em;
+    margin-right: 35px;
+    color:rgb(36, 36, 36);
 }

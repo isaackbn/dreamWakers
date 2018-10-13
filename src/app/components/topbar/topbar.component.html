@@ -28,7 +28,7 @@
       <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)' *ngIf="seeTabElements == true">
         
 
-      <li style="float: right; margin-right: 3%; margin-top: 6px" *ngIf="signedIn()"> 
+      <li style="float: right; margin-right: 3%; margin-top: 4px" *ngIf="signedIn()"> 
         <a (click)="signOut()" class="item">
           <span id="exit">Exit</span></a>
       </li>
@@ -36,10 +36,13 @@
       <span class="item" *ngIf="hasData()" (click)="showProfile()">
         <!-- <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
                 {{firstName}} {{lastName}} </a> </li> -->
-    
         <img class="profile-img" src={{profilePicSrc}} alt="img" (click)="showProfile()">
       </span>
 
+      <span id="form-ratio" *ngIf="seeTabElements == true">{{formRatio}}%</span>
+      <span id="progress" *ngIf="seeTabElements == true">
+          <div id="bar" [style.width]="formRatio+'%'"></div>
+      </span>
 
     </ul>
   </nav>
