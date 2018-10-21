@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsSpeakerInputsComponent } from './settings-speaker-inputs.component';
+import { DwFormSpeakerInputsComponent } from './dwForm-speaker-inputs.component';
 
 describe('SettingsSpeakerInputsComponent', () => {
-  let component: SettingsSpeakerInputsComponent;
-  let fixture: ComponentFixture<SettingsSpeakerInputsComponent>;
+  let component: DwFormSpeakerInputsComponent;
+  let fixture: ComponentFixture<DwFormSpeakerInputsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsSpeakerInputsComponent ]
+      declarations: [ DwFormSpeakerInputsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsSpeakerInputsComponent);
+    fixture = TestBed.createComponent(DwFormSpeakerInputsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

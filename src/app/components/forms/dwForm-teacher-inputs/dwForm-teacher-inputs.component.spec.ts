@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsTeacherInputsComponent } from './settings-teacher-inputs.component';
+import { DwFormTeacherInputsComponent } from './dwForm-teacher-inputs.component';
 
 describe('SettingsTeacherInputsComponent', () => {
-  let component: SettingsTeacherInputsComponent;
-  let fixture: ComponentFixture<SettingsTeacherInputsComponent>;
+  let component: DwFormTeacherInputsComponent;
+  let fixture: ComponentFixture<DwFormTeacherInputsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsTeacherInputsComponent ]
+      declarations: [ DwFormTeacherInputsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsTeacherInputsComponent);
+    fixture = TestBed.createComponent(DwFormTeacherInputsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

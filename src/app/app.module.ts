@@ -24,11 +24,11 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { LoggedGuard } from './guards/logged.guard';
-import { SpeakerFormComponent } from './components/forms/speaker-form/speaker-form.component';
+import { SpeakerFilterFormComponent } from './components/forms/speaker-filter-form/speaker-filter-form.component';
 import { HomeMainComponent } from './components/home-main/home-main.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { SettingsSpeakerInputsComponent } from './components/forms/settings-speaker-inputs/settings-speaker-inputs.component';
-import { SettingsTeacherInputsComponent } from './components/forms/settings-teacher-inputs/settings-teacher-inputs.component';
+import { dwFormComponent } from './components/dwForm/dwForm.component';
+import { DwFormSpeakerInputsComponent } from './components/forms/dwForm-speaker-inputs/dwForm-speaker-inputs.component';
+import { DwFormTeacherInputsComponent } from './components/forms/dwForm-teacher-inputs/dwForm-teacher-inputs.component';
 
 
 
@@ -46,11 +46,11 @@ import { SettingsTeacherInputsComponent } from './components/forms/settings-teac
     FlashchatsComponent,
     HomeSearchComponent,
     AuthRedirectedComponent,
-    SpeakerFormComponent,
+    SpeakerFilterFormComponent,
     HomeMainComponent,
-    SettingsComponent,
-    SettingsSpeakerInputsComponent,
-    SettingsTeacherInputsComponent,
+    dwFormComponent,
+    DwFormSpeakerInputsComponent,
+    DwFormTeacherInputsComponent,
   ],
   imports: [
     BrowserModule,

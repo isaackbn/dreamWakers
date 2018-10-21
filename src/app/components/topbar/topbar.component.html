@@ -1,48 +1,44 @@
 
 
+<ngx-smart-modal #accounttype  identifier="accounttype" [closable]="false" [dismissable]="false" [autostart]="false" >
+  <pre style="font-size: .95em; font-family: 'Lucida Grande'">Welcome {{profile.fName}}, how would you describe yourself ?</pre>
+  <div style="margin-top: 20px;">
+    <button class="button" style="display: inline;margin-left: 100px;" (click)="updateProfileType('speaker')">Speaker &nbsp; </button>
+    <button class="button" style="display: inline;margin-left: 50px ;" (click)="updateProfileType('teacher')">Educator</button>
+  </div>
+  <p class="footer" style="margin-top: 20px;"> This information helps us match you with the right accounts</p>
+</ngx-smart-modal>
+
+
+<ngx-smart-modal #dwform  identifier="dwform" [closable]="false" [dismissable]="false" [autostart]="false" *ngIf="dwForm.skip == false">
+    <app-dwForm></app-dwForm>
+</ngx-smart-modal>
+
+<!-- <app-home-filter *ngIf="showFilter" [style.margin-left]="getMarginLeft()+'px'"></app-home-filter> -->
+
+
 
 <nav id="navigation">
 
     <ul class="topnav">  
 
-  
-      <!-- <li class="topnav-centered"> <a href="https://www.dreamwakers.org/" 
-                [class.activated] = "currentUrl != nil"> Dreamwakers </a></li>
-   -->
-      
-      <li><a routerLink="home">
-                <img class="icon" [src]="'assets/img/logo.jpg'" alt="img" >
+
+      <li><a routerLink="home" [style.margin-left]="getMarginLeft()+'px'" (click)="location.reload()">
+                <img class="icon" [src]="'assets/img/logo.jpg'" alt="Refresh" >
           </a></li>
-      <!-- <span id="notification-flashchat" *ngIf="seeTabElements == true">
-        <li>  <a routerLink="flashchats"
-                  [class.activated] = "currentUrl == '/flashchats'"
-                  [class.not-activated] = "currentUrl != '/flashchats'">
-                  <i class="flashchats	fa fa-group " style="font-size:33px"></i>
-              </a> </li>
-        <span id="notification-icon" *ngIf="notifications > 0">{{notifications}}</span>
-      </span> -->
-      <!-- <li>  <a routerLink="plan">
-                <i class="	fa fa-envelope" style="color: white ;font-size:34px"></i>
-            </a> </li> -->
-
-      <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)' *ngIf="seeTabElements == true">
-        
-
-      <li style="float: right; margin-right: 3%; margin-top: 4px" *ngIf="signedIn()"> 
-        <a (click)="signOut()" class="item">
-          <span id="exit">Exit</span></a>
-      </li>
+  
       
-      <span class="item" *ngIf="hasData()" (click)="showProfile()">
-        <!-- <li id="username" style="float: right" *ngIf="signedIn()"> <a id="fullName">
-                {{firstName}} {{lastName}} </a> </li> -->
-        <img class="profile-img" src={{profilePicSrc}} alt="img" (click)="showProfile()">
+      <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search profile..." (input)='newSearch($event.target.value)' *ngIf="seeTabElements == true">
+        
+      <li style="float: right;margin-right: 1% ; margin-top: 4px;" *ngIf="signedIn()"> 
+          <a (click)="signOut()" class="item">
+            <span id="exit">Exit</span></a>
+        </li>
+      
+      <span class="item" *ngIf="profile.hasData" (click)="showProfile()">
+        <img class="profile-img" src={{profile.picUrl}} alt="img" (click)="showProfile()">
       </span>
 
-      <span id="form-ratio" *ngIf="seeTabElements == true">{{formRatio}}%</span>
-      <span id="progress" *ngIf="seeTabElements == true">
-          <div id="bar" [style.width]="formRatio+'%'"></div>
-      </span>
 
     </ul>
   </nav>

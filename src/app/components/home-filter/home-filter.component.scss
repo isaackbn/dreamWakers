@@ -4,25 +4,36 @@
 
 
 .container{
-    //z-index: 10;
+    z-index: 100;
     //position: fixed;
-    left:0;
-    margin-left: 427px;
+    margin-left: 0px;
     margin-top: 0px;
     background-color: white;
     color: rgb(31, 31, 31);
-    border-left: 1px solid rgb(231, 230, 230);
+    //border-left: 1px solid rgb(231, 230, 230);
     border-radius: 2px;
-    padding: 10px;
+    padding: 0px;
     min-height: 480px;
     //border: 1px solid #b9cece;
-    width: 212px;
-
+    width: 190px;
+    position: absolute;
 }
 
-#title{
-    color: #696969;
-    // /margin-left: 15px;
+#close{
+    float: left;
+    color:rgb(43, 43, 43);
     font-weight:lighter ; 
     font-size: .85em;
+    padding:25px;
+    padding-bottom:30px;
+    margin-top:-30px;
+    margin-left:55px;
+    text-decoration: underline;
 }
+
+#close:hover{
+    cursor: pointer;
+    color: #38a3a5;
+
+}
+

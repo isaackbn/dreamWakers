@@ -4,14 +4,12 @@ import { Observable} from 'rxjs'
 import { Router } from '@angular/router'
 import { AlertService } from '../../services/alert.service'
 import { AuthService } from '../../services/auth.service'
-import { TopbarComponent} from '../topbar/topbar.component'
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import {ActivatedRoute} from '@angular/router'
 
 
 
 @Component({
-  providers:[TopbarComponent],
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -20,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   profileData;
   firstName;
-  launchModal = false;
+  // launchModal = false;
 
   alertDisabled:boolean = false
   alertsData;
@@ -43,10 +41,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     
-    this.profileData = this.data.profile.subscribe( profileData => { // init subscriber for profile data emitter
-      this.firstName = profileData.firstName
-      if (profileData.type == null) this.launchModal = true
-    }) 
+    // this.profileData = this.data.profile.subscribe( profileData => { // init subscriber for profile data emitter
+    //   this.firstName = profileData.firstName
+    //   if (profileData.type == null) this.launchModal = true
+    // }) 
 
     this.alertsData = this.alertService.alerts.subscribe( alertsData => {
       if (alertsData.tag == "main"){
@@ -62,12 +60,14 @@ export class HomeComponent implements OnInit {
 
 
   //called from html if launchModal == true
-  initModal(){this.launchModal = false; this.ngxSmartModalService.getModal("profileType").open()}
+  // initModal(){this.launchModal = false; this.ngxSmartModalService.getModal("profileType").open()}
+
   //if profile type selected, close modal and update db
-  updateProfileType(type){
-    this.ngxSmartModalService.getModal("profileType").close()    
-    this.data.updateProfileType(type).subscribe()
-  }
+  // updateProfileType(type){
+  //   this.ngxSmartModalService.getModal("profileType").close()    
+  //   this.data.updateProfileType(type).subscribe()
+  //   location.reload()
+  // }
 
 
   showDetails(id){
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnDestroy(){
-    this.profileData.unsubscribe();
+    // this.profileData.unsubscribe();
     this.alertsData.unsubscribe();
   }
 

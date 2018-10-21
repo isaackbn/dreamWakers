@@ -44,6 +44,7 @@ export class AuthService {
         return true
       }else {
         localStorage.removeItem("sid")
+        this.signOut()
         return false
       }
     }, err => {

@@ -1,5 +1,5 @@
 
-<div id="container">
+<div id="container" [style.margin-left]="getMarginLeft()+'px'">
   
   <span id="left" *ngIf="showLoadIcon == false">
       <!-- <hr id="separator"> -->
@@ -17,11 +17,15 @@
       </li>
     </ul> -->
 
-    <p id="more" class="profession">See ({{suggestedCount}})</p>
-      <li *ngFor="let user of users" id="more-block" (click)="showProfiles(user.id)">
-        <img class="more-img" src={{user.pictureUrl}} alt="img" (error) = "resetPicUrl(user.id)">
-        <a id="more-item" routerLink="profile/{{user.id}}"> 
-          {{user.firstName}} {{user.lastName}} <span *ngIf='user.position != ""'>.</span> {{user.position}} </a>
+    <p id="more" class="profession">You may be interested in ({{suggestedCount}})</p>
+      <hr id="hr-top">
+      <li *ngFor="let profile of profiles" id="profile-block" (click)="selectProfile(profile)"
+          [style.border-left]="ifCurrent(profile,'border-left')"
+          [style.background-color]="ifCurrent(profile,'background-color')">
+        <img class="profile-img" src={{profile.pictureUrl}} alt="img" (error) = "resetPicUrl(profile.id)" [style.margin-left]="ifCurrent(profile,'pic-margin-left')">
+        <span id="profiles-item-name"  [style.margin-left]="ifCurrent(profile,'name-margin-left')"> {{profile.firstName}} {{profile.lastName}}</span>
+        <span id="profiles-item-position"  *ngIf='profile.position != ""' [style.margin-left]="ifCurrent(profile,'title-margin-left')"> {{profile.industry}}</span>
+        <span id="profiles-item-position"  *ngIf='profile.position == ""'>&nbsp;</span>
       </li>
   </span>
 

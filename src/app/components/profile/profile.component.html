@@ -3,24 +3,22 @@
 
 
 
-<span *ngIf='hasData()' class="user-container">
-  <span class="user-block">
-
-    <span style=" color:rgb(127, 128, 129); font-size:1.6e;"> {{user.firstName}} {{user.lastName}} </span>
-    <hr>
-    <img class="profile-img" src={{user.pictureUrl}} alt="img" >
-    <hr>
-
-    <div style="margin-left: 50px" *ngIf="user.industry != ''">
+<span *ngIf='hasData()' class="container">
+  <span>
+    <img class="profile-img" src={{profile.pictureUrl}} alt="img" >
+    <br>
+    <span style=" color:rgb(127, 128, 129); font-size:1.6e;"> {{profile.firstName}} {{profile.lastName}} </span>
+ 
+    <div style="margin-left: 50px" *ngIf="profile.industry != ''">
       <span style="color:rgb(133, 137, 138);text-decoration: underline;"> Industry:</span> 
-      <span class="profession" > &nbsp;{{user.industry}}</span> 
+      <span class="profession" > &nbsp;{{profile.industry}}</span> 
     </div>
 
-    <div class="detail" style="text-align: center;text-decoration: underline;"> {{user.headline}}</div>
+    <div class="detail" style="text-align: center;text-decoration: underline;"> {{profile.headline}}</div>
 
-    <div style="margin-left: 50px;margin-top:20px;" *ngIf="user.summary != ''"> 
+    <div style="margin-left: 50px;margin-top:20px;" *ngIf="profile.summary != ''"> 
       <span style="margin-left: 0px;color:rgb(133, 137, 138); text-decoration: underline;" > Summary:</span> 
-      <span style="font-size: 0.85em;"> &nbsp;{{user.summary}} </span>
+      <span style="font-size: 0.85em;"> &nbsp;{{profile.summary}} </span>
     </div>
     <button class="button" style="margin-top: 30px;">connect <i class="fa fa-user-o " style="margin-left:6px; font-size:16px"></i></button>
     

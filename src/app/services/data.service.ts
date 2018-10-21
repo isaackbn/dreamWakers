@@ -4,7 +4,7 @@ import { EnvironmentService } from './environment.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router'
 import { AuthService } from './auth.service'
-
+import { Observable, observable, ReplaySubject } from 'rxjs';
 
 
 
@@ -22,7 +22,10 @@ export class DataService {
   users : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   user : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   speakers : EventEmitter<object> = new EventEmitter(); //subscriptions: home-search
-  formRatio: EventEmitter<object> = new EventEmitter(); //subscriptions: top-bar
+  formData: EventEmitter<object> = new EventEmitter(); //subscriptions: top-bar | emmiter: forms-setting
+  screenData: EventEmitter<object> = new EventEmitter(); //subscriptions: suggests | emmiter: top-bar
+
+  profilesData = new ReplaySubject(1) //subscriptions: home-main | emmiter: profiles
 
 
 
@@ -30,7 +33,8 @@ export class DataService {
                 private envir:EnvironmentService,
                 private cookies:CookieService,
                 private router:Router,
-                private auth:AuthService) {}
+                private auth:AuthService) {
+                }
 
 
 
@@ -39,14 +43,16 @@ export class DataService {
   /* PROFILE */
 
   //refresh profile data if session active, called from topbar
-  getProfile(){
+  getProfile(callback){
+    
     var sessionId = localStorage.getItem("sid")
-    if ( sessionId != null) this.refreshProfileData(sessionId)
+    if ( sessionId != null) this.refreshProfileData(sessionId, callback)
   }
   //tryPersist helper function
-  private refreshProfileData(sessionId){
+  private refreshProfileData(sessionId, callback){
     this.http.get(this.envir.getServer("noEncode")+'/data/profile/'+sessionId).subscribe(res => {
       var data:any = res
+      if (callback != null) callback(data)
       this.emitProfileData(data, null)
     }, err => {
       console.log("could not fetch profile data: "+err.error); 
@@ -196,8 +202,18 @@ export class DataService {
 
 
 
-  emitFormRatio(data){
-    this.formRatio.emit(data)
+  emitFormData(data){
+    this.formData.emit(data)
+  }
+
+  emitScreenData(data){
+    this.screenData.emit(data)
+  }
+  reqScreenData(){
+    this.emitScreenData({
+      innerWidth:window.innerWidth,
+      marginLeft:Math.floor((window.innerWidth - 1218)/2)
+    })
   }
 
 

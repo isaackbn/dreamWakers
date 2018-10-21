@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service'
+import { ModalsService } from '../../../services/modals.service'
 
 
 class Cache {
@@ -35,15 +36,15 @@ class Field {
 }
 
 
+
 @Component({
-  selector: 'app-settings-speaker-inputs',
-  templateUrl: './settings-speaker-inputs.component.html',
-  styleUrls: ['./settings-speaker-inputs.component.scss']
+  selector: 'app-dwForm-teacher-inputs',
+  templateUrl: './dwForm-teacher-inputs.component.html',
+  styleUrls: ['./dwForm-teacher-inputs.component.scss']
 })
-export class SettingsSpeakerInputsComponent implements OnInit {
+export class DwFormTeacherInputsComponent implements OnInit {
 
-  answered:Number
-
+ 
 
   userDataService:any
 
@@ -71,7 +72,8 @@ export class SettingsSpeakerInputsComponent implements OnInit {
   title
 
 
-  constructor(private data:DataService) {
+  constructor(private data:DataService,
+              private modals:ModalsService) {
     this.userDataService = this.data.profile.subscribe( profileData => {
       
       this.fields = [
@@ -97,11 +99,9 @@ export class SettingsSpeakerInputsComponent implements OnInit {
 
       ]
 
-      this.data.emitFormRatio(this.getAnsRatio())
-
-
+      this.emitFormData()
     })
-    this.data.getProfile()
+    this.data.getProfile(null)
 
 
 
@@ -113,20 +113,33 @@ export class SettingsSpeakerInputsComponent implements OnInit {
 
   }
 
-  getAnsRatio(){
+
+  emitFormData(){
+    this.modals.dwFormEmit({
+      ratio:this.getFormData("ratio"),
+      notAnswered:this.getFormData("notAnswered"),
+      answered:this.getFormData("answered"),
+      received:true,
+      skip:false,
+      target:"dwForm"
+    })
+  }
+  getFormData(id){
     var answered = 0
     var notAnswered = 0
     this.fields.forEach(field => {        
-      if (field.cache.color == "#38a3a5") answered += 1
+      if (field.color == "#38a3a5") answered += 1
       else notAnswered += 1
     });
     this.fields2.forEach(field => {
-      if (field.cache.color == "#38a3a5") answered += 1
+      if (field.color == "#38a3a5") answered += 1
       else notAnswered += 1
     });
-    this.answered = Math.floor(answered / (answered+notAnswered) * 100 )
-    return this.answered
+    if (id == "answered")return answered
+    if (id == "notAnswered") return notAnswered
+    if (id == "ratio") return Math.floor(answered / (answered+notAnswered) * 100 )
   }
+ 
 
   edit_written(event, field:Field, action){ 
     event.target.blur()  
@@ -151,17 +164,13 @@ export class SettingsSpeakerInputsComponent implements OnInit {
     }
     field.title = field.cache.title
     field.placeholder = field.placeholder
+    this.emitFormData()
   }
   edit_clicked(field:Field){
     field.value = ""
     field.placeholder = field.hint
   }
-  edit_size(event, field:Field){
-    var newValue = event.target.value
-    if ( (field.io.width(newValue) > field.width) ) field.width = field.io.width(newValue)
-    if ( (field.io.width(newValue) < field.width) && (field.io.width(newValue) > field.cache.width()) ){
-      field.width = field.io.width(newValue)
-    }
+  edit_size(event,field){
   }
 
 

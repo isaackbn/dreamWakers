@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-speaker-form',
-  templateUrl: './speaker-form.component.html',
-  styleUrls: ['./speaker-form.component.scss']
+  selector: 'app-speaker-filter-form',
+  templateUrl: './speaker-filter-form.component.html',
+  styleUrls: ['./speaker-filter-form.component.scss']
 })
-export class SpeakerFormComponent implements OnInit {
+export class SpeakerFilterFormComponent implements OnInit {
 
   submitted = false;
   colleges = ["","Bowdoin", "Colby"]

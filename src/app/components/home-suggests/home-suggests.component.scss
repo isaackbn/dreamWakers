@@ -10,7 +10,7 @@
 
 #left{
     background-color: white;
-    border: 1px solid rgb(211, 211, 211);
+    border: 1px solid rgb(204, 204, 204);
     float:left;
     min-height: 650px;
 
@@ -204,37 +204,79 @@
     margin-left: 15px;
   }
 
-  #more-block{
-    margin-left: 30px;
+#profile-block{
+    width: 180px;
     list-style-type: none;
     font-size: .8em;
     color:rgb(55, 57, 58);
     text-align: left;
     text-decoration: none;
+    border-bottom: 1px solid rgb(230, 230, 230);
     padding: 13px;
-    a:link, a:visited{
+    padding-top: 15px;
+    padding-bottom: 20px;
+
+    span{
         list-style-type: none;
         text-decoration: none;
+        color:rgb(82, 82, 82);
+        font-family: 'Lucida Grande';
+        font-weight: lighter;
+        margin-left: 54px;
+        width: 10px;
     }
-  }
+}
 
-  #more-item{
-    font-family: 'Lucida Grande';
-    color:rgb(82, 82, 82);
-    font-weight: lighter;
-    margin-left: 10px;
-  }
-  #more-item:hover{
-    color: #38a3a5;
-  }
+#profile-block:hover{
+    cursor: pointer;
+    span{
+        color: #38a3a5;
+    }
+}
 
-  .more-img{
+#profiles-item-position{
+    margin-top: 2px;
+}
+#profiles-item-name{
+    //display: inline;
+    margin-top: 30px;
+}
+
+.profile-img{
+    float: left;
     position: absolute;
-    margin-top: -6px;
-    margin-left: -30px;
+    margin-top: -2px;
+    margin-left: -5px;
     object-fit: cover;
     border-radius: 50%;
-    width:30px;
-    height:30px;
-    border: 1px solid rgb(102, 102, 102);
+    width:50px;
+    height:50px;
+    //border: 1px solid rgb(192, 192, 192);
+}
+
+
+#hr-top{
+    //height: 1px;
+    margin-top:25px;
+    border: 0.5px solid rgb(214, 214, 214);
+    margin-left: -1px;
+    margin-right: 0px;
+    margin-bottom: 0.5px;
+}
+
+#hr-border-top {
+    height: 1px;
+    border: 0;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    margin-left: 38px;
+    margin-top: -12px;
+    margin-right: -13px;
+}
+#hr-border-bottom {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(230, 230, 230);
+    margin-left: 38px;
+    margin-top: 25px;
+    margin-right: -13px;
 }

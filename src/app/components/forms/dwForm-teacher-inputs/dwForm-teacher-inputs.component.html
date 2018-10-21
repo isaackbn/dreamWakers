@@ -1,0 +1,254 @@
+
+   
+    <br><br>
+  
+    <li *ngFor="let field of fields" class="fields">
+        <span id="field-title" [style.border-left]="'4px solid '+field.color">{{field.title}}</span> 
+        <input id="field" [style.width.%]="field.width" type="text" ng-model="inputText" class="modifiable nwline" 
+        value="{{field.value}}" placeholder="{{field.placeholder}}"
+        (keyup.enter)="edit_written($event,field,'enter')" 
+        (blur)="edit_written($event,field,'blur')" 
+        (click)="edit_clicked(field)"
+        (input)="edit_size($event,field)">
+        <br>
+      </li>
+    
+      <span class="multiple-title">With which gender do you identify ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="gender" value="male" [checked]="setGender('male')"> 
+        <label>Male</label> <br>
+        <input class="w3-radio" type="radio" name="gender" value="female" [checked]="setGender('female')">
+        <label>Female</label> <br>
+        <input class="w3-radio" type="radio" name="gender" value="other" [checked]="setGender('other')">
+        <label>I wish to skip this question</label> <br>
+        <input class="w3-radio" type="radio" name="gender" value="other" [checked]="setGender('other')">
+        <label>Other</label>
+      </p>
+    
+      <hr>
+    
+      <span class="multiple-title">With which race and/or ethnicity do you identify ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="checkbox" name="race" value="white" [checked]="setRace('white')">
+        <label>White</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="race" value="hispanic" [checked]="setRace('hispanic')">
+        <label>Hispanic or Latino</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="race" value="asian" [checked]="setRace('asian')">
+        <label>Asian</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="race" value="black" [checked]="setRace('black')">
+        <label>Black or African American</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="race" value="american" [checked]="setRace('american')">
+        <label>American Indian or Alaska Native</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="race" value="other" [checked]="setRace('other')">
+        <label>Other</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="race" value="notSpecified" [checked]="setRace('notSpecified')">
+        <label>Not Specified</label>
+      </p>
+      <hr><br>
+    
+      <span class="multiple-title">Did you or your parents immigrate to the US ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="fgImmigrant" value="yes" [checked]="setGender('yes')"> 
+        <label>Yes</label> <br>
+        <input class="w3-radio" type="radio" name="fgImmigrant" value="no" [checked]="setGender('no')">
+        <label>No</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <li *ngFor="let field of fields2" class="fields">
+          <span id="field-title" [style.border-left]="'4px solid '+field.color">{{field.title}}</span> 
+          <input id="field" [style.width.%]="field.width" type="text" ng-model="inputText" class="modifiable nwline" 
+          value="{{field.value}}" placeholder="{{field.placeholder}}"
+          (keyup.enter)="edit_written($event,field,'enter')" 
+          (blur)="edit_written($event,field,'blur')" 
+          (click)="edit_clicked(field)"
+          (input)="edit_size($event,field)">
+          <br>
+      </li>
+          
+      <span class="multiple-title">Were you a first generation college student ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="fgStudent" value="yes" [checked]="setGender('yes')"> 
+        <label>Yes</label> <br>
+        <input class="w3-radio" type="radio" name="fgStudent" value="no" [checked]="setGender('no')">
+        <label>No</label> <br>
+      </p>
+      <hr><br>
+    
+      <span class="multiple-title">Do you identify as LGBTQ ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="lgbtq" value="yes" [checked]="setGender('yes')"> 
+        <label>Yes</label> <br>
+        <input class="w3-radio" type="radio" name="lgbtq" value="no" [checked]="setGender('no')">
+        <label>No</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">Education level</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="educationLevel" value="lths" [checked]="setGender('lths')"> 
+        <label>Less than High School</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="hs" [checked]="setGender('hs')">
+        <label>High School</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="associates" [checked]="setGender('associates')">
+        <label>Associates Degree</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="bachelors" [checked]="setGender('bachelors')">
+        <label>Bachelors</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="masters" [checked]="setGender('masters')">
+        <label>Masters</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="jd" [checked]="setGender('jd')">
+        <label>JD</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="md" [checked]="setGender('md')">
+        <label>MD (or other medical degree)</label> <br>
+        <input class="w3-radio" type="radio" name="educationLevel" value="phd" [checked]="setGender('phd')">
+        <label>PhD</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">Which best describes where you grew up ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="homeArea" value="urban" [checked]="setGender('urban')"> 
+        <label>Urban</label> <br>
+        <input class="w3-radio" type="radio" name="homeArea" value="rural" [checked]="setGender('rural')">
+        <label>Rural</label> <br>
+        <input class="w3-radio" type="radio" name="homeArea" value="suburban" [checked]="setGender('suburban')">
+        <label>Suburban</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">
+        Which best describes your family's total yearly income growing up?
+        (Note: This is optional and fully confidential. 
+        It is intended to give us an understanding of socio-economic background of 
+        our speakers and to assist with grants.)
+        </span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="homeIncome" value="l15" [checked]="setGender('l15')"> 
+        <label><15K</label> <br>
+        <input class="w3-radio" type="radio" name="homeIncome" value="15" [checked]="setGender('15')">
+        <label>15-50K</label> <br>
+        <input class="w3-radio" type="radio" name="homeIncome" value="50" [checked]="setGender('50')">
+        <label>50-100K</label> <br>
+        <input class="w3-radio" type="radio" name="homeIncome" value="100" [checked]="setGender('100')">
+        <label>100-200K</label> <br>
+        <input class="w3-radio" type="radio" name="homeIncome" value="m200" [checked]="setGender('m200')">
+        <label>>200K</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">Do you identify as LGBTQ ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="lgbtq" value="yes" [checked]="setGender('yes')"> 
+        <label>Yes</label> <br>
+        <input class="w3-radio" type="radio" name="lgbtq" value="no" [checked]="setGender('no')">
+        <label>No</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">
+        Which category best describes the profession that 
+        you would discuss in your DreamWakers flashchat?
+      </span>
+      <p class="multiple nwline" style="font-size: .78em">
+        <input class="w3-radio" type="radio" name="subject" value="stem" [checked]="setGender('stem')" > 
+        <label>STEM (Science, Technology, Engineering, Math)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="social" [checked]="setGender('social')">
+        <label>Social Sciences (Politics, History, Foreign Affairs, Legal)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="media" [checked]="setGender('media')">
+        <label>Media (Social Media, Print Media, Videography, Photography)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="health" [checked]="setGender('health')">
+        <label>Health Care (Doctors, Nurses, Pharmaceuticals)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="arts" [checked]="setGender('arts')">
+        <label>Arts (Musicians, Dancers, Painters, Poets)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="finance" [checked]="setGender('finance')">
+        <label>Finance (Banking, Accounting)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="consumer" [checked]="setGender('consumer')">
+        <label>Consumer Goods (On-line or physical retailers or retailers to other companies)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="business" [checked]="setGender('business')">
+        <label>Other Business (Not captured in the above options)</label> <br><hr class="dashed-line">
+        <input class="w3-radio" type="radio" name="subject" value="other" [checked]="setGender('other')">
+        <label>Other</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">Do you consider yourself an entrepreneur ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="entrepreneur" value="yes" [checked]="setGender('yes')"> 
+        <label>Yes</label> <br>
+        <input class="w3-radio" type="radio" name="entrepreneur" value="no" [checked]="setGender('no')">
+        <label>No</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">How many flashchats would you consider hosting over a six month period ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="chatNumbers" value="yes" [checked]="setGender('yes')"> 
+        <label> 1</label> &nbsp;&nbsp;
+        <input class="w3-radio" type="radio" name="chatNumbers" value="no" [checked]="setGender('no')">
+        <label> 2</label>&nbsp;&nbsp;
+        <input class="w3-radio" type="radio" name="chatNumbers" value="no" [checked]="setGender('no')">
+        <label> 3</label>&nbsp;&nbsp;
+        <input class="w3-radio" type="radio" name="chatNumbers" value="no" [checked]="setGender('no')">
+        <label> 4</label>&nbsp;&nbsp;
+        <input class="w3-radio" type="radio" name="chatNumbers" value="no" [checked]="setGender('no')">
+        <label> 5</label>&nbsp;&nbsp;
+        <input class="w3-radio" type="radio" name="chatNumbers" value="no" [checked]="setGender('no')">
+        <label> 6</label>&nbsp;&nbsp;
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">How did you hear about DreamWakers ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="radio" name="foundDw" value="founder" [checked]="setGender('yes')"> 
+        <label>The Founders</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="oral" [checked]="setGender('no')">
+        <label>Word of Mouth</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="dwNews" [checked]="setGender('no')">
+        <label>DreamWakers Newsletter</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="event" [checked]="setGender('no')">
+        <label>Event or Conference</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="twitter" [checked]="setGender('no')">
+        <label>Twitter</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="facebook" [checked]="setGender('no')">
+        <label>Facebook</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="linkedin" [checked]="setGender('no')">
+        <label>LinkedIn</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="google" [checked]="setGender('no')">
+        <label>Google Search</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="instagram" [checked]="setGender('no')">
+        <label>Instagram</label> <br>
+        <input class="w3-radio" type="radio" name="foundDw" value="other" [checked]="setGender('no')">
+        <label>Other</label> <br>
+      </p>
+      <hr><br>
+    
+    
+      <span class="multiple-title">Do you speak any other languages ?</span>
+      <p class="multiple nwline" >
+        <input class="w3-radio" type="checkbox" name="language" value="spanish" [checked]="setRace('white')">
+        <label>Spanish</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="language" value="french" [checked]="setRace('hispanic')">
+        <label>French</label>
+        <br>
+        <input class="w3-radio" type="checkbox" name="language" value="other" [checked]="setRace('asian')">
+        <label>Other</label>
+      </p>
+      <hr><br>
+    
+    

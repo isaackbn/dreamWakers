@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpeakerFormComponent } from './speaker-form.component';
+import { SpeakerFilterFormComponent } from './speaker-filter-form.component';
 
 describe('SpeakerFormComponent', () => {
-  let component: SpeakerFormComponent;
-  let fixture: ComponentFixture<SpeakerFormComponent>;
+  let component: SpeakerFilterFormComponent;
+  let fixture: ComponentFixture<SpeakerFilterFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpeakerFormComponent ]
+      declarations: [ SpeakerFilterFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SpeakerFormComponent);
+    fixture = TestBed.createComponent(SpeakerFilterFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

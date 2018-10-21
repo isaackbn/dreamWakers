@@ -6,25 +6,17 @@
 </div>
 
 <div>
-  <app-home-search ></app-home-search>
+  <!-- <app-home-search ></app-home-search> -->
   <app-home-suggests></app-home-suggests>
 </div>
 
-<app-home-main>  <app-home-filter></app-home-filter>   </app-home-main>
+<app-home-main>    </app-home-main>
 
 
-<app-settings></app-settings>
+
 
 
 <!-- <div class="g-hangout" data-render="createhangout"
   invites="[{ id : 'foo@example.com', invite_type : 'EMAIL' }]">
 </div> -->
 
-<ngx-smart-modal #profileType  [customClass]="'large-modal'" identifier="profileType" [closable]="false" [dismissable]="false" [autostart]="false">
-  <pre>Welcome {{firstName}}, how would you describe yourself ?</pre>
-    <button class="button" (click)="updateProfileType('speaker')">I am a Speaker</button>
-    <button class="button" (click)="updateProfileType('teacher')">I am a Teacher</button>
-  <div class="footer"> This information helps us match you with the right accounts</div>
-</ngx-smart-modal>
-
-<span *ngIf="launchModal == true">{{initModal()}}</span>

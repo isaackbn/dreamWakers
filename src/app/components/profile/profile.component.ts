@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService} from '../../services/data.service'
-import { Observable} from 'rxjs'
-import {ActivatedRoute} from '@angular/router'
-import { Router, NavigationEnd} from '@angular/router'
+
 
 
 
@@ -13,20 +11,20 @@ import { Router, NavigationEnd} from '@angular/router'
 })
 export class ProfileComponent implements OnInit {
 
-  userId;
-  user;
+  profile = null;
 
-  constructor(private data:DataService, private route:ActivatedRoute, private router:Router) { 
-    this.route.params.subscribe(params => this.userId = params.id)    
+  constructor(private data:DataService) { 
+    //this.route.params.subscribe(params => this.userId = params.id) 
+    this.data.user.subscribe( userData => this.profile = userData )
+    this.data.profilesData.subscribe(data => this.profile = data)
   }
 
-  ngOnInit() {
-    this.data.user.subscribe( userData => this.user = userData )
-    this.data.getUser(this.userId, null)
-  }
+  ngOnInit() {}
+
+
 
   hasData(){
-    return (typeof this.user != 'undefined')
+    return this.profile != null
   }
 
 }

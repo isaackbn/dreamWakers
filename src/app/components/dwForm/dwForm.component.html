@@ -1,0 +1,38 @@
+
+
+<div class="container" *ngIf="showForm == true">
+
+  <div id="top">
+      <p class="nwline multiple" style="margin-top:20px;margin-left:20px;">
+        <input class="w3-radio" type="radio" name="profileType" value="speaker"
+          [checked]="isProfileType('speaker')"
+          (click)="toggleProfileType('speaker')">
+        <label [style.color]="setColorFor('speaker')">Speaker</label> &nbsp;
+        <input class="w3-radio" type="radio" name="profileType" value="teacher"
+          [checked]="isProfileType('teacher')" 
+          (click)="toggleProfileType('teacher')">
+        <label [style.color]="setColorFor('teacher')">Educator</label> &nbsp;
+        <span id="form-ratio" *ngIf="form.received ==true">
+            Progress: {{form.answered}}/{{form.notAnswered+form.answered}}
+          </span>
+          <span id="progress" *ngIf="form.received == true">
+              <div id="bar" [style.width]="form.ratio+'%'"></div>
+          </span>
+      </p>
+      <div id="continue" (click)="skipForm()">continue</div>
+      <!-- <div id="save">Save and close</div> -->
+
+
+
+
+        <!-- <div id="extend">large</div> -->
+  </div>
+
+
+
+  <br>
+
+  <app-dwForm-speaker-inputs *ngIf="profileType == 'speaker'"> </app-dwForm-speaker-inputs>
+  <app-dwForm-teacher-inputs *ngIf="profileType == 'teacher'"> </app-dwForm-teacher-inputs>
+
+</div>

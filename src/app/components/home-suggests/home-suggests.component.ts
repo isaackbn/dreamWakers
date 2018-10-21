@@ -26,7 +26,10 @@ import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 })
 export class HomeSuggestsComponent implements OnInit, AfterViewInit {
 
-  users
+  marginLeft
+  currentProfileId;
+
+  profiles
   suggestedCount:Number = 0
   showLoadIcon = false
   @ViewChild('moreUsersId') moreUsersId: ElementRef;
@@ -34,21 +37,44 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
   constructor(private data: DataService, public router:Router) { }
 
   ngOnInit() {
-    this.data.users.subscribe( usersData => {      
-      this.suggestedCount = usersData.length
-      this.users = usersData
+    this.data.users.subscribe( profilesData => {      
+      this.suggestedCount = profilesData.length
+      this.profiles = profilesData
+      this.currentProfileId = profilesData[0].id    
+      this.data.profilesData.next(profilesData[0])  
     })
-    this.data.getUsers( (bool)=> this.showLoadIcon = bool )
+    this.data.screenData.subscribe( data => this.marginLeft = data.marginLeft )
+
+    this.data.reqScreenData()
+    this.data.getUsers( bool => this.showLoadIcon = bool )
+
   }
   ngAfterViewInit() {
     // this.moreUsersId.nativeElement.focus();
  }
-  showProfiles(userId){
-    this.router.navigate(['profile/'+userId])
+  // showProfiles(userId){
+  //   this.router.navigate(['profile/'+userId])
+  // }
+  selectProfile(profile){
+    this.currentProfileId = profile.id
+    this.data.profilesData.next(profile)
   }
 
   resetPicUrl(userId){    
     this.data.resetPicUrl(userId)
+  }
+
+  getMarginLeft(){
+    if (this.marginLeft >= 5) return this.marginLeft-10
+    return 5
+  }
+
+  ifCurrent(profile, style){
+    if (style == "border-left" && profile.id == this.currentProfileId) return "4px solid #aaa"
+    if (style == "pic-margin-left" && profile.id == this.currentProfileId) return "-9px"
+    if (style == "name-margin-left" && profile.id == this.currentProfileId) return "50px"
+    if (style == "title-margin-left" && profile.id == this.currentProfileId) return "50px"
+    if (style == "background-color" && profile.id == this.currentProfileId) return "rgb(245, 245, 245)"
   }
 
 }

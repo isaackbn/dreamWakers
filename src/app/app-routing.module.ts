@@ -35,11 +35,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path:'profile/:id',
-    canActivate:[AuthGuard],
-    component: ProfileComponent
-  },
-  {
     path:'flashchats',
     canActivate:[AuthGuard],
     component: FlashchatsComponent

@@ -2,9 +2,12 @@
 
 hr {
     // display: block;
+    //margin-top: 15.5px;
+    margin-left: -10px;
+    margin-right: -10px;
     height: 1px;
     border: 0;
-    border-top: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid rgb(216, 216, 216);
     // margin: 1em 0;
     // padding: 0;
 }
@@ -12,15 +15,15 @@ hr {
 
 .container{
     margin-top:10px;
-    position: fixed;
+    position: absolute;
     background-color: white;
     margin-left: 250px;
     color: rgb(31, 31, 31);
     border: 1px solid rgb(211, 211, 211);
     border-radius: 2px;
     padding: 10px;
-    min-height: 631px;
-    width:650px;
+    min-height: 1031px;
+    width:673px;
 }
 
 .title{
@@ -30,33 +33,26 @@ hr {
     font-size: .85em;
 }
 
+
 #event-note{
-    margin-top:10px;
+    padding-top:10px;
+    padding-bottom:10px;
     font-weight:lighter ; 
     font-size: .9em;
     width: 100%;
-    color: #38a3a5;
+    padding-right: 6px;
+    text-align: center;
+
+    #event-number{
+        color:#000;
+        font-weight: bold;
+    }
 }
 #event-note:hover{
     cursor: pointer;
-    color: #5cbbbb;
-    #event-number{
-        background-color: rgb(218, 94, 78);
-    }
+    text-decoration: underline;
 }
 
-#event-number{
-    background-color: rgb(211, 79, 61);
-    //position: absolute;
-    text-align: center;
-    font-family:  'Trebuchet MS', sans-serif;
-    font-size: 13px;
-    //margin-left: 0px;
-    padding: 3px 4px 3px 6px;
-    border-radius: 40%;
-    margin-right: 5px;
-    color:white;
-}
 
 #video{
     border: 1px solid rgb(85, 83, 83);

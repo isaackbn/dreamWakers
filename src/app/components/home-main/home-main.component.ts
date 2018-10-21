@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService} from '../../services/data.service'
 
 @Component({
   selector: 'app-home-main',
@@ -6,14 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-main.component.scss']
 })
 export class HomeMainComponent implements OnInit {
+  marginLeft
 
+  notifNum=0;
+ 
 
-  eventNumber = 0
-  videoUrl = "https://www.dreamwakers.org/wp-content/uploads/2017/06/WebsiteMontageThickLine.mp4"
+  constructor(private data: DataService) {
+    this.data.screenData.subscribe( data => this.marginLeft = data.marginLeft )
+    this.data.profile.subscribe( data => {if (data.notifications!= null) this.notifNum = data.notifications})
+   }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {     
+    this.data.reqScreenData()
   }
+
+
+  getMarginLeft(){
+    if (this.marginLeft >= 5) return this.marginLeft+250-40
+    return 250 - 25
+  }
+
+
 
 }
