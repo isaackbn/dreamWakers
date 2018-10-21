@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
 
     this.alertsData = this.alertService.alerts.subscribe( alertsData => {
       if (alertsData.tag == "main"){
-        if (alertsData.status != "empty") this.alert.empty = false        
+        if (alertsData.status != "empty") this.alert.empty = true        
         this.alert.title = alertsData.title
         this.alert.body = alertsData.body
       }
