@@ -25,7 +25,7 @@
         <img class="profile-img" src={{profile.pictureUrl}} alt="img" (error) = "resetPicUrl(profile.id)" [style.margin-left]="ifCurrent(profile,'pic-margin-left')">
         <span id="profiles-item-name"  [style.margin-left]="ifCurrent(profile,'name-margin-left')"> {{profile.firstName}} {{profile.lastName}}</span>
         <span id="profiles-item-position"  *ngIf='profile.position != ""' [style.margin-left]="ifCurrent(profile,'title-margin-left')"> {{profile.industry}}</span>
-        <span id="profiles-item-position"  *ngIf='profile.position == ""'>&nbsp;</span>
+        <span id="profiles-item-position-empty"  *ngIf='profile.position == ""' [style.margin-left]="ifCurrent(profile,'title-margin-left')"> &nbsp;</span>
       </li>
   </span>
 
