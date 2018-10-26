@@ -283,7 +283,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n<!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\"></i> -->\n<div class=\"loader\"></div>\n\n\n<p style=\"text-align: center;\"> <br> {{pageText}}</p>\n"
+module.exports = "\n\n\n\n<!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\"></i> -->\n<div class=\"spinner\">\n    <div class=\"double-bounce1\"></div>\n    <div class=\"double-bounce2\"></div>\n</div>\n\n<p style=\"text-align: center;\"> <br> {{pageText}}</p>\n"
 
 /***/ }),
 
@@ -294,7 +294,7 @@ module.exports = "\n\n\n\n<!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#loadIcon {\n  font-size: 75px;\n  position: absolute;\n  margin-top: 150px;\n  left: 0;\n  margin-left: 600px;\n  color: #aca9a9; }\n\n.loader {\n  border: 16px solid #f3f3f3;\n  border-radius: 50%;\n  border-top: 16px solid #3498db;\n  width: 120px;\n  height: 120px;\n  -webkit-animation: spin 2s linear infinite;\n  /* Safari */\n  animation: spin 2s linear infinite;\n  margin-left: 560px; }\n\n/* Safari */\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n"
+module.exports = ""
 
 /***/ }),
 
@@ -1214,7 +1214,7 @@ var HomeFilterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n\n  <div id=\"event-note\" class=\"noselect\">\n    You have \n    <span *ngIf='notifNum > 0'>{{notifNum}}</span>\n    <span *ngIf='notifNum == 0'>no</span>\n     event<span *ngIf='notifNum > 1'>s</span> \n     coming up.\n  </div>\n  <hr>\n\n  <!-- <app-profile></app-profile> -->\n\n\n</div>"
+module.exports = "\n<div class=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n\n  <div id=\"event-note\" class=\"noselect\">\n    You have \n    <span *ngIf='notifNum > 0'>{{notifNum}}</span>\n    <span *ngIf='notifNum == 0'>no</span>\n     event<span *ngIf='notifNum > 1'>s</span> \n     coming up.\n  </div>\n  <hr>\n\n\n  <div class=\"spinner\" *ngIf=\"showLoadIcon == true\">\n    <div class=\"double-bounce1\"></div>\n    <div class=\"double-bounce2\"></div>\n</div>\n\n  <!-- <app-profile></app-profile> -->\n\n\n</div>"
 
 /***/ }),
 
@@ -1260,9 +1260,11 @@ var HomeMainComponent = /** @class */ (function () {
         this.data = data;
         this.bucket = bucket;
         this.notifNum = 0;
+        this.showLoadIcon = false;
         this.bucket.clientMonitor.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
         this.data.profile.subscribe(function (data) { if (data.notifications != null)
             _this.notifNum = data.notifications; });
+        this.bucket.loadIcon.subscribe(function (data) { return _this.showLoadIcon = data; });
     }
     HomeMainComponent.prototype.ngOnInit = function () { };
     HomeMainComponent.prototype.getMarginLeft = function () {
@@ -1405,7 +1407,7 @@ var HomeSearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n  \n  <span id=\"left\" *ngIf=\"showLoadIcon == false\">\n      <!-- <hr id=\"separator\"> -->\n      <!-- <p id=\"title\" class=\"profession\"> Suggestions</p>  -->\n\n    <!-- <ul class=\"user-container\">\n      <li *ngFor=\"let user of users\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a id=\"username\" routerLink=\"details/{{user.id}}\"> {{user.firstName}} {{user.lastName}}</a>\n        <hr>\n        <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <hr>\n        <div class=\"profession\"> {{user.industry}} </div>\n        <div class=\"detail\"> {{user.headline}} </div>\n        <div class=\"detail\"> {{user.location}} </div>\n      </li>\n    </ul> -->\n\n    <p id=\"more\" class=\"profession noselect\">You may be interested in ({{suggestedCount}})</p>\n      <hr id=\"hr-top\">\n      <li *ngFor=\"let profile of profiles\" id=\"profile-block\" (click)=\"selectProfile(profile)\"\n          [style.border-left]=\"ifCurrent(profile,'border-left')\"\n          [style.background-color]=\"ifCurrent(profile,'background-color')\">\n        <img class=\"profile-img noselect\" src={{profile.pictureUrl}} alt=\"img\" (error) = \"resetPicUrl(profile.id)\" [style.margin-left]=\"ifCurrent(profile,'pic-margin-left')\">\n        <span id=\"profiles-item-name\"  [style.margin-left]=\"ifCurrent(profile,'name-margin-left')\"> {{profile.firstName}} {{profile.lastName}}</span>\n        <span id=\"profiles-item-position\"  *ngIf='profile.position != \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> {{profile.industry}}</span>\n        <span id=\"profiles-item-position-empty\" class=\"noselect\" *ngIf='profile.position == \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> &nbsp;</span>\n      </li>\n  </span>\n\n  <div class=\"loader\" *ngIf=\"showLoadIcon == true\"></div>\n\n  <!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\" *ngIf=\"showLoadIcon == true\"></i> -->\n\n\n</div>\n  \n\n\n\n\n"
+module.exports = "\n<div id=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n  \n  <span id=\"left\" *ngIf=\"showLoadIcon == false\">\n\n\n    <p id=\"more\" class=\"profession noselect\">You may be interested in ({{suggestedCount}})</p>\n      <hr id=\"hr-top\">\n      <li *ngFor=\"let profile of profiles\" id=\"profile-block\" (click)=\"selectProfile(profile)\"\n          [style.border-left]=\"ifCurrent(profile,'border-left')\"\n          [style.background-color]=\"ifCurrent(profile,'background-color')\">\n        <img class=\"profile-img noselect\" src={{profile.pictureUrl}} alt=\"img\" (error) = \"resetPicUrl(profile.id)\" [style.margin-left]=\"ifCurrent(profile,'pic-margin-left')\">\n        <span id=\"profiles-item-name\"  [style.margin-left]=\"ifCurrent(profile,'name-margin-left')\"> {{profile.firstName}} {{profile.lastName}}</span>\n        <span id=\"profiles-item-position\"  *ngIf='profile.position != \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> {{profile.industry}}</span>\n        <span id=\"profiles-item-position-empty\" class=\"noselect\" *ngIf='profile.position == \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> &nbsp;</span>\n      </li>\n  </span>\n\n\n\n\n</div>\n  \n\n\n\n\n"
 
 /***/ }),
 
@@ -1467,7 +1469,8 @@ var HomeSuggestsComponent = /** @class */ (function () {
             _this.data.profilesData.next(profilesData[0]);
         });
         this.bucket.clientMonitor.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
-        this.data.getUsers(function (bool) { return _this.showLoadIcon = bool; });
+        this.data.getUsers();
+        this.bucket.loadIcon.subscribe(function (data) { return _this.showLoadIcon = data; });
     };
     HomeSuggestsComponent.prototype.ngAfterViewInit = function () {
         // this.moreUsersId.nativeElement.focus();
@@ -2293,6 +2296,7 @@ var BucketService = /** @class */ (function () {
             barActive: new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1) //read: home-search, write: topbar
         };
         this.clientMonitor = new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1); //read: , write: topbar
+        this.loadIcon = new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1); //read: , write: topbar
     }
     BucketService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -2323,7 +2327,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _bucket_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./bucket.service */ "./src/app/services/bucket.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2340,20 +2345,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var DataService = /** @class */ (function () {
-    function DataService(http, envir, cookies, router, auth) {
+    function DataService(http, envir, cookies, router, auth, bucket) {
         this.http = http;
         this.envir = envir;
         this.cookies = cookies;
         this.router = router;
         this.auth = auth;
+        this.bucket = bucket;
         this.profile = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: topbar, home, auth-redirect
         this.users = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
         this.user = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
         this.speakers = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-search
         this.profileTypeUpdate = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-search
         this.formData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: top-bar | emmiter: forms-setting
-        this.profilesData = new rxjs__WEBPACK_IMPORTED_MODULE_6__["ReplaySubject"](1); //subscriptions: home-main | emmiter: profiles
+        this.profilesData = new rxjs__WEBPACK_IMPORTED_MODULE_7__["ReplaySubject"](1); //subscriptions: home-main | emmiter: profiles
     }
     /* PROFILE */
     //refresh profile data if session active, called from topbar
@@ -2400,18 +2407,18 @@ var DataService = /** @class */ (function () {
     };
     /* USERS */
     //get users from db if session active, called in home
-    DataService.prototype.getUsers = function (callback_loadToggle) {
-        callback_loadToggle(true);
+    DataService.prototype.getUsers = function () {
+        this.bucket.loadIcon.next(true);
         var sessionId = localStorage.getItem("sid");
         if (sessionId != null)
-            this.reqUsers(sessionId, callback_loadToggle);
+            this.reqUsers(sessionId);
     };
     //get users helper function
-    DataService.prototype.reqUsers = function (sessionId, callback_loadToggle) {
+    DataService.prototype.reqUsers = function (sessionId) {
         var _this = this;
         this.http.get(this.envir.getServer("noEncode") + '/data/users/' + sessionId).subscribe(function (res) {
             var data = res;
-            callback_loadToggle(false);
+            _this.bucket.loadIcon.next(false);
             _this.emitUsersData(data);
         }, function (err) {
             console.log("could not fetch users data: " + err);
@@ -2438,7 +2445,7 @@ var DataService = /** @class */ (function () {
         var _this = this;
         console.log("etetehsvbreahivbairj");
         this.http.get(this.envir.getServer("noEncode") + '/auth/resetPicUrl/' + userId).subscribe(function (res) {
-            _this.getUsers(function () { });
+            _this.getUsers();
         });
     };
     /* USER */
@@ -2521,7 +2528,8 @@ var DataService = /** @class */ (function () {
             _environment_service__WEBPACK_IMPORTED_MODULE_2__["EnvironmentService"],
             ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-            _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
+            _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
+            _bucket_service__WEBPACK_IMPORTED_MODULE_6__["BucketService"]])
     ], DataService);
     return DataService;
 }());
