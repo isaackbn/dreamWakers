@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ModalsService } from './modals.service';
+import { BucketService } from './bucket.service';
 
 describe('ModalsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ModalsService]
+      providers: [BucketService]
     });
   });
 
-  it('should be created', inject([ModalsService], (service: ModalsService) => {
+  it('should be created', inject([BucketService], (service: BucketService) => {
     expect(service).toBeTruthy();
   }));
 });

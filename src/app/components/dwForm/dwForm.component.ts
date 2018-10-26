@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service'
-import { ModalsService } from '../../services/modals.service'
-import { ModalsData} from '../../modalsDataTypes'
+import { BucketService } from '../../services/bucket.service'
+import { DataType} from '../../support-ts/dataTypes'
 
 
 
@@ -16,7 +16,9 @@ export class dwFormComponent implements OnInit {
 
   marginLeft
   userDataService:any
-  form:ModalsData.dwForm = {
+
+  form:DataType.dwForm = {
+    profileType:null,
     ratio:null, 
     answered:null,
     notAnswered:null,
@@ -26,18 +28,23 @@ export class dwFormComponent implements OnInit {
   }
   showForm = true
 
-  profileType = ""
-
   
 
   constructor(private data:DataService, 
-              private modals:ModalsService) {
-    this.userDataService = this.data.profile.subscribe( profileData => this.profileType = profileData.type )
-    this.data.screenData.subscribe( data => this.marginLeft = data.marginLeft )
-    this.modals.dwFormBucket.subscribe( data => { if ((data as ModalsData.dwForm).target == "dwForm") this.form = data as ModalsData.dwForm })
+              private bucket:BucketService) {
+    this.userDataService = this.data.profile.subscribe( profileData => this.form.profileType = profileData.type )
+    this.bucket.clientMonitor.subscribe( data => this.marginLeft = (data as DataType.clientMonitor).marginLeft )
+    this.bucket.dwForm.subscribe( data => { var dwForm = (data as DataType.dwForm)
+      if (dwForm.target == "dwForm-component"){
+        var profileType = dwForm.profileType
+        dwForm.profileType = null //hides form values bc type of form is not known
+        this.form = dwForm
+        this.form.profileType = profileType
+        //this.form = dwForm      
+      }      
+    })
 
 
-    this.data.reqScreenData()
     this.data.getProfile(null)
   }
 
@@ -45,20 +52,15 @@ export class dwFormComponent implements OnInit {
 
   }
 
-  isProfileType(userType){ return userType == this.profileType }
+  isProfileType(userType){ return userType == this.form.profileType }
   setColorFor(userType){
-    if (userType == this.profileType) return "#38a3a5"
+
+    if (userType == this.form.profileType) return "#38a3a5"
     return "rgb(43, 43, 43)"
   }
   toggleProfileType(sender){
-    if (sender == "speaker" && this.profileType == "teacher"){
-      this.data.updateProfileType("speaker").subscribe()
-      this.profileType = "speaker"
-    }
-    else if (sender == "teacher" && this.profileType == "speaker"){
-      this.data.updateProfileType("teacher").subscribe()
-      this.profileType = "teacher"
-    }
+    if (sender == "speaker" && this.form.profileType == "teacher")this.data.updateProfileType("speaker")
+    else if (sender == "teacher" && this.form.profileType == "speaker")this.data.updateProfileType("teacher")
   }
 
 
@@ -71,8 +73,8 @@ export class dwFormComponent implements OnInit {
   skipForm(){
     this.showForm = false
     this.form.skip = true //skip is always set to true from forms-dw..
-    this.form.target = "topbar"
-    this.modals.dwFormEmit(this.form)
+    this.form.target = "topbar-component"
+    this.bucket.dwForm.next(this.form)
   }
 
 }

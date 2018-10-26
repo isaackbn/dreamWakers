@@ -4,11 +4,11 @@
 
   <div id="top">
       <p class="nwline multiple" style="margin-top:20px;margin-left:20px;">
-        <input class="w3-radio" type="radio" name="profileType" value="speaker"
+        <input class="w3-radio" type="radio" name="form.profileType" value="speaker"
           [checked]="isProfileType('speaker')"
           (click)="toggleProfileType('speaker')">
         <label [style.color]="setColorFor('speaker')">Speaker</label> &nbsp;
-        <input class="w3-radio" type="radio" name="profileType" value="teacher"
+        <input class="w3-radio" type="radio" name="form.profileType" value="teacher"
           [checked]="isProfileType('teacher')" 
           (click)="toggleProfileType('teacher')">
         <label [style.color]="setColorFor('teacher')">Educator</label> &nbsp;
@@ -32,7 +32,7 @@
 
   <br>
 
-  <app-dwForm-speaker-inputs *ngIf="profileType == 'speaker'"> </app-dwForm-speaker-inputs>
-  <app-dwForm-teacher-inputs *ngIf="profileType == 'teacher'"> </app-dwForm-teacher-inputs>
+  <app-dwForm-speaker-inputs *ngIf="form.profileType == 'speaker'"> </app-dwForm-speaker-inputs>
+  <app-dwForm-teacher-inputs *ngIf="form.profileType == 'teacher'"> </app-dwForm-teacher-inputs>
 
 </div>

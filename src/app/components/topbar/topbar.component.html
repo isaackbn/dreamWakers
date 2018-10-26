@@ -14,33 +14,33 @@
     <app-dwForm></app-dwForm>
 </ngx-smart-modal>
 
-<!-- <app-home-filter *ngIf="showFilter" [style.margin-left]="getMarginLeft()+'px'"></app-home-filter> -->
-
 
 
 <nav id="navigation">
 
     <ul class="topnav">  
 
-
-      <li><a routerLink="home" [style.margin-left]="getMarginLeft()+'px'" (click)="location.reload()">
-                <img class="icon" [src]="'assets/img/logo.jpg'" alt="Refresh" >
-          </a></li>
+      <li> <a routerLink="home" class="noselect" [style.margin-left]="getMarginLeft()" (click)="location.reload()"> <img class="icon" [src]="'assets/img/logo.jpg'" alt="Refresh" *ngIf="seeTabElements == true"> </a></li>
   
+      <li> <input id="searchBarId" #searchBarId type="text" class="searchTerm" 
+        placeholder="search profile..." 
+        (input) = 'newSearch($event.target.value)' 
+        (click) = "searchBarClicked($event.target.value)"
+        *ngIf="seeTabElements == true"></li>
+
+      <li (click)="toggleFilter()"> <a id="filter" class="noselect" style="padding: 4px;" *ngIf="seeTabElements == true"> Filter <i  id="filter-fa" class="fa fa-filter"></i> </a> </li>
       
-      <input id="searchBarId" #searchBarId type="text" class="searchTerm" placeholder="search profile..." (input)='newSearch($event.target.value)' *ngIf="seeTabElements == true">
+      <li *ngIf="profile.hasData" (click)="showProfile()"> <img class="profile-img noselect" src={{profile.picUrl}} alt="img" (click)="showProfile()" *ngIf="seeTabElements == true"> </li>
+
+      <li> <span id="exit" class="noselect" (click)="signOut()" *ngIf="seeTabElements == true"> Exit </span> </li>
         
-      <li style="float: right;margin-right: 1% ; margin-top: 4px;" *ngIf="signedIn()"> 
-          <a (click)="signOut()" class="item">
-            <span id="exit">Exit</span></a>
-        </li>
-      
-      <span class="item" *ngIf="profile.hasData" (click)="showProfile()">
-        <img class="profile-img" src={{profile.picUrl}} alt="img" (click)="showProfile()">
-      </span>
-
-
     </ul>
+
+    <app-home-search> </app-home-search>
+
+    <app-home-filter *ngIf="showFilter" [style.margin-left]="getMarginLeft()+'px'"></app-home-filter>
+
+
   </nav>
 
 

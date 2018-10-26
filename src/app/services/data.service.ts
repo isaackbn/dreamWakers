@@ -22,8 +22,9 @@ export class DataService {
   users : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   user : EventEmitter<object> = new EventEmitter(); //subscriptions: home-suggest
   speakers : EventEmitter<object> = new EventEmitter(); //subscriptions: home-search
+  profileTypeUpdate : EventEmitter<object> = new EventEmitter(); //subscriptions: home-search
+
   formData: EventEmitter<object> = new EventEmitter(); //subscriptions: top-bar | emmiter: forms-setting
-  screenData: EventEmitter<object> = new EventEmitter(); //subscriptions: suggests | emmiter: top-bar
 
   profilesData = new ReplaySubject(1) //subscriptions: home-main | emmiter: profiles
 
@@ -76,8 +77,8 @@ export class DataService {
 
   }
   //called from home
-  updateProfileType(type){ 
-      return this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sid"))
+  updateProfileType(type){     
+      this.http.get(this.envir.getServer("noEncode")+'/auth/updateProfileType/'+type+"/"+localStorage.getItem("sid")).subscribe( () => this.profileTypeUpdate.emit(type))
   }
 
 
@@ -206,15 +207,7 @@ export class DataService {
     this.formData.emit(data)
   }
 
-  emitScreenData(data){
-    this.screenData.emit(data)
-  }
-  reqScreenData(){
-    this.emitScreenData({
-      innerWidth:window.innerWidth,
-      marginLeft:Math.floor((window.innerWidth - 1218)/2)
-    })
-  }
+
 
 
 signOut(){

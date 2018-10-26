@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService} from '../../services/data.service'
+import { BucketService } from '../../services/bucket.service'
+import { DataType } from '../../support-ts/dataTypes'
 
 @Component({
   selector: 'app-home-main',
@@ -9,17 +11,16 @@ import { DataService} from '../../services/data.service'
 export class HomeMainComponent implements OnInit {
   marginLeft
 
-  notifNum=0;
+  notifNum = 0;
  
 
-  constructor(private data: DataService) {
-    this.data.screenData.subscribe( data => this.marginLeft = data.marginLeft )
+  constructor(private data: DataService,
+              private bucket:BucketService) {
+    this.bucket.clientMonitor.subscribe( data => this.marginLeft = (data as DataType.clientMonitor).marginLeft )
     this.data.profile.subscribe( data => {if (data.notifications!= null) this.notifNum = data.notifications})
    }
 
-  ngOnInit() {     
-    this.data.reqScreenData()
-  }
+  ngOnInit() { }
 
 
   getMarginLeft(){

@@ -2,9 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd} from '@angular/router'
 import { AuthService } from '../../services/auth.service'
 import { DataService } from '../../services/data.service'
-import { ModalsService } from '../../services/modals.service'
+import { BucketService } from '../../services/bucket.service'
 import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ModalsData } from '../../modalsDataTypes'
+import { DataType } from '../../support-ts/dataTypes'
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 
@@ -21,7 +21,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   launchAccountTypeModal = false;
   launchDwFormModal = false
 
-  showFilter = true
+  showFilter = false
 
   marginLeft
   dwForm = {
@@ -47,7 +47,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   constructor(private router:Router, 
               private auth:AuthService,
               private data:DataService,
-              private modals:ModalsService,
+              private bucket:BucketService,
               private ngxSmartModalService:NgxSmartModalService) {
     
       router.events.subscribe( (e: NavigationEnd) => {
@@ -66,32 +66,33 @@ export class TopbarComponent implements OnInit, AfterViewInit {
       this.profile.notifications = profileData.notifications
       this.profile.type = profileData.type
       if (this.profile.type == null) this.ngxSmartModalService.getModal("accounttype").open()
-      else if (true) this.ngxSmartModalService.getModal("dwform").open() //check that use has not completed forms
+      //else if (true) this.ngxSmartModalService.getModal("dwform").open() //check that use has not completed forms
       this.updateTabElements()
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut()
       //if (profileData.action == "signedUp") location.reload() // refresh page to get signup modal
     })
-    //screen size css data
-    this.data.screenData.subscribe(data => this.marginLeft = data.marginLeft)
+
     //DW form data
-    this.modals.dwFormBucket.subscribe(data => {      
-      if((data as ModalsData.dwForm).target == "topbar"){
-        this.dwForm = data as ModalsData.dwForm        
+    this.bucket.dwForm.subscribe(data => {      
+      if((data as DataType.dwForm).target == "topbar-component"){
+        this.dwForm = data as DataType.dwForm        
         this.ngxSmartModalService.getModal("dwform").open()
       }
     })
 
     //DATA REQUESTS
     this.data.getProfile(null) //for now, emits profile data
-    this.data.emitScreenData({
+    this.bucket.clientMonitor.next({
       innerWidth:window.innerWidth,
       marginLeft:Math.floor((window.innerWidth - 1218)/2)
     })
+    //screen size css data
+    this.bucket.clientMonitor.subscribe(data => this.marginLeft = (data as DataType.clientMonitor).marginLeft)
   }
 
   updateProfileType(type){
     this.ngxSmartModalService.getModal("accounttype").close()    
-    this.data.updateProfileType(type).subscribe()
+    this.data.updateProfileType(type)
     location.reload()
   }
 
@@ -127,19 +128,31 @@ export class TopbarComponent implements OnInit, AfterViewInit {
 
 
   newSearch(word){
-    if(this.currentUrl != "home" && word != "")this.router.navigate(['home/search/'+word])
-    if (word != "") this.data.getSpeakers(word,null)
-    else this.data.getSpeakers("*null*",null)
+    //if(this.currentUrl != "home" && word != "")this.router.navigate(['home/search/'+word])
+    if (word != ""){
+      this.bucket.search.showRes.next(true)
+      this.data.getSpeakers(word,null)
+    }else {
+      this.bucket.search.showRes.next(false)
+      this.data.getSpeakers("*null*",null)
+    }
+  }
+  searchBarClicked(word){
+    if (word != "") setTimeout( () => this.bucket.search.showRes.next(true), 2)
   }
 
   showProfile(){    
     this.router.navigate(['profile/'+localStorage.getItem("sid")])
   }
 
+  toggleFilter(){
+    this.showFilter = !this.showFilter    
+  }
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.data.emitScreenData({
+    this.bucket.clientMonitor.next({
       innerWidth:window.innerWidth, 
       marginLeft:Math.floor((window.innerWidth - 1218)/2)
     })
@@ -147,9 +160,9 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   
 
   getMarginLeft(){
-    if (this.marginLeft >= 5) return this.marginLeft - 22
-    return -7
+    if (this.marginLeft >= 5) return this.marginLeft - 22 + "px"
+    return -7 + "px"
   }
-  
+
 
 }

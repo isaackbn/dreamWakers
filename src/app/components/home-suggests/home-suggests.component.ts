@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService} from '../../services/data.service'
-import { Observable} from 'rxjs'
 import { Router } from '@angular/router'
 import {trigger, style, transition, animate, keyframes, query, stagger} from '@angular/animations'
 import {ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { BucketService } from '../../services/bucket.service'
+import { DataType } from '../../support-ts/dataTypes'
+
 
 @Component({
   selector: 'app-home-suggests',
@@ -34,7 +36,9 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
   showLoadIcon = false
   @ViewChild('moreUsersId') moreUsersId: ElementRef;
 
-  constructor(private data: DataService, public router:Router) { }
+  constructor(private data: DataService,
+              public router:Router,
+              private bucket:BucketService) { }
 
   ngOnInit() {
     this.data.users.subscribe( profilesData => {      
@@ -43,9 +47,7 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
       this.currentProfileId = profilesData[0].id    
       this.data.profilesData.next(profilesData[0])  
     })
-    this.data.screenData.subscribe( data => this.marginLeft = data.marginLeft )
-
-    this.data.reqScreenData()
+    this.bucket.clientMonitor.subscribe( data => this.marginLeft = (data as DataType.clientMonitor).marginLeft )
     this.data.getUsers( bool => this.showLoadIcon = bool )
 
   }

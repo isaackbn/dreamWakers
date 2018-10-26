@@ -5,7 +5,9 @@ import { Router } from '@angular/router'
 import { AlertService } from '../../services/alert.service'
 import { AuthService } from '../../services/auth.service'
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import {ActivatedRoute} from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
+import { BucketService } from '../../services/bucket.service'
+
 
 
 
@@ -29,9 +31,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-  constructor( private data: DataService, public router:Router, public alertService:AlertService,
-                public ngxSmartModalService: NgxSmartModalService, public route:ActivatedRoute,
-              public auth:AuthService) {
+  constructor(private data: DataService,
+              public router:Router, 
+              public alertService:AlertService,
+              public ngxSmartModalService: NgxSmartModalService,
+              public route:ActivatedRoute,
+              public auth:AuthService,
+              private bucket:BucketService) {
     
     this.route.params.subscribe(params => this.searchSpeaker(params.word))    
 
@@ -88,6 +94,10 @@ export class HomeComponent implements OnInit {
 
   searchSpeaker(word){
     this.data.getSpeakers(word, null)
+  }
+
+  closeSearchRes(){
+    this.bucket.search.showRes.next(false)
   }
 
 

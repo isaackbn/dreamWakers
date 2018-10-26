@@ -1,26 +1,12 @@
 
-  <div id="container">
-    
-    <!-- <div>
-      <input type="text" class="searchTerm" placeholder="search speaker ..." (input)='newSearch($event.target.value)'>
-      <button type="submit" class="searchButton">
-        <i class="material-icons">search</i>
-      </button>
-    </div> -->
 
 
-
-
-  <span id="left">
-      <ul class="user-container"> <!--[@listStagger]="users$"-->
-        <li *ngFor="let speaker of speakers" class="user-block" (click)="showProfiles(speaker.id)">
-          <a id="username" routerLink="profile/{{speaker.id}}"> {{speaker.firstName}} {{speaker.lastName}}</a>
-          <hr>
-          <img class="profile-img" src={{speaker.pictureUrl}} alt="img" >
-          <hr>
-          <div class="profession">{{speaker.industry}}</div>
-          <div class="detail">{{speaker.headline}}</div>
-          <div class="detail">{{speaker.location}}</div>
-        </li>
-      </ul>
-  </span>
+<nav id="container"  #container style="padding:0px;" [style.margin-left]="getMarginLeft()" *ngIf='showSearchRes == true'>
+    <li *ngFor="let profile of profiles" class="profile" (click)="showProfiles(profile.id)">
+      <img class="pic" src={{profile.pictureUrl}} alt="img" >
+      <span class="res-name" id="" > {{profile.firstName}} {{profile.lastName}} </span>
+      <i id="fa-dot" class="fa fa-circle"></i>
+      <span class="res-details" *ngIf="profile.industry != ''">{{profile.industry}}</span>
+      <span class="res-details" *ngIf="profile.industry == ''">{{profile.headline}}</span>
+    </li>
+</nav>

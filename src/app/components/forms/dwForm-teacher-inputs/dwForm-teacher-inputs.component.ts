@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service'
-import { ModalsService } from '../../../services/modals.service'
+import { BucketService } from '../../../services/bucket.service'
 
 
 class Cache {
@@ -44,12 +44,15 @@ class Field {
 })
 export class DwFormTeacherInputsComponent implements OnInit {
 
- 
+
+  showStaticElements
 
   userDataService:any
 
   gender = "other"
   race = "notSpecified"
+
+  profileType
 
   fields=[]
   fields2=[]
@@ -73,9 +76,15 @@ export class DwFormTeacherInputsComponent implements OnInit {
 
 
   constructor(private data:DataService,
-              private modals:ModalsService) {
+              private bucket:BucketService) {
+
+    this.data.profileTypeUpdate.subscribe( data =>{
+      this.profileType = data
+      this.dataFlush()
+    })
+
     this.userDataService = this.data.profile.subscribe( profileData => {
-      
+      this.profileType = profileData.type
       this.fields = [
         this.fName = new Field ("", new Cache("First Name",profileData.firstName)),
         this.lName = new Field ("", new Cache("Last Name",profileData.lastName)),
@@ -99,7 +108,7 @@ export class DwFormTeacherInputsComponent implements OnInit {
 
       ]
 
-      this.emitFormData()
+      this.dataFlush()
     })
     this.data.getProfile(null)
 
@@ -114,14 +123,16 @@ export class DwFormTeacherInputsComponent implements OnInit {
   }
 
 
-  emitFormData(){
-    this.modals.dwFormEmit({
+  dataFlush(){// dump dwForm-teacher data into bucket.dwform
+    this.showStaticElements = true
+    this.bucket.dwForm.next({
+      profileType:this.profileType,
       ratio:this.getFormData("ratio"),
       notAnswered:this.getFormData("notAnswered"),
       answered:this.getFormData("answered"),
       received:true,
       skip:false,
-      target:"dwForm"
+      target:"dwForm-component"
     })
   }
   getFormData(id){
@@ -164,7 +175,7 @@ export class DwFormTeacherInputsComponent implements OnInit {
     }
     field.title = field.cache.title
     field.placeholder = field.placeholder
-    this.emitFormData()
+    this.dataFlush()
   }
   edit_clicked(field:Field){
     field.value = ""

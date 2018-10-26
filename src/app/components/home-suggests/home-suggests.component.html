@@ -17,15 +17,15 @@
       </li>
     </ul> -->
 
-    <p id="more" class="profession">You may be interested in ({{suggestedCount}})</p>
+    <p id="more" class="profession noselect">You may be interested in ({{suggestedCount}})</p>
       <hr id="hr-top">
       <li *ngFor="let profile of profiles" id="profile-block" (click)="selectProfile(profile)"
           [style.border-left]="ifCurrent(profile,'border-left')"
           [style.background-color]="ifCurrent(profile,'background-color')">
-        <img class="profile-img" src={{profile.pictureUrl}} alt="img" (error) = "resetPicUrl(profile.id)" [style.margin-left]="ifCurrent(profile,'pic-margin-left')">
+        <img class="profile-img noselect" src={{profile.pictureUrl}} alt="img" (error) = "resetPicUrl(profile.id)" [style.margin-left]="ifCurrent(profile,'pic-margin-left')">
         <span id="profiles-item-name"  [style.margin-left]="ifCurrent(profile,'name-margin-left')"> {{profile.firstName}} {{profile.lastName}}</span>
         <span id="profiles-item-position"  *ngIf='profile.position != ""' [style.margin-left]="ifCurrent(profile,'title-margin-left')"> {{profile.industry}}</span>
-        <span id="profiles-item-position-empty"  *ngIf='profile.position == ""' [style.margin-left]="ifCurrent(profile,'title-margin-left')"> &nbsp;</span>
+        <span id="profiles-item-position-empty" class="noselect" *ngIf='profile.position == ""' [style.margin-left]="ifCurrent(profile,'title-margin-left')"> &nbsp;</span>
       </li>
   </span>
 
