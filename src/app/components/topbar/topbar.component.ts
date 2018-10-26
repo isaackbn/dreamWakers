@@ -66,7 +66,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
       this.profile.notifications = profileData.notifications
       this.profile.type = profileData.type
       if (this.profile.type == null) this.ngxSmartModalService.getModal("accounttype").open()
-      //else if (true) this.ngxSmartModalService.getModal("dwform").open() //check that use has not completed forms
+      else if (true) this.ngxSmartModalService.getModal("dwform").open() //check that use has not completed forms
       this.updateTabElements()
       if (typeof profileData.order != "undefined" && profileData.order == "sign out") this.signOut()
       //if (profileData.action == "signedUp") location.reload() // refresh page to get signup modal
