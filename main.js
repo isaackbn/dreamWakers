@@ -1837,7 +1837,8 @@ var TopbarComponent = /** @class */ (function () {
             _this.profile.type = profileData.type;
             if (_this.profile.type == null)
                 _this.ngxSmartModalService.getModal("accounttype").open();
-            //else if (true) this.ngxSmartModalService.getModal("dwform").open() //check that use has not completed forms
+            else if (true)
+                _this.ngxSmartModalService.getModal("dwform").open(); //check that use has not completed forms
             _this.updateTabElements();
             if (typeof profileData.order != "undefined" && profileData.order == "sign out")
                 _this.signOut();
