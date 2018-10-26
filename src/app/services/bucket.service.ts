@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, observable, ReplaySubject } from 'rxjs';
 import { Services } from '@angular/core/src/view';
-import { DataType} from '../support ts/dataTypes'
+import { DataType} from '../support-ts/dataTypes'
 
 
 @Injectable({
