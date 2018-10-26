@@ -491,7 +491,7 @@ var AuthComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"container\" *ngIf=\"showForm == true\">\n\n  <div id=\"top\">\n      <p class=\"nwline multiple\" style=\"margin-top:20px;margin-left:20px;\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"profileType\" value=\"speaker\"\n          [checked]=\"isProfileType('speaker')\"\n          (click)=\"toggleProfileType('speaker')\">\n        <label [style.color]=\"setColorFor('speaker')\">Speaker</label> &nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"profileType\" value=\"teacher\"\n          [checked]=\"isProfileType('teacher')\" \n          (click)=\"toggleProfileType('teacher')\">\n        <label [style.color]=\"setColorFor('teacher')\">Educator</label> &nbsp;\n        <span id=\"form-ratio\" *ngIf=\"form.received ==true\">\n            Progress: {{form.answered}}/{{form.notAnswered+form.answered}}\n          </span>\n          <span id=\"progress\" *ngIf=\"form.received == true\">\n              <div id=\"bar\" [style.width]=\"form.ratio+'%'\"></div>\n          </span>\n      </p>\n      <div id=\"continue\" (click)=\"skipForm()\">continue</div>\n      <!-- <div id=\"save\">Save and close</div> -->\n\n\n\n\n        <!-- <div id=\"extend\">large</div> -->\n  </div>\n\n\n\n  <br>\n\n  <app-dwForm-speaker-inputs *ngIf=\"profileType == 'speaker'\"> </app-dwForm-speaker-inputs>\n  <app-dwForm-teacher-inputs *ngIf=\"profileType == 'teacher'\"> </app-dwForm-teacher-inputs>\n\n</div>\n"
+module.exports = "\n\n<div class=\"container\" *ngIf=\"showForm == true\">\n\n  <div id=\"top\">\n      <p class=\"nwline multiple\" style=\"margin-top:20px;margin-left:20px;\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"form.profileType\" value=\"speaker\"\n          [checked]=\"isProfileType('speaker')\"\n          (click)=\"toggleProfileType('speaker')\">\n        <label [style.color]=\"setColorFor('speaker')\">Speaker</label> &nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"form.profileType\" value=\"teacher\"\n          [checked]=\"isProfileType('teacher')\" \n          (click)=\"toggleProfileType('teacher')\">\n        <label [style.color]=\"setColorFor('teacher')\">Educator</label> &nbsp;\n        <span id=\"form-ratio\" *ngIf=\"form.received ==true\">\n            Progress: {{form.answered}}/{{form.notAnswered+form.answered}}\n          </span>\n          <span id=\"progress\" *ngIf=\"form.received == true\">\n              <div id=\"bar\" [style.width]=\"form.ratio+'%'\"></div>\n          </span>\n      </p>\n      <div id=\"continue\" (click)=\"skipForm()\">continue</div>\n      <!-- <div id=\"save\">Save and close</div> -->\n\n\n\n\n        <!-- <div id=\"extend\">large</div> -->\n  </div>\n\n\n\n  <br>\n\n  <app-dwForm-speaker-inputs *ngIf=\"form.profileType == 'speaker'\"> </app-dwForm-speaker-inputs>\n  <app-dwForm-teacher-inputs *ngIf=\"form.profileType == 'teacher'\"> </app-dwForm-teacher-inputs>\n\n</div>\n"
 
 /***/ }),
 
@@ -502,7 +502,7 @@ module.exports = "\n\n<div class=\"container\" *ngIf=\"showForm == true\">\n\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#top {\n  position: fixed;\n  background-color: #f0f0f0;\n  width: 150%;\n  padding: 0px;\n  margin-top: -15px;\n  margin-left: -10px;\n  border-bottom: 1px solid #a8a8a8; }\n\n.container {\n  z-index: 50;\n  position: fixed;\n  max-height: 630px;\n  margin-left: -100px;\n  float: right;\n  margin-top: -44px;\n  background-color: white;\n  color: #1f1f1f;\n  border-top: 5px solid #919191;\n  border-bottom: 4px solid #bbbbbb;\n  border-radius: 1px;\n  padding: 10px;\n  min-height: 330px;\n  width: 600px;\n  overflow: auto; }\n\n#title {\n  color: #696969;\n  font-weight: lighter;\n  font-size: .85em; }\n\n.modifiable {\n  border: 0px solid #00000000;\n  outline: none;\n  font-size: .8em;\n  color: #616161;\n  border-bottom: 1px solid #e4e4e4; }\n\n.modifiable:focus {\n  border-bottom: 2px solid #38a3a5;\n  outline: 1px #838383; }\n\n.modifiable-reduced {\n  border: 0px solid #00000000;\n  outline: none;\n  font-size: .75em;\n  color: #636262; }\n\n.modifiable-reduced:focus {\n  border-bottom: 2px solid #d1d1d1;\n  outline: 1px #838383; }\n\n.modifiable::-webkit-input-placeholder {\n  color: #a1a1a1; }\n\n.modifiable:-ms-input-placeholder {\n  color: #a1a1a1; }\n\n.modifiable::-ms-input-placeholder {\n  color: #a1a1a1; }\n\n.modifiable::placeholder {\n  color: #a1a1a1; }\n\n.nwline {\n  display: block;\n  margin-top: 8px; }\n\n#first-name {\n  float: left; }\n\n#last-name {\n  float: right; }\n\n.drop-down {\n  width: 80%;\n  border: 1px solid #e6e6e6;\n  outline: none;\n  background-color: white;\n  border-radius: 0px; }\n\nhr {\n  height: 1px;\n  border: 0;\n  border-top: 1px solid #e6e6e6; }\n\n.fields {\n  list-style-type: none;\n  text-decoration: none; }\n\n.fields a:link, .fields a:visited {\n    list-style-type: none;\n    text-decoration: none; }\n\n.fields #field-title {\n    border-left: 4px solid #bb3232;\n    padding-left: 3px;\n    outline: none;\n    font-size: .8em;\n    color: #2b2b2b; }\n\n.multiple {\n  outline: none;\n  font-size: .8em;\n  color: #1a1a1a; }\n\n.multiple-title {\n  outline: none;\n  font-size: .8em;\n  color: #1a1a1a;\n  border-left: 4px solid #38a3a5;\n  padding: 3px; }\n\n.dashed-line {\n  border: none;\n  border-top: 1px dashed #e6e6e6;\n  color: #fff;\n  background-color: #fff;\n  height: 1px; }\n\n#continue {\n  position: absolute;\n  float: left;\n  margin-left: 500px;\n  font-size: .85em;\n  color: #2b2b2b;\n  padding: 10px;\n  margin-top: -41px;\n  border: 1px solid #c4c4c4;\n  background-color: #fff; }\n\n#continue:hover {\n  cursor: pointer;\n  color: #38a3a5; }\n\n#save {\n  position: absolute;\n  float: left;\n  margin-left: 390px;\n  font-size: .85em;\n  color: #2b2b2b;\n  padding: 10px;\n  margin-top: -40px; }\n\n#save:hover {\n  cursor: pointer;\n  color: #38a3a5; }\n\n#progress {\n  background-color: #c9c9c9;\n  width: 130px;\n  margin-left: 55px;\n  margin-top: 15px;\n  float: left;\n  position: absolute; }\n\n#bar {\n  width: 0%;\n  height: 5px;\n  background-color: #38a3a5;\n  text-align: center;\n  line-height: 30px;\n  color: white;\n  border-right: 0px solid #e9e7e7; }\n\n#form-ratio {\n  color: black;\n  margin-left: 75px;\n  margin-top: -5px;\n  position: absolute; }\n\n#completion {\n  margin-left: 4px; }\n"
+module.exports = "#top {\n  position: fixed;\n  background-color: #f0f0f0;\n  width: 150%;\n  padding: 0px;\n  margin-top: -15px;\n  margin-left: -10px;\n  border-bottom: 1px solid #a8a8a8; }\n\n.container {\n  z-index: 50;\n  position: fixed;\n  max-height: 630px;\n  margin-left: -100px;\n  float: right;\n  margin-top: -44px;\n  background-color: white;\n  color: #1f1f1f;\n  border-top: 5px solid #919191;\n  border-bottom: 4px solid #bbbbbb;\n  border-radius: 1px;\n  padding: 10px;\n  min-height: 630px;\n  width: 600px;\n  overflow: auto; }\n\n#title {\n  color: #696969;\n  font-weight: lighter;\n  font-size: .85em; }\n\n.modifiable {\n  border: 0px solid #00000000;\n  outline: none;\n  font-size: .8em;\n  color: #616161;\n  border-bottom: 1px solid #e4e4e4; }\n\n.modifiable:focus {\n  border-bottom: 2px solid #38a3a5;\n  outline: 1px #838383; }\n\n.modifiable-reduced {\n  border: 0px solid #00000000;\n  outline: none;\n  font-size: .75em;\n  color: #636262; }\n\n.modifiable-reduced:focus {\n  border-bottom: 2px solid #d1d1d1;\n  outline: 1px #838383; }\n\n.modifiable::-webkit-input-placeholder {\n  color: #a1a1a1; }\n\n.modifiable:-ms-input-placeholder {\n  color: #a1a1a1; }\n\n.modifiable::-ms-input-placeholder {\n  color: #a1a1a1; }\n\n.modifiable::placeholder {\n  color: #a1a1a1; }\n\n.nwline {\n  display: block;\n  margin-top: 8px; }\n\n#first-name {\n  float: left; }\n\n#last-name {\n  float: right; }\n\n.drop-down {\n  width: 80%;\n  border: 1px solid #e6e6e6;\n  outline: none;\n  background-color: white;\n  border-radius: 0px; }\n\nhr {\n  height: 1px;\n  border: 0;\n  border-top: 1px solid #e6e6e6; }\n\n.fields {\n  list-style-type: none;\n  text-decoration: none; }\n\n.fields a:link, .fields a:visited {\n    list-style-type: none;\n    text-decoration: none; }\n\n.fields #field-title {\n    border-left: 4px solid #bb3232;\n    padding-left: 3px;\n    outline: none;\n    font-size: .8em;\n    color: #2b2b2b; }\n\n.multiple {\n  outline: none;\n  font-size: .8em;\n  color: #1a1a1a; }\n\n.multiple-title {\n  outline: none;\n  font-size: .8em;\n  color: #1a1a1a;\n  border-left: 4px solid #38a3a5;\n  padding: 3px; }\n\n.dashed-line {\n  border: none;\n  border-top: 1px dashed #e6e6e6;\n  color: #fff;\n  background-color: #fff;\n  height: 1px; }\n\n#continue {\n  position: absolute;\n  float: left;\n  margin-left: 500px;\n  font-size: .85em;\n  color: #2b2b2b;\n  padding: 10px;\n  margin-top: -41px;\n  border: 1px solid #c4c4c4;\n  background-color: #fff; }\n\n#continue:hover {\n  cursor: pointer;\n  color: #38a3a5; }\n\n#save {\n  position: absolute;\n  float: left;\n  margin-left: 390px;\n  font-size: .85em;\n  color: #2b2b2b;\n  padding: 10px;\n  margin-top: -40px; }\n\n#save:hover {\n  cursor: pointer;\n  color: #38a3a5; }\n\n#progress {\n  background-color: #c9c9c9;\n  width: 130px;\n  margin-left: 55px;\n  margin-top: 15px;\n  float: left;\n  position: absolute; }\n\n#bar {\n  width: 0%;\n  height: 5px;\n  background-color: #38a3a5;\n  text-align: center;\n  line-height: 30px;\n  color: white;\n  border-right: 0px solid #e9e7e7; }\n\n#form-ratio {\n  color: black;\n  margin-left: 75px;\n  margin-top: -5px;\n  position: absolute; }\n\n#completion {\n  margin-left: 4px; }\n"
 
 /***/ }),
 
@@ -518,7 +518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dwFormComponent", function() { return dwFormComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
-/* harmony import */ var _services_modals_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/modals.service */ "./src/app/services/modals.service.ts");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -532,11 +532,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var dwFormComponent = /** @class */ (function () {
-    function dwFormComponent(data, modals) {
+    function dwFormComponent(data, bucket) {
         var _this = this;
         this.data = data;
-        this.modals = modals;
+        this.bucket = bucket;
         this.form = {
+            profileType: null,
             ratio: null,
             answered: null,
             notAnswered: null,
@@ -545,31 +546,33 @@ var dwFormComponent = /** @class */ (function () {
             target: null,
         };
         this.showForm = true;
-        this.profileType = "";
-        this.userDataService = this.data.profile.subscribe(function (profileData) { return _this.profileType = profileData.type; });
-        this.data.screenData.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
-        this.modals.dwFormBucket.subscribe(function (data) { if (data.target == "dwForm")
-            _this.form = data; });
-        this.data.reqScreenData();
+        this.userDataService = this.data.profile.subscribe(function (profileData) { return _this.form.profileType = profileData.type; });
+        this.bucket.clientMonitor.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
+        this.bucket.dwForm.subscribe(function (data) {
+            var dwForm = data;
+            if (dwForm.target == "dwForm-component") {
+                var profileType = dwForm.profileType;
+                dwForm.profileType = null; //hides form values bc type of form is not known
+                _this.form = dwForm;
+                _this.form.profileType = profileType;
+                //this.form = dwForm      
+            }
+        });
         this.data.getProfile(null);
     }
     dwFormComponent.prototype.ngOnInit = function () {
     };
-    dwFormComponent.prototype.isProfileType = function (userType) { return userType == this.profileType; };
+    dwFormComponent.prototype.isProfileType = function (userType) { return userType == this.form.profileType; };
     dwFormComponent.prototype.setColorFor = function (userType) {
-        if (userType == this.profileType)
+        if (userType == this.form.profileType)
             return "#38a3a5";
         return "rgb(43, 43, 43)";
     };
     dwFormComponent.prototype.toggleProfileType = function (sender) {
-        if (sender == "speaker" && this.profileType == "teacher") {
-            this.data.updateProfileType("speaker").subscribe();
-            this.profileType = "speaker";
-        }
-        else if (sender == "teacher" && this.profileType == "speaker") {
-            this.data.updateProfileType("teacher").subscribe();
-            this.profileType = "teacher";
-        }
+        if (sender == "speaker" && this.form.profileType == "teacher")
+            this.data.updateProfileType("speaker");
+        else if (sender == "teacher" && this.form.profileType == "speaker")
+            this.data.updateProfileType("teacher");
     };
     dwFormComponent.prototype.getMarginLeft = function () {
         if (this.marginLeft >= 5)
@@ -579,8 +582,8 @@ var dwFormComponent = /** @class */ (function () {
     dwFormComponent.prototype.skipForm = function () {
         this.showForm = false;
         this.form.skip = true; //skip is always set to true from forms-dw..
-        this.form.target = "topbar";
-        this.modals.dwFormEmit(this.form);
+        this.form.target = "topbar-component";
+        this.bucket.dwForm.next(this.form);
     };
     dwFormComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -589,7 +592,7 @@ var dwFormComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./dwForm.component.scss */ "./src/app/components/dwForm/dwForm.component.scss")]
         }),
         __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
-            _services_modals_service__WEBPACK_IMPORTED_MODULE_2__["ModalsService"]])
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__["BucketService"]])
     ], dwFormComponent);
     return dwFormComponent;
 }());
@@ -672,7 +675,7 @@ var FlashchatsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n    <br><br>\n  \n    <li *ngFor=\"let field of fields\" class=\"fields\">\n      <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n      <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n      value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n      (keyup.enter)=\"edit_written($event,field,'enter')\" \n      (blur)=\"edit_written($event,field,'blur')\" \n      (click)=\"edit_clicked(field)\"\n      (input)=\"edit_size($event,field)\">\n      <br>\n    </li>\n  \n    <span class=\"multiple-title\">With which gender do you identify ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"male\" [checked]=\"setGender('male')\"> \n      <label>Male</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"female\" [checked]=\"setGender('female')\">\n      <label>Female</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n      <label>I wish to skip this question</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n      <label>Other</label>\n    </p>\n  \n    <hr>\n  \n    <span class=\"multiple-title\">With which race and/or ethnicity do you identify ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"white\" [checked]=\"setRace('white')\">\n      <label>White</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"hispanic\" [checked]=\"setRace('hispanic')\">\n      <label>Hispanic or Latino</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"asian\" [checked]=\"setRace('asian')\">\n      <label>Asian</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"black\" [checked]=\"setRace('black')\">\n      <label>Black or African American</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"american\" [checked]=\"setRace('american')\">\n      <label>American Indian or Alaska Native</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"other\" [checked]=\"setRace('other')\">\n      <label>Other</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"notSpecified\" [checked]=\"setRace('notSpecified')\">\n      <label>Not Specified</label>\n    </p>\n    <hr><br>\n  \n    <span class=\"multiple-title\">Did you or your parents immigrate to the US ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"yes\" [checked]=\"setGender('yes')\"> \n      <label>Yes</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"no\" [checked]=\"setGender('no')\">\n      <label>No</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <li *ngFor=\"let field of fields2\" class=\"fields\">\n        <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n        <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n        value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n        (keyup.enter)=\"edit_written($event,field,'enter')\" \n        (blur)=\"edit_written($event,field,'blur')\" \n        (click)=\"edit_clicked(field)\"\n        (input)=\"edit_size($event,field)\">\n        <br>\n    </li>\n        \n    <span class=\"multiple-title\">Were you a first generation college student ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"yes\" [checked]=\"setGender('yes')\"> \n      <label>Yes</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"no\" [checked]=\"setGender('no')\">\n      <label>No</label> <br>\n    </p>\n    <hr><br>\n  \n    <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n      <label>Yes</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n      <label>No</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">Education level</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"lths\" [checked]=\"setGender('lths')\"> \n      <label>Less than High School</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"hs\" [checked]=\"setGender('hs')\">\n      <label>High School</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"associates\" [checked]=\"setGender('associates')\">\n      <label>Associates Degree</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"bachelors\" [checked]=\"setGender('bachelors')\">\n      <label>Bachelors</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"masters\" [checked]=\"setGender('masters')\">\n      <label>Masters</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"jd\" [checked]=\"setGender('jd')\">\n      <label>JD</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"md\" [checked]=\"setGender('md')\">\n      <label>MD (or other medical degree)</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"phd\" [checked]=\"setGender('phd')\">\n      <label>PhD</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">Which best describes where you grew up ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"urban\" [checked]=\"setGender('urban')\"> \n      <label>Urban</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"rural\" [checked]=\"setGender('rural')\">\n      <label>Rural</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"suburban\" [checked]=\"setGender('suburban')\">\n      <label>Suburban</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">\n      Which best describes your family's total yearly income growing up?\n      (Note: This is optional and fully confidential. \n      It is intended to give us an understanding of socio-economic background of \n      our speakers and to assist with grants.)\n      </span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"l15\" [checked]=\"setGender('l15')\"> \n      <label><15K</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"15\" [checked]=\"setGender('15')\">\n      <label>15-50K</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"50\" [checked]=\"setGender('50')\">\n      <label>50-100K</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"100\" [checked]=\"setGender('100')\">\n      <label>100-200K</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"m200\" [checked]=\"setGender('m200')\">\n      <label>>200K</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n      <label>Yes</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n      <label>No</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">\n      Which category best describes the profession that \n      you would discuss in your DreamWakers flashchat?\n    </span>\n    <p class=\"multiple nwline\" style=\"font-size: .78em\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"stem\" [checked]=\"setGender('stem')\" > \n      <label>STEM (Science, Technology, Engineering, Math)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"social\" [checked]=\"setGender('social')\">\n      <label>Social Sciences (Politics, History, Foreign Affairs, Legal)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"media\" [checked]=\"setGender('media')\">\n      <label>Media (Social Media, Print Media, Videography, Photography)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"health\" [checked]=\"setGender('health')\">\n      <label>Health Care (Doctors, Nurses, Pharmaceuticals)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"arts\" [checked]=\"setGender('arts')\">\n      <label>Arts (Musicians, Dancers, Painters, Poets)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"finance\" [checked]=\"setGender('finance')\">\n      <label>Finance (Banking, Accounting)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"consumer\" [checked]=\"setGender('consumer')\">\n      <label>Consumer Goods (On-line or physical retailers or retailers to other companies)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"business\" [checked]=\"setGender('business')\">\n      <label>Other Business (Not captured in the above options)</label> <br><hr class=\"dashed-line\">\n      <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"other\" [checked]=\"setGender('other')\">\n      <label>Other</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">Do you consider yourself an entrepreneur ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"yes\" [checked]=\"setGender('yes')\"> \n      <label>Yes</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"no\" [checked]=\"setGender('no')\">\n      <label>No</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">How many flashchats would you consider hosting over a six month period ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"yes\" [checked]=\"setGender('yes')\"> \n      <label> 1</label> &nbsp;&nbsp;\n      <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n      <label> 2</label>&nbsp;&nbsp;\n      <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n      <label> 3</label>&nbsp;&nbsp;\n      <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n      <label> 4</label>&nbsp;&nbsp;\n      <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n      <label> 5</label>&nbsp;&nbsp;\n      <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n      <label> 6</label>&nbsp;&nbsp;\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">How did you hear about DreamWakers ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"founder\" [checked]=\"setGender('yes')\"> \n      <label>The Founders</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"oral\" [checked]=\"setGender('no')\">\n      <label>Word of Mouth</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"dwNews\" [checked]=\"setGender('no')\">\n      <label>DreamWakers Newsletter</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"event\" [checked]=\"setGender('no')\">\n      <label>Event or Conference</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"twitter\" [checked]=\"setGender('no')\">\n      <label>Twitter</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"facebook\" [checked]=\"setGender('no')\">\n      <label>Facebook</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"linkedin\" [checked]=\"setGender('no')\">\n      <label>LinkedIn</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"google\" [checked]=\"setGender('no')\">\n      <label>Google Search</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"instagram\" [checked]=\"setGender('no')\">\n      <label>Instagram</label> <br>\n      <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"other\" [checked]=\"setGender('no')\">\n      <label>Other</label> <br>\n    </p>\n    <hr><br>\n  \n  \n    <span class=\"multiple-title\">Do you speak any other languages ?</span>\n    <p class=\"multiple nwline\" >\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"spanish\" [checked]=\"setRace('white')\">\n      <label>Spanish</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"french\" [checked]=\"setRace('hispanic')\">\n      <label>French</label>\n      <br>\n      <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"other\" [checked]=\"setRace('asian')\">\n      <label>Other</label>\n    </p>\n    <hr><br>\n  \n  "
+module.exports = "\n\n<br>\n<br>\n\n<li *ngFor=\"let field of fields\" class=\"fields\">\n  <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n  <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n  value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n  (keyup.enter)=\"edit_written($event,field,'enter')\" \n  (blur)=\"edit_written($event,field,'blur')\" \n  (click)=\"edit_clicked(field)\"\n  (input)=\"edit_size($event,field)\">\n  <br>\n</li>\n\n\n<span *ngIf=\"showStaticElements == true\">\n\n  <span class=\"multiple-title\">With which gender do you identify ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"male\" [checked]=\"setGender('male')\"> \n    <label>Male</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"female\" [checked]=\"setGender('female')\">\n    <label>Female</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n    <label>I wish to skip this question</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n    <label>Other</label>\n  </p>\n\n  <hr>\n\n  <span class=\"multiple-title\">With which race and/or ethnicity do you identify ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"white\" [checked]=\"setRace('white')\">\n    <label>White</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"hispanic\" [checked]=\"setRace('hispanic')\">\n    <label>Hispanic or Latino</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"asian\" [checked]=\"setRace('asian')\">\n    <label>Asian</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"black\" [checked]=\"setRace('black')\">\n    <label>Black or African American</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"american\" [checked]=\"setRace('american')\">\n    <label>American Indian or Alaska Native</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"other\" [checked]=\"setRace('other')\">\n    <label>Other</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"notSpecified\" [checked]=\"setRace('notSpecified')\">\n    <label>Not Specified</label>\n  </p>\n  <hr>\n  <br>\n\n  <span class=\"multiple-title\">Did you or your parents immigrate to the US ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <li *ngFor=\"let field of fields2\" class=\"fields\">\n    <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n    <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n    value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n    (keyup.enter)=\"edit_written($event,field,'enter')\" \n    (blur)=\"edit_written($event,field,'blur')\" \n    (click)=\"edit_clicked(field)\"\n    (input)=\"edit_size($event,field)\">\n    <br>\n  </li>\n      \n  <span class=\"multiple-title\">Were you a first generation college student ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n  <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Education level</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"lths\" [checked]=\"setGender('lths')\"> \n    <label>Less than High School</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"hs\" [checked]=\"setGender('hs')\">\n    <label>High School</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"associates\" [checked]=\"setGender('associates')\">\n    <label>Associates Degree</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"bachelors\" [checked]=\"setGender('bachelors')\">\n    <label>Bachelors</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"masters\" [checked]=\"setGender('masters')\">\n    <label>Masters</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"jd\" [checked]=\"setGender('jd')\">\n    <label>JD</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"md\" [checked]=\"setGender('md')\">\n    <label>MD (or other medical degree)</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"phd\" [checked]=\"setGender('phd')\">\n    <label>PhD</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Which best describes where you grew up ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"urban\" [checked]=\"setGender('urban')\"> \n    <label>Urban</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"rural\" [checked]=\"setGender('rural')\">\n    <label>Rural</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"suburban\" [checked]=\"setGender('suburban')\">\n    <label>Suburban</label> <br>\n  </p>\n  <hr><br>\n\n\n  <span class=\"multiple-title\">\n    Which best describes your family's total yearly income growing up?\n    (Note: This is optional and fully confidential. \n    It is intended to give us an understanding of socio-economic background of \n    our speakers and to assist with grants.)\n    </span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"l15\" [checked]=\"setGender('l15')\"> \n    <label><15K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"15\" [checked]=\"setGender('15')\">\n    <label>15-50K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"50\" [checked]=\"setGender('50')\">\n    <label>50-100K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"100\" [checked]=\"setGender('100')\">\n    <label>100-200K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"m200\" [checked]=\"setGender('m200')\">\n    <label>>200K</label> <br>\n  </p>\n  <hr\n  ><br>\n\n\n  <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr><br>\n\n\n  <span class=\"multiple-title\">\n    Which category best describes the profession that \n    you would discuss in your DreamWakers flashchat?\n  </span>\n  <p class=\"multiple nwline\" style=\"font-size: .78em\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"stem\" [checked]=\"setGender('stem')\" > \n    <label>STEM (Science, Technology, Engineering, Math)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"social\" [checked]=\"setGender('social')\">\n    <label>Social Sciences (Politics, History, Foreign Affairs, Legal)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"media\" [checked]=\"setGender('media')\">\n    <label>Media (Social Media, Print Media, Videography, Photography)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"health\" [checked]=\"setGender('health')\">\n    <label>Health Care (Doctors, Nurses, Pharmaceuticals)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"arts\" [checked]=\"setGender('arts')\">\n    <label>Arts (Musicians, Dancers, Painters, Poets)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"finance\" [checked]=\"setGender('finance')\">\n    <label>Finance (Banking, Accounting)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"consumer\" [checked]=\"setGender('consumer')\">\n    <label>Consumer Goods (On-line or physical retailers or retailers to other companies)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"business\" [checked]=\"setGender('business')\">\n    <label>Other Business (Not captured in the above options)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"other\" [checked]=\"setGender('other')\">\n    <label>Other</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Do you consider yourself an entrepreneur ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">How many flashchats would you consider hosting over a six month period ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label> 1</label> &nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 2</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 3</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 4</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 5</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 6</label>&nbsp;&nbsp;\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">How did you hear about DreamWakers ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"founder\" [checked]=\"setGender('yes')\"> \n    <label>The Founders</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"oral\" [checked]=\"setGender('no')\">\n    <label>Word of Mouth</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"dwNews\" [checked]=\"setGender('no')\">\n    <label>DreamWakers Newsletter</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"event\" [checked]=\"setGender('no')\">\n    <label>Event or Conference</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"twitter\" [checked]=\"setGender('no')\">\n    <label>Twitter</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"facebook\" [checked]=\"setGender('no')\">\n    <label>Facebook</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"linkedin\" [checked]=\"setGender('no')\">\n    <label>LinkedIn</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"google\" [checked]=\"setGender('no')\">\n    <label>Google Search</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"instagram\" [checked]=\"setGender('no')\">\n    <label>Instagram</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"other\" [checked]=\"setGender('no')\">\n    <label>Other</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Do you speak any other languages ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"spanish\" [checked]=\"setRace('white')\">\n    <label>Spanish</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"french\" [checked]=\"setRace('hispanic')\">\n    <label>French</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"other\" [checked]=\"setRace('asian')\">\n    <label>Other</label>\n  </p>\n  <hr>\n  <br>\n\n</span>\n\n"
 
 /***/ }),
 
@@ -699,7 +702,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DwFormSpeakerInputsComponent", function() { return DwFormSpeakerInputsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/data.service */ "./src/app/services/data.service.ts");
-/* harmony import */ var _services_modals_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/modals.service */ "./src/app/services/modals.service.ts");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -744,15 +747,21 @@ var Field = /** @class */ (function () {
     return Field;
 }());
 var DwFormSpeakerInputsComponent = /** @class */ (function () {
-    function DwFormSpeakerInputsComponent(data, modals) {
+    function DwFormSpeakerInputsComponent(data, bucket) {
         var _this = this;
         this.data = data;
-        this.modals = modals;
+        this.bucket = bucket;
+        this.showStaticElements = false;
         this.gender = "other";
         this.race = "notSpecified";
         this.fields = [];
         this.fields2 = [];
+        this.data.profileTypeUpdate.subscribe(function (data) {
+            _this.profileType = data;
+            _this.dataFlush();
+        });
         this.userDataService = this.data.profile.subscribe(function (profileData) {
+            _this.profileType = profileData.type;
             _this.fields = [
                 _this.fName = new Field("", new Cache("First Name", profileData.firstName)),
                 _this.lName = new Field("", new Cache("Last Name", profileData.lastName)),
@@ -773,20 +782,22 @@ var DwFormSpeakerInputsComponent = /** @class */ (function () {
                 _this.company = new Field("", new Cache("Please name your company or organization", profileData.position)),
                 _this.title = new Field("      ", new Cache("Please list your title", profileData.headline.split('at')[0])),
             ];
-            _this.emitFormData();
+            _this.dataFlush();
         });
         this.data.getProfile(null);
     }
     DwFormSpeakerInputsComponent.prototype.ngOnInit = function () {
     };
-    DwFormSpeakerInputsComponent.prototype.emitFormData = function () {
-        this.modals.dwFormEmit({
+    DwFormSpeakerInputsComponent.prototype.dataFlush = function () {
+        this.showStaticElements = true;
+        this.bucket.dwForm.next({
+            profileType: this.profileType,
             ratio: this.getFormData("ratio"),
             notAnswered: this.getFormData("notAnswered"),
             answered: this.getFormData("answered"),
             received: true,
             skip: false,
-            target: "dwForm"
+            target: "dwForm-component"
         });
     };
     DwFormSpeakerInputsComponent.prototype.getFormData = function (id) {
@@ -836,7 +847,7 @@ var DwFormSpeakerInputsComponent = /** @class */ (function () {
         }
         field.title = field.cache.title;
         field.placeholder = field.placeholder;
-        this.emitFormData();
+        this.dataFlush();
     };
     DwFormSpeakerInputsComponent.prototype.edit_clicked = function (field) {
         field.value = "";
@@ -853,7 +864,7 @@ var DwFormSpeakerInputsComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./dwForm-speaker-inputs.component.scss */ "./src/app/components/forms/dwForm-speaker-inputs/dwForm-speaker-inputs.component.scss")]
         }),
         __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
-            _services_modals_service__WEBPACK_IMPORTED_MODULE_2__["ModalsService"]])
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__["BucketService"]])
     ], DwFormSpeakerInputsComponent);
     return DwFormSpeakerInputsComponent;
 }());
@@ -869,7 +880,7 @@ var DwFormSpeakerInputsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n   \n    <br><br>\n  \n    <li *ngFor=\"let field of fields\" class=\"fields\">\n        <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n        <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n        value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n        (keyup.enter)=\"edit_written($event,field,'enter')\" \n        (blur)=\"edit_written($event,field,'blur')\" \n        (click)=\"edit_clicked(field)\"\n        (input)=\"edit_size($event,field)\">\n        <br>\n      </li>\n    \n      <span class=\"multiple-title\">With which gender do you identify ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"male\" [checked]=\"setGender('male')\"> \n        <label>Male</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"female\" [checked]=\"setGender('female')\">\n        <label>Female</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n        <label>I wish to skip this question</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n        <label>Other</label>\n      </p>\n    \n      <hr>\n    \n      <span class=\"multiple-title\">With which race and/or ethnicity do you identify ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"white\" [checked]=\"setRace('white')\">\n        <label>White</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"hispanic\" [checked]=\"setRace('hispanic')\">\n        <label>Hispanic or Latino</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"asian\" [checked]=\"setRace('asian')\">\n        <label>Asian</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"black\" [checked]=\"setRace('black')\">\n        <label>Black or African American</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"american\" [checked]=\"setRace('american')\">\n        <label>American Indian or Alaska Native</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"other\" [checked]=\"setRace('other')\">\n        <label>Other</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"notSpecified\" [checked]=\"setRace('notSpecified')\">\n        <label>Not Specified</label>\n      </p>\n      <hr><br>\n    \n      <span class=\"multiple-title\">Did you or your parents immigrate to the US ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"yes\" [checked]=\"setGender('yes')\"> \n        <label>Yes</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"no\" [checked]=\"setGender('no')\">\n        <label>No</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <li *ngFor=\"let field of fields2\" class=\"fields\">\n          <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n          <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n          value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n          (keyup.enter)=\"edit_written($event,field,'enter')\" \n          (blur)=\"edit_written($event,field,'blur')\" \n          (click)=\"edit_clicked(field)\"\n          (input)=\"edit_size($event,field)\">\n          <br>\n      </li>\n          \n      <span class=\"multiple-title\">Were you a first generation college student ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"yes\" [checked]=\"setGender('yes')\"> \n        <label>Yes</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"no\" [checked]=\"setGender('no')\">\n        <label>No</label> <br>\n      </p>\n      <hr><br>\n    \n      <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n        <label>Yes</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n        <label>No</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">Education level</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"lths\" [checked]=\"setGender('lths')\"> \n        <label>Less than High School</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"hs\" [checked]=\"setGender('hs')\">\n        <label>High School</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"associates\" [checked]=\"setGender('associates')\">\n        <label>Associates Degree</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"bachelors\" [checked]=\"setGender('bachelors')\">\n        <label>Bachelors</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"masters\" [checked]=\"setGender('masters')\">\n        <label>Masters</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"jd\" [checked]=\"setGender('jd')\">\n        <label>JD</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"md\" [checked]=\"setGender('md')\">\n        <label>MD (or other medical degree)</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"phd\" [checked]=\"setGender('phd')\">\n        <label>PhD</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">Which best describes where you grew up ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"urban\" [checked]=\"setGender('urban')\"> \n        <label>Urban</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"rural\" [checked]=\"setGender('rural')\">\n        <label>Rural</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"suburban\" [checked]=\"setGender('suburban')\">\n        <label>Suburban</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">\n        Which best describes your family's total yearly income growing up?\n        (Note: This is optional and fully confidential. \n        It is intended to give us an understanding of socio-economic background of \n        our speakers and to assist with grants.)\n        </span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"l15\" [checked]=\"setGender('l15')\"> \n        <label><15K</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"15\" [checked]=\"setGender('15')\">\n        <label>15-50K</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"50\" [checked]=\"setGender('50')\">\n        <label>50-100K</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"100\" [checked]=\"setGender('100')\">\n        <label>100-200K</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"m200\" [checked]=\"setGender('m200')\">\n        <label>>200K</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n        <label>Yes</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n        <label>No</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">\n        Which category best describes the profession that \n        you would discuss in your DreamWakers flashchat?\n      </span>\n      <p class=\"multiple nwline\" style=\"font-size: .78em\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"stem\" [checked]=\"setGender('stem')\" > \n        <label>STEM (Science, Technology, Engineering, Math)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"social\" [checked]=\"setGender('social')\">\n        <label>Social Sciences (Politics, History, Foreign Affairs, Legal)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"media\" [checked]=\"setGender('media')\">\n        <label>Media (Social Media, Print Media, Videography, Photography)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"health\" [checked]=\"setGender('health')\">\n        <label>Health Care (Doctors, Nurses, Pharmaceuticals)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"arts\" [checked]=\"setGender('arts')\">\n        <label>Arts (Musicians, Dancers, Painters, Poets)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"finance\" [checked]=\"setGender('finance')\">\n        <label>Finance (Banking, Accounting)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"consumer\" [checked]=\"setGender('consumer')\">\n        <label>Consumer Goods (On-line or physical retailers or retailers to other companies)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"business\" [checked]=\"setGender('business')\">\n        <label>Other Business (Not captured in the above options)</label> <br><hr class=\"dashed-line\">\n        <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"other\" [checked]=\"setGender('other')\">\n        <label>Other</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">Do you consider yourself an entrepreneur ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"yes\" [checked]=\"setGender('yes')\"> \n        <label>Yes</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"no\" [checked]=\"setGender('no')\">\n        <label>No</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">How many flashchats would you consider hosting over a six month period ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"yes\" [checked]=\"setGender('yes')\"> \n        <label> 1</label> &nbsp;&nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n        <label> 2</label>&nbsp;&nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n        <label> 3</label>&nbsp;&nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n        <label> 4</label>&nbsp;&nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n        <label> 5</label>&nbsp;&nbsp;\n        <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n        <label> 6</label>&nbsp;&nbsp;\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">How did you hear about DreamWakers ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"founder\" [checked]=\"setGender('yes')\"> \n        <label>The Founders</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"oral\" [checked]=\"setGender('no')\">\n        <label>Word of Mouth</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"dwNews\" [checked]=\"setGender('no')\">\n        <label>DreamWakers Newsletter</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"event\" [checked]=\"setGender('no')\">\n        <label>Event or Conference</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"twitter\" [checked]=\"setGender('no')\">\n        <label>Twitter</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"facebook\" [checked]=\"setGender('no')\">\n        <label>Facebook</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"linkedin\" [checked]=\"setGender('no')\">\n        <label>LinkedIn</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"google\" [checked]=\"setGender('no')\">\n        <label>Google Search</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"instagram\" [checked]=\"setGender('no')\">\n        <label>Instagram</label> <br>\n        <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"other\" [checked]=\"setGender('no')\">\n        <label>Other</label> <br>\n      </p>\n      <hr><br>\n    \n    \n      <span class=\"multiple-title\">Do you speak any other languages ?</span>\n      <p class=\"multiple nwline\" >\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"spanish\" [checked]=\"setRace('white')\">\n        <label>Spanish</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"french\" [checked]=\"setRace('hispanic')\">\n        <label>French</label>\n        <br>\n        <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"other\" [checked]=\"setRace('asian')\">\n        <label>Other</label>\n      </p>\n      <hr><br>\n    \n    "
+module.exports = "\n<br>\n<br>\n\n<li *ngFor=\"let field of fields\" class=\"fields\">\n  <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n  <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n  value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n  (keyup.enter)=\"edit_written($event,field,'enter')\" \n  (blur)=\"edit_written($event,field,'blur')\" \n  (click)=\"edit_clicked(field)\"\n  (input)=\"edit_size($event,field)\">\n  <br>\n</li>\n\n<span *ngIf=\"showStaticElements == true\">\n  \n  <span class=\"multiple-title\">With which gender do you identify ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"male\" [checked]=\"setGender('male')\"> \n    <label>Male</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"female\" [checked]=\"setGender('female')\">\n    <label>Female</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n    <label>I wish to skip this question</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"gender\" value=\"other\" [checked]=\"setGender('other')\">\n    <label>Other</label>\n  </p>\n\n  <hr>\n\n  <span class=\"multiple-title\">With which race and/or ethnicity do you identify ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"white\" [checked]=\"setRace('white')\">\n    <label>White</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"hispanic\" [checked]=\"setRace('hispanic')\">\n    <label>Hispanic or Latino</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"asian\" [checked]=\"setRace('asian')\">\n    <label>Asian</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"black\" [checked]=\"setRace('black')\">\n    <label>Black or African American</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"american\" [checked]=\"setRace('american')\">\n    <label>American Indian or Alaska Native</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"other\" [checked]=\"setRace('other')\">\n    <label>Other</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"race\" value=\"notSpecified\" [checked]=\"setRace('notSpecified')\">\n    <label>Not Specified</label>\n  </p>\n  <hr>\n  <br>\n\n  <span class=\"multiple-title\">Did you or your parents immigrate to the US ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgImmigrant\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <li *ngFor=\"let field of fields2\" class=\"fields\">\n      <span id=\"field-title\" [style.border-left]=\"'4px solid '+field.color\">{{field.title}}</span> \n      <input id=\"field\" [style.width.%]=\"field.width\" type=\"text\" ng-model=\"inputText\" class=\"modifiable nwline\" \n      value=\"{{field.value}}\" placeholder=\"{{field.placeholder}}\"\n      (keyup.enter)=\"edit_written($event,field,'enter')\" \n      (blur)=\"edit_written($event,field,'blur')\" \n      (click)=\"edit_clicked(field)\"\n      (input)=\"edit_size($event,field)\">\n      <br>\n  </li>\n      \n  <span class=\"multiple-title\">Were you a first generation college student ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"fgStudent\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n  <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Education level</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"lths\" [checked]=\"setGender('lths')\"> \n    <label>Less than High School</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"hs\" [checked]=\"setGender('hs')\">\n    <label>High School</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"associates\" [checked]=\"setGender('associates')\">\n    <label>Associates Degree</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"bachelors\" [checked]=\"setGender('bachelors')\">\n    <label>Bachelors</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"masters\" [checked]=\"setGender('masters')\">\n    <label>Masters</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"jd\" [checked]=\"setGender('jd')\">\n    <label>JD</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"md\" [checked]=\"setGender('md')\">\n    <label>MD (or other medical degree)</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"educationLevel\" value=\"phd\" [checked]=\"setGender('phd')\">\n    <label>PhD</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Which best describes where you grew up ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"urban\" [checked]=\"setGender('urban')\"> \n    <label>Urban</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"rural\" [checked]=\"setGender('rural')\">\n    <label>Rural</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeArea\" value=\"suburban\" [checked]=\"setGender('suburban')\">\n    <label>Suburban</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">\n    Which best describes your family's total yearly income growing up?\n    (Note: This is optional and fully confidential. \n    It is intended to give us an understanding of socio-economic background of \n    our speakers and to assist with grants.)\n    </span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"l15\" [checked]=\"setGender('l15')\"> \n    <label><15K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"15\" [checked]=\"setGender('15')\">\n    <label>15-50K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"50\" [checked]=\"setGender('50')\">\n    <label>50-100K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"100\" [checked]=\"setGender('100')\">\n    <label>100-200K</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"homeIncome\" value=\"m200\" [checked]=\"setGender('m200')\">\n    <label>>200K</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Do you identify as LGBTQ ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"lgbtq\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">\n    Which category best describes the profession that \n    you would discuss in your DreamWakers flashchat?\n  </span>\n  <p class=\"multiple nwline\" style=\"font-size: .78em\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"stem\" [checked]=\"setGender('stem')\" > \n    <label>STEM (Science, Technology, Engineering, Math)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"social\" [checked]=\"setGender('social')\">\n    <label>Social Sciences (Politics, History, Foreign Affairs, Legal)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"media\" [checked]=\"setGender('media')\">\n    <label>Media (Social Media, Print Media, Videography, Photography)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"health\" [checked]=\"setGender('health')\">\n    <label>Health Care (Doctors, Nurses, Pharmaceuticals)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"arts\" [checked]=\"setGender('arts')\">\n    <label>Arts (Musicians, Dancers, Painters, Poets)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"finance\" [checked]=\"setGender('finance')\">\n    <label>Finance (Banking, Accounting)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"consumer\" [checked]=\"setGender('consumer')\">\n    <label>Consumer Goods (On-line or physical retailers or retailers to other companies)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"business\" [checked]=\"setGender('business')\">\n    <label>Other Business (Not captured in the above options)</label> <br><hr class=\"dashed-line\">\n    <input class=\"w3-radio\" type=\"radio\" name=\"subject\" value=\"other\" [checked]=\"setGender('other')\">\n    <label>Other</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Do you consider yourself an entrepreneur ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label>Yes</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"entrepreneur\" value=\"no\" [checked]=\"setGender('no')\">\n    <label>No</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">How many flashchats would you consider hosting over a six month period ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"yes\" [checked]=\"setGender('yes')\"> \n    <label> 1</label> &nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 2</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 3</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 4</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 5</label>&nbsp;&nbsp;\n    <input class=\"w3-radio\" type=\"radio\" name=\"chatNumbers\" value=\"no\" [checked]=\"setGender('no')\">\n    <label> 6</label>&nbsp;&nbsp;\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">How did you hear about DreamWakers ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"founder\" [checked]=\"setGender('yes')\"> \n    <label>The Founders</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"oral\" [checked]=\"setGender('no')\">\n    <label>Word of Mouth</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"dwNews\" [checked]=\"setGender('no')\">\n    <label>DreamWakers Newsletter</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"event\" [checked]=\"setGender('no')\">\n    <label>Event or Conference</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"twitter\" [checked]=\"setGender('no')\">\n    <label>Twitter</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"facebook\" [checked]=\"setGender('no')\">\n    <label>Facebook</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"linkedin\" [checked]=\"setGender('no')\">\n    <label>LinkedIn</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"google\" [checked]=\"setGender('no')\">\n    <label>Google Search</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"instagram\" [checked]=\"setGender('no')\">\n    <label>Instagram</label> <br>\n    <input class=\"w3-radio\" type=\"radio\" name=\"foundDw\" value=\"other\" [checked]=\"setGender('no')\">\n    <label>Other</label> <br>\n  </p>\n  <hr>\n  <br>\n\n\n  <span class=\"multiple-title\">Do you speak any other languages ?</span>\n  <p class=\"multiple nwline\" >\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"spanish\" [checked]=\"setRace('white')\">\n    <label>Spanish</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"french\" [checked]=\"setRace('hispanic')\">\n    <label>French</label>\n    <br>\n    <input class=\"w3-radio\" type=\"checkbox\" name=\"language\" value=\"other\" [checked]=\"setRace('asian')\">\n    <label>Other</label>\n  </p>\n  <hr>\n  <br>\n</span>\n    \n    "
 
 /***/ }),
 
@@ -896,7 +907,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DwFormTeacherInputsComponent", function() { return DwFormTeacherInputsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/data.service */ "./src/app/services/data.service.ts");
-/* harmony import */ var _services_modals_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/modals.service */ "./src/app/services/modals.service.ts");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -941,15 +952,20 @@ var Field = /** @class */ (function () {
     return Field;
 }());
 var DwFormTeacherInputsComponent = /** @class */ (function () {
-    function DwFormTeacherInputsComponent(data, modals) {
+    function DwFormTeacherInputsComponent(data, bucket) {
         var _this = this;
         this.data = data;
-        this.modals = modals;
+        this.bucket = bucket;
         this.gender = "other";
         this.race = "notSpecified";
         this.fields = [];
         this.fields2 = [];
+        this.data.profileTypeUpdate.subscribe(function (data) {
+            _this.profileType = data;
+            _this.dataFlush();
+        });
         this.userDataService = this.data.profile.subscribe(function (profileData) {
+            _this.profileType = profileData.type;
             _this.fields = [
                 _this.fName = new Field("", new Cache("First Name", profileData.firstName)),
                 _this.lName = new Field("", new Cache("Last Name", profileData.lastName)),
@@ -970,20 +986,22 @@ var DwFormTeacherInputsComponent = /** @class */ (function () {
                 _this.company = new Field("", new Cache("Please name your company or organization", profileData.position)),
                 _this.title = new Field("      ", new Cache("Please list your title", profileData.headline.split('at')[0])),
             ];
-            _this.emitFormData();
+            _this.dataFlush();
         });
         this.data.getProfile(null);
     }
     DwFormTeacherInputsComponent.prototype.ngOnInit = function () {
     };
-    DwFormTeacherInputsComponent.prototype.emitFormData = function () {
-        this.modals.dwFormEmit({
+    DwFormTeacherInputsComponent.prototype.dataFlush = function () {
+        this.showStaticElements = true;
+        this.bucket.dwForm.next({
+            profileType: this.profileType,
             ratio: this.getFormData("ratio"),
             notAnswered: this.getFormData("notAnswered"),
             answered: this.getFormData("answered"),
             received: true,
             skip: false,
-            target: "dwForm"
+            target: "dwForm-component"
         });
     };
     DwFormTeacherInputsComponent.prototype.getFormData = function (id) {
@@ -1033,7 +1051,7 @@ var DwFormTeacherInputsComponent = /** @class */ (function () {
         }
         field.title = field.cache.title;
         field.placeholder = field.placeholder;
-        this.emitFormData();
+        this.dataFlush();
     };
     DwFormTeacherInputsComponent.prototype.edit_clicked = function (field) {
         field.value = "";
@@ -1050,7 +1068,7 @@ var DwFormTeacherInputsComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./dwForm-teacher-inputs.component.scss */ "./src/app/components/forms/dwForm-teacher-inputs/dwForm-teacher-inputs.component.scss")]
         }),
         __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
-            _services_modals_service__WEBPACK_IMPORTED_MODULE_2__["ModalsService"]])
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__["BucketService"]])
     ], DwFormTeacherInputsComponent);
     return DwFormTeacherInputsComponent;
 }());
@@ -1077,7 +1095,7 @@ module.exports = "\n\n<div id=\"container\">\n\n    <form>\n      <div class=\"b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  font-size: .9em;\n  padding-left: 10px;\n  border: 1px solid #c4c4c4;\n  border-right: 0px solid #999999; }\n\n.block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.block {\n  transition: all 0.12s linear;\n  border-radius: 3px;\n  padding: 0px;\n  width: 100%;\n  height: 400 px;\n  font-weight: lighter;\n  font-size: .87em;\n  color: #444444; }\n\n#hr-separator {\n  height: 1px;\n  border: 0;\n  border-top: 1px solid #e6e6e6; }\n\n.title {\n  color: #38a3a5; }\n\n.drop-down {\n  width: 80%;\n  border: 1px solid #e6e6e6;\n  outline: none;\n  border-radius: 0px; }\n\n#more {\n  text-align: center;\n  text-decoration: underline; }\n\n#more:hover {\n  cursor: pointer; }\n\n#hr-footer {\n  border: 0;\n  height: 1px;\n  border-top: 2px solid #c2c2c2; }\n"
+module.exports = "#container {\n  font-size: .9em;\n  padding-left: 10px;\n  border-right: 0px solid #999999; }\n\n.block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.block {\n  transition: all 0.12s linear;\n  border-radius: 3px;\n  padding: 0px;\n  width: 100%;\n  height: 400 px;\n  font-weight: lighter;\n  font-size: .87em;\n  color: #444444; }\n\n#hr-separator {\n  height: 1px;\n  border: 0;\n  border-top: 1px solid #e6e6e6; }\n\n.title {\n  color: #38a3a5; }\n\n.drop-down {\n  width: 80%;\n  border: 1px solid #e6e6e6;\n  outline: none;\n  border-radius: 0px; }\n\n#more {\n  text-align: center;\n  text-decoration: underline; }\n\n#more:hover {\n  cursor: pointer; }\n\n#hr-footer {\n  border: 0;\n  height: 1px;\n  border-top: 2px solid #c2c2c2; }\n"
 
 /***/ }),
 
@@ -1133,7 +1151,7 @@ var SpeakerFilterFormComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n<div class=\"container\">\n\n  <span id=\"close\">hide</span>\n  <app-speaker-filter-form style=\"float: left;margin-top:-20px;\"></app-speaker-filter-form>\n  \n  \n</div>"
+module.exports = "\n\n\n<div class=\"container\" >\n  <app-speaker-filter-form></app-speaker-filter-form>\n</div>"
 
 /***/ }),
 
@@ -1144,7 +1162,7 @@ module.exports = "\n\n\n<div class=\"container\">\n\n  <span id=\"close\">hide</
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\n  z-index: 100;\n  margin-left: 0px;\n  margin-top: 0px;\n  background-color: white;\n  color: #1f1f1f;\n  border-radius: 2px;\n  padding: 0px;\n  min-height: 480px;\n  width: 190px;\n  position: absolute; }\n\n#close {\n  float: left;\n  color: #2b2b2b;\n  font-weight: lighter;\n  font-size: .85em;\n  padding: 25px;\n  padding-bottom: 30px;\n  margin-top: -30px;\n  margin-left: 55px;\n  text-decoration: underline; }\n\n#close:hover {\n  cursor: pointer;\n  color: #38a3a5; }\n"
+module.exports = ".container {\n  width: 220px;\n  max-width: 530px;\n  background-color: white;\n  border: 1px solid #c5c5c5;\n  border-top: 0px solid #c5c5c5;\n  list-style-type: none;\n  margin-left: 200px;\n  margin-top: 0px;\n  position: absolute;\n  z-index: 55; }\n"
 
 /***/ }),
 
@@ -1196,7 +1214,7 @@ var HomeFilterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n\n  <div id=\"event-note\">\n    You have \n    <span *ngIf='notifNum > 0'>{{notifNum}}</span>\n    <span *ngIf='notifNum == 0'>no</span>\n     event<span *ngIf='notifNum > 1'>s</span> \n     coming up.\n  </div>\n  <hr>\n\n  <!-- <app-profile></app-profile> -->\n\n\n</div>"
+module.exports = "\n<div class=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n\n  <div id=\"event-note\" class=\"noselect\">\n    You have \n    <span *ngIf='notifNum > 0'>{{notifNum}}</span>\n    <span *ngIf='notifNum == 0'>no</span>\n     event<span *ngIf='notifNum > 1'>s</span> \n     coming up.\n  </div>\n  <hr>\n\n  <!-- <app-profile></app-profile> -->\n\n\n</div>"
 
 /***/ }),
 
@@ -1223,6 +1241,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeMainComponent", function() { return HomeMainComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1234,18 +1253,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var HomeMainComponent = /** @class */ (function () {
-    function HomeMainComponent(data) {
+    function HomeMainComponent(data, bucket) {
         var _this = this;
         this.data = data;
+        this.bucket = bucket;
         this.notifNum = 0;
-        this.data.screenData.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
+        this.bucket.clientMonitor.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
         this.data.profile.subscribe(function (data) { if (data.notifications != null)
             _this.notifNum = data.notifications; });
     }
-    HomeMainComponent.prototype.ngOnInit = function () {
-        this.data.reqScreenData();
-    };
+    HomeMainComponent.prototype.ngOnInit = function () { };
     HomeMainComponent.prototype.getMarginLeft = function () {
         if (this.marginLeft >= 5)
             return this.marginLeft + 250 - 40;
@@ -1257,7 +1276,8 @@ var HomeMainComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home-main.component.html */ "./src/app/components/home-main/home-main.component.html"),
             styles: [__webpack_require__(/*! ./home-main.component.scss */ "./src/app/components/home-main/home-main.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_2__["BucketService"]])
     ], HomeMainComponent);
     return HomeMainComponent;
 }());
@@ -1273,7 +1293,7 @@ var HomeMainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div id=\"container\">\n    \n    <!-- <div>\n      <input type=\"text\" class=\"searchTerm\" placeholder=\"search speaker ...\" (input)='newSearch($event.target.value)'>\n      <button type=\"submit\" class=\"searchButton\">\n        <i class=\"material-icons\">search</i>\n      </button>\n    </div> -->\n\n\n\n\n  <span id=\"left\">\n      <ul class=\"user-container\"> <!--[@listStagger]=\"users$\"-->\n        <li *ngFor=\"let speaker of speakers\" class=\"user-block\" (click)=\"showProfiles(speaker.id)\">\n          <a id=\"username\" routerLink=\"profile/{{speaker.id}}\"> {{speaker.firstName}} {{speaker.lastName}}</a>\n          <hr>\n          <img class=\"profile-img\" src={{speaker.pictureUrl}} alt=\"img\" >\n          <hr>\n          <div class=\"profession\">{{speaker.industry}}</div>\n          <div class=\"detail\">{{speaker.headline}}</div>\n          <div class=\"detail\">{{speaker.location}}</div>\n        </li>\n      </ul>\n  </span>"
+module.exports = "\n\n\n<nav id=\"container\"  #container style=\"padding:0px;\" [style.margin-left]=\"getMarginLeft()\" *ngIf='showSearchRes == true'>\n    <li *ngFor=\"let profile of profiles\" class=\"profile\" (click)=\"showProfiles(profile.id)\">\n      <img class=\"pic\" src={{profile.pictureUrl}} alt=\"img\" >\n      <span class=\"res-name\" id=\"\" > {{profile.firstName}} {{profile.lastName}} </span>\n      <i id=\"fa-dot\" class=\"fa fa-circle\"></i>\n      <span class=\"res-details\" *ngIf=\"profile.industry != ''\">{{profile.industry}}</span>\n      <span class=\"res-details\" *ngIf=\"profile.industry == ''\">{{profile.headline}}</span>\n    </li>\n</nav>"
 
 /***/ }),
 
@@ -1284,7 +1304,7 @@ module.exports = "\n  <div id=\"container\">\n    \n    <!-- <div>\n      <input
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  width: 430px;\n  float: left; }\n\n#search-results {\n  margin-left: 15px;\n  margin-top: 15px;\n  width: 411px; }\n\n.searchTerm {\n  float: left;\n  width: 395px;\n  border: 1px solid #dddddd;\n  padding: 5px;\n  height: 20px;\n  border-radius: 2px;\n  margin-left: 9px;\n  margin-top: 15px;\n  outline: none;\n  color: #dddddd;\n  font-size: 16px;\n  font-weight: lighter; }\n\n.searchTerm:focus {\n  color: black;\n  font-size: 16px;\n  font-weight: lighter; }\n\n.searchButton {\n  margin-top: 15px;\n  margin-left: -3px;\n  width: 40px;\n  height: 34px;\n  border: 0.01px solid #252525;\n  background: #e0dfdf;\n  text-align: center;\n  color: #707070;\n  border-radius: 1px;\n  cursor: pointer;\n  font-size: 30px; }\n\n.searchButton:focus {\n  outline: none;\n  color: black; }\n\n::-webkit-input-placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n:-ms-input-placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n::-ms-input-placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n::placeholder {\n  color: #929090;\n  opacity: 1;\n  /* Firefox */ }\n\n:-ms-input-placeholder {\n  /* Internet Explorer 10-11 */\n  color: #929090; }\n\n::-ms-input-placeholder {\n  /* Microsoft Edge */\n  color: #929090; }\n\n#container {\n  width: 430px; }\n\n#left {\n  float: left; }\n\n#suggested {\n  text-align: center;\n  color: #696969;\n  margin-top: 15px;\n  font-weight: lighter;\n  font-size: .9em; }\n\n.profession {\n  color: #069db1;\n  font-size: .70em;\n  font-family: 'Lucida Grande';\n  font-weight: lighter; }\n\n.detail {\n  font-size: 0.65em;\n  font-family: 'Lucida Grande';\n  color: #525252;\n  font-weight: lighter; }\n\n#separator {\n  margin-left: 10px;\n  border-top: 1px solid #d8d8d8;\n  width: 96%; }\n\n.user-container {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: auto auto auto;\n      grid-template-columns: auto auto auto;\n  grid-gap: 5px;\n  padding: 0 10px;\n  width: 90%;\n  list-style-type: none; }\n\n.user-block:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5;\n  background: white; }\n\n.user-block:hover hr {\n    border-top: 1px solid #a1a1a194; }\n\n.user-block:focus {\n  border: 1px solid #38a3a5;\n  outline: none; }\n\n.user-block {\n  transition: all 0.12s linear;\n  border: 1px solid lightgray;\n  background: white;\n  border-radius: 3px;\n  padding: 5px 0;\n  width: 130px;\n  height: 400 px;\n  text-align: center; }\n\n.user-block hr {\n    height: 1px;\n    border: 0;\n    border-top: 1px solid #e6e6e6; }\n\n.user-block a {\n    font-size: .8em;\n    text-decoration: none;\n    color: #37393a;\n    text-align: left; }\n\n.user-block div {\n    margin-top: 5px;\n    margin-left: 3px;\n    text-align: left; }\n\n.fade-in {\n  -webkit-animation: fadein 1s;\n  /* Safari, Chrome and Opera > 12.1 */\n  /* Firefox < 16 */\n  /* Internet Explorer */\n  /* Opera < 12.1 */\n  animation: fadein 1s; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Firefox < 16 */\n\n/* Safari, Chrome and Opera > 12.1 */\n\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n/* Internet Explorer */\n\n/* Opera < 12.1 */\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 0.3px;\n  width: 120px;\n  height: 120px; }\n\n#username {\n  font-family: 'Lucida Grande';\n  color: #525252;\n  font-weight: lighter; }\n"
+module.exports = "#container {\n  width: 530px;\n  max-width: 530px;\n  background-color: white;\n  border: 1px solid #c5c5c5;\n  border-top: 0px solid #c5c5c5;\n  list-style-type: none;\n  margin-left: 10px;\n  margin-top: 1px; }\n\n.pic {\n  position: absolute;\n  margin-top: 7px;\n  margin-left: 8px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  width: 32px;\n  height: 32px; }\n\n.profile {\n  height: 45px; }\n\n.profile:hover {\n  cursor: pointer;\n  background-color: #e9e9e9; }\n\n.res-name {\n  display: inline-block;\n  font-size: .87em;\n  font-weight: 600;\n  margin-left: 52px;\n  margin-top: 15px; }\n\n.res-details {\n  display: inline-block;\n  font-size: .9em;\n  color: #7a7a7a;\n  margin-left: 18px;\n  font-weight: 400; }\n\n#fa-dot {\n  font-size: 5px;\n  color: #4d4c4c;\n  position: absolute;\n  margin-left: 7px;\n  margin-top: 22px; }\n"
 
 /***/ }),
 
@@ -1301,6 +1321,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1313,31 +1334,62 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeSearchComponent = /** @class */ (function () {
-    function HomeSearchComponent(data, router) {
+    function HomeSearchComponent(data, router, bucket) {
         this.data = data;
         this.router = router;
+        this.bucket = bucket;
+        this.showSearchRes = false;
     }
+    HomeSearchComponent.prototype.clickout = function (event) {
+        if (typeof this.container != "undefined") {
+            if (this.container.nativeElement.contains(event.target)) { } //clicked inside
+            else
+                this.bucket.search.showRes.next(false);
+        }
+    };
     HomeSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.observer = this.data.speakers.subscribe(function (speakersData) {
-            if (JSON.stringify(_this.speakers) != JSON.stringify(speakersData))
-                _this.speakers = speakersData;
+        this.searchSpeakerData_obs = this.data.speakers.subscribe(function (speakersData) {
+            if (JSON.stringify(_this.profiles) != JSON.stringify(speakersData))
+                _this.profiles = speakersData;
         });
+        this.showField_obs = this.bucket.search.showRes.subscribe(function (data) { return _this.showSearchRes = data; });
+        this.monitor_obs = this.bucket.clientMonitor.subscribe(function (data) { return _this.monitorData = data; });
+    };
+    HomeSearchComponent.prototype.getMarginLeft = function () {
+        if (this.monitorData.marginLeft >= 5)
+            return (this.monitorData.marginLeft - 20) + "px";
+        return 4 + "px";
     };
     HomeSearchComponent.prototype.showProfiles = function (userId) {
-        this.router.navigate(['profile/' + userId]);
+        //this.router.navigate(['profile/'+userId])
     };
     HomeSearchComponent.prototype.ngOnDestroy = function () {
-        this.observer.unsubscribe();
+        this.searchSpeakerData_obs.unsubscribe();
+        this.showField_obs.unsubscribe();
+        this.monitor_obs.unsubscribe();
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('container'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], HomeSearchComponent.prototype, "container", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('document:click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], HomeSearchComponent.prototype, "clickout", null);
     HomeSearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home-search',
             template: __webpack_require__(/*! ./home-search.component.html */ "./src/app/components/home-search/home-search.component.html"),
             styles: [__webpack_require__(/*! ./home-search.component.scss */ "./src/app/components/home-search/home-search.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_3__["BucketService"]])
     ], HomeSearchComponent);
     return HomeSearchComponent;
 }());
@@ -1353,7 +1405,7 @@ var HomeSearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n  \n  <span id=\"left\" *ngIf=\"showLoadIcon == false\">\n      <!-- <hr id=\"separator\"> -->\n      <!-- <p id=\"title\" class=\"profession\"> Suggestions</p>  -->\n\n    <!-- <ul class=\"user-container\">\n      <li *ngFor=\"let user of users\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a id=\"username\" routerLink=\"details/{{user.id}}\"> {{user.firstName}} {{user.lastName}}</a>\n        <hr>\n        <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <hr>\n        <div class=\"profession\"> {{user.industry}} </div>\n        <div class=\"detail\"> {{user.headline}} </div>\n        <div class=\"detail\"> {{user.location}} </div>\n      </li>\n    </ul> -->\n\n    <p id=\"more\" class=\"profession\">You may be interested in ({{suggestedCount}})</p>\n      <hr id=\"hr-top\">\n      <li *ngFor=\"let profile of profiles\" id=\"profile-block\" (click)=\"selectProfile(profile)\"\n          [style.border-left]=\"ifCurrent(profile,'border-left')\"\n          [style.background-color]=\"ifCurrent(profile,'background-color')\">\n        <img class=\"profile-img\" src={{profile.pictureUrl}} alt=\"img\" (error) = \"resetPicUrl(profile.id)\" [style.margin-left]=\"ifCurrent(profile,'pic-margin-left')\">\n        <span id=\"profiles-item-name\"  [style.margin-left]=\"ifCurrent(profile,'name-margin-left')\"> {{profile.firstName}} {{profile.lastName}}</span>\n        <span id=\"profiles-item-position\"  *ngIf='profile.position != \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> {{profile.industry}}</span>\n        <span id=\"profiles-item-position-empty\"  *ngIf='profile.position == \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> &nbsp;</span>\n      </li>\n  </span>\n\n  <div class=\"loader\" *ngIf=\"showLoadIcon == true\"></div>\n\n  <!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\" *ngIf=\"showLoadIcon == true\"></i> -->\n\n\n</div>\n  \n\n\n\n\n"
+module.exports = "\n<div id=\"container\" [style.margin-left]=\"getMarginLeft()+'px'\">\n  \n  <span id=\"left\" *ngIf=\"showLoadIcon == false\">\n      <!-- <hr id=\"separator\"> -->\n      <!-- <p id=\"title\" class=\"profession\"> Suggestions</p>  -->\n\n    <!-- <ul class=\"user-container\">\n      <li *ngFor=\"let user of users\" class=\"user-block\" (click)=\"showDetails(user.id)\">\n        <a id=\"username\" routerLink=\"details/{{user.id}}\"> {{user.firstName}} {{user.lastName}}</a>\n        <hr>\n        <img class=\"profile-img\" src={{user.pictureUrl}} alt=\"img\" >\n        <hr>\n        <div class=\"profession\"> {{user.industry}} </div>\n        <div class=\"detail\"> {{user.headline}} </div>\n        <div class=\"detail\"> {{user.location}} </div>\n      </li>\n    </ul> -->\n\n    <p id=\"more\" class=\"profession noselect\">You may be interested in ({{suggestedCount}})</p>\n      <hr id=\"hr-top\">\n      <li *ngFor=\"let profile of profiles\" id=\"profile-block\" (click)=\"selectProfile(profile)\"\n          [style.border-left]=\"ifCurrent(profile,'border-left')\"\n          [style.background-color]=\"ifCurrent(profile,'background-color')\">\n        <img class=\"profile-img noselect\" src={{profile.pictureUrl}} alt=\"img\" (error) = \"resetPicUrl(profile.id)\" [style.margin-left]=\"ifCurrent(profile,'pic-margin-left')\">\n        <span id=\"profiles-item-name\"  [style.margin-left]=\"ifCurrent(profile,'name-margin-left')\"> {{profile.firstName}} {{profile.lastName}}</span>\n        <span id=\"profiles-item-position\"  *ngIf='profile.position != \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> {{profile.industry}}</span>\n        <span id=\"profiles-item-position-empty\" class=\"noselect\" *ngIf='profile.position == \"\"' [style.margin-left]=\"ifCurrent(profile,'title-margin-left')\"> &nbsp;</span>\n      </li>\n  </span>\n\n  <div class=\"loader\" *ngIf=\"showLoadIcon == true\"></div>\n\n  <!-- <i id=\"loadIcon\" class=\"fa fa-spinner fa-spin\" *ngIf=\"showLoadIcon == true\"></i> -->\n\n\n</div>\n  \n\n\n\n\n"
 
 /***/ }),
 
@@ -1382,6 +1434,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1396,10 +1449,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeSuggestsComponent = /** @class */ (function () {
-    function HomeSuggestsComponent(data, router) {
+    function HomeSuggestsComponent(data, router, bucket) {
         this.data = data;
         this.router = router;
+        this.bucket = bucket;
         this.suggestedCount = 0;
         this.showLoadIcon = false;
     }
@@ -1411,8 +1466,7 @@ var HomeSuggestsComponent = /** @class */ (function () {
             _this.currentProfileId = profilesData[0].id;
             _this.data.profilesData.next(profilesData[0]);
         });
-        this.data.screenData.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
-        this.data.reqScreenData();
+        this.bucket.clientMonitor.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
         this.data.getUsers(function (bool) { return _this.showLoadIcon = bool; });
     };
     HomeSuggestsComponent.prototype.ngAfterViewInit = function () {
@@ -1466,7 +1520,9 @@ var HomeSuggestsComponent = /** @class */ (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_4__["BucketService"]])
     ], HomeSuggestsComponent);
     return HomeSuggestsComponent;
 }());
@@ -1482,7 +1538,7 @@ var HomeSuggestsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"alert\" *ngIf=\"!alert.empty\"> \n  <a class=\"close\" (click)=\"closeMainAlert()\"></a>\n  <h4>{{alert.title}}</h4> {{alert.body}}\n</div>\n\n<div>\n  <!-- <app-home-search ></app-home-search> -->\n  <app-home-suggests></app-home-suggests>\n</div>\n\n<app-home-main>    </app-home-main>\n\n\n\n\n\n<!-- <div class=\"g-hangout\" data-render=\"createhangout\"\n  invites=\"[{ id : 'foo@example.com', invite_type : 'EMAIL' }]\">\n</div> -->\n\n"
+module.exports = "\n<div>\n\n  <div class=\"alert\" *ngIf=\"!alert.empty\"> \n    <a class=\"close\" (click)=\"closeMainAlert()\"></a>\n    <h4>{{alert.title}}</h4> {{alert.body}}\n  </div>\n\n\n  <app-home-suggests></app-home-suggests>\n  <app-home-main> </app-home-main>\n\n\n\n</div>\n\n<!-- <div class=\"g-hangout\" data-render=\"createhangout\"\n  invites=\"[{ id : 'foo@example.com', invite_type : 'EMAIL' }]\">\n</div> -->\n\n"
 
 /***/ }),
 
@@ -1513,6 +1569,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/alert.service */ "./src/app/services/alert.service.ts");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm5/ngx-smart-modal.js");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1529,8 +1586,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(data, router, alertService, ngxSmartModalService, route, auth) {
+    function HomeComponent(data, router, alertService, ngxSmartModalService, route, auth, bucket) {
         var _this = this;
         this.data = data;
         this.router = router;
@@ -1538,6 +1596,7 @@ var HomeComponent = /** @class */ (function () {
         this.ngxSmartModalService = ngxSmartModalService;
         this.route = route;
         this.auth = auth;
+        this.bucket = bucket;
         // launchModal = false;
         this.alertDisabled = false;
         this.alert = {
@@ -1585,15 +1644,22 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent.prototype.searchSpeaker = function (word) {
         this.data.getSpeakers(word, null);
     };
+    HomeComponent.prototype.closeSearchRes = function () {
+        this.bucket.search.showRes.next(false);
+    };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/components/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.scss */ "./src/app/components/home/home.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
-            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _services_alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
+            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_6__["BucketService"]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -1682,7 +1748,7 @@ var ProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<ngx-smart-modal #accounttype  identifier=\"accounttype\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"false\" >\n  <pre style=\"font-size: .95em; font-family: 'Lucida Grande'\">Welcome {{profile.fName}}, how would you describe yourself ?</pre>\n  <div style=\"margin-top: 20px;\">\n    <button class=\"button\" style=\"display: inline;margin-left: 100px;\" (click)=\"updateProfileType('speaker')\">Speaker &nbsp; </button>\n    <button class=\"button\" style=\"display: inline;margin-left: 50px ;\" (click)=\"updateProfileType('teacher')\">Educator</button>\n  </div>\n  <p class=\"footer\" style=\"margin-top: 20px;\"> This information helps us match you with the right accounts</p>\n</ngx-smart-modal>\n\n\n<ngx-smart-modal #dwform  identifier=\"dwform\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"false\" *ngIf=\"dwForm.skip == false\">\n    <app-dwForm></app-dwForm>\n</ngx-smart-modal>\n\n<!-- <app-home-filter *ngIf=\"showFilter\" [style.margin-left]=\"getMarginLeft()+'px'\"></app-home-filter> -->\n\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n\n      <li><a routerLink=\"home\" [style.margin-left]=\"getMarginLeft()+'px'\" (click)=\"location.reload()\">\n                <img class=\"icon\" [src]=\"'assets/img/logo.jpg'\" alt=\"Refresh\" >\n          </a></li>\n  \n      \n      <input id=\"searchBarId\" #searchBarId type=\"text\" class=\"searchTerm\" placeholder=\"search profile...\" (input)='newSearch($event.target.value)' *ngIf=\"seeTabElements == true\">\n        \n      <li style=\"float: right;margin-right: 1% ; margin-top: 4px;\" *ngIf=\"signedIn()\"> \n          <a (click)=\"signOut()\" class=\"item\">\n            <span id=\"exit\">Exit</span></a>\n        </li>\n      \n      <span class=\"item\" *ngIf=\"profile.hasData\" (click)=\"showProfile()\">\n        <img class=\"profile-img\" src={{profile.picUrl}} alt=\"img\" (click)=\"showProfile()\">\n      </span>\n\n\n    </ul>\n  </nav>\n\n\n  "
+module.exports = "\n\n<ngx-smart-modal #accounttype  identifier=\"accounttype\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"false\" >\n  <pre style=\"font-size: .95em; font-family: 'Lucida Grande'\">Welcome {{profile.fName}}, how would you describe yourself ?</pre>\n  <div style=\"margin-top: 20px;\">\n    <button class=\"button\" style=\"display: inline;margin-left: 100px;\" (click)=\"updateProfileType('speaker')\">Speaker &nbsp; </button>\n    <button class=\"button\" style=\"display: inline;margin-left: 50px ;\" (click)=\"updateProfileType('teacher')\">Educator</button>\n  </div>\n  <p class=\"footer\" style=\"margin-top: 20px;\"> This information helps us match you with the right accounts</p>\n</ngx-smart-modal>\n\n\n<ngx-smart-modal #dwform  identifier=\"dwform\" [closable]=\"false\" [dismissable]=\"false\" [autostart]=\"false\" *ngIf=\"dwForm.skip == false\">\n    <app-dwForm></app-dwForm>\n</ngx-smart-modal>\n\n\n\n<nav id=\"navigation\">\n\n    <ul class=\"topnav\">  \n\n      <li> <a routerLink=\"home\" class=\"noselect\" [style.margin-left]=\"getMarginLeft()\" (click)=\"location.reload()\"> <img class=\"icon\" [src]=\"'assets/img/logo.jpg'\" alt=\"Refresh\" *ngIf=\"seeTabElements == true\"> </a></li>\n  \n      <li> <input id=\"searchBarId\" #searchBarId type=\"text\" class=\"searchTerm\" \n        placeholder=\"search profile...\" \n        (input) = 'newSearch($event.target.value)' \n        (click) = \"searchBarClicked($event.target.value)\"\n        *ngIf=\"seeTabElements == true\"></li>\n\n      <li (click)=\"toggleFilter()\"> <a id=\"filter\" class=\"noselect\" style=\"padding: 4px;\" *ngIf=\"seeTabElements == true\"> Filter <i  id=\"filter-fa\" class=\"fa fa-filter\"></i> </a> </li>\n      \n      <li *ngIf=\"profile.hasData\" (click)=\"showProfile()\"> <img class=\"profile-img noselect\" src={{profile.picUrl}} alt=\"img\" (click)=\"showProfile()\" *ngIf=\"seeTabElements == true\"> </li>\n\n      <li> <span id=\"exit\" class=\"noselect\" (click)=\"signOut()\" *ngIf=\"seeTabElements == true\"> Exit </span> </li>\n        \n    </ul>\n\n    <app-home-search> </app-home-search>\n\n    <app-home-filter *ngIf=\"showFilter\" [style.margin-left]=\"getMarginLeft()+'px'\"></app-home-filter>\n\n\n  </nav>\n\n\n  "
 
 /***/ }),
 
@@ -1693,7 +1759,7 @@ module.exports = "\n\n<ngx-smart-modal #accounttype  identifier=\"accounttype\" 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".item:hover {\n  cursor: pointer; }\n\n#navigation {\n  position: fixed;\n  width: 100%;\n  top: 0px;\n  z-index: 50; }\n\n#navigation ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n    background-color: white;\n    border-radius: 2px;\n    border-top: 1px solid #dfdfdf;\n    border-bottom: 1px solid #b9b9b9;\n    min-height: 40px; }\n\n#navigation li {\n    float: left; }\n\n#navigation li a {\n    display: block;\n    text-align: center;\n    padding: 0px 12px;\n    margin-top: 7px;\n    text-decoration: none;\n    border-radius: 2px;\n    text-decoration: none; }\n\n#navigation .activated {\n    color: #666666; }\n\n#navigation .not-activated {\n    color: #454646; }\n\n.topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n\n.topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  float: right;\n  border-radius: 1%;\n  margin-top: 9px;\n  width: 20px;\n  height: 25px;\n  margin-right: 0px;\n  border-left: 4px solid #d6d5d5;\n  border-right: 4px solid #d6d5d5; }\n\n.icon {\n  margin-top: -4px;\n  border-radius: 2px;\n  width: 33px;\n  border: 1px solid #b9b9b9; }\n\n#username {\n  margin-right: 3px;\n  margin-top: 7px;\n  color: #525252;\n  font-weight: lighter;\n  font-size: 15px; }\n\n#username:hover {\n  text-decoration: underline; }\n\n#exit {\n  font-size: 15px;\n  color: #525252; }\n\n#exit:hover {\n  text-decoration: underline;\n  color: #000; }\n\n.searchTerm {\n  margin-left: 10px;\n  width: 149px;\n  border: 1px solid #a0a0a0;\n  padding: 2px 7px;\n  height: 26px;\n  border-radius: 1px;\n  margin-top: 4px;\n  outline: none;\n  color: #131313;\n  font-size: 14px;\n  font-weight: lighter; }\n\n#logout {\n  color: #454646; }\n\n#logout:hover {\n  color: #7e7e7e; }\n\n.flashchats:hover {\n  color: #7e7e7e; }\n\n#notification-icon {\n  background-color: #d34f3d;\n  position: absolute;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  text-align: center;\n  font-weight: lighter;\n  font-size: 13px;\n  margin-top: 30px;\n  margin-left: -20px;\n  z-index: 100;\n  color: white; }\n\n#notification-flashchat:hover {\n  background-color: #f05b48; }\n\n#progress {\n  background-color: #c9c9c9;\n  width: 107px;\n  margin-right: 5px;\n  margin-top: 2px;\n  float: right;\n  display: inline; }\n\n#bar {\n  width: 0%;\n  height: 8px;\n  background-color: #38a3a5;\n  text-align: center;\n  line-height: 30px;\n  color: white;\n  border-right: 0px solid #e9e7e7; }\n\n#dwForm-ratio {\n  font-size: .75em;\n  margin-right: -100px;\n  color: #3d3d3d; }\n\n#completion {\n  float: right;\n  margin-top: 2px;\n  margin-right: 40px; }\n"
+module.exports = "#navigation {\n  min-width: 1235px;\n  position: fixed;\n  width: 100%;\n  top: 0px;\n  z-index: 50; }\n  #navigation ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n    background-color: white;\n    border-radius: 2px;\n    border-top: 1px solid #dfdfdf;\n    border-bottom: 1px solid #b9b9b9;\n    min-height: 40px; }\n  #navigation li {\n    float: left; }\n  #navigation li a {\n    display: block;\n    text-align: center;\n    padding: 0px 12px;\n    margin-top: 7px;\n    text-decoration: none;\n    border-radius: 2px;\n    text-decoration: none; }\n  #navigation .activated {\n    color: #666666; }\n  #navigation .not-activated {\n    color: #454646; }\n  .topnav {\n  position: relative;\n  overflow: hidden;\n  background-color: #333; }\n  .topnav-centered a {\n  float: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n  .profile-img {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 1%;\n  margin-top: 9px;\n  width: 20px;\n  height: 25px;\n  margin-left: 860px;\n  border-left: 4px solid #d6d5d5;\n  border-right: 4px solid #d6d5d5; }\n  .profile-img:hover {\n  cursor: pointer; }\n  .icon {\n  margin-top: -4px;\n  border-radius: 2px;\n  width: 33px;\n  border: 1px solid #b9b9b9; }\n  #username {\n  margin-right: 3px;\n  margin-top: 7px;\n  color: #525252;\n  font-weight: lighter;\n  font-size: 15px; }\n  #username:hover {\n  text-decoration: underline; }\n  #exit {\n  border-bottom: 1px solid #b3b3b3;\n  font-size: 15px;\n  color: #525252;\n  display: -ms-grid;\n  display: grid;\n  margin-top: 11px;\n  margin-left: 15px; }\n  #exit:hover {\n  cursor: pointer;\n  border-bottom: 1px solid #38a3a5; }\n  .searchTerm {\n  margin-left: 10px;\n  width: 149px;\n  border: 1px solid #a0a0a0;\n  padding: 2px 7px;\n  height: 26px;\n  border-radius: 1px;\n  margin-top: 4px;\n  outline: none;\n  color: #131313;\n  font-size: 14px;\n  font-weight: lighter; }\n  #logout {\n  color: #454646; }\n  #logout:hover {\n  color: #7e7e7e; }\n  .flashchats:hover {\n  color: #7e7e7e; }\n  #notification-icon {\n  background-color: #d34f3d;\n  position: absolute;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  text-align: center;\n  font-weight: lighter;\n  font-size: 13px;\n  margin-top: 30px;\n  margin-left: -20px;\n  z-index: 100;\n  color: white; }\n  #notification-flashchat:hover {\n  background-color: #f05b48; }\n  #progress {\n  background-color: #c9c9c9;\n  width: 107px;\n  margin-right: 5px;\n  margin-top: 2px;\n  float: right;\n  display: inline; }\n  #bar {\n  width: 0%;\n  height: 8px;\n  background-color: #38a3a5;\n  text-align: center;\n  line-height: 30px;\n  color: white;\n  border-right: 0px solid #e9e7e7; }\n  #dwForm-ratio {\n  font-size: .75em;\n  margin-right: -100px;\n  color: #3d3d3d; }\n  #completion {\n  float: right;\n  margin-top: 2px;\n  margin-right: 40px; }\n  #filter {\n  border: 1px solid #a0a0a0;\n  margin-left: 15px;\n  display: -ms-grid;\n  display: grid;\n  font-size: 14px;\n  color: #525252; }\n  #filter:hover {\n  cursor: pointer;\n  border: 1px solid #38a3a5; }\n  #filter-fa {\n  font-size: 15px;\n  color: #979797; }\n"
 
 /***/ }),
 
@@ -1711,7 +1777,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/data.service */ "./src/app/services/data.service.ts");
-/* harmony import */ var _services_modals_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/modals.service */ "./src/app/services/modals.service.ts");
+/* harmony import */ var _services_bucket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/bucket.service */ "./src/app/services/bucket.service.ts");
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm5/ngx-smart-modal.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1730,16 +1796,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var TopbarComponent = /** @class */ (function () {
-    function TopbarComponent(router, auth, data, modals, ngxSmartModalService) {
+    function TopbarComponent(router, auth, data, bucket, ngxSmartModalService) {
         var _this = this;
         this.router = router;
         this.auth = auth;
         this.data = data;
-        this.modals = modals;
+        this.bucket = bucket;
         this.ngxSmartModalService = ngxSmartModalService;
         this.launchAccountTypeModal = false;
         this.launchDwFormModal = false;
-        this.showFilter = true;
+        this.showFilter = false;
         this.dwForm = {
             ratio: null, answered: null, notAnswered: null, received: null,
             skip: false //topbar relevant
@@ -1771,32 +1837,31 @@ var TopbarComponent = /** @class */ (function () {
             _this.profile.type = profileData.type;
             if (_this.profile.type == null)
                 _this.ngxSmartModalService.getModal("accounttype").open();
-            else if (true)
-                _this.ngxSmartModalService.getModal("dwform").open(); //check that use has not completed forms
+            //else if (true) this.ngxSmartModalService.getModal("dwform").open() //check that use has not completed forms
             _this.updateTabElements();
             if (typeof profileData.order != "undefined" && profileData.order == "sign out")
                 _this.signOut();
             //if (profileData.action == "signedUp") location.reload() // refresh page to get signup modal
         });
-        //screen size css data
-        this.data.screenData.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
         //DW form data
-        this.modals.dwFormBucket.subscribe(function (data) {
-            if (data.target == "topbar") {
+        this.bucket.dwForm.subscribe(function (data) {
+            if (data.target == "topbar-component") {
                 _this.dwForm = data;
                 _this.ngxSmartModalService.getModal("dwform").open();
             }
         });
         //DATA REQUESTS
         this.data.getProfile(null); //for now, emits profile data
-        this.data.emitScreenData({
+        this.bucket.clientMonitor.next({
             innerWidth: window.innerWidth,
             marginLeft: Math.floor((window.innerWidth - 1218) / 2)
         });
+        //screen size css data
+        this.bucket.clientMonitor.subscribe(function (data) { return _this.marginLeft = data.marginLeft; });
     };
     TopbarComponent.prototype.updateProfileType = function (type) {
         this.ngxSmartModalService.getModal("accounttype").close();
-        this.data.updateProfileType(type).subscribe();
+        this.data.updateProfileType(type);
         location.reload();
     };
     TopbarComponent.prototype.updateTabElements = function () {
@@ -1828,26 +1893,37 @@ var TopbarComponent = /** @class */ (function () {
             this.searchBarId.nativeElement.focus();
     };
     TopbarComponent.prototype.newSearch = function (word) {
-        if (this.currentUrl != "home" && word != "")
-            this.router.navigate(['home/search/' + word]);
-        if (word != "")
+        //if(this.currentUrl != "home" && word != "")this.router.navigate(['home/search/'+word])
+        if (word != "") {
+            this.bucket.search.showRes.next(true);
             this.data.getSpeakers(word, null);
-        else
+        }
+        else {
+            this.bucket.search.showRes.next(false);
             this.data.getSpeakers("*null*", null);
+        }
+    };
+    TopbarComponent.prototype.searchBarClicked = function (word) {
+        var _this = this;
+        if (word != "")
+            setTimeout(function () { return _this.bucket.search.showRes.next(true); }, 2);
     };
     TopbarComponent.prototype.showProfile = function () {
         this.router.navigate(['profile/' + localStorage.getItem("sid")]);
     };
+    TopbarComponent.prototype.toggleFilter = function () {
+        this.showFilter = !this.showFilter;
+    };
     TopbarComponent.prototype.onResize = function (event) {
-        this.data.emitScreenData({
+        this.bucket.clientMonitor.next({
             innerWidth: window.innerWidth,
             marginLeft: Math.floor((window.innerWidth - 1218) / 2)
         });
     };
     TopbarComponent.prototype.getMarginLeft = function () {
         if (this.marginLeft >= 5)
-            return this.marginLeft - 22;
-        return -7;
+            return this.marginLeft - 22 + "px";
+        return -7 + "px";
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('searchBarId'),
@@ -1868,7 +1944,7 @@ var TopbarComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
             _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"],
-            _services_modals_service__WEBPACK_IMPORTED_MODULE_4__["ModalsService"],
+            _services_bucket_service__WEBPACK_IMPORTED_MODULE_4__["BucketService"],
             ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"]])
     ], TopbarComponent);
     return TopbarComponent;
@@ -2185,6 +2261,51 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/bucket.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/bucket.service.ts ***!
+  \********************************************/
+/*! exports provided: BucketService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BucketService", function() { return BucketService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BucketService = /** @class */ (function () {
+    function BucketService() {
+        this.dwForm = new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1); //read: topbar; write: dwform, forms-dw
+        this.search = {
+            showRes: new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1),
+            barActive: new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1) //read: home-search, write: topbar
+        };
+        this.clientMonitor = new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1); //read: , write: topbar
+    }
+    BucketService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], BucketService);
+    return BucketService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/data.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/data.service.ts ***!
@@ -2229,8 +2350,8 @@ var DataService = /** @class */ (function () {
         this.users = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
         this.user = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-suggest
         this.speakers = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-search
+        this.profileTypeUpdate = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: home-search
         this.formData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: top-bar | emmiter: forms-setting
-        this.screenData = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); //subscriptions: suggests | emmiter: top-bar
         this.profilesData = new rxjs__WEBPACK_IMPORTED_MODULE_6__["ReplaySubject"](1); //subscriptions: home-main | emmiter: profiles
     }
     /* PROFILE */
@@ -2273,7 +2394,8 @@ var DataService = /** @class */ (function () {
     };
     //called from home
     DataService.prototype.updateProfileType = function (type) {
-        return this.http.get(this.envir.getServer("noEncode") + '/auth/updateProfileType/' + type + "/" + localStorage.getItem("sid"));
+        var _this = this;
+        this.http.get(this.envir.getServer("noEncode") + '/auth/updateProfileType/' + type + "/" + localStorage.getItem("sid")).subscribe(function () { return _this.profileTypeUpdate.emit(type); });
     };
     /* USERS */
     //get users from db if session active, called in home
@@ -2386,15 +2508,6 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.emitFormData = function (data) {
         this.formData.emit(data);
-    };
-    DataService.prototype.emitScreenData = function (data) {
-        this.screenData.emit(data);
-    };
-    DataService.prototype.reqScreenData = function () {
-        this.emitScreenData({
-            innerWidth: window.innerWidth,
-            marginLeft: Math.floor((window.innerWidth - 1218) / 2)
-        });
     };
     DataService.prototype.signOut = function () {
         this.auth.signOut();
@@ -2570,49 +2683,6 @@ var LinkedinLoginService = /** @class */ (function () {
             ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"]])
     ], LinkedinLoginService);
     return LinkedinLoginService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/modals.service.ts":
-/*!********************************************!*\
-  !*** ./src/app/services/modals.service.ts ***!
-  \********************************************/
-/*! exports provided: ModalsService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalsService", function() { return ModalsService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ModalsService = /** @class */ (function () {
-    function ModalsService() {
-        this.dwFormBucket = new rxjs__WEBPACK_IMPORTED_MODULE_1__["ReplaySubject"](1); //listeners: topbar
-    }
-    ModalsService.prototype.dwFormEmit = function (data) {
-        this.dwFormBucket.next(data);
-    };
-    ModalsService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        }),
-        __metadata("design:paramtypes", [])
-    ], ModalsService);
-    return ModalsService;
 }());
 
 
