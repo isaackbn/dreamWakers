@@ -48,8 +48,8 @@ export class HomeSuggestsComponent implements OnInit, AfterViewInit {
       this.data.profilesData.next(profilesData[0])  
     })
     this.bucket.clientMonitor.subscribe( data => this.marginLeft = (data as DataType.clientMonitor).marginLeft )
-    this.data.getUsers( bool => this.showLoadIcon = bool )
-
+    this.data.getUsers()
+    this.bucket.loadIcon.subscribe(data => this.showLoadIcon = data as boolean)
   }
   ngAfterViewInit() {
     // this.moreUsersId.nativeElement.focus();

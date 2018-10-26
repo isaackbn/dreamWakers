@@ -2,20 +2,7 @@
 <div id="container" [style.margin-left]="getMarginLeft()+'px'">
   
   <span id="left" *ngIf="showLoadIcon == false">
-      <!-- <hr id="separator"> -->
-      <!-- <p id="title" class="profession"> Suggestions</p>  -->
 
-    <!-- <ul class="user-container">
-      <li *ngFor="let user of users" class="user-block" (click)="showDetails(user.id)">
-        <a id="username" routerLink="details/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
-        <hr>
-        <img class="profile-img" src={{user.pictureUrl}} alt="img" >
-        <hr>
-        <div class="profession"> {{user.industry}} </div>
-        <div class="detail"> {{user.headline}} </div>
-        <div class="detail"> {{user.location}} </div>
-      </li>
-    </ul> -->
 
     <p id="more" class="profession noselect">You may be interested in ({{suggestedCount}})</p>
       <hr id="hr-top">
@@ -29,9 +16,7 @@
       </li>
   </span>
 
-  <div class="loader" *ngIf="showLoadIcon == true"></div>
 
-  <!-- <i id="loadIcon" class="fa fa-spinner fa-spin" *ngIf="showLoadIcon == true"></i> -->
 
 
 </div>

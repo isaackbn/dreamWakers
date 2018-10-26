@@ -4,6 +4,7 @@ import { EnvironmentService } from './environment.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router'
 import { AuthService } from './auth.service'
+import { BucketService } from './bucket.service'
 import { Observable, observable, ReplaySubject } from 'rxjs';
 
 
@@ -34,7 +35,8 @@ export class DataService {
                 private envir:EnvironmentService,
                 private cookies:CookieService,
                 private router:Router,
-                private auth:AuthService) {
+                private auth:AuthService,
+                private bucket:BucketService) {
                 }
 
 
@@ -89,16 +91,16 @@ export class DataService {
   /* USERS */
 
   //get users from db if session active, called in home
-  getUsers(callback_loadToggle){
-    callback_loadToggle(true)
+  getUsers(){
+    this.bucket.loadIcon.next(true)
     var sessionId = localStorage.getItem("sid")
-    if ( sessionId != null) this.reqUsers(sessionId, callback_loadToggle)
+    if ( sessionId != null) this.reqUsers(sessionId)
   }
   //get users helper function
-  reqUsers(sessionId, callback_loadToggle){
+  reqUsers(sessionId){
     this.http.get(this.envir.getServer("noEncode")+'/data/users/'+sessionId).subscribe(res => {
       var data:any = res
-      callback_loadToggle(false)
+      this.bucket.loadIcon.next(false)
       this.emitUsersData(data)
     }, err => {
       console.log("could not fetch users data: "+err); 
@@ -124,7 +126,7 @@ export class DataService {
   resetPicUrl(userId){
     console.log("etetehsvbreahivbairj");
     this.http.get(this.envir.getServer("noEncode")+'/auth/resetPicUrl/'+userId).subscribe(res => {
-      this.getUsers(()=>{})
+      this.getUsers()
     })
   }
 

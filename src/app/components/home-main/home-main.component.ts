@@ -12,13 +12,15 @@ export class HomeMainComponent implements OnInit {
   marginLeft
 
   notifNum = 0;
+  showLoadIcon = false
+  
  
-
   constructor(private data: DataService,
               private bucket:BucketService) {
     this.bucket.clientMonitor.subscribe( data => this.marginLeft = (data as DataType.clientMonitor).marginLeft )
     this.data.profile.subscribe( data => {if (data.notifications!= null) this.notifNum = data.notifications})
-   }
+    this.bucket.loadIcon.subscribe(data => this.showLoadIcon = data as boolean)
+  }
 
   ngOnInit() { }
 

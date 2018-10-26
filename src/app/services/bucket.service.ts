@@ -15,6 +15,7 @@ export class BucketService {
     barActive : new ReplaySubject(1) //read: home-search, write: topbar
   }
   clientMonitor = new ReplaySubject(1) //read: , write: topbar
+  loadIcon = new ReplaySubject(1) //read: , write: topbar
 
   constructor() {}
 
