@@ -88,6 +88,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
     })
     //screen size css data
     this.bucket.clientMonitor.subscribe(data => this.marginLeft = (data as DataType.clientMonitor).marginLeft)
+    this.bucket.filter.showfield.subscribe(data => this.showFilter = data as boolean)
   }
 
   updateProfileType(type){

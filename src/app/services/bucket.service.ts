@@ -14,6 +14,9 @@ export class BucketService {
     showRes : new ReplaySubject(1),
     barActive : new ReplaySubject(1) //read: home-search, write: topbar
   }
+  filter = {
+    showfield: new ReplaySubject(1)
+  }
   clientMonitor = new ReplaySubject(1) //read: , write: topbar
   loadIcon = new ReplaySubject(1) //read: , write: topbar
 
